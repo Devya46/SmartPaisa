@@ -3,6 +3,1434 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<!-- --------header-------- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
+    />
+    <title>Smart Money · responsive header</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6 (free) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", Arial, sans-serif !important;
+        background: #020509;
+        color: #fff;
+        min-height: 100vh;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: 0;
+        background: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* ---------- HEADER (fixed) ---------- */
+      .site-header {
+        width: 100%;
+        height: 76px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background: #00000024;
+        border-bottom: 1px solid rgb(255 248 248 / 8%);
+        backdrop-filter: blur(2px);
+        transition:
+          box-shadow 0.2s,
+          background 0.2s;
+      }
+      .site-header.scrolled {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+        background: rgba(2, 5, 9, 0.96);
+        backdrop-filter: blur(8px);
+      }
+      .header-inner {
+        width: min(1300px, calc(100% - 32px));
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      /* ---------- LOGO (big, image) ---------- */
+      .logo {
+        flex-shrink: 0;
+        width: 105px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: visible;
+        margin-top: 28px;
+      }
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        filter: drop-shadow(0 2px 6px rgba(0, 179, 255, 0.064));
+        transition: filter 0.2s;
+      }
+
+      /* ---------- DESKTOP NAV ---------- */
+      .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        height: 100%;
+        margin-left: 18px;
+      }
+      .nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .nav-link {
+        height: 48px;
+        padding: 0 14px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        background: transparent;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .nav-link:hover,
+      .nav-item.active .nav-link {
+        background: rgba(40, 60, 80, 0.6);
+        color: #fff;
+      }
+      .arrow {
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(45deg);
+        margin-top: -3px;
+        transition:
+          transform 0.25s ease,
+          margin 0.2s;
+      }
+      .nav-item:hover .arrow {
+        transform: rotate(225deg);
+        margin-top: 3px;
+      }
+
+      /* ---------- MEGA MENU (unchanged) ---------- */
+      .mega-menu {
+        position: absolute;
+        top: calc(100% - 4px);
+        left: 14rem;
+        transform: translateX(-50%) translateY(8px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        background: #ffffff;
+        color: #14171c;
+        border-radius: 18px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        transition:
+          opacity 0.2s ease,
+          transform 0.25s ease,
+          visibility 0.2s;
+        overflow: hidden;
+      }
+      .nav-item:hover .mega-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: auto;
+      }
+      .mega-menu::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        background: #fff;
+        transform: translateX(-50%) rotate(45deg);
+        border-radius: 4px 0 0 0;
+        box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.03);
+      }
+      .menu-column {
+        padding: 30px 34px;
+      }
+      .menu-heading {
+        font-size: 13px;
+        font-weight: 700;
+        color: #6f7685;
+        letter-spacing: 0.5px;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+      .menu-link {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+        color: #171a21;
+        transition: color 0.15s;
+      }
+      .menu-link:last-child {
+        margin-bottom: 0;
+      }
+      .menu-link:hover .menu-title {
+        color: #0b6ed6;
+      }
+      .menu-icon {
+        width: 46px;
+        height: 46px;
+        flex-shrink: 0;
+        border: 1px solid #e9ecf0;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        font-size: 18px;
+        color: #0a7eff;
+        transition:
+          background 0.2s,
+          border 0.2s,
+          color 0.2s;
+      }
+      .menu-link:hover .menu-icon {
+        background: #f0f7ff;
+        border-color: #b0d3ff;
+        color: #0a5fcf;
+      }
+      .menu-title {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 2px;
+      }
+      .menu-description {
+        color: #7d8392;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .feature-card {
+        background: #f5f7fa;
+        padding: 28px 26px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        transition: background 0.2s;
+        min-width: 280px;
+      }
+      .feature-card:hover {
+        background: #f0f4fe;
+      }
+      .feature-image {
+        width: 100%;
+        height: 180px;
+        border-radius: 14px;
+        overflow: hidden;
+        margin-bottom: 14px;
+        background: #1a314a;
+      }
+      .feature-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .feature-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #0b1a2a;
+        margin-bottom: 4px;
+      }
+      .feature-text {
+        color: #626a7a;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: 500;
+      }
+      .challenge-menu {
+        width: 965px;
+        max-width: calc(100vw - 40px);
+        min-height: 360px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 340px;
+      }
+      .trading-menu {
+        width: 780px;
+        max-width: calc(100vw - 40px);
+        padding: 30px 34px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+      .trading-menu .menu-column {
+        padding: 0;
+      }
+      .academy-menu {
+        width: 975px;
+        max-width: calc(100vw - 40px);
+        min-height: 340px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 340px;
+      }
+      .academy-menu .menu-column {
+        padding: 28px 30px;
+      }
+      .academy-link {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 16px;
+        color: #171a21;
+      }
+      .academy-thumb {
+        width: 72px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #1d2633;
+      }
+      .academy-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .academy-content .menu-title {
+        font-size: 14px;
+      }
+      .academy-content .menu-description {
+        font-size: 12px;
+      }
+      .more-lessons {
+        display: inline-block;
+        font-weight: 600;
+        color: #0b6ed6;
+        margin-top: 6px;
+        font-size: 14px;
+      }
+      .more-lessons .more-arrow {
+        margin-left: 4px;
+      }
+      .about-menu {
+        width: 740px;
+        max-width: calc(100vw - 40px);
+        padding: 30px 36px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .about-menu .menu-column {
+        padding: 0;
+      }
+
+      /* ---------- HEADER RIGHT ---------- */
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-shrink: 0;
+      }
+      .search-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.04);
+        transition: background 0.2s;
+        font-size: 16px;
+      }
+      .search-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .language {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-right: 18px;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        font-size: 14px;
+        font-weight: 600;
+        color: #d0d4de;
+        height: 32px;
+      }
+      .flag {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+      .login {
+        font-size: 15px;
+        font-weight: 600;
+        color: #f0f4ff;
+        transition: color 0.2s;
+        white-space: nowrap;
+      }
+      .login:hover {
+        color: #1687ff;
+      }
+      .get-started {
+        min-width: 138px;
+        height: 44px;
+        padding: 0 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #1a9cff 0%, #0870e0 100%);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        box-shadow: 0 6px 18px rgba(0, 115, 255, 0.3);
+        transition:
+          transform 0.15s,
+          box-shadow 0.2s,
+          background 0.2s;
+        white-space: nowrap;
+      }
+      .get-started:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 28px rgba(0, 115, 255, 0.45);
+        background: linear-gradient(180deg, #2aa6ff 0%, #0878e8 100%);
+      }
+
+      /* ================================
+   MOBILE HAMBURGER FIX
+================================ */
+
+      .mobile-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        margin-left: auto;
+        padding: 0;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        cursor: pointer;
+        position: relative;
+        z-index: 2000;
+      }
+
+      .mobile-toggle span,
+      .mobile-toggle span::before,
+      .mobile-toggle span::after {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 2.5px;
+        background: #fff;
+        border-radius: 4px;
+        position: absolute;
+        transition: all 0.25s ease;
+      }
+
+      .mobile-toggle span {
+        position: relative;
+      }
+
+      .mobile-toggle span::before {
+        top: -8px;
+        left: 0;
+      }
+
+      .mobile-toggle span::after {
+        top: 8px;
+        left: 0;
+      }
+
+      /* Hamburger → X */
+      .mobile-toggle.active span {
+        background: transparent;
+      }
+
+      .mobile-toggle.active span::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      .mobile-toggle.active span::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+
+      /* ================================
+   RESPONSIVE HEADER
+================================ */
+
+      @media (max-width: 960px) {
+        .desktop-nav {
+          display: none !important;
+        }
+
+        .header-right {
+          display: none !important;
+        }
+
+        .mobile-toggle {
+          display: flex !important;
+        }
+
+        .header-inner {
+          width: calc(100% - 24px);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .logo {
+          width: 130px;
+          height: 48px;
+          margin-top: 20px;
+        }
+      }
+
+      /* Smaller mobile */
+      @media (max-width: 700px) {
+        .site-header {
+          height: 66px;
+        }
+
+        .mobile-menu {
+          top: 66px;
+        }
+
+        .logo {
+          width: 112px;
+          height: 40px;
+          margin-top: 16px;
+        }
+
+        .mobile-toggle {
+          width: 42px;
+          height: 42px;
+          flex-basis: 42px;
+        }
+      }
+
+      /* Very small screens */
+      @media (max-width: 480px) {
+        .header-inner {
+          width: calc(100% - 16px);
+        }
+
+        .logo {
+          width: 100px;
+          height: 36px;
+          margin-top: 14px;
+        }
+
+        .mobile-toggle {
+          width: 40px;
+          height: 40px;
+          flex-basis: 40px;
+        }
+
+        .mobile-toggle span,
+        .mobile-toggle span::before,
+        .mobile-toggle span::after {
+          width: 20px;
+          height: 2px;
+        }
+
+        .mobile-toggle span::before {
+          top: -7px;
+        }
+
+        .mobile-toggle span::after {
+          top: 7px;
+        }
+      }
+
+      /* =====================================================
+   FINAL MOBILE HEADER FIX
+===================================================== */
+
+      /* Hide mobile menu by default */
+      .mobile-menu {
+        display: none !important;
+        position: fixed !important;
+        top: 76px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        width: 100% !important;
+        height: auto;
+
+        background: #0b1623 !important;
+        padding: 16px 20px 30px !important;
+
+        overflow-y: auto;
+        z-index: 9999 !important;
+
+        box-sizing: border-box;
+      }
+
+      /* Show ONLY when hamburger is clicked */
+      .mobile-menu.active {
+        display: block !important;
+      }
+
+      /* Hamburger */
+      .mobile-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+
+        flex: 0 0 44px;
+
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        z-index: 10000;
+
+        margin-left: auto;
+        padding: 0;
+
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+
+        cursor: pointer;
+      }
+
+      /* Hamburger lines */
+      .mobile-toggle span,
+      .mobile-toggle span::before,
+      .mobile-toggle span::after {
+        content: "";
+        display: block;
+
+        width: 24px;
+        height: 2.5px;
+
+        background: #fff;
+        border-radius: 5px;
+
+        position: absolute;
+
+        transition: 0.25s ease;
+      }
+
+      .mobile-toggle span {
+        position: relative;
+      }
+
+      .mobile-toggle span::before {
+        top: -8px;
+        left: 0;
+      }
+
+      .mobile-toggle span::after {
+        top: 8px;
+        left: 0;
+      }
+
+      /* Hamburger → X */
+      .mobile-toggle.active span {
+        background: transparent;
+      }
+
+      .mobile-toggle.active span::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      .mobile-toggle.active span::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+
+      /* =====================================================
+   TABLET / MOBILE
+===================================================== */
+
+      @media (max-width: 960px) {
+        .desktop-nav {
+          display: none !important;
+        }
+
+        .header-right {
+          display: none !important;
+        }
+
+        .mobile-toggle {
+          display: flex !important;
+        }
+
+        .header-inner {
+          width: calc(100% - 24px);
+          height: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .logo {
+          width: 130px;
+          height: 48px;
+          margin-top: 20px;
+        }
+      }
+
+      /* =====================================================
+   MOBILE
+===================================================== */
+
+      @media (max-width: 700px) {
+        .site-header {
+          height: 66px;
+        }
+
+        .mobile-menu {
+          top: 66px !important;
+        }
+
+        .logo {
+          width: 112px;
+          height: 40px;
+          margin-top: 16px;
+        }
+
+        .mobile-toggle {
+          width: 42px;
+          height: 42px;
+          flex-basis: 42px;
+        }
+
+        .mobile-link {
+          width: 100%;
+          padding: 16px 4px;
+
+          display: flex !important;
+          align-items: center;
+          justify-content: space-between;
+
+          color: #f0f4ff !important;
+          font-size: 16px;
+          font-weight: 600;
+
+          background: transparent !important;
+          border: 0;
+
+          text-align: left;
+        }
+
+        .mobile-item {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-dropdown {
+          display: none !important;
+          padding: 0 4px 14px;
+        }
+
+        .mobile-item.open .mobile-dropdown {
+          display: block !important;
+        }
+
+        .mobile-dropdown a {
+          display: block !important;
+          padding: 8px 0;
+
+          color: #bcc1ce !important;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+
+      /* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+      @media (max-width: 480px) {
+        .header-inner {
+          width: calc(100% - 16px);
+        }
+
+        .logo {
+          width: 100px;
+          height: 36px;
+          margin-top: 14px;
+        }
+
+        .mobile-toggle {
+          width: 40px;
+          height: 40px;
+          flex-basis: 40px;
+        }
+
+        .mobile-toggle span,
+        .mobile-toggle span::before,
+        .mobile-toggle span::after {
+          width: 20px;
+          height: 2px;
+        }
+
+        .mobile-toggle span::before {
+          top: -7px;
+        }
+
+        .mobile-toggle span::after {
+          top: 7px;
+        }
+      }
+      /* ==========================================
+   FINAL MOBILE MENU Z-INDEX FIX
+========================================== */
+
+      .site-header {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999999 !important;
+      }
+
+      .mobile-toggle {
+        position: relative !important;
+        z-index: 1000000 !important;
+      }
+
+      .mobile-menu {
+        position: fixed !important;
+        top: 76px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        width: 100%;
+        height: calc(100vh - 76px);
+
+        display: none !important;
+
+        z-index: 999998 !important;
+
+        background: #0b1623 !important;
+        overflow-y: auto !important;
+      }
+
+      .mobile-menu.active {
+        display: block !important;
+      }
+
+      @media (max-width: 700px) {
+        .site-header {
+          height: 66px !important;
+          z-index: 999999 !important;
+        }
+
+        .mobile-menu {
+          top: 66px !important;
+          height: calc(100vh - 66px) !important;
+          z-index: 999998 !important;
+        }
+
+        .mobile-toggle {
+          z-index: 1000000 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" id="siteHeader">
+      <div class="header-inner">
+        <!-- LOGO -->
+        <a href="index.html" class="logo" aria-label="Smart Money">
+          <img
+            src="Photos/SMART MONEY LOGO 01 (1).png"
+            alt="Smart Money – proprietary trading firm"
+            width="2560"
+            height="400"
+            loading="lazy"
+          />
+        </a>
+
+        <!-- desktop nav -->
+        <nav class="desktop-nav">
+          <!-- SM24/7 Challenge -->
+          <div class="nav-item">
+            <button class="nav-link">Home <span class="arrow"></span></button>
+            <div class="mega-menu challenge-menu">
+              <div class="menu-column">
+                <div class="menu-heading">Get Started</div>
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon">
+                    <i class="fas fa-play-circle"></i>
+                  </div>
+                  <div>
+                    <div class="menu-title">How It Works</div>
+                    <div class="menu-description">Become an SM24/7 Trader</div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-tag"></i></div>
+                  <div>
+                    <div class="menu-title">Pricing</div>
+                    <div class="menu-description">
+                      Choose your SM24/7 Challenge
+                    </div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-flask"></i></div>
+                  <div>
+                    <div class="menu-title">Free Trial</div>
+                    <div class="menu-description">
+                      Unlimited practice for your strategy
+                    </div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-bullseye"></i></div>
+                  <div>
+                    <div class="menu-title">Trading Objectives</div>
+                    <div class="menu-description">
+                      Key rules to pass each phase
+                    </div>
+                  </div></a
+                >
+              </div>
+              <div class="menu-column">
+                <div class="menu-heading">Achieve More</div>
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div>
+                    <div class="menu-title">Scaling Plan</div>
+                    <div class="menu-description">
+                      Progress towards greater rewards
+                    </div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-crown"></i></div>
+                  <div>
+                    <div class="menu-title">Premium Programme</div>
+                    <div class="menu-description">For top-performers</div>
+                  </div></a
+                >
+              </div>
+              <a href="#" class="feature-card">
+                <div class="feature-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop&crop=center&auto=format"
+                    alt="1-Step Challenge"
+                  />
+                </div>
+                <div class="feature-title">
+                  New: 1-Step Smart Money Challenge ›
+                </div>
+                <div class="feature-text">
+                  Take a single step to start earning rewards: 90% of your
+                  simulated profits.
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Trading -->
+          <div class="nav-item">
+            <button class="nav-link">
+              Trading <span class="arrow"></span>
+            </button>
+            <div class="mega-menu trading-menu">
+              <div>
+                <div class="menu-heading">Trading Essentials</div>
+                <a href="News.html" class="menu-link"
+                  ><div class="menu-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                  </div>
+                  <div>
+                    <div class="menu-title">Economic Calendar</div>
+                    <div class="menu-description">Key market events</div>
+                  </div></a
+                >
+                <a href="ValueCalculator.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-list-ul"></i></div>
+                  <div>
+                    <div class="menu-title">Pip Value Calculator</div>
+                    <div class="menu-description">List of symbols</div>
+                  </div></a
+                >
+                <a href="PositionSizeCal.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-desktop"></i></div>
+                  <div>
+                    <div class="menu-title">Position Size Calculator</div>
+                    <div class="menu-description">Choose your platform</div>
+                  </div></a
+                >
+                <a href="CurrencyStrength.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-newspaper"></i></div>
+                  <div>
+                    <div class="menu-title">Currency Strength Meter</div>
+                    <div class="menu-description">Value Currency Holds</div>
+                  </div></a
+                >
+              </div>
+              <div>
+                <div class="menu-heading">Performance Zone</div>
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-tools"></i></div>
+                  <div>
+                    <div class="menu-title">Tools Overview</div>
+                    <div class="menu-description">Elevate your trading</div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                  </div>
+                  <div>
+                    <div class="menu-title">App Suite</div>
+                    <div class="menu-description">by FX Blue</div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-trophy"></i></div>
+                  <div>
+                    <div class="menu-title">Leaderboard</div>
+                    <div class="menu-description">Live rankings</div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-user-tie"></i></div>
+                  <div>
+                    <div class="menu-title">Performance Coaches</div>
+                    <div class="menu-description">Stronger mindset</div>
+                  </div></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <a href="FAQ.html" class="nav-link">FAQ</a>
+          </div>
+          <div class="nav-item"><a href="#" class="nav-link">Blog</a></div>
+
+          <!-- Academy -->
+          <div class="nav-item">
+            <button class="nav-link">
+              Academy <span class="arrow"></span>
+            </button>
+            <div class="mega-menu academy-menu">
+              <div class="menu-column">
+                <div class="menu-heading">SM24/7 Academy</div>
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="thumb"
+                    />
+                  </div>
+                  <div class="academy-content">
+                    <div class="menu-title">Gateway to trading</div>
+                    <div class="menu-description">Learn with SM24/7</div>
+                  </div></a
+                >
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="thumb"
+                    />
+                  </div>
+                  <div class="academy-content">
+                    <div class="menu-title">Financial Markets</div>
+                    <div class="menu-description">Global markets</div>
+                  </div></a
+                >
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="thumb"
+                    />
+                  </div>
+                  <div class="academy-content">
+                    <div class="menu-title">Putting it together</div>
+                    <div class="menu-description">Build a strategy</div>
+                  </div></a
+                >
+              </div>
+              <div class="menu-column">
+                <div class="menu-heading">&nbsp;</div>
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="thumb"
+                    />
+                  </div>
+                  <div class="academy-content">
+                    <div class="menu-title">How forex works</div>
+                    <div class="menu-description">What is FOREX?</div>
+                  </div></a
+                >
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="thumb"
+                    />
+                  </div>
+                  <div class="academy-content">
+                    <div class="menu-title">Technical analysis</div>
+                    <div class="menu-description">Candlesticks</div>
+                  </div></a
+                >
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="thumb"
+                    />
+                  </div>
+                  <div class="academy-content">
+                    <div class="menu-title">Fundamental analysis</div>
+                    <div class="menu-description">Data that moves markets</div>
+                  </div></a
+                >
+                <a href="Coursees.html" class="more-lessons"
+                  >More Lessons <span class="more-arrow">›</span></a
+                >
+              </div>
+              <a href="#" class="feature-card">
+                <div class="feature-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop&crop=center&auto=format"
+                    alt="psychology"
+                  />
+                </div>
+                <div class="feature-title">Psychology Course ›</div>
+                <div class="feature-text">
+                  Develop discipline, manage emotions, build resilience.
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- About -->
+          <div class="nav-item">
+            <button class="nav-link">About <span class="arrow"></span></button>
+            <div class="mega-menu about-menu">
+              <div>
+                <div class="menu-heading">Company</div>
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-building"></i></div>
+                  <div>
+                    <div class="menu-title">About Us</div>
+                    <div class="menu-description">Learn about our company</div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-users"></i></div>
+                  <div>
+                    <div class="menu-title">SM24/7 Group</div>
+                    <div class="menu-description">SM24/7 Group overview</div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                  </div>
+                  <div>
+                    <div class="menu-title">Shop</div>
+                    <div class="menu-description">Exclusive merchandise</div>
+                  </div></a
+                >
+              </div>
+              <div>
+                <div class="menu-heading">Connect</div>
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-headset"></i></div>
+                  <div>
+                    <div class="menu-title">Contact Us</div>
+                    <div class="menu-description">24/7 Support</div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon">
+                    <i class="fas fa-photo-video"></i>
+                  </div>
+                  <div>
+                    <div class="menu-title">For media</div>
+                    <div class="menu-description">Brand assets & resources</div>
+                  </div></a
+                >
+                <a href="#" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-briefcase"></i></div>
+                  <div>
+                    <div class="menu-title">Careers</div>
+                    <div class="menu-description">Join our team</div>
+                  </div></a
+                >
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- right side -->
+        <div class="header-right">
+          <!-- <button class="search-btn" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button> -->
+          <!-- <div class="language">
+            <img class="flag" src="https://flagcdn.com/w40/gb.png" alt="EN" />
+            <span>EN</span>
+          </div> -->
+          <a href="#" class="login">Log In</a>
+          <a href="#" class="get-started">Get Started</a>
+        </div>
+
+        <!-- mobile toggle (hamburger) -->
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          aria-label="Toggle menu"
+        >
+          <span></span>
+        </button>
+      </div>
+
+      <!-- mobile menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-item">
+          <button class="mobile-link">SM24/7 Challenge <span>⌄</span></button>
+          <div class="mobile-dropdown">
+            <a href="#">How It Works</a><a href="#">Pricing</a
+            ><a href="#">Free Trial</a><a href="#">Trading Objectives</a
+            ><a href="#">Scaling Plan</a><a href="#">Premium Programme</a>
+          </div>
+        </div>
+        <div class="mobile-item">
+          <button class="mobile-link">Trading <span>⌄</span></button>
+          <div class="mobile-dropdown">
+            <a href="#">Trading Updates</a><a href="#">Economic Calendar</a
+            ><a href="#">Tradable Symbols</a><a href="#">Trading Platforms</a
+            ><a href="#">Tools Overview</a><a href="#">App Suite</a
+            ><a href="#">Leaderboard</a><a href="#">Performance Coaches</a>
+          </div>
+        </div>
+        <div class="mobile-item"><a href="#" class="mobile-link">FAQ</a></div>
+        <div class="mobile-item"><a href="#" class="mobile-link">Blog</a></div>
+        <div class="mobile-item">
+          <button class="mobile-link">Academy <span>⌄</span></button>
+          <div class="mobile-dropdown">
+            <a href="#">Gateway to trading</a><a href="#">Financial Markets</a
+            ><a href="#">Putting it together</a><a href="#">How forex works</a
+            ><a href="#">Technical analysis</a
+            ><a href="#">Fundamental analysis</a><a href="#">More Lessons</a>
+          </div>
+        </div>
+        <div class="mobile-item">
+          <button class="mobile-link">About <span>⌄</span></button>
+          <div class="mobile-dropdown">
+            <a href="#">About Us</a><a href="#">SM24/7 Group</a
+            ><a href="#">Shop</a><a href="#">Contact Us</a
+            ><a href="#">For media</a><a href="#">Careers</a>
+          </div>
+        </div>
+        <div
+          style="
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+          "
+        >
+          <a href="#" class="login" style="color: #fff">Log In</a>
+          <a
+            href="#"
+            class="get-started"
+            style="width: 100%; text-align: center"
+            >Get Started</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- <script>
+      (function () {
+        const toggle = document.getElementById("mobileToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        if (toggle && mobileMenu) {
+          toggle.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const isOpen = mobileMenu.classList.toggle("active");
+            toggle.classList.toggle("active", isOpen);
+            toggle.setAttribute("aria-expanded", isOpen);
+          });
+
+          // close mobile menu on link click (optional)
+          mobileMenu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", function () {
+              mobileMenu.classList.remove("active");
+              toggle.classList.remove("active");
+              toggle.setAttribute("aria-expanded", "false");
+            });
+          });
+        }
+
+        // mobile dropdowns
+        document.querySelectorAll(".mobile-item").forEach((item) => {
+          const btn = item.querySelector(".mobile-link");
+          if (btn && btn.tagName === "BUTTON") {
+            btn.addEventListener("click", function (e) {
+              e.stopPropagation();
+              document.querySelectorAll(".mobile-item").forEach((el) => {
+                if (el !== item) el.classList.remove("open");
+              });
+              item.classList.toggle("open");
+            });
+          }
+        });
+
+        // esc key closes mobile
+        document.addEventListener("keydown", function (e) {
+          if (
+            e.key === "Escape" &&
+            mobileMenu &&
+            mobileMenu.classList.contains("active")
+          ) {
+            mobileMenu.classList.remove("active");
+            if (toggle) toggle.classList.remove("active");
+          }
+        });
+
+        // scroll shadow
+        const header = document.querySelector(".site-header");
+        window.addEventListener("scroll", function () {
+          header.classList.toggle("scrolled", window.scrollY > 20);
+        });
+      })();
+    </script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("mobileToggle");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        if (!toggle || !mobileMenu) return;
+
+        /* Hamburger */
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const isOpen = mobileMenu.classList.toggle("active");
+
+          toggle.classList.toggle("active", isOpen);
+
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        /* Mobile dropdowns */
+        document.querySelectorAll(".mobile-item").forEach(function (item) {
+          const button = item.querySelector(".mobile-link");
+
+          if (button && button.tagName === "BUTTON") {
+            button.addEventListener("click", function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              document
+                .querySelectorAll(".mobile-item")
+                .forEach(function (other) {
+                  if (other !== item) {
+                    other.classList.remove("open");
+                  }
+                });
+
+              item.classList.toggle("open");
+            });
+          }
+        });
+
+        /* Close when normal link is clicked */
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.remove("active");
+            toggle.classList.remove("active");
+          });
+        });
+
+        /* ESC */
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            mobileMenu.classList.remove("active");
+            toggle.classList.remove("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<!-- --- alll----- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Masterclass Courses</title>
 
@@ -106,18 +1534,12 @@
       }
 
       .edu-masterclass-hero-title {
-        margin: 0;
-
+        margin: 0 38px;
         color: #ffffff;
-
-        font-size: clamp(38px, 4vw, 54px);
-
-        font-weight: 800;
-
+        font-size: clamp(38px, 4vw, 58px);
+        font-weight: 600;
         line-height: 1.1;
-
         letter-spacing: -1.5px;
-
         text-shadow: 0 5px 25px rgba(0, 0, 0, 0.45);
       }
 
@@ -385,7 +1807,7 @@
       .app {
         max-width: 1360px;
         margin: 0 auto;
-        padding: 24px 20px 40px;
+        padding: 100px 20px 40px;
       }
       /* header */
       .master-header {
@@ -795,14 +2217,14 @@
   <body>
     <div class="app">
       <!-- header -->
-      <header class="master-header">
-        <h1><span>◆</span> Masterclass <span>Courses</span></h1>
+      <!-- <header class="master-header">
+        <h1><span>◆</span> All <span>Courses</span></h1>
         <div class="breadcrumb">
           <a href="#">Home</a>
           <span class="sep">/</span>
           <span class="current">Masterclass Courses</span>
         </div>
-      </header>
+      </header> -->
 
       <div class="layout">
         <aside class="filters" id="filterPanel">
@@ -887,7 +2309,8 @@
               + Load more courses
             </button>
             <div class="no-more" id="noMoreMsg" style="display: none">
-              All courses loaded
+              All courses loaded <br />
+              Wait More Are on the Way
             </div>
           </div>
         </div>
