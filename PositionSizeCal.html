@@ -1485,14 +1485,13 @@
   </body>
 </html>
 
-<!-- ----alll----- -->
-
+<!-- -----alll----- -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pip Value Calculator · Premium</title>
+    <title>Position Size Calculator · Premium</title>
     <!-- Font Awesome 6 -->
     <link
       rel="stylesheet"
@@ -1556,7 +1555,7 @@
         text-align: center;
       }
 
-      /* ----- HERO: simple & premium ----- */
+      /* ----- HERO ----- */
       .hero-premium {
         background: radial-gradient(
           circle at 70% 20%,
@@ -1780,17 +1779,20 @@
         transform: scale(1.02);
         filter: brightness(1.06);
       }
+
+      /* results area */
       .result-area {
         margin-top: 24px;
         background: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(8px);
         border-radius: 20px;
         padding: 20px 24px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
         border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .result-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 24px;
       }
       .result-item {
         display: flex;
@@ -1803,182 +1805,212 @@
         color: rgba(255, 255, 255, 0.5);
       }
       .result-item .value {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
         font-weight: 700;
         color: #a0eb56;
         letter-spacing: -0.01em;
       }
       .result-item .value small {
         font-weight: 400;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         color: rgba(255, 255, 255, 0.5);
         margin-left: 4px;
       }
-
-      /* ----- How It Works: premium step timeline ----- */
-      .how-it-works {
-        max-width: 650px;
+      .result-divider {
+        grid-column: 1 / -1;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin: 4px 0;
       }
 
-      .how-title {
+      /* ----- How It Works ----- */
+      .how-card {
+        position: relative;
+        background: linear-gradient(145deg, #ffffff 0%, #f8fbff 100%);
+        border: 1px solid #e5edf6;
+        border-radius: 28px;
+        padding: 30px 30px 26px;
+        box-shadow: 0 18px 55px rgba(11, 26, 47, 0.07);
+        overflow: hidden;
+      }
+
+      .how-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #126294, #4ba9d8, #126294);
+      }
+
+      .how-heading {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 13px;
         margin-bottom: 8px;
       }
 
-      .how-title-icon {
-        width: 42px;
-        height: 42px;
-        flex: 0 0 42px;
+      .how-heading-icon {
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
         display: grid;
         place-items: center;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #126294, #0b4d78);
+        border-radius: 14px;
         color: #fff;
-        font-size: 16px;
-        box-shadow: 0 8px 20px rgba(18, 98, 148, 0.18);
+        background: linear-gradient(145deg, #1677ad, #0b4f7a);
+        box-shadow: 0 8px 20px rgba(18, 98, 148, 0.2);
+        font-size: 1.05rem;
       }
 
-      .how-title h3 {
+      .how-heading h3 {
         margin: 0;
-        font-size: 2rem;
+        font-size: 1.8rem;
         line-height: 1.15;
         color: #0b1a2f;
-        font-weight: 750;
         letter-spacing: -0.025em;
       }
 
       .how-intro {
-        margin: 0 0 26px 54px;
-        color: #536a83;
-        font-size: 1rem;
+        margin: 0 0 22px 57px;
+        color: #52677f;
+        font-size: 0.98rem;
       }
 
-      .how-steps {
+      .steps-list {
         position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
       }
 
-      .how-steps::before {
+      .steps-list::before {
         content: "";
         position: absolute;
-        left: 19px;
-        top: 24px;
-        bottom: 24px;
-        width: 2px;
-        background: linear-gradient(
-          to bottom,
-          rgba(18, 98, 148, 0.35),
-          rgba(18, 98, 148, 0.08)
-        );
+        left: 18px;
+        top: 18px;
+        bottom: 18px;
+        width: 1px;
+        background: linear-gradient(to bottom, #c9dfed, #e8f1f7);
       }
 
-      .how-step {
+      .step-item {
         position: relative;
         display: grid;
-        grid-template-columns: 40px 150px 1fr;
-        align-items: center;
-        gap: 16px;
-        padding: 15px 18px 15px 0;
-        border-radius: 18px;
+        grid-template-columns: 38px 1fr;
+        gap: 15px;
+        margin-bottom: 12px;
+        padding: 12px 14px 12px 0;
+        border-radius: 17px;
         transition: 0.25s ease;
       }
 
-      .how-step:hover {
-        background: #fff;
-        transform: translateX(5px);
-        box-shadow: 0 12px 30px rgba(11, 26, 47, 0.06);
-        padding-left: 8px;
+      .step-item:hover {
+        background: rgba(18, 98, 148, 0.045);
+        transform: translateX(3px);
       }
 
-      .how-step-number {
+      .step-number {
         position: relative;
         z-index: 2;
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         display: grid;
         place-items: center;
         border-radius: 50%;
         background: #fff;
-        border: 2px solid #126294;
+        border: 2px solid #d5e7f2;
         color: #126294;
-        font-size: 0.78rem;
+        font-size: 0.82rem;
         font-weight: 800;
-        box-shadow: 0 4px 12px rgba(18, 98, 148, 0.12);
+        box-shadow: 0 4px 12px rgba(11, 26, 47, 0.07);
       }
 
-      .how-step-title {
-        color: #0b1a2f;
+      .step-content {
+        padding-top: 2px;
+      }
+
+      .step-title {
+        display: block;
+        margin-bottom: 3px;
+        color: #0b2d50;
         font-size: 1rem;
         font-weight: 750;
-        line-height: 1.35;
       }
 
-      .how-step-description {
-        color: #536a83;
-        font-size: 0.98rem;
+      .step-desc {
+        color: #536981;
+        font-size: 0.92rem;
         line-height: 1.55;
       }
 
-      .how-step-description strong {
+      .step-desc strong {
         color: #126294;
-        font-weight: 700;
       }
 
-      @media (max-width: 600px) {
-        .how-title h3 {
-          font-size: 1.7rem;
+      .calculate-output {
+        margin-top: 18px;
+        padding: 17px 18px;
+        border-radius: 19px;
+        background: linear-gradient(135deg, #edf7fc, #f7fbfe);
+        border: 1px solid #d9eaf4;
+      }
+
+      .calculate-output-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #0b2d50;
+        font-size: 0.95rem;
+        font-weight: 750;
+        margin-bottom: 12px;
+      }
+
+      .calculate-output-title i {
+        color: #126294;
+      }
+
+      .output-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .output-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 11px;
+        border-radius: 11px;
+        background: #fff;
+        border: 1px solid #e1edf5;
+        color: #29445f;
+        font-size: 0.83rem;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(11, 26, 47, 0.035);
+      }
+
+      .output-pill i {
+        color: #126294;
+        font-size: 0.75rem;
+      }
+
+      @media (max-width: 820px) {
+        .how-card {
+          padding: 26px 20px 22px;
+        }
+
+        .how-heading h3 {
+          font-size: 1.55rem;
         }
 
         .how-intro {
           margin-left: 0;
-        }
-
-        .how-step {
-          grid-template-columns: 40px 1fr;
-          gap: 8px 12px;
-          padding-right: 0;
-        }
-
-        .how-step-title,
-        .how-step-description {
-          grid-column: 2;
-        }
-
-        .how-step-description {
-          margin-top: -4px;
+          margin-top: 10px;
         }
       }
 
-      /* What is Pip Value – centered */
-      .pip-visual {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        background: #f0f6fe;
-        border-radius: 20px;
-        padding: 20px 30px;
-        margin: 20px auto 0;
-        max-width: 620px;
-        border-left: 5px solid #126294;
-      }
-      .pip-visual span {
-        font-weight: 600;
-      }
-      .pip-visual .badge {
-        background: #a0eb56;
-        color: #01060e;
-        padding: 4px 18px;
-        border-radius: 40px;
-        font-weight: 700;
-      }
-
-      /* Why Pip Value Matters */
+      /* Why matters grid */
       .matters-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -2020,7 +2052,7 @@
         margin: 0;
       }
 
-      /* Who is this for */
+      /* Who grid */
       .who-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -2059,6 +2091,60 @@
       .who-card p {
         color: #2d4059;
         font-size: 0.95rem;
+      }
+
+      /* example box */
+      .example-box {
+        background: #f0f6fe;
+        border-radius: 24px;
+        padding: 24px;
+        margin-top: 20px;
+        border-left: 6px solid #126294;
+      }
+      .example-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        margin: 12px 0 8px;
+      }
+      .example-grid .eg-item {
+        background: white;
+        border-radius: 16px;
+        padding: 12px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      }
+      .example-grid .eg-item .eg-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: #6a7f98;
+      }
+      .example-grid .eg-item .eg-value {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #0b1a2f;
+      }
+
+      /* features list */
+      .features-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px 28px;
+        margin: 20px 0 10px;
+      }
+      .features-list span {
+        background: #e9f0f8;
+        padding: 6px 20px;
+        border-radius: 40px;
+        font-size: 0.9rem;
+        color: #0b1a2f;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .features-list span i {
+        color: #126294;
       }
 
       /* CTA dark */
@@ -2122,17 +2208,14 @@
         .who-grid {
           grid-template-columns: 1fr;
         }
-        .result-area {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 14px;
+        .result-grid {
+          grid-template-columns: 1fr;
         }
         .hero-stats {
           gap: 20px;
         }
-        .pip-visual {
-          flex-direction: column;
-          gap: 10px;
+        .example-grid {
+          grid-template-columns: 1fr;
         }
       }
       @media (max-width: 480px) {
@@ -2163,190 +2246,202 @@
       <div class="floating-glow glow1"></div>
       <div class="floating-glow glow2"></div>
       <div class="container">
-        <h1>Pip Value Calculator</h1>
-        <p>Know the exact value of every pip before you trade.</p>
+        <h1>Position Size Calculator</h1>
+        <p>Trade Smarter with the Right Position Size</p>
         <a href="#calculator-section" class="btn-gold"
           ><i class="fas fa-calculator"></i> Calculate Now</a
         >
-        <!-- <div class="hero-stats">
-          <div class="stat"><strong>100+</strong> Currency Pairs</div>
-          <div class="stat"><strong>99.9%</strong> Accurate</div>
-          <div class="stat"><strong>&lt;1s</strong> Calculation</div>
-          <div class="stat"><strong>24/7</strong> Available</div>
-        </div> -->
       </div>
     </section>
 
-    <!-- ===== What is a Pip Value Calculator? (centered) ===== -->
+    <!-- ===== What is a Position Size Calculator? ===== -->
     <section class="bg-white section-pad">
       <div class="container text-center">
-        <h2 class="section-title">What is a Pip Value Calculator?</h2>
+        <h2 class="section-title">What is a Position Size Calculator?</h2>
         <p style="color: #2d4059; max-width: 720px; margin: 0 auto 16px">
-          A Pip Value Calculator automatically calculates the cash value of one
-          pip based on your trade details.
+          A Position Size Calculator automatically calculates the appropriate
+          lot size or trade volume you should use based on the amount you're
+          willing to risk on a single trade.
         </p>
         <p style="color: #2d4059; max-width: 720px; margin: 0 auto 24px">
-          Instead of manually performing complex calculations, the tool provides
-          accurate results in seconds. It is widely used by both beginner and
-          professional traders to improve position sizing and risk management.
+          Instead of estimating trade sizes manually, the calculator provides
+          instant and accurate results, ensuring that your risk remains
+          consistent regardless of market volatility.
         </p>
-        <div class="pip-visual">
-          <span style="font-weight: 700">EUR/USD</span>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #f0f6fe;
+            border-radius: 20px;
+            padding: 20px 30px;
+            max-width: 620px;
+            margin: 0 auto;
+            border-left: 5px solid #126294;
+          "
+        >
+          <span style="font-weight: 700">Account $10,000</span>
+          <i class="fas fa-arrow-right" style="color: #126294"></i>
           <span
             style="
               background: #12629420;
               padding: 4px 16px;
               border-radius: 40px;
             "
-            >1.1000</span
+            >2% Risk</span
           >
-          <i class="fas fa-arrow-down" style="color: #58d64e"></i>
+          <i class="fas fa-arrow-right" style="color: #126294"></i>
           <span
             style="
-              background: #12629420;
-              padding: 4px 16px;
+              background: #a0eb56;
+              color: #01060e;
+              padding: 4px 18px;
               border-radius: 40px;
+              font-weight: 700;
             "
-            >1.1001</span
+            >0.80 Lots</span
           >
-          <span class="badge">= 1 Pip</span>
         </div>
-        <!-- removed Did You Know & formula box as requested -->
       </div>
     </section>
 
-    <!-- ===== Calculator + How it works ===== -->
-    <section class="bg-soft section-pad" id="calculator-section">
+    <!-- ===== Why Use This Calculator? ===== -->
+    <section class="bg-soft section-pad">
+      <div class="container text-center">
+        <h2 class="section-title">Why Use This Calculator?</h2>
+        <div class="features-list">
+          <span
+            ><i class="fas fa-check-circle"></i> Correct position size in
+            seconds</span
+          >
+          <span><i class="fas fa-shield-alt"></i> Protect your capital</span>
+          <span
+            ><i class="fas fa-balance-scale"></i> Maintain consistent risk</span
+          >
+          <span><i class="fas fa-ban"></i> Avoid overtrading</span>
+          <span
+            ><i class="fas fa-chart-line"></i> Improve long-term
+            discipline</span
+          >
+          <span><i class="fas fa-check"></i> Trade confidently</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Calculator + How It Works ===== -->
+    <section class="bg-white section-pad" id="calculator-section">
       <div class="container">
         <div class="two-col">
-          <div class="left-content how-it-works">
-            <div class="how-title">
-              <span class="how-title-icon">
-                <i class="fas fa-play"></i>
-              </span>
-              <h3>How It Works</h3>
+          <div class="left-content">
+            <div class="how-card">
+              <div class="how-heading">
+                <div class="how-heading-icon">
+                  <i class="fas fa-play"></i>
+                </div>
+                <h3>How It Works</h3>
+              </div>
+
+              <p class="how-intro">
+                Enter a few trade details and let the calculator determine a
+                position size that matches your chosen risk.
+              </p>
+
+              <ol class="steps-list">
+                <li class="step-item">
+                  <span class="step-number">01</span>
+                  <div class="step-content">
+                    <span class="step-title">Account Balance</span>
+                    <span class="step-desc">
+                      Enter your total trading <strong>account value</strong>.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="step-item">
+                  <span class="step-number">02</span>
+                  <div class="step-content">
+                    <span class="step-title">Risk Percentage</span>
+                    <span class="step-desc">
+                      Choose the <strong>percentage of your account</strong>
+                      you're willing to risk.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="step-item">
+                  <span class="step-number">03</span>
+                  <div class="step-content">
+                    <span class="step-title">Stop Loss (Pips)</span>
+                    <span class="step-desc">
+                      Enter the <strong>distance to your stop-loss</strong>.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="step-item">
+                  <span class="step-number">04</span>
+                  <div class="step-content">
+                    <span class="step-title">Currency Pair</span>
+                    <span class="step-desc">
+                      Select the <strong>currency pair</strong> you're trading.
+                    </span>
+                  </div>
+                </li>
+
+                <li class="step-item">
+                  <span class="step-number">05</span>
+                  <div class="step-content">
+                    <span class="step-title">Account Currency</span>
+                    <span class="step-desc">
+                      Select your trading <strong>account currency</strong>.
+                    </span>
+                  </div>
+                </li>
+              </ol>
+
+              <div class="calculate-output">
+                <div class="calculate-output-title">
+                  <i class="fas fa-arrow-right"></i>
+                  Click <strong>Calculate</strong> to get:
+                </div>
+
+                <div class="output-pills">
+                  <span class="output-pill">
+                    <i class="fas fa-coins"></i>
+                    Amount at Risk
+                  </span>
+                  <span class="output-pill">
+                    <i class="fas fa-chart-simple"></i>
+                    Position Size
+                  </span>
+                  <span class="output-pill">
+                    <i class="fas fa-layer-group"></i>
+                    Standard / Mini / Micro Lots
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <p class="how-intro">
-              Simply enter the following details to calculate your pip value.
-            </p>
-
-            <div class="how-steps">
-              <div class="how-step">
-                <span class="how-step-number">01</span>
-                <div class="how-step-title">Currency Pair</div>
-                <div class="how-step-description">
-                  Select the <strong>currency pair</strong> you want to trade.
-                </div>
-              </div>
-
-              <div class="how-step">
-                <span class="how-step-number">02</span>
-                <div class="how-step-title">Account Currency</div>
-                <div class="how-step-description">
-                  Choose your account's <strong>base currency</strong>.
-                </div>
-              </div>
-
-              <div class="how-step">
-                <span class="how-step-number">03</span>
-                <div class="how-step-title">Lot Size</div>
-                <div class="how-step-description">
-                  Enter your <strong>trade volume</strong> or position size.
-                </div>
-              </div>
-
-              <div class="how-step">
-                <span class="how-step-number">04</span>
-                <div class="how-step-title">Exchange Rate</div>
-                <div class="how-step-description">
-                  Input the <strong>current market price</strong>.
-                </div>
-              </div>
-            </div>
-
-            <!-- example trade -->
-            <!-- example trade -->
-            <div
-              style="
-                background: #f0f6fe;
-                border-radius: 24px;
-                padding: 24px;
-                margin-top: 20px;
-                border-left: 6px solid #126294;
-              "
-            >
+            <div class="example-box">
               <h5 style="display: flex; align-items: center; gap: 8px">
                 <i class="fas fa-chart-line" style="color: #126294"></i> Example
-                Trade
+                Calculation
               </h5>
-              <div
-                style="
-                  display: grid;
-                  grid-template-columns: 1fr 1fr 1fr;
-                  gap: 12px;
-                  margin: 12px 0 8px;
-                "
-              >
-                <div
-                  style="
-                    background: white;
-                    border-radius: 16px;
-                    padding: 12px;
-                    text-align: center;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-                  "
-                >
-                  <div
-                    style="
-                      font-size: 0.7rem;
-                      text-transform: uppercase;
-                      color: #6a7f98;
-                    "
-                  >
-                    Pair
-                  </div>
-                  <div style="font-weight: 700">EUR/USD</div>
+              <div class="example-grid">
+                <div class="eg-item">
+                  <div class="eg-label">Account Balance</div>
+                  <div class="eg-value">$10,000</div>
                 </div>
-                <div
-                  style="
-                    background: white;
-                    border-radius: 16px;
-                    padding: 12px;
-                    text-align: center;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-                  "
-                >
-                  <div
-                    style="
-                      font-size: 0.7rem;
-                      text-transform: uppercase;
-                      color: #6a7f98;
-                    "
-                  >
-                    Lot Size
-                  </div>
-                  <div style="font-weight: 700">1 Standard</div>
+                <div class="eg-item">
+                  <div class="eg-label">Risk Per Trade</div>
+                  <div class="eg-value">2%</div>
                 </div>
-                <div
-                  style="
-                    background: white;
-                    border-radius: 16px;
-                    padding: 12px;
-                    text-align: center;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-                  "
-                >
-                  <div
-                    style="
-                      font-size: 0.7rem;
-                      text-transform: uppercase;
-                      color: #6a7f98;
-                    "
-                  >
-                    Exchange Rate
-                  </div>
-                  <div style="font-weight: 700">1.0850</div>
+                <div class="eg-item">
+                  <div class="eg-label">Stop Loss</div>
+                  <div class="eg-value">25 Pips</div>
                 </div>
               </div>
               <div
@@ -2360,45 +2455,27 @@
                   flex-wrap: wrap;
                 "
               >
-                <span><strong>1 Pip =</strong> $10.00</span>
-                <span
-                  ><strong>If EUR/USD moves 50 pips →</strong>
-                  <span style="color: #126294; font-weight: 700"
-                    >$500</span
-                  ></span
-                >
+                <span><strong>Risk Amount:</strong> $200</span>
+                <span><strong>Position Size:</strong> 0.80 Lots</span>
+                <span><strong>Max Loss:</strong> $200</span>
               </div>
             </div>
           </div>
 
           <!-- calculator -->
           <div class="calc-card">
-            <h3><i class="fas fa-coins"></i> Pip Value Calculator</h3>
+            <h3>
+              <i class="fas fa-arrows-left-right"></i> Position Size Calculator
+            </h3>
             <div class="calc-desc">
               <i
                 class="fas fa-info-circle"
                 style="margin-right: 8px; color: #efe666"
               ></i>
-              Calculate the value of every pip before you trade.
+              Determine your ideal trade size in seconds.
             </div>
-            <form id="pipCalculatorForm">
+            <form id="positionSizeForm">
               <div class="form-row">
-                <div class="form-group">
-                  <label><i class="fas fa-flag"></i> Currency Pair</label>
-                  <select id="currencyPair">
-                    <option value="EURUSD">EUR/USD</option>
-                    <option value="GBPUSD">GBP/USD</option>
-                    <option value="USDJPY">USD/JPY</option>
-                    <option value="AUDUSD">AUD/USD</option>
-                    <option value="USDCAD">USD/CAD</option>
-                    <option value="USDCHF">USD/CHF</option>
-                    <option value="NZDUSD">NZD/USD</option>
-                    <option value="EURGBP">EUR/GBP</option>
-                    <option value="EURJPY">EUR/JPY</option>
-                    <option value="GBPJPY">GBP/JPY</option>
-                  </select>
-                  <span class="helper">Select the pair you're trading</span>
-                </div>
                 <div class="form-group">
                   <label
                     ><i class="fas fa-money-bill-wave"></i> Account
@@ -2416,64 +2493,91 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label
-                    ><i class="fas fa-arrows-left-right"></i> Lot Size</label
-                  >
-                  <select id="lotSize">
-                    <option value="100000">Standard (100,000)</option>
-                    <option value="10000">Mini (10,000)</option>
-                    <option value="1000">Micro (1,000)</option>
-                    <option value="500">Custom 500</option>
-                    <option value="2500">Custom 2,500</option>
-                    <option value="5000">Custom 5,000</option>
-                    <option value="25000">Custom 25,000</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label
-                    ><i class="fas fa-chart-simple"></i> Exchange Rate
-                    <i
-                      class="fas fa-question-circle"
-                      style="
-                        color: rgba(255, 255, 255, 0.4);
-                        font-size: 0.7rem;
-                        cursor: help;
-                      "
-                      title="Current market price"
-                    ></i
-                  ></label>
+                  <label><i class="fas fa-wallet"></i> Account Balance</label>
                   <input
                     type="number"
-                    id="exchangeRate"
-                    step="0.00001"
-                    placeholder="e.g. 1.0850"
-                    value="1.0850"
+                    id="accountBalance"
+                    step="1"
+                    placeholder="e.g. 1000"
+                    value="1000"
                   />
-                  <span class="helper">Current market price</span>
+                  <span class="helper">Your total account value</span>
+                </div>
+                <div class="form-group">
+                  <label><i class="fas fa-percent"></i> Risk Percentage</label>
+                  <input
+                    type="number"
+                    id="riskPercent"
+                    step="0.01"
+                    placeholder="e.g. 0.02"
+                    value="0.02"
+                  />
+                  <span class="helper">e.g. 0.02 = 2%</span>
+                </div>
+                <div class="form-group">
+                  <label><i class="fas fa-flag"></i> Stop Loss (Pips)</label>
+                  <input
+                    type="number"
+                    id="stopLossPips"
+                    step="1"
+                    placeholder="e.g. 500"
+                    value="500"
+                  />
+                  <span class="helper">Distance to stop-loss</span>
+                </div>
+                <div class="form-group" style="grid-column: 1 / -1">
+                  <label><i class="fas fa-flag"></i> Currency Pair</label>
+                  <select id="currencyPair">
+                    <option value="EURUSD">EUR/USD</option>
+                    <option value="GBPUSD">GBP/USD</option>
+                    <option value="USDJPY">USD/JPY</option>
+                    <option value="AUDUSD">AUD/USD</option>
+                    <option value="USDCAD">USD/CAD</option>
+                    <option value="USDCHF">USD/CHF</option>
+                    <option value="NZDUSD">NZD/USD</option>
+                    <option value="EURGBP">EUR/GBP</option>
+                    <option value="EURJPY">EUR/JPY</option>
+                    <option value="GBPJPY">GBP/JPY</option>
+                  </select>
                 </div>
               </div>
               <button type="button" class="calc-btn" id="calculateBtn">
-                <i class="fas fa-calculator"></i> Calculate Pip Value
+                <i class="fas fa-calculator"></i> Calculate
               </button>
             </form>
             <div id="resultArea" class="result-area">
-              <div class="result-item">
-                <span class="label">Pip Value</span
-                ><span class="value" id="pipValueDisplay"
-                  >0.00 <small>USD</small></span
-                >
-              </div>
-              <div class="result-item">
-                <span class="label">Value per Pip</span
-                ><span class="value" id="valuePerPipDisplay"
-                  >0.00 <small>USD</small></span
-                >
-              </div>
-              <div class="result-item">
-                <span class="label">Est. cost / pip</span
-                ><span class="value" id="costPerPipDisplay"
-                  >0.00 <small>USD</small></span
-                >
+              <div class="result-grid">
+                <div class="result-item">
+                  <span class="label">Amount at Risk</span
+                  ><span class="value" id="riskAmountDisplay"
+                    >0.00 <small>USD</small></span
+                  >
+                </div>
+                <div class="result-item">
+                  <span class="label">Position Size (units)</span
+                  ><span class="value" id="positionUnitsDisplay"
+                    >0 <small>units</small></span
+                  >
+                </div>
+                <div class="result-divider"></div>
+                <div class="result-item">
+                  <span class="label">Standard Lots</span
+                  ><span class="value" id="standardLotsDisplay"
+                    >0.000 <small>lots</small></span
+                  >
+                </div>
+                <div class="result-item">
+                  <span class="label">Mini Lots</span
+                  ><span class="value" id="miniLotsDisplay"
+                    >0.00 <small>lots</small></span
+                  >
+                </div>
+                <div class="result-item">
+                  <span class="label">Micro Lots</span
+                  ><span class="value" id="microLotsDisplay"
+                    >0.0 <small>lots</small></span
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -2481,68 +2585,64 @@
       </div>
     </section>
 
-    <!-- ===== Why Pip Value Matters ===== -->
-    <section class="bg-white section-pad">
+    <!-- ===== Why Position Sizing Matters ===== -->
+    <section class="bg-soft section-pad">
       <div class="container text-center">
-        <h2 class="section-title">Why Pip Value Matters</h2>
+        <h2 class="section-title">Why Position Sizing Matters</h2>
         <p class="section-sub">
-          Every currency pair has a different pip value, and it changes
-          depending on your trade size and account currency. Knowing your pip
-          value helps you:
+          Position sizing is one of the most important aspects of successful
+          trading. Even a great trading strategy can fail if trades are too
+          large for your account.
         </p>
         <div class="matters-grid">
           <div class="matter-card">
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E"
-              alt="Protect capital"
+              alt="Protect"
             />
-            <h5>Protect Capital</h5>
-            <p>Know your risk per pip to safeguard your trading account.</p>
+            <h5>Protect Your Account</h5>
+            <p>Prevent large losses that can wipe out your trading capital.</p>
           </div>
           <div class="matter-card">
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v4M12 22v-4'/%3E%3Cpath d='M4.93 4.93l2.83 2.83'/%3E%3Cpath d='M19.07 4.93l-2.83 2.83'/%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3C/svg%3E"
-              alt="Calculate risk"
+              alt="Consistent"
             />
-            <h5>Calculate Risk</h5>
-            <p>Assess risk before placing any trade with confidence.</p>
+            <h5>Consistent Risk</h5>
+            <p>Keep your risk per trade aligned with your overall strategy.</p>
           </div>
           <div class="matter-card">
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 12h-4l-3 9-4-18-3 9H2'/%3E%3C/svg%3E"
-              alt="Stop-loss"
+              alt="Profit"
             />
-            <h5>Set Stop-Loss</h5>
-            <p>Place accurate stop-loss and take-profit levels easily.</p>
-          </div>
-          <div class="matter-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='14' rx='2' ry='2'/%3E%3Cpath d='M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'/%3E%3C/svg%3E"
-              alt="Position sizing"
-            />
-            <h5>Position Sizing</h5>
-            <p>Maintain consistent position sizing across all trades.</p>
+            <h5>Improve Profitability</h5>
+            <p>Long-term success comes from disciplined position sizing.</p>
           </div>
           <div class="matter-card">
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E"
-              alt="Confidence"
+              alt="Emotions"
             />
-            <h5>Trade with Confidence</h5>
-            <p>Greater discipline and clarity in every trade decision.</p>
+            <h5>Reduce Emotions</h5>
+            <p>Remove guesswork and trade with a clear, calculated plan.</p>
+          </div>
+          <div class="matter-card">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E"
+              alt="Discipline"
+            />
+            <h5>Build Discipline</h5>
+            <p>Develop consistent habits that lead to long-term success.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== Who Is This Tool For? (PNG icons) ===== -->
-    <section class="bg-soft section-pad">
+    <!-- ===== Who Can Use This Tool? ===== -->
+    <section class="bg-white section-pad">
       <div class="container text-center">
-        <h2 class="section-title">Who Is This Tool For?</h2>
-        <p class="section-sub">
-          Whether you're a beginner or an experienced trader, the Pip Value
-          Calculator helps you understand exactly how much each pip is worth.
-        </p>
+        <h2 class="section-title">Who Can Use This Tool?</h2>
         <div class="who-grid">
           <div class="who-card">
             <img
@@ -2551,8 +2651,8 @@
             />
             <h4>Beginner Traders</h4>
             <p>
-              Learn the value of pips quickly and build a solid foundation for
-              risk management without complex math.
+              Learn proper risk management and avoid risking too much on a
+              single trade.
             </p>
           </div>
           <div class="who-card">
@@ -2562,31 +2662,35 @@
             />
             <h4>Professional Traders</h4>
             <p>
-              Manage multiple positions with precision, optimize lot sizing, and
-              fine-tune your entry and exit strategies.
+              Maintain consistent position sizing across multiple trading
+              strategies and portfolios.
             </p>
           </div>
           <div class="who-card">
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='3' width='20' height='14' rx='2' ry='2'/%3E%3Cline x1='8' y1='21' x2='16' y2='21'/%3E%3Cline x1='12' y1='17' x2='12' y2='21'/%3E%3C/svg%3E"
-              alt="Algorithmic"
+              alt="Swing"
             />
-            <h4>Algorithmic & Quant Traders</h4>
+            <h4>Swing &amp; Day Traders</h4>
             <p>
-              Integrate pip value calculations into your models and backtesting
-              frameworks for data-driven decisions.
+              Calculate the optimal trade size before every market entry to stay
+              disciplined and manage risk effectively.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== CTA dark ===== -->
-    <section class="bg-white section-pad" style="padding: 40px 0">
+    <!-- ===== CTA ===== -->
+    <section class="bg-soft section-pad" style="padding: 30px 0">
       <div class="container">
         <div class="cta-dark">
-          <h4>Ready to Calculate?</h4>
-          <p>Know your risk before entering every trade.</p>
+          <h4>Calculate Your Position Size Now</h4>
+          <p>
+            Know exactly how much to trade before entering the market. Manage
+            risk with confidence, protect your capital, and trade with
+            discipline using our free Position Size Calculator.
+          </p>
           <a
             href="#calculator-section"
             class="btn-gold"
@@ -2599,84 +2703,151 @@
 
     <script>
       (function () {
-        const currencyPair = document.getElementById("currencyPair");
         const accountCurrency = document.getElementById("accountCurrency");
-        const lotSize = document.getElementById("lotSize");
-        const exchangeRate = document.getElementById("exchangeRate");
+        const accountBalance = document.getElementById("accountBalance");
+        const riskPercent = document.getElementById("riskPercent");
+        const stopLossPips = document.getElementById("stopLossPips");
+        const currencyPair = document.getElementById("currencyPair");
         const calculateBtn = document.getElementById("calculateBtn");
-        const pipValueDisplay = document.getElementById("pipValueDisplay");
-        const valuePerPipDisplay =
-          document.getElementById("valuePerPipDisplay");
-        const costPerPipDisplay = document.getElementById("costPerPipDisplay");
+
+        const riskAmountDisplay = document.getElementById("riskAmountDisplay");
+        const positionUnitsDisplay = document.getElementById(
+          "positionUnitsDisplay",
+        );
+        const standardLotsDisplay = document.getElementById(
+          "standardLotsDisplay",
+        );
+        const miniLotsDisplay = document.getElementById("miniLotsDisplay");
+        const microLotsDisplay = document.getElementById("microLotsDisplay");
+
+        let animationTimers = {};
 
         function getPipFactor(pair) {
           return pair.endsWith("JPY") ? 0.01 : 0.0001;
         }
 
-        function animateValue(el, target, symbol) {
-          let current = 0;
-          const step = Math.max(0.01, target / 30);
-          const interval = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              current = target;
-              clearInterval(interval);
+        function animateValue(element, targetValue, suffix, isInteger = false) {
+          // Clear any existing animation for this element
+          if (animationTimers[element.id]) {
+            clearInterval(animationTimers[element.id]);
+            delete animationTimers[element.id];
+          }
+
+          const startTime = performance.now();
+          const duration = 500; // ms
+          const startValue = 0;
+
+          function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // easeOutQuart for a smooth deceleration
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const currentValue =
+              startValue + (targetValue - startValue) * eased;
+
+            if (isInteger) {
+              element.innerHTML = `${Math.round(currentValue)} <small>${suffix}</small>`;
+            } else {
+              let decimals = 0;
+              if (suffix === "lots" && targetValue < 0.1) decimals = 3;
+              else if (suffix === "lots" && targetValue < 1) decimals = 2;
+              else if (suffix === "lots") decimals = 2;
+              else if (suffix === "units") decimals = 0;
+              else decimals = 2;
+              element.innerHTML = `${currentValue.toFixed(decimals)} <small>${suffix}</small>`;
             }
-            el.innerHTML = `${current.toFixed(2)} <small>${symbol}</small>`;
-          }, 20);
+
+            if (progress < 1) {
+              animationTimers[element.id] = requestAnimationFrame(update);
+            } else {
+              // final value with correct formatting
+              if (isInteger) {
+                element.innerHTML = `${Math.round(targetValue)} <small>${suffix}</small>`;
+              } else {
+                let decimals = 0;
+                if (suffix === "lots" && targetValue < 0.1) decimals = 3;
+                else if (suffix === "lots" && targetValue < 1) decimals = 2;
+                else if (suffix === "lots") decimals = 2;
+                else if (suffix === "units") decimals = 0;
+                else decimals = 2;
+                element.innerHTML = `${targetValue.toFixed(decimals)} <small>${suffix}</small>`;
+              }
+              delete animationTimers[element.id];
+            }
+          }
+
+          animationTimers[element.id] = requestAnimationFrame(update);
         }
 
-        function calculatePipValue() {
+        function calculatePositionSize() {
+          const accCurr = accountCurrency.value;
+          const balance = parseFloat(accountBalance.value);
+          const riskPct = parseFloat(riskPercent.value);
+          const slPips = parseFloat(stopLossPips.value);
           const pair = currencyPair.value;
-          const accCurrency = accountCurrency.value;
-          const lot = parseFloat(lotSize.value);
-          const rate = parseFloat(exchangeRate.value);
-          if (isNaN(lot) || lot <= 0 || isNaN(rate) || rate <= 0) {
-            pipValueDisplay.innerHTML = "0.00 <small>USD</small>";
-            valuePerPipDisplay.innerHTML = "0.00 <small>USD</small>";
-            costPerPipDisplay.innerHTML = "0.00 <small>USD</small>";
+
+          if (
+            isNaN(balance) ||
+            balance <= 0 ||
+            isNaN(riskPct) ||
+            riskPct <= 0 ||
+            isNaN(slPips) ||
+            slPips <= 0
+          ) {
+            // Reset all to 0 with animation
+            animateValue(riskAmountDisplay, 0, accCurr);
+            animateValue(positionUnitsDisplay, 0, "units", true);
+            animateValue(standardLotsDisplay, 0, "lots");
+            animateValue(miniLotsDisplay, 0, "lots");
+            animateValue(microLotsDisplay, 0, "lots");
             return;
           }
+
+          const riskAmount = balance * riskPct;
           const pipFactor = getPipFactor(pair);
+          const pipValuePerLot = 100000 * pipFactor;
+
+          let pipValueInAccount = pipValuePerLot;
           const quote = pair.substring(3);
-          let pipValueQuote = lot * pipFactor;
-          let pipValueInAccount = pipValueQuote;
+          if (quote === "USD" && accCurr === "USD")
+            pipValueInAccount = pipValuePerLot;
+          else if (pair === "USDJPY" && accCurr === "USD")
+            pipValueInAccount = pipValuePerLot / 1.085;
+          else if (pair === "EURUSD" && accCurr === "EUR")
+            pipValueInAccount = pipValuePerLot * 1.085;
+          else if (pair === "GBPUSD" && accCurr === "GBP")
+            pipValueInAccount = pipValuePerLot * 1.085;
+          else if (pair === "AUDUSD" && accCurr === "AUD")
+            pipValueInAccount = pipValuePerLot * 1.085;
+          else if (pair === "NZDUSD" && accCurr === "NZD")
+            pipValueInAccount = pipValuePerLot * 1.085;
+          else if (quote === accCurr) pipValueInAccount = pipValuePerLot;
+          else if (pair.startsWith(accCurr))
+            pipValueInAccount = pipValuePerLot / 1.085;
+          else pipValueInAccount = pipValuePerLot;
 
-          // simplified conversion
-          if (quote === "USD" && accCurrency === "USD")
-            pipValueInAccount = pipValueQuote;
-          else if (pair === "USDJPY" && accCurrency === "USD")
-            pipValueInAccount = pipValueQuote / rate;
-          else if (pair === "EURUSD" && accCurrency === "EUR")
-            pipValueInAccount = pipValueQuote * rate;
-          else if (pair === "GBPUSD" && accCurrency === "GBP")
-            pipValueInAccount = pipValueQuote * rate;
-          else if (pair === "AUDUSD" && accCurrency === "AUD")
-            pipValueInAccount = pipValueQuote * rate;
-          else if (pair === "NZDUSD" && accCurrency === "NZD")
-            pipValueInAccount = pipValueQuote * rate;
-          else if (quote === accCurrency) pipValueInAccount = pipValueQuote;
-          else if (pair.startsWith(accCurrency))
-            pipValueInAccount = pipValueQuote / rate;
-          else pipValueInAccount = pipValueQuote;
+          const positionUnits =
+            (riskAmount / (slPips * pipValueInAccount)) * 100000;
+          const standardLots = positionUnits / 100000;
+          const miniLots = positionUnits / 10000;
+          const microLots = positionUnits / 1000;
 
-          const rounded = Math.round(pipValueInAccount * 100) / 100;
-          const symbol = accCurrency;
-          animateValue(pipValueDisplay, rounded, symbol);
-          animateValue(valuePerPipDisplay, rounded, symbol);
-          animateValue(costPerPipDisplay, rounded, symbol);
+          const symbol = accCurr;
+          animateValue(riskAmountDisplay, riskAmount, symbol);
+          animateValue(positionUnitsDisplay, positionUnits, "units", true);
+          animateValue(standardLotsDisplay, standardLots, "lots");
+          animateValue(miniLotsDisplay, miniLots, "lots");
+          animateValue(microLotsDisplay, microLots, "lots");
         }
 
-        calculateBtn.addEventListener("click", calculatePipValue);
+        calculateBtn.addEventListener("click", calculatePositionSize);
         document
-          .querySelectorAll(
-            "#pipCalculatorForm select, #pipCalculatorForm input",
-          )
+          .querySelectorAll("#positionSizeForm input, #positionSizeForm select")
           .forEach((el) => {
-            el.addEventListener("change", calculatePipValue);
-            el.addEventListener("input", calculatePipValue);
+            el.addEventListener("change", calculatePositionSize);
+            el.addEventListener("input", calculatePositionSize);
           });
-        calculatePipValue();
+        calculatePositionSize();
 
         document
           .querySelectorAll('a[href="#calculator-section"]')
@@ -2693,7 +2864,7 @@
   </body>
 </html>
 
-<!-- ---- footer---- -->
+<!-- ------footer--- -->
 <!doctype html>
 <html lang="en">
   <head>

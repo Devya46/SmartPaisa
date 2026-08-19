@@ -1486,14 +1486,13 @@
 </html>
 
 <!-- ----alll----- -->
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pip Value Calculator · Premium</title>
-    <!-- Font Awesome 6 -->
+    <title>Global Market Insights · FAQ</title>
+    <!-- Font Awesome 6 (free) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -1503,89 +1502,56 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+
+      body {
+        background: #f4f7fc;
         font-family:
-          "Inter",
+          system-ui,
           -apple-system,
-          BlinkMacSystemFont,
           "Segoe UI",
           Roboto,
           sans-serif;
-      }
-      body {
-        background: #f5f8fc;
-        color: #0b1a2f;
-        line-height: 1.5;
-      }
-      .container {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 28px;
-      }
-      .bg-white {
-        background: #ffffff;
-      }
-      .bg-soft {
-        background: #f8fbff;
-      }
-      .bg-dark {
-        background: #0b1a2f;
-      }
-      .section-pad {
-        padding: 70px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-      }
-      .section-pad:last-of-type {
-        border-bottom: none;
-      }
-      .section-title {
-        font-size: 2.3rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        color: #0b1a2f;
-        margin-bottom: 10px;
-        text-align: center;
-      }
-      .section-sub {
-        font-size: 1.05rem;
-        color: #2d4059;
-        max-width: 700px;
-        margin: 0 auto 28px;
-        text-align: center;
-      }
-      .text-center {
-        text-align: center;
+        color: #0b1a2b;
       }
 
-      /* ----- HERO: simple & premium ----- */
-      .hero-premium {
+      /* ─── FAQ PAGE HEADER ─── */
+      .faq-page-header {
         background: radial-gradient(
           circle at 70% 20%,
           #126294 0%,
           #071a2d 45%,
           #01060e 100%
         );
-        padding: 9rem 0 60px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 9rem 0 3.2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        text-align: center;
         position: relative;
         overflow: hidden;
-        text-align: center;
       }
-      .hero-premium::before {
+
+      .faq-page-header::before {
         content: "";
         position: absolute;
         inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-          linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.015) 1px,
-            transparent 1px
-          );
-        background-size: 60px 60px;
+        background-image: radial-gradient(
+          circle at 30% 40%,
+          rgba(239, 230, 102, 0.03) 0%,
+          transparent 60%
+        );
         pointer-events: none;
       }
-      .hero-premium h1 {
-        font-size: 3.6rem;
+
+      .faq-page-header .container {
+        position: relative;
+        z-index: 2;
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+
+      .faq-page-header h1 {
+        font-size: 3rem;
         font-weight: 700;
         letter-spacing: -0.02em;
         background: linear-gradient(
@@ -1597,15 +1563,205 @@
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
-      .hero-premium p {
+
+      .faq-page-header .subhead {
         font-size: 1.2rem;
-        color: rgba(255, 255, 255, 0.9);
-        max-width: 600px;
-        margin: 0 auto 20px;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 660px;
+        margin: 0 auto 6px;
+        font-weight: 400;
       }
-      .btn-gold {
+
+      .faq-page-header .breadcrumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 0.9rem;
+        margin-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        padding-top: 18px;
+      }
+
+      .faq-page-header .breadcrumb i {
+        color: #efe666;
+      }
+
+      .faq-page-header .breadcrumb span {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* ─── FAQ LAYOUT ─── */
+      .faq-wrapper {
+        max-width: 1300px;
+        margin: 40px auto 60px;
+        padding: 0 30px;
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+      }
+
+      .faq-nav {
+        flex: 0 0 260px;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 20px 0;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        position: sticky;
+        top: 110px;
+        transition: all 0.2s;
+      }
+
+      .faq-nav .nav-title {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #6b7f93;
+        padding: 0 20px 12px;
+        border-bottom: 1px solid #eef2f6;
+        font-weight: 600;
+      }
+
+      .faq-nav ul {
+        list-style: none;
+        padding: 8px 0 0;
+        margin: 0;
+      }
+
+      .faq-nav li {
+        padding: 0 12px;
+      }
+
+      .faq-nav li a {
+        display: block;
+        padding: 8px 16px;
+        border-radius: 40px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #1c2e40;
+        text-decoration: none;
+        transition: 0.2s;
+      }
+
+      .faq-nav li a i {
+        width: 22px;
+        color: #126294;
+        margin-right: 6px;
+      }
+
+      .faq-nav li a:hover {
+        background: #eef4fa;
+      }
+
+      .faq-nav li a.active {
+        background: #126294;
+        color: #fff;
+      }
+      .faq-nav li a.active i {
+        color: #fff;
+      }
+
+      .faq-content {
+        flex: 1;
+        background: #ffffff;
+        border-radius: 28px;
+        padding: 28px 36px 36px;
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.02);
+      }
+
+      .faq-content h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0 0 6px;
+        color: #0b1a2b;
+        letter-spacing: -0.3px;
+      }
+
+      .faq-content .faq-sub {
+        color: #4d6679;
+        border-bottom: 1px solid #eef2f6;
+        padding-bottom: 18px;
+        margin-bottom: 28px;
+        font-size: 1rem;
+      }
+
+      .faq-item {
+        margin-bottom: 28px;
+      }
+
+      .faq-item h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #0b1a2b;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+
+      .faq-item h3 i {
+        color: #126294;
+        font-size: 1rem;
+        width: 22px;
+        flex-shrink: 0;
+      }
+
+      .faq-item p {
+        color: #1f3448;
+        line-height: 1.6;
+        font-size: 0.98rem;
+        padding-left: 32px;
+      }
+
+      .faq-item p strong {
+        color: #0b1a2b;
+      }
+
+      /* ─── CTA ─── */
+      .cta-section {
+        max-width: 1300px;
+        margin: 20px auto 60px;
+        padding: 0 30px;
+      }
+
+      .cta-box {
+        background: radial-gradient(
+          circle at 70% 20%,
+          #126294 0%,
+          #071a2d 60%,
+          #01060e 100%
+        );
+        border-radius: 40px;
+        padding: 48px 36px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .cta-box h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+
+      .cta-box h2 i {
+        color: #efe666;
+        margin-right: 10px;
+      }
+
+      .cta-box p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 8px auto 20px;
+      }
+
+      .cta-box .btn-gold {
         background: linear-gradient(
           135deg,
           #f7f18c 0%,
@@ -1613,7 +1769,7 @@
           #d8a91c 100%
         );
         border: none;
-        padding: 14px 40px;
+        padding: 14px 44px;
         border-radius: 60px;
         font-weight: 700;
         font-size: 1.05rem;
@@ -1625,1075 +1781,829 @@
         transition: 0.25s;
         box-shadow: 0 8px 28px rgba(239, 230, 102, 0.15);
         cursor: pointer;
+        margin-top: 4px;
       }
-      .btn-gold:hover {
+
+      .cta-box .btn-gold:hover {
         transform: scale(1.03);
         box-shadow: 0 12px 40px rgba(239, 230, 102, 0.25);
       }
-      .hero-stats {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        margin-top: 30px;
-        flex-wrap: wrap;
-      }
-      .hero-stats .stat {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.95rem;
-      }
-      .hero-stats .stat strong {
-        color: #efe666;
-        font-weight: 700;
-        font-size: 1.2rem;
-        display: block;
-      }
-      .floating-glow {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.2;
-        pointer-events: none;
-      }
-      .glow1 {
-        width: 400px;
-        height: 400px;
-        background: #a0eb56;
-        top: -120px;
-        right: -80px;
-      }
-      .glow2 {
-        width: 300px;
-        height: 300px;
-        background: #126294;
-        bottom: -80px;
-        left: -60px;
-      }
 
-      /* ----- two-col layout for calculator section ----- */
-      .two-col {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 48px 60px;
-        align-items: center;
-      }
-
-      /* ----- calculator card (blue) ----- */
-      .calc-card {
-        background: linear-gradient(145deg, #0b2d50, #0a2644);
-        border-radius: 32px;
-        padding: 36px 32px 40px;
-        box-shadow: 0 20px 50px rgba(11, 45, 80, 0.25);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        color: #fff;
-        transition: 0.2s;
-      }
-      .calc-card h3 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 4px;
-      }
-      .calc-card h3 i {
-        color: #efe666;
-      }
-      .calc-desc {
-        color: rgba(255, 255, 255, 0.75);
-        margin-bottom: 28px;
-        padding: 10px 16px;
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 16px;
-        border-left: 4px solid #efe666;
-        font-size: 0.95rem;
-      }
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px 20px;
-      }
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-      .form-group label {
-        font-weight: 600;
-        font-size: 0.75rem;
-        letter-spacing: 0.04em;
-        color: rgba(255, 255, 255, 0.8);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .form-group label i {
-        color: #efe666;
-        width: 18px;
-      }
-      .form-group .helper {
-        font-size: 0.65rem;
-        color: rgba(255, 255, 255, 0.4);
-        margin-left: 26px;
-        margin-top: -2px;
-      }
-      .form-group select,
-      .form-group input {
-        padding: 12px 14px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #fff;
-        font-size: 0.95rem;
-        transition: 0.2s;
-        width: 100%;
-      }
-      .form-group select option {
-        background: #0b2d50;
-        color: #fff;
-      }
-      .form-group select:focus,
-      .form-group input:focus {
-        outline: none;
-        border-color: #efe666;
-        box-shadow: 0 0 0 4px rgba(239, 230, 102, 0.15);
-        background: rgba(255, 255, 255, 0.12);
-      }
-      .calc-btn {
-        background: linear-gradient(135deg, #a0eb56, #58d64e);
-        border: none;
-        padding: 16px 24px;
+      .cta-box .btn-outline-light {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 14px 36px;
         border-radius: 60px;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 1rem;
-        color: #01060e;
-        cursor: pointer;
-        transition: 0.25s;
+        color: #fff;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        gap: 14px;
-        width: 100%;
-        margin-top: 18px;
-        box-shadow: 0 8px 28px rgba(88, 214, 78, 0.15);
+        gap: 10px;
+        text-decoration: none;
+        transition: 0.2s;
+        backdrop-filter: blur(2px);
+        margin-left: 12px;
       }
-      .calc-btn:hover {
-        transform: scale(1.02);
-        filter: brightness(1.06);
+
+      .cta-box .btn-outline-light:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.5);
       }
-      .result-area {
-        margin-top: 24px;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(8px);
-        border-radius: 20px;
-        padding: 20px 24px;
+
+      .cta-box .action-group {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-      }
-      .result-item {
-        display: flex;
-        flex-direction: column;
-      }
-      .result-item .label {
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgba(255, 255, 255, 0.5);
-      }
-      .result-item .value {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #a0eb56;
-        letter-spacing: -0.01em;
-      }
-      .result-item .value small {
-        font-weight: 400;
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.5);
-        margin-left: 4px;
-      }
-
-      /* ----- How It Works: premium step timeline ----- */
-      .how-it-works {
-        max-width: 650px;
-      }
-
-      .how-title {
-        display: flex;
+        justify-content: center;
         align-items: center;
         gap: 12px;
-        margin-bottom: 8px;
+        margin: 6px 0 0;
       }
 
-      .how-title-icon {
-        width: 42px;
-        height: 42px;
-        flex: 0 0 42px;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #126294, #0b4d78);
-        color: #fff;
-        font-size: 16px;
-        box-shadow: 0 8px 20px rgba(18, 98, 148, 0.18);
+      .more-questions {
+        margin-top: 20px;
+        border-top: 1px solid #eef2f6;
+        padding-top: 24px;
+        text-align: center;
+        color: #4d6679;
       }
 
-      .how-title h3 {
-        margin: 0;
-        font-size: 2rem;
-        line-height: 1.15;
-        color: #0b1a2f;
-        font-weight: 750;
-        letter-spacing: -0.025em;
-      }
-
-      .how-intro {
-        margin: 0 0 26px 54px;
-        color: #536a83;
-        font-size: 1rem;
-      }
-
-      .how-steps {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .how-steps::before {
-        content: "";
-        position: absolute;
-        left: 19px;
-        top: 24px;
-        bottom: 24px;
-        width: 2px;
-        background: linear-gradient(
-          to bottom,
-          rgba(18, 98, 148, 0.35),
-          rgba(18, 98, 148, 0.08)
-        );
-      }
-
-      .how-step {
-        position: relative;
-        display: grid;
-        grid-template-columns: 40px 150px 1fr;
-        align-items: center;
-        gap: 16px;
-        padding: 15px 18px 15px 0;
-        border-radius: 18px;
-        transition: 0.25s ease;
-      }
-
-      .how-step:hover {
-        background: #fff;
-        transform: translateX(5px);
-        box-shadow: 0 12px 30px rgba(11, 26, 47, 0.06);
-        padding-left: 8px;
-      }
-
-      .how-step-number {
-        position: relative;
-        z-index: 2;
-        width: 40px;
-        height: 40px;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        background: #fff;
-        border: 2px solid #126294;
+      .more-questions i {
         color: #126294;
-        font-size: 0.78rem;
-        font-weight: 800;
-        box-shadow: 0 4px 12px rgba(18, 98, 148, 0.12);
+        margin-right: 8px;
       }
 
-      .how-step-title {
-        color: #0b1a2f;
-        font-size: 1rem;
-        font-weight: 750;
-        line-height: 1.35;
+      /* ─── RESPONSIVE: horizontal nav with wrap, no scroll ─── */
+      @media (max-width: 1024px) {
+        .faq-wrapper {
+          gap: 28px;
+          padding: 0 24px;
+        }
+        .faq-nav {
+          flex: 0 0 220px;
+        }
       }
 
-      .how-step-description {
-        color: #536a83;
-        font-size: 0.98rem;
-        line-height: 1.55;
-      }
-
-      .how-step-description strong {
-        color: #126294;
-        font-weight: 700;
-      }
-
-      @media (max-width: 600px) {
-        .how-title h3 {
-          font-size: 1.7rem;
+      @media (max-width: 860px) {
+        .faq-wrapper {
+          flex-direction: column;
+          padding: 0 20px;
+          margin: 28px auto 40px;
+          gap: 20px;
         }
 
-        .how-intro {
+        .faq-nav {
+          flex: 1 1 auto;
+          width: 100%;
+          position: static;
+          padding: 16px 0 10px;
+          background: transparent;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          overflow: visible;
+        }
+
+        .faq-nav .nav-title {
+          display: none;
+        }
+
+        .faq-nav ul {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          padding: 4px 0 8px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .faq-nav li {
+          padding: 0;
+          flex: 0 1 auto;
+        }
+
+        .faq-nav li a {
+          padding: 8px 18px;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 40px;
+          font-size: 0.82rem;
+          white-space: nowrap;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+        }
+
+        .faq-nav li a i {
+          margin-right: 4px;
+          width: auto;
+          font-size: 0.8rem;
+        }
+
+        .faq-nav li a.active {
+          background: #126294;
+          color: #fff;
+          border-color: #126294;
+        }
+        .faq-nav li a.active i {
+          color: #fff;
+        }
+
+        .faq-content {
+          padding: 24px 20px 28px;
+          border-radius: 24px;
+        }
+
+        .faq-content h2 {
+          font-size: 1.5rem;
+        }
+
+        .faq-item {
+          margin-bottom: 22px;
+        }
+
+        .faq-item h3 {
+          font-size: 1rem;
+          gap: 8px;
+        }
+
+        .faq-item p {
+          padding-left: 0;
+          font-size: 0.95rem;
+        }
+
+        .cta-box {
+          padding: 32px 24px;
+          border-radius: 32px;
+        }
+
+        .cta-box h2 {
+          font-size: 1.6rem;
+        }
+
+        .cta-box .action-group {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .cta-box .btn-outline-light {
           margin-left: 0;
         }
 
-        .how-step {
-          grid-template-columns: 40px 1fr;
-          gap: 8px 12px;
-          padding-right: 0;
-        }
-
-        .how-step-title,
-        .how-step-description {
-          grid-column: 2;
-        }
-
-        .how-step-description {
-          margin-top: -4px;
+        .cta-section {
+          padding: 0 20px;
         }
       }
 
-      /* What is Pip Value – centered */
-      .pip-visual {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        background: #f0f6fe;
-        border-radius: 20px;
-        padding: 20px 30px;
-        margin: 20px auto 0;
-        max-width: 620px;
-        border-left: 5px solid #126294;
-      }
-      .pip-visual span {
-        font-weight: 600;
-      }
-      .pip-visual .badge {
-        background: #a0eb56;
-        color: #01060e;
-        padding: 4px 18px;
-        border-radius: 40px;
-        font-weight: 700;
+      @media (max-width: 600px) {
+        .faq-nav ul {
+          gap: 6px;
+        }
+        .faq-nav li a {
+          font-size: 0.75rem;
+          padding: 6px 14px;
+        }
+        .faq-nav li a i {
+          font-size: 0.7rem;
+        }
       }
 
-      /* Why Pip Value Matters */
-      .matters-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        gap: 20px;
-        margin-top: 20px;
-      }
-      .matter-card {
-        background: #ffffff;
-        border-radius: 24px;
-        padding: 24px 16px;
-        text-align: center;
-        border: 1px solid #e9f0f8;
-        transition: 0.3s;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-      }
-      .matter-card:hover {
-        transform: translateY(-6px);
-        border-color: #126294;
-        box-shadow: 0 16px 40px rgba(18, 98, 148, 0.06);
-      }
-      .matter-card img {
-        width: 48px;
-        height: 48px;
-        object-fit: contain;
-        margin-bottom: 10px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .matter-card h5 {
-        font-weight: 700;
-        font-size: 0.95rem;
-        color: #0b1a2f;
-        margin-bottom: 4px;
-      }
-      .matter-card p {
-        font-size: 0.85rem;
-        color: #2d4059;
-        margin: 0;
-      }
-
-      /* Who is this for */
-      .who-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 28px;
-        margin-top: 18px;
-      }
-      .who-card {
-        background: #ffffff;
-        padding: 28px 24px;
-        border-radius: 28px;
-        border: 1px solid #e9f0f8;
-        transition: 0.3s;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-        text-align: center;
-      }
-      .who-card:hover {
-        transform: translateY(-8px);
-        border-color: #126294;
-        box-shadow: 0 20px 60px rgba(18, 98, 148, 0.08);
-      }
-      .who-card img {
-        width: 56px;
-        height: 56px;
-        object-fit: contain;
-        margin-bottom: 12px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .who-card h4 {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #0b1a2f;
-        margin-bottom: 6px;
-      }
-      .who-card p {
-        color: #2d4059;
-        font-size: 0.95rem;
-      }
-
-      /* CTA dark */
-      .cta-dark {
-        background: #0b1a2f;
-        border-radius: 40px;
-        padding: 48px 40px;
-        text-align: center;
-        color: white;
-        margin-top: 40px;
-        position: relative;
-        overflow: hidden;
-      }
-      .cta-dark::after {
-        content: "";
-        position: absolute;
-        top: -40%;
-        right: -10%;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(
-          circle,
-          rgba(160, 235, 86, 0.06),
-          transparent 70%
-        );
-        border-radius: 50%;
-      }
-      .cta-dark h4 {
-        font-size: 2.2rem;
-        font-weight: 700;
-      }
-      .cta-dark p {
-        color: rgba(255, 255, 255, 0.8);
-        max-width: 600px;
-        margin: 8px auto 20px;
-      }
-
-      /* responsive */
-      @media (max-width: 1024px) {
-        .two-col {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-        .matters-grid {
-          grid-template-columns: 1fr 1fr 1fr;
-        }
-        .who-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      @media (max-width: 820px) {
-        .form-row {
-          grid-template-columns: 1fr;
-        }
-        .hero-premium h1 {
-          font-size: 2.6rem;
-        }
-        .matters-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .who-grid {
-          grid-template-columns: 1fr;
-        }
-        .result-area {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 14px;
-        }
-        .hero-stats {
-          gap: 20px;
-        }
-        .pip-visual {
-          flex-direction: column;
-          gap: 10px;
-        }
-      }
       @media (max-width: 480px) {
-        .hero-premium {
-          padding: 7.5rem 0 50px;
+        .faq-page-header {
+          padding: 7.5rem 0 30px;
         }
-        .hero-premium h1 {
+
+        .faq-page-header h1 {
           font-size: 2rem;
         }
-        .section-title {
-          font-size: 1.8rem;
+
+        .faq-page-header .subhead {
+          font-size: 0.95rem;
+          padding: 0 10px;
         }
-        .calc-card {
+
+        .faq-page-header .breadcrumb {
+          font-size: 0.75rem;
+          gap: 6px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .faq-wrapper {
+          padding: 0 12px;
+          margin: 20px auto 32px;
+        }
+
+        .faq-nav ul {
+          gap: 5px;
+        }
+
+        .faq-nav li a {
+          font-size: 0.7rem;
+          padding: 5px 12px;
+          border-radius: 30px;
+        }
+
+        .faq-nav li a i {
+          font-size: 0.65rem;
+          margin-right: 2px;
+        }
+
+        .faq-content {
+          padding: 18px 30px 22px;
+          border-radius: 20px;
+        }
+
+        .faq-content h2 {
+          font-size: 1.3rem;
+        }
+
+        .faq-content .faq-sub {
+          font-size: 0.9rem;
+          padding-bottom: 14px;
+          margin-bottom: 20px;
+        }
+
+        .faq-item {
+          margin-bottom: 18px;
+        }
+
+        .faq-item h3 {
+          font-size: 0.95rem;
+        }
+
+        .faq-item p {
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+
+        .cta-box {
           padding: 24px 16px;
+          border-radius: 24px;
         }
-        .cta-dark {
-          padding: 30px 20px;
+
+        .cta-box h2 {
+          font-size: 1.3rem;
         }
-        /* .matters-grid {
-          grid-template-columns: 1fr;
-        } */
+
+        .cta-box p {
+          font-size: 0.95rem;
+        }
+
+        .cta-box .btn-gold {
+          padding: 12px 28px;
+          font-size: 0.95rem;
+        }
+
+        .cta-box .btn-outline-light {
+          padding: 12px 24px;
+          font-size: 0.9rem;
+        }
+
+        .cta-section {
+          padding: 0 12px;
+          margin: 16px auto 40px;
+        }
+
+        .more-questions {
+          font-size: 0.9rem;
+          padding-top: 18px;
+          margin-top: 16px;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .faq-page-header h1 {
+          font-size: 1.7rem;
+        }
+        .faq-nav li a {
+          font-size: 0.65rem;
+          padding: 4px 10px;
+        }
+        .faq-content {
+          padding: 14px 10px 18px;
+        }
+        .faq-item h3 {
+          font-size: 0.85rem;
+        }
+        .faq-item p {
+          font-size: 0.85rem;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- ===== HERO ===== -->
-    <section class="hero-premium">
-      <div class="floating-glow glow1"></div>
-      <div class="floating-glow glow2"></div>
+    <!-- ============ FAQ PAGE HEADER ============ -->
+    <header class="faq-page-header">
       <div class="container">
-        <h1>Pip Value Calculator</h1>
-        <p>Know the exact value of every pip before you trade.</p>
-        <a href="#calculator-section" class="btn-gold"
-          ><i class="fas fa-calculator"></i> Calculate Now</a
-        >
-        <!-- <div class="hero-stats">
-          <div class="stat"><strong>100+</strong> Currency Pairs</div>
-          <div class="stat"><strong>99.9%</strong> Accurate</div>
-          <div class="stat"><strong>&lt;1s</strong> Calculation</div>
-          <div class="stat"><strong>24/7</strong> Available</div>
-        </div> -->
-      </div>
-    </section>
-
-    <!-- ===== What is a Pip Value Calculator? (centered) ===== -->
-    <section class="bg-white section-pad">
-      <div class="container text-center">
-        <h2 class="section-title">What is a Pip Value Calculator?</h2>
-        <p style="color: #2d4059; max-width: 720px; margin: 0 auto 16px">
-          A Pip Value Calculator automatically calculates the cash value of one
-          pip based on your trade details.
-        </p>
-        <p style="color: #2d4059; max-width: 720px; margin: 0 auto 24px">
-          Instead of manually performing complex calculations, the tool provides
-          accurate results in seconds. It is widely used by both beginner and
-          professional traders to improve position sizing and risk management.
-        </p>
-        <div class="pip-visual">
-          <span style="font-weight: 700">EUR/USD</span>
-          <span
-            style="
-              background: #12629420;
-              padding: 4px 16px;
-              border-radius: 40px;
-            "
-            >1.1000</span
-          >
-          <i class="fas fa-arrow-down" style="color: #58d64e"></i>
-          <span
-            style="
-              background: #12629420;
-              padding: 4px 16px;
-              border-radius: 40px;
-            "
-            >1.1001</span
-          >
-          <span class="badge">= 1 Pip</span>
+        <h1>Frequently Asked Questions</h1>
+        <div class="subhead">
+          <i
+            class="fas fa-question-circle"
+            style="color: #efe666; margin-right: 8px"
+          ></i>
+          Everything you need to know about Smart Money 24/7
         </div>
-        <!-- removed Did You Know & formula box as requested -->
+        <div class="breadcrumb">
+          <i class="fas fa-home"></i> Home
+          <i class="fas fa-chevron-right" style="font-size: 0.6rem"></i>
+          <span>FAQ</span>
+        </div>
       </div>
-    </section>
+    </header>
 
-    <!-- ===== Calculator + How it works ===== -->
-    <section class="bg-soft section-pad" id="calculator-section">
-      <div class="container">
-        <div class="two-col">
-          <div class="left-content how-it-works">
-            <div class="how-title">
-              <span class="how-title-icon">
-                <i class="fas fa-play"></i>
-              </span>
-              <h3>How It Works</h3>
-            </div>
-
-            <p class="how-intro">
-              Simply enter the following details to calculate your pip value.
-            </p>
-
-            <div class="how-steps">
-              <div class="how-step">
-                <span class="how-step-number">01</span>
-                <div class="how-step-title">Currency Pair</div>
-                <div class="how-step-description">
-                  Select the <strong>currency pair</strong> you want to trade.
-                </div>
-              </div>
-
-              <div class="how-step">
-                <span class="how-step-number">02</span>
-                <div class="how-step-title">Account Currency</div>
-                <div class="how-step-description">
-                  Choose your account's <strong>base currency</strong>.
-                </div>
-              </div>
-
-              <div class="how-step">
-                <span class="how-step-number">03</span>
-                <div class="how-step-title">Lot Size</div>
-                <div class="how-step-description">
-                  Enter your <strong>trade volume</strong> or position size.
-                </div>
-              </div>
-
-              <div class="how-step">
-                <span class="how-step-number">04</span>
-                <div class="how-step-title">Exchange Rate</div>
-                <div class="how-step-description">
-                  Input the <strong>current market price</strong>.
-                </div>
-              </div>
-            </div>
-
-            <!-- example trade -->
-            <!-- example trade -->
-            <div
-              style="
-                background: #f0f6fe;
-                border-radius: 24px;
-                padding: 24px;
-                margin-top: 20px;
-                border-left: 6px solid #126294;
-              "
+    <!-- ============ FAQ ============ -->
+    <div class="faq-wrapper">
+      <!-- left nav -->
+      <nav class="faq-nav">
+        <div class="nav-title">
+          <i class="fas fa-list-ul" style="margin-right: 6px"></i> Topics
+        </div>
+        <ul>
+          <li>
+            <a href="#" class="active" data-target="general"
+              ><i class="fas fa-globe"></i> General</a
             >
-              <h5 style="display: flex; align-items: center; gap: 8px">
-                <i class="fas fa-chart-line" style="color: #126294"></i> Example
-                Trade
-              </h5>
-              <div
-                style="
-                  display: grid;
-                  grid-template-columns: 1fr 1fr 1fr;
-                  gap: 12px;
-                  margin: 12px 0 8px;
-                "
+          </li>
+          <li>
+            <a href="#" data-target="courses"
+              ><i class="fas fa-graduation-cap"></i> Courses</a
+            >
+          </li>
+          <li>
+            <a href="#" data-target="account"
+              ><i class="fas fa-user-circle"></i> Access</a
+            >
+          </li>
+          <li>
+            <a href="#" data-target="tools"
+              ><i class="fas fa-calculator"></i> Tools</a
+            >
+          </li>
+          <li>
+            <a href="#" data-target="market"
+              ><i class="fas fa-chart-bar"></i> Market</a
+            >
+          </li>
+          <li>
+            <a href="#" data-target="risk"
+              ><i class="fas fa-shield-alt"></i> Risk</a
+            >
+          </li>
+          <li>
+            <a href="#" data-target="support"
+              ><i class="fas fa-headset"></i> Support</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- right Q&A content -->
+      <div class="faq-content" id="faqContent">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-sub">Quick answers to the most common questions</div>
+
+        <!-- General & Platform -->
+        <div class="faq-category" id="general">
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> What is Smart Money 24/7?
+            </h3>
+            <p>
+              Smart Money 24/7 is an online Forex learning platform that
+              provides structured video courses, practical trading education,
+              professional trading tools, and real-time market insights to help
+              traders build knowledge, confidence, and discipline.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Who can learn from Smart
+              Money 24/7?
+            </h3>
+            <p>
+              The platform is designed for traders at all levels — from complete
+              beginners learning Forex fundamentals to experienced traders
+              looking to improve their strategies, risk management, and market
+              analysis.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Do I need previous Forex
+              trading experience?
+            </h3>
+            <p>
+              No. Our courses are structured to take you from the basics through
+              advanced concepts, making them suitable for beginners as well as
+              experienced traders.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Can I learn at my own pace?
+            </h3>
+            <p>
+              Yes. Courses are available on demand, allowing you to watch
+              lessons and progress through the learning material at your own
+              pace.
+            </p>
+          </div>
+        </div>
+
+        <!-- Courses & Learning -->
+        <div class="faq-category" id="courses" style="display: none">
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> What topics are covered in
+              the Forex courses?
+            </h3>
+            <p>
+              Our learning content covers Forex fundamentals, currency pairs,
+              pips, leverage, technical analysis, price action, trading
+              strategies, risk management, trading psychology, and advanced
+              trading concepts.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> How are the courses
+              structured?
+            </h3>
+            <p>
+              Courses are organized into structured video lessons and learning
+              modules, allowing you to progress step-by-step from foundational
+              concepts to more advanced topics.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Are the courses
+              video-based?
+            </h3>
+            <p>
+              Yes. Smart Money 24/7 primarily provides professional, on-demand
+              video lessons designed to make complex Forex concepts easier to
+              understand.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Can beginners start
+              directly with the courses?
+            </h3>
+            <p>
+              Yes. Beginners can start with the foundational modules and
+              gradually progress toward technical analysis, strategies, risk
+              management, and advanced concepts.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Can experienced traders
+              also benefit from the courses?
+            </h3>
+            <p>
+              Absolutely. Experienced traders can use the advanced lessons,
+              practical strategies, market insights, and trading tools to
+              strengthen their existing knowledge and refine their approach.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Do I receive a certificate
+              after completing a course?
+            </h3>
+            <p>
+              Yes. Eligible courses include a Certificate of Completion to
+              recognize your successful completion of the learning program.
+            </p>
+          </div>
+        </div>
+
+        <!-- Account & Course Access -->
+        <div class="faq-category" id="account" style="display: none">
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> How do I access my
+              purchased course?
+            </h3>
+            <p>
+              Create your account, purchase your selected course, and access the
+              course through your learning dashboard.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> When do I get access after
+              purchasing a course?
+            </h3>
+            <p>
+              Course access is provided through your account after a successful
+              purchase, allowing you to begin learning through your dashboard.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Can I access my courses
+              from different devices?
+            </h3>
+            <p>
+              Yes. The platform is designed to provide convenient access across
+              supported devices, so you can continue learning wherever you are.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> How long can I access my
+              course?
+            </h3>
+            <p>
+              Course access depends on the specific program you purchase. Where
+              lifetime access is included, you can return to the course and
+              continue learning at your own pace.
+            </p>
+          </div>
+        </div>
+
+        <!-- Trading Tools -->
+        <div class="faq-category" id="tools" style="display: none">
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> What trading tools are
+              available on the platform?
+            </h3>
+            <p>
+              Smart Money 24/7 provides practical tools such as the
+              <strong
+                >Position Size Calculator, Pip Value Calculator, and Currency
+                Strength Meter</strong
               >
-                <div
-                  style="
-                    background: white;
-                    border-radius: 16px;
-                    padding: 12px;
-                    text-align: center;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-                  "
-                >
-                  <div
-                    style="
-                      font-size: 0.7rem;
-                      text-transform: uppercase;
-                      color: #6a7f98;
-                    "
-                  >
-                    Pair
-                  </div>
-                  <div style="font-weight: 700">EUR/USD</div>
-                </div>
-                <div
-                  style="
-                    background: white;
-                    border-radius: 16px;
-                    padding: 12px;
-                    text-align: center;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-                  "
-                >
-                  <div
-                    style="
-                      font-size: 0.7rem;
-                      text-transform: uppercase;
-                      color: #6a7f98;
-                    "
-                  >
-                    Lot Size
-                  </div>
-                  <div style="font-weight: 700">1 Standard</div>
-                </div>
-                <div
-                  style="
-                    background: white;
-                    border-radius: 16px;
-                    padding: 12px;
-                    text-align: center;
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-                  "
-                >
-                  <div
-                    style="
-                      font-size: 0.7rem;
-                      text-transform: uppercase;
-                      color: #6a7f98;
-                    "
-                  >
-                    Exchange Rate
-                  </div>
-                  <div style="font-weight: 700">1.0850</div>
-                </div>
-              </div>
-              <div
-                style="
-                  background: white;
-                  border-radius: 16px;
-                  padding: 12px 16px;
-                  margin-top: 8px;
-                  display: flex;
-                  justify-content: space-between;
-                  flex-wrap: wrap;
-                "
+              to support better trade planning and risk management.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> What is the Position Size
+              Calculator used for?
+            </h3>
+            <p>
+              It helps determine an appropriate trade size based on your account
+              balance, risk percentage, stop-loss distance, currency pair, and
+              account currency.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> What is the Pip Value
+              Calculator used for?
+            </h3>
+            <p>
+              The Pip Value Calculator helps determine the monetary value of a
+              pip based on your currency pair, account currency, lot size, and
+              exchange rate.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Are the trading calculators
+              suitable for beginners?
+            </h3>
+            <p>
+              Yes. The calculators are designed to simplify common trading
+              calculations and help beginners understand position sizing, pip
+              values, and risk more easily.
+            </p>
+          </div>
+        </div>
+
+        <!-- Market Intelligence -->
+        <div class="faq-category" id="market" style="display: none">
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> What is the Economic
+              Calendar used for?
+            </h3>
+            <p>
+              The Economic Calendar helps traders track important economic
+              events such as interest-rate decisions, inflation data, employment
+              reports, GDP releases, and other potentially market-moving events.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Is the Economic Calendar
+              updated in real time?
+            </h3>
+            <p>
+              The calendar provides live market-event information through its
+              integrated market-data provider. Availability and update frequency
+              may depend on the underlying data source.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Does Smart Money 24/7
+              provide live Forex news?
+            </h3>
+            <p>
+              Yes. The platform includes a live market-news section featuring
+              financial headlines and market-moving developments.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Why are economic news and
+              events important for Forex traders?
+            </h3>
+            <p>
+              Major economic announcements can create significant market
+              volatility. Following the economic calendar and relevant news can
+              help traders understand potential market catalysts and plan their
+              trades more carefully.
+            </p>
+          </div>
+        </div>
+
+        <!-- Risk Management & Trading -->
+        <div class="faq-category" id="risk" style="display: none">
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Does Smart Money 24/7
+              provide trading signals?
+            </h3>
+            <p>
+              The platform focuses primarily on Forex education, market
+              knowledge, strategies, and trading tools. Any market analysis or
+              educational examples should be used as learning material rather
+              than guaranteed trade recommendations.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Does completing a course
+              guarantee profitable trading?
+            </h3>
+            <p>
+              No. Trading involves significant risk, and education cannot
+              guarantee profits. The courses are designed to help you develop
+              knowledge, skills, risk-management practices, and disciplined
+              decision-making.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Why is risk management
+              included in the courses?
+            </h3>
+            <p>
+              Risk management is an essential part of responsible trading. The
+              courses cover concepts such as position sizing, stop-loss
+              planning, and maintaining consistent risk to help traders manage
+              potential losses.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Can I use the calculators
+              before placing every trade?
+            </h3>
+            <p>
+              Yes. Using position-sizing and pip-value calculations before
+              entering a trade can help you understand your potential risk and
+              maintain more consistent trade sizing.
+            </p>
+          </div>
+        </div>
+
+        <!-- Support & Community -->
+        <div class="faq-category" id="support" style="display: none">
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Is there community support
+              available?
+            </h3>
+            <p>
+              Smart Money 24/7 is designed to provide a learning environment
+              where traders can interact, learn, and grow together, depending on
+              the community features available with your course or membership.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Can I ask questions about
+              the course material?
+            </h3>
+            <p>
+              Course-specific support depends on the program and support
+              features included with your purchase.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Can I continue learning
+              after completing a course?
+            </h3>
+            <p>
+              Yes. Where lifetime access is provided, you can revisit lessons
+              and continue using the available educational resources at your own
+              pace.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>
+              <i class="fas fa-question-circle"></i> Is Smart Money 24/7 a
+              financial advisory or brokerage service?
+            </h3>
+            <p>
+              Smart Money 24/7 is an educational platform. Its courses,
+              calculators, market information, news, and other resources are
+              provided for educational and informational purposes and should not
+              be considered personalized financial advice or a guarantee of
+              trading results.
+              <strong
+                >Forex trading involves substantial risk, and you can lose
+                money.</strong
               >
-                <span><strong>1 Pip =</strong> $10.00</span>
-                <span
-                  ><strong>If EUR/USD moves 50 pips →</strong>
-                  <span style="color: #126294; font-weight: 700"
-                    >$500</span
-                  ></span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- calculator -->
-          <div class="calc-card">
-            <h3><i class="fas fa-coins"></i> Pip Value Calculator</h3>
-            <div class="calc-desc">
-              <i
-                class="fas fa-info-circle"
-                style="margin-right: 8px; color: #efe666"
-              ></i>
-              Calculate the value of every pip before you trade.
-            </div>
-            <form id="pipCalculatorForm">
-              <div class="form-row">
-                <div class="form-group">
-                  <label><i class="fas fa-flag"></i> Currency Pair</label>
-                  <select id="currencyPair">
-                    <option value="EURUSD">EUR/USD</option>
-                    <option value="GBPUSD">GBP/USD</option>
-                    <option value="USDJPY">USD/JPY</option>
-                    <option value="AUDUSD">AUD/USD</option>
-                    <option value="USDCAD">USD/CAD</option>
-                    <option value="USDCHF">USD/CHF</option>
-                    <option value="NZDUSD">NZD/USD</option>
-                    <option value="EURGBP">EUR/GBP</option>
-                    <option value="EURJPY">EUR/JPY</option>
-                    <option value="GBPJPY">GBP/JPY</option>
-                  </select>
-                  <span class="helper">Select the pair you're trading</span>
-                </div>
-                <div class="form-group">
-                  <label
-                    ><i class="fas fa-money-bill-wave"></i> Account
-                    Currency</label
-                  >
-                  <select id="accountCurrency">
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="JPY">JPY</option>
-                    <option value="AUD">AUD</option>
-                    <option value="CAD">CAD</option>
-                    <option value="CHF">CHF</option>
-                    <option value="NZD">NZD</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label
-                    ><i class="fas fa-arrows-left-right"></i> Lot Size</label
-                  >
-                  <select id="lotSize">
-                    <option value="100000">Standard (100,000)</option>
-                    <option value="10000">Mini (10,000)</option>
-                    <option value="1000">Micro (1,000)</option>
-                    <option value="500">Custom 500</option>
-                    <option value="2500">Custom 2,500</option>
-                    <option value="5000">Custom 5,000</option>
-                    <option value="25000">Custom 25,000</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label
-                    ><i class="fas fa-chart-simple"></i> Exchange Rate
-                    <i
-                      class="fas fa-question-circle"
-                      style="
-                        color: rgba(255, 255, 255, 0.4);
-                        font-size: 0.7rem;
-                        cursor: help;
-                      "
-                      title="Current market price"
-                    ></i
-                  ></label>
-                  <input
-                    type="number"
-                    id="exchangeRate"
-                    step="0.00001"
-                    placeholder="e.g. 1.0850"
-                    value="1.0850"
-                  />
-                  <span class="helper">Current market price</span>
-                </div>
-              </div>
-              <button type="button" class="calc-btn" id="calculateBtn">
-                <i class="fas fa-calculator"></i> Calculate Pip Value
-              </button>
-            </form>
-            <div id="resultArea" class="result-area">
-              <div class="result-item">
-                <span class="label">Pip Value</span
-                ><span class="value" id="pipValueDisplay"
-                  >0.00 <small>USD</small></span
-                >
-              </div>
-              <div class="result-item">
-                <span class="label">Value per Pip</span
-                ><span class="value" id="valuePerPipDisplay"
-                  >0.00 <small>USD</small></span
-                >
-              </div>
-              <div class="result-item">
-                <span class="label">Est. cost / pip</span
-                ><span class="value" id="costPerPipDisplay"
-                  >0.00 <small>USD</small></span
-                >
-              </div>
-            </div>
+            </p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== Why Pip Value Matters ===== -->
-    <section class="bg-white section-pad">
-      <div class="container text-center">
-        <h2 class="section-title">Why Pip Value Matters</h2>
-        <p class="section-sub">
-          Every currency pair has a different pip value, and it changes
-          depending on your trade size and account currency. Knowing your pip
-          value helps you:
+        <div class="more-questions">
+          <i class="fas fa-comment-dots"></i> Still have questions? Reach out to
+          our support team.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ CTA SECTION (last) ============ -->
+    <div class="cta-section">
+      <div class="cta-box">
+        <h2><i class="fas fa-rocket"></i> Ready to master the markets?</h2>
+        <p>
+          Join Smart Money 24/7 and get full access to video courses, trading
+          tools, economic calendar, live news, and more.
         </p>
-        <div class="matters-grid">
-          <div class="matter-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E"
-              alt="Protect capital"
-            />
-            <h5>Protect Capital</h5>
-            <p>Know your risk per pip to safeguard your trading account.</p>
-          </div>
-          <div class="matter-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v4M12 22v-4'/%3E%3Cpath d='M4.93 4.93l2.83 2.83'/%3E%3Cpath d='M19.07 4.93l-2.83 2.83'/%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3C/svg%3E"
-              alt="Calculate risk"
-            />
-            <h5>Calculate Risk</h5>
-            <p>Assess risk before placing any trade with confidence.</p>
-          </div>
-          <div class="matter-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 12h-4l-3 9-4-18-3 9H2'/%3E%3C/svg%3E"
-              alt="Stop-loss"
-            />
-            <h5>Set Stop-Loss</h5>
-            <p>Place accurate stop-loss and take-profit levels easily.</p>
-          </div>
-          <div class="matter-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='14' rx='2' ry='2'/%3E%3Cpath d='M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'/%3E%3C/svg%3E"
-              alt="Position sizing"
-            />
-            <h5>Position Sizing</h5>
-            <p>Maintain consistent position sizing across all trades.</p>
-          </div>
-          <div class="matter-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E"
-              alt="Confidence"
-            />
-            <h5>Trade with Confidence</h5>
-            <p>Greater discipline and clarity in every trade decision.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Who Is This Tool For? (PNG icons) ===== -->
-    <section class="bg-soft section-pad">
-      <div class="container text-center">
-        <h2 class="section-title">Who Is This Tool For?</h2>
-        <p class="section-sub">
-          Whether you're a beginner or an experienced trader, the Pip Value
-          Calculator helps you understand exactly how much each pip is worth.
-        </p>
-        <div class="who-grid">
-          <div class="who-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E"
-              alt="Beginner"
-            />
-            <h4>Beginner Traders</h4>
-            <p>
-              Learn the value of pips quickly and build a solid foundation for
-              risk management without complex math.
-            </p>
-          </div>
-          <div class="who-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12v-2a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v2'/%3E%3Ccircle cx='12' cy='16' r='5'/%3E%3Cpath d='M12 11v5'/%3E%3C/svg%3E"
-              alt="Professional"
-            />
-            <h4>Professional Traders</h4>
-            <p>
-              Manage multiple positions with precision, optimize lot sizing, and
-              fine-tune your entry and exit strategies.
-            </p>
-          </div>
-          <div class="who-card">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 24 24' fill='none' stroke='%23126294' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='3' width='20' height='14' rx='2' ry='2'/%3E%3Cline x1='8' y1='21' x2='16' y2='21'/%3E%3Cline x1='12' y1='17' x2='12' y2='21'/%3E%3C/svg%3E"
-              alt="Algorithmic"
-            />
-            <h4>Algorithmic & Quant Traders</h4>
-            <p>
-              Integrate pip value calculations into your models and backtesting
-              frameworks for data-driven decisions.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CTA dark ===== -->
-    <section class="bg-white section-pad" style="padding: 40px 0">
-      <div class="container">
-        <div class="cta-dark">
-          <h4>Ready to Calculate?</h4>
-          <p>Know your risk before entering every trade.</p>
-          <a
-            href="#calculator-section"
-            class="btn-gold"
-            style="display: inline-flex"
-            ><i class="fas fa-calculator"></i> Calculate Now</a
+        <div class="action-group">
+          <a href="#" class="btn-gold"
+            ><i class="fas fa-play-circle"></i> Start Learning</a
+          >
+          <a href="#" class="btn-outline-light"
+            ><i class="fas fa-headset"></i> Contact Support</a
           >
         </div>
+        <p
+          style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5; color: #fff"
+        >
+          More questions? Reach us at support@smartmoney247.com
+        </p>
       </div>
-    </section>
+    </div>
 
+    <!-- ============ FAQ NAVIGATION TOGGLE ============ -->
     <script>
       (function () {
-        const currencyPair = document.getElementById("currencyPair");
-        const accountCurrency = document.getElementById("accountCurrency");
-        const lotSize = document.getElementById("lotSize");
-        const exchangeRate = document.getElementById("exchangeRate");
-        const calculateBtn = document.getElementById("calculateBtn");
-        const pipValueDisplay = document.getElementById("pipValueDisplay");
-        const valuePerPipDisplay =
-          document.getElementById("valuePerPipDisplay");
-        const costPerPipDisplay = document.getElementById("costPerPipDisplay");
+        const navLinks = document.querySelectorAll(".faq-nav a");
+        const categories = {
+          general: document.getElementById("general"),
+          courses: document.getElementById("courses"),
+          account: document.getElementById("account"),
+          tools: document.getElementById("tools"),
+          market: document.getElementById("market"),
+          risk: document.getElementById("risk"),
+          support: document.getElementById("support"),
+        };
 
-        function getPipFactor(pair) {
-          return pair.endsWith("JPY") ? 0.01 : 0.0001;
+        function showCategory(id) {
+          Object.keys(categories).forEach((key) => {
+            if (categories[key]) categories[key].style.display = "none";
+          });
+          if (categories[id]) categories[id].style.display = "block";
+          navLinks.forEach((link) => link.classList.remove("active"));
+          document
+            .querySelector(`.faq-nav a[data-target="${id}"]`)
+            ?.classList.add("active");
         }
 
-        function animateValue(el, target, symbol) {
-          let current = 0;
-          const step = Math.max(0.01, target / 30);
-          const interval = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              current = target;
-              clearInterval(interval);
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = this.getAttribute("data-target");
+            if (target && categories[target]) {
+              showCategory(target);
             }
-            el.innerHTML = `${current.toFixed(2)} <small>${symbol}</small>`;
-          }, 20);
-        }
-
-        function calculatePipValue() {
-          const pair = currencyPair.value;
-          const accCurrency = accountCurrency.value;
-          const lot = parseFloat(lotSize.value);
-          const rate = parseFloat(exchangeRate.value);
-          if (isNaN(lot) || lot <= 0 || isNaN(rate) || rate <= 0) {
-            pipValueDisplay.innerHTML = "0.00 <small>USD</small>";
-            valuePerPipDisplay.innerHTML = "0.00 <small>USD</small>";
-            costPerPipDisplay.innerHTML = "0.00 <small>USD</small>";
-            return;
-          }
-          const pipFactor = getPipFactor(pair);
-          const quote = pair.substring(3);
-          let pipValueQuote = lot * pipFactor;
-          let pipValueInAccount = pipValueQuote;
-
-          // simplified conversion
-          if (quote === "USD" && accCurrency === "USD")
-            pipValueInAccount = pipValueQuote;
-          else if (pair === "USDJPY" && accCurrency === "USD")
-            pipValueInAccount = pipValueQuote / rate;
-          else if (pair === "EURUSD" && accCurrency === "EUR")
-            pipValueInAccount = pipValueQuote * rate;
-          else if (pair === "GBPUSD" && accCurrency === "GBP")
-            pipValueInAccount = pipValueQuote * rate;
-          else if (pair === "AUDUSD" && accCurrency === "AUD")
-            pipValueInAccount = pipValueQuote * rate;
-          else if (pair === "NZDUSD" && accCurrency === "NZD")
-            pipValueInAccount = pipValueQuote * rate;
-          else if (quote === accCurrency) pipValueInAccount = pipValueQuote;
-          else if (pair.startsWith(accCurrency))
-            pipValueInAccount = pipValueQuote / rate;
-          else pipValueInAccount = pipValueQuote;
-
-          const rounded = Math.round(pipValueInAccount * 100) / 100;
-          const symbol = accCurrency;
-          animateValue(pipValueDisplay, rounded, symbol);
-          animateValue(valuePerPipDisplay, rounded, symbol);
-          animateValue(costPerPipDisplay, rounded, symbol);
-        }
-
-        calculateBtn.addEventListener("click", calculatePipValue);
-        document
-          .querySelectorAll(
-            "#pipCalculatorForm select, #pipCalculatorForm input",
-          )
-          .forEach((el) => {
-            el.addEventListener("change", calculatePipValue);
-            el.addEventListener("input", calculatePipValue);
           });
-        calculatePipValue();
+        });
 
-        document
-          .querySelectorAll('a[href="#calculator-section"]')
-          .forEach((link) => {
-            link.addEventListener("click", function (e) {
-              e.preventDefault();
-              document
-                .getElementById("calculator-section")
-                .scrollIntoView({ behavior: "smooth" });
-            });
-          });
+        // default: show General
+        showCategory("general");
       })();
     </script>
   </body>
 </html>
 
-<!-- ---- footer---- -->
+<!-- ----footer---- -->
 <!doctype html>
 <html lang="en">
   <head>

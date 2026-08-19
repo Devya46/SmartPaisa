@@ -1,0 +1,1762 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Level Trading Course | Smart Money 24/7</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      /* =====================================================
+           RESET & BASE
+        ===================================================== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #ffffff;
+        color: #20212b;
+        line-height: 1.6;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      button,
+      a {
+        font-family: inherit;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      /* =====================================================
+           VARIABLES
+        ===================================================== */
+      :root {
+        --dark: #15151d;
+        --dark-2: #1b1b25;
+        --purple: #6c2bd9;
+        --purple-light: #8f5bea;
+        --purple-soft: #f0eaff;
+        --text: #262633;
+        --muted: #696978;
+        --border: #dddde5;
+        --white: #ffffff;
+        --gold: #d89a22;
+      }
+
+      /* =====================================================
+           HERO
+        ===================================================== */
+      .course-hero {
+        background:
+          radial-gradient(
+            circle at 75% 20%,
+            rgba(106, 43, 217, 0.1),
+            transparent 30%
+          ),
+          linear-gradient(135deg, #15151d 0%, #181820 55%, #121219 100%);
+        color: #fff;
+        padding: 48px 0 95px;
+        min-height: 500px;
+        position: relative;
+        overflow: hidden;
+      }
+      .course-hero::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        right: -220px;
+        top: -260px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow:
+          0 0 0 70px rgba(255, 255, 255, 0.015),
+          0 0 0 140px rgba(255, 255, 255, 0.01);
+      }
+      .hero-container {
+        max-width: 1435px;
+        margin: auto;
+        padding: 0 30px;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* =====================================================
+           BREADCRUMB
+        ===================================================== */
+      .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        margin-bottom: 35px;
+        font-size: 15px;
+        flex-wrap: wrap;
+      }
+      .breadcrumbs a {
+        color: #b99cff;
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
+      .breadcrumbs a:hover {
+        color: #ffffff;
+      }
+      .breadcrumbs i {
+        font-size: 10px;
+        color: #858593;
+      }
+      .breadcrumbs span {
+        color: #b99cff;
+        font-weight: 600;
+      }
+
+      /* =====================================================
+           HERO CONTENT
+        ===================================================== */
+      .hero-content {
+        width: calc(100% - 520px);
+        max-width: 900px;
+      }
+      .hero-title {
+        font-size: clamp(36px, 4vw, 52px);
+        line-height: 1.13;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        margin-bottom: 22px;
+        color: #ffffff;
+      }
+      .hero-description {
+        font-size: 20px;
+        line-height: 1.7;
+        color: #e0e0e8;
+        max-width: 900px;
+        margin-bottom: 48px;
+      }
+
+      /* =====================================================
+           INSTRUCTOR
+        ===================================================== */
+      .created-by {
+        font-size: 15px;
+        margin-bottom: 24px;
+        color: #f4f4f6;
+      }
+      .created-by strong {
+        color: #ffffff;
+      }
+      .created-by a {
+        color: #bd9cff;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .created-by a:hover {
+        color: #ffffff;
+      }
+
+      /* =====================================================
+           META
+        ===================================================== */
+      .course-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 25px;
+        color: #e2e2e7;
+        font-size: 15px;
+      }
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .meta-item i {
+        color: #c8c8d2;
+        font-size: 14px;
+      }
+      .more-link {
+        color: #bd9cff;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      /* =====================================================
+           PURCHASE CARD
+        ===================================================== */
+      .purchase-wrapper {
+        position: absolute;
+        top: 40px;
+        right: 30px;
+        width: 450px;
+        z-index: 10;
+      }
+      .purchase-card {
+        background: #ffffff;
+        color: var(--text);
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.32),
+          0 5px 20px rgba(0, 0, 0, 0.15);
+        border: 1px solid #e1e1e5;
+      }
+      .video-preview {
+        height: 252px;
+        position: relative;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(10, 10, 15, 0.2), rgba(10, 10, 15, 0.65)),
+          url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1000&q=90");
+        background-size: cover;
+        background-position: center;
+      }
+      .video-preview::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 30%,
+          rgba(0, 0, 0, 0.65)
+        );
+      }
+      .preview-label {
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 18px;
+        z-index: 3;
+        white-space: nowrap;
+      }
+      .play-button {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #4e4f5a;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -55%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 4;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .play-button:hover {
+        transform: translate(-50%, -55%) scale(1.08);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      }
+      .play-button i {
+        margin-left: 4px;
+        font-size: 27px;
+      }
+
+      .purchase-content {
+        padding: 26px 30px 30px;
+      }
+      .subscription-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 22px;
+      }
+      .radio {
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--purple);
+        border-radius: 50%;
+        position: relative;
+        flex-shrink: 0;
+        margin-top: 3px;
+      }
+      .radio::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: var(--purple);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .subscription-title {
+        color: #555563;
+        font-size: 18px;
+        margin-bottom: 2px;
+      }
+      .price-line {
+        display: flex;
+        align-items: baseline;
+        gap: 5px;
+      }
+      .price {
+        font-size: 27px;
+        font-weight: 800;
+        color: #30303d;
+      }
+      .per-month {
+        font-size: 14px;
+        color: #696977;
+      }
+      .saving-box {
+        background: linear-gradient(135deg, #f2edff, #f8f5ff);
+        border-radius: 6px;
+        padding: 16px;
+        display: flex;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+      .saving-icon {
+        color: var(--purple);
+        font-size: 18px;
+        padding-top: 2px;
+      }
+      .saving-text {
+        font-size: 15px;
+        color: #5c5b6b;
+        line-height: 1.65;
+      }
+      .saving-text strong {
+        color: #3d3c4b;
+      }
+      .access-info {
+        display: flex;
+        gap: 12px;
+        color: #555563;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 22px;
+      }
+      .access-info i {
+        color: #4f4e59;
+        margin-top: 5px;
+      }
+      .enroll-btn {
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        padding: 17px 20px;
+        background: linear-gradient(135deg, #6727d4, #7b35ed);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(103, 39, 212, 0.25);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .enroll-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(103, 39, 212, 0.35);
+      }
+
+      /* =====================================================
+           PREMIUM BAR
+        ===================================================== */
+      .premium-container {
+        max-width: 1025px;
+        margin: -58px auto 0;
+        position: relative;
+        z-index: 20;
+        padding: 0 20px;
+      }
+      .premium-bar {
+        min-height: 118px;
+        background: #ffffff;
+        border: 1px solid #d8d8df;
+        border-radius: 9px;
+        display: grid;
+        grid-template-columns: 125px 1fr 180px 160px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+      .premium-label {
+        background: linear-gradient(145deg, #5d20ce, #702bdd);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+      .premium-label i {
+        font-size: 22px;
+      }
+      .premium-label span {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .premium-message {
+        padding: 25px 20px;
+        display: flex;
+        align-items: center;
+        color: #4b4b59;
+        font-size: 16px;
+      }
+      .premium-message a {
+        color: #6431cf;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .rating-box {
+        border-left: 1px solid #dddde5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .rating-number {
+        font-size: 31px;
+        font-weight: 700;
+        color: #353540;
+        line-height: 1;
+      }
+      .stars {
+        margin: 7px 0 5px;
+        display: flex;
+        gap: 2px;
+        color: #c47705;
+        font-size: 13px;
+      }
+      .rating-link {
+        color: #70707c;
+        font-size: 14px;
+        text-decoration: underline;
+      }
+      .learners-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-left: 1px solid #dddde5;
+      }
+      .learners-box i {
+        font-size: 21px;
+        margin-bottom: 6px;
+        color: #3f3f4b;
+      }
+      .learner-number {
+        font-size: 17px;
+        font-weight: 700;
+        color: #30303b;
+      }
+      .learner-label {
+        font-size: 14px;
+        color: #777783;
+      }
+
+      /* =====================================================
+           MAIN DETAILS WRAPPER
+        ===================================================== */
+      .course-details-wrapper {
+        max-width: 1025px;
+        margin: 60px auto 0;
+        padding: 0 20px 70px;
+      }
+
+      /* =====================================================
+           WHAT YOU'LL LEARN
+        ===================================================== */
+      .learn-section {
+        position: relative;
+        border: 1px solid #d6d6df;
+        background: linear-gradient(145deg, #ffffff 0%, #fdfcff 100%);
+        padding: 22px 24px 27px;
+        box-shadow: 0 8px 30px rgba(30, 25, 60, 0.035);
+        margin-bottom: 20px;
+      }
+      .learn-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #6227d8, #8a51ef, transparent 80%);
+      }
+      .section-title {
+        font-size: 25px;
+        font-weight: 750;
+        color: #20212d;
+        margin-bottom: 21px;
+        letter-spacing: -0.4px;
+      }
+      .learning-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 60px;
+        row-gap: 0;
+      }
+      .learning-item {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        column-gap: 10px;
+        padding: 8px 0 9px;
+        color: #414151;
+        font-size: 14px;
+        line-height: 1.65;
+        transition:
+          transform 0.25s ease,
+          color 0.25s ease;
+      }
+      .learning-item:hover {
+        transform: translateX(3px);
+        color: #5421bd;
+      }
+      .learning-icon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #343541;
+        font-size: 11px;
+        margin-top: 1px;
+      }
+      .learning-item:hover .learning-icon {
+        color: #6a2bd9;
+      }
+      .show-less {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        color: #6828d6;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+      .show-less:hover {
+        color: #45149c;
+      }
+      .show-less i {
+        font-size: 11px;
+      }
+
+      /* =====================================================
+           RELATED TOPICS
+        ===================================================== */
+      .related-section {
+        margin-top: 30px;
+      }
+      .related-title {
+        font-size: 24px;
+        font-weight: 750;
+        color: #20212d;
+        margin-bottom: 13px;
+        letter-spacing: -0.3px;
+      }
+      .topics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .topic {
+        display: inline-flex;
+        align-items: center;
+        min-height: 35px;
+        padding: 6px 13px;
+        border: 1px solid #8e8eae;
+        border-radius: 7px;
+        background: #ffffff;
+        color: #26263a;
+        font-size: 13px;
+        font-weight: 700;
+        transition: all 0.25s ease;
+      }
+      .topic:hover {
+        border-color: #6828d6;
+        color: #6828d6;
+        background: #f8f5ff;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(104, 40, 214, 0.08);
+      }
+
+      /* =====================================================
+           COURSE INCLUDES
+        ===================================================== */
+      .includes-section {
+        margin-top: 36px;
+      }
+      .includes-title {
+        font-size: 24px;
+        font-weight: 750;
+        color: #20212d;
+        margin-bottom: 15px;
+        letter-spacing: -0.3px;
+      }
+      .includes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 70px;
+      }
+      .include-item {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        gap: 10px;
+        align-items: start;
+        padding: 6px 0;
+        font-size: 15px;
+        color: #4d4d5d;
+        transition:
+          transform 0.25s ease,
+          color 0.25s ease;
+      }
+      .include-item:hover {
+        transform: translateX(3px);
+        color: #5421bd;
+      }
+      .include-icon {
+        width: 20px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #454553;
+        font-size: 13px;
+      }
+      .include-item:hover .include-icon {
+        color: #6828d6;
+      }
+
+      /* =====================================================
+           COURSE CONTENT (CURRICULUM) - now matches other sections
+        ===================================================== */
+      .course-content-wrapper {
+        max-width: 1025px;
+        margin: 20px auto 0;
+        padding: 0 20px 80px;
+      }
+      .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      .content-title {
+        font-size: 25px;
+        font-weight: 750;
+        color: #20212d;
+        letter-spacing: -0.4px;
+      }
+      .expand-all {
+        border: none;
+        background: none;
+        color: #6525d5;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+      .expand-all:hover {
+        color: #42109e;
+      }
+      .course-summary {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #777783;
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+      .course-summary span {
+        position: relative;
+      }
+      .course-summary span:not(:last-child)::after {
+        content: "•";
+        margin-left: 6px;
+        color: #aaaab3;
+      }
+      .curriculum {
+        border: 1px solid #d6d6df;
+        background: #ffffff;
+        box-shadow: 0 8px 30px rgba(30, 25, 60, 0.035);
+        border-radius: 0;
+      }
+      .curriculum-section {
+        border-bottom: 1px solid #d6d6df;
+      }
+      .curriculum-section:last-child {
+        border-bottom: none;
+      }
+      .section-row {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 18px;
+        display: grid;
+        grid-template-columns: 22px 1fr auto;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        background: linear-gradient(90deg, #fafaff, #ffffff);
+        cursor: pointer;
+        text-align: left;
+        color: #292938;
+        transition:
+          background 0.25s ease,
+          color 0.25s ease;
+      }
+      .section-row:hover {
+        background: #f7f3ff;
+        color: #5621bc;
+      }
+      .section-arrow {
+        color: #3c3c48;
+        font-size: 11px;
+        transition:
+          transform 0.3s ease,
+          color 0.3s ease;
+      }
+      .curriculum-section.active .section-arrow {
+        transform: rotate(180deg);
+        color: #6828d6;
+      }
+      .section-name {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .section-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: #777782;
+        white-space: nowrap;
+      }
+      .section-body {
+        display: none;
+        background: #ffffff;
+        border-top: 1px solid #e4e4eb;
+      }
+      .curriculum-section.active .section-body {
+        display: block;
+      }
+      .lesson {
+        min-height: 42px;
+        display: grid;
+        grid-template-columns: 22px 1fr auto 60px;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 18px 8px 32px;
+        color: #555563;
+        font-size: 13px;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease;
+      }
+      .lesson:hover {
+        background: #faf8ff;
+        color: #5720bd;
+      }
+      .lesson-icon {
+        color: #555560;
+        font-size: 12px;
+      }
+      .lesson:hover .lesson-icon {
+        color: #6828d6;
+      }
+      .lesson-name {
+        line-height: 1.5;
+      }
+      .lesson-preview {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #6627d4;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .lesson-preview i {
+        font-size: 10px;
+      }
+      .lesson-duration {
+        text-align: right;
+        color: #858590;
+        font-size: 11px;
+      }
+      .more-sections {
+        width: 100%;
+        margin-top: 12px;
+        height: 44px;
+        background: #ffffff;
+        border: 1px solid #6828d6;
+        border-radius: 5px;
+        color: #6828d6;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.25s ease;
+      }
+      .more-sections:hover {
+        background: #f6f1ff;
+      }
+
+      /* =====================================================
+           INFO SECTIONS (Requirements & Description)
+        ===================================================== */
+      .info-section {
+        margin-top: 28px;
+      }
+      .info-title {
+        font-size: 20px;
+        font-weight: 750;
+        color: #20212d;
+        margin-bottom: 12px;
+      }
+      .requirements-list {
+        padding-left: 22px;
+        color: #555563;
+        font-size: 13px;
+        line-height: 1.9;
+      }
+      .requirements-list li {
+        padding-left: 4px;
+      }
+      .description {
+        color: #666674;
+        font-size: 13px;
+        line-height: 1.8;
+        max-width: 900px;
+      }
+      .description p {
+        margin-bottom: 12px;
+      }
+      .description strong {
+        color: #41414e;
+      }
+      .description-more {
+        border: none;
+        background: none;
+        color: #6828d6;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 4px;
+      }
+      .description-more i {
+        font-size: 10px;
+        transition: transform 0.25s ease;
+      }
+      .description-more.open i {
+        transform: rotate(180deg);
+      }
+
+      /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+      @media (max-width: 1200px) {
+        .purchase-wrapper {
+          width: 390px;
+        }
+        .hero-content {
+          width: calc(100% - 450px);
+        }
+        .premium-bar {
+          grid-template-columns: 110px 1fr 150px 130px;
+        }
+      }
+      @media (max-width: 950px) {
+        .course-hero {
+          padding-bottom: 50px;
+        }
+        .hero-content {
+          width: 100%;
+          max-width: 850px;
+        }
+        .purchase-wrapper {
+          position: relative;
+          top: auto;
+          right: auto;
+          width: 100%;
+          max-width: 550px;
+          margin: 45px auto 0;
+        }
+        .premium-container {
+          margin-top: 35px;
+        }
+        .premium-bar {
+          grid-template-columns: 120px 1fr;
+        }
+        .rating-box,
+        .learners-box {
+          min-height: 100px;
+          border-top: 1px solid #dddde5;
+        }
+        .rating-box {
+          border-left: none;
+        }
+        .learners-box {
+          border-left: 1px solid #dddde5;
+        }
+      }
+      @media (max-width: 768px) {
+        .course-details-wrapper,
+        .course-content-wrapper {
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+        .learn-section {
+          padding: 22px 18px 24px;
+        }
+        .learning-grid,
+        .includes-grid {
+          grid-template-columns: 1fr;
+        }
+        .section-title,
+        .related-title,
+        .includes-title,
+        .content-title {
+          font-size: 22px;
+        }
+        .content-header {
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .section-row {
+          grid-template-columns: 20px 1fr;
+          padding: 12px 14px;
+        }
+        .section-meta {
+          grid-column: 2;
+          justify-content: flex-start;
+          margin-top: 2px;
+        }
+        .lesson {
+          grid-template-columns: 20px 1fr 50px;
+          padding-left: 24px;
+          font-size: 12px;
+        }
+        .lesson-preview {
+          display: none;
+        }
+      }
+      @media (max-width: 650px) {
+        .hero-container {
+          padding: 0 18px;
+        }
+        .course-hero {
+          padding-top: 30px;
+        }
+        .breadcrumbs {
+          font-size: 13px;
+          gap: 8px;
+          margin-bottom: 25px;
+        }
+        .hero-title {
+          font-size: 32px;
+          letter-spacing: -0.8px;
+        }
+        .hero-description {
+          font-size: 17px;
+          line-height: 1.65;
+          margin-bottom: 32px;
+        }
+        .course-meta {
+          gap: 14px 20px;
+          font-size: 13px;
+        }
+        .purchase-wrapper {
+          margin-top: 35px;
+        }
+        .video-preview {
+          height: 220px;
+        }
+        .purchase-content {
+          padding: 22px 20px 25px;
+        }
+        .premium-container {
+          padding: 0 15px;
+        }
+        .premium-bar {
+          display: block;
+        }
+        .premium-label {
+          padding: 18px;
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+        .premium-message {
+          padding: 20px;
+        }
+        .rating-box,
+        .learners-box {
+          border-left: none;
+          border-top: 1px solid #dddde5;
+          padding: 18px;
+        }
+      }
+      @media (max-width: 480px) {
+        .course-details-wrapper,
+        .course-content-wrapper {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        .learn-section {
+          padding: 20px 15px 22px;
+        }
+        .section-title,
+        .related-title,
+        .includes-title,
+        .content-title {
+          font-size: 20px;
+        }
+        .learning-item,
+        .include-item {
+          font-size: 13.5px;
+        }
+        .topic {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+        .course-summary {
+          font-size: 11px;
+        }
+        .section-name {
+          font-size: 12px;
+        }
+        .section-meta {
+          font-size: 10px;
+        }
+        .lesson {
+          font-size: 11px;
+          min-height: 42px;
+          padding-left: 18px;
+        }
+        .lesson-duration {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+    <section class="course-hero">
+      <div class="hero-container">
+        <div class="breadcrumbs">
+          <a href="#"> Finance &amp; Accounting </a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <a href="#"> Investing &amp; Trading </a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span> Forex Trading </span>
+        </div>
+
+        <div class="hero-content">
+          <h1 class="hero-title">
+            The Complete Trading Course: Key Level Strategy — 2026 Updates
+          </h1>
+          <p class="hero-description">
+            Level 1. Mastering Market Structure — Price Action — Multiple
+            Timeframes with Key Level / Order Block Strategy. Learn professional
+            trading concepts designed to help you understand the market with
+            greater clarity.
+          </p>
+          <div class="created-by">
+            <strong>Created by</strong>
+            <a href="#"> Smart Money 24/7 </a>
+            <span> | </span>
+            <a href="#"> Professional Trading Academy </a>
+            <span> | </span>
+            <a href="#"> 145,000+ Learners </a>
+          </div>
+          <div class="course-meta">
+            <div class="meta-item">
+              <i class="fa-regular fa-calendar"></i
+              ><span> Last updated 6/2026 </span>
+            </div>
+            <div class="meta-item">
+              <i class="fa-solid fa-globe"></i><span> English </span>
+            </div>
+            <div class="meta-item">
+              <i class="fa-regular fa-closed-captioning"></i
+              ><span> Arabic </span>
+            </div>
+            <div class="meta-item"><span> Bangla </span></div>
+            <a href="#" class="more-link"> 17 more </a>
+          </div>
+        </div>
+
+        <!-- Purchase Card -->
+        <div class="purchase-wrapper">
+          <div class="purchase-card">
+            <div class="video-preview">
+              <div class="play-button"><i class="fa-solid fa-play"></i></div>
+              <div class="preview-label">Preview this course</div>
+            </div>
+            <div class="purchase-content">
+              <div class="subscription-option">
+                <div class="radio"></div>
+                <div>
+                  <div class="subscription-title">Subscribe and save</div>
+                  <div class="price-line">
+                    <span class="price"> Free </span>
+                    <!-- <span class="per-month"> /month </span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="saving-box">
+                <div class="saving-icon">
+                  <i class="fa-regular fa-circle-question"></i>
+                </div>
+                <div class="saving-text">
+                  <strong> Our subscribers don't pay per course. </strong>
+                  In their first month, they can access multiple premium courses
+                  and save significantly on individual purchases.
+                </div>
+              </div>
+              <div class="access-info">
+                <i class="fa-solid fa-play-circle"></i>
+                <span
+                  >Get this course and many more in Finance &amp; Accounting
+                  with access to our complete premium library.</span
+                >
+              </div>
+              <button class="enroll-btn">Get Started</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PREMIUM BAR
+    ====================================================== -->
+    <section class="premium-container">
+      <div class="premium-bar">
+        <div class="premium-label">
+          <i class="fa-solid fa-certificate"></i>
+          <span> Premium </span>
+        </div>
+        <div class="premium-message">
+          Access 28,000+ premium courses with
+          <a href="#"> Smart Money 24/7 Premium. </a>
+        </div>
+        <div class="rating-box">
+          <div class="rating-number">4.9</div>
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <a href="#" class="rating-link"> 2,595 ratings </a>
+        </div>
+        <div class="learners-box">
+          <i class="fa-solid fa-users"></i>
+          <span class="learner-number"> 23,118 </span>
+          <span class="learner-label"> learners </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         MAIN DETAILS WRAPPER
+    ====================================================== -->
+    <main class="course-details-wrapper">
+      <!-- WHAT YOU'LL LEARN -->
+      <section class="learn-section">
+        <h2 class="section-title">What you'll learn</h2>
+        <div class="learning-grid">
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span
+              >Three levels from Basic to Expert with detailed examples and live
+              trading.</span
+            >
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Basic level : How to develop your trading career</span>
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Intermediate : Strongest candle sticks need to remember</span>
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span
+              >Expert : Supply and Demand - How to define Strong/Order Block and
+              Obsolete supply and demand</span
+            >
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Expert : How to trade with Confluence strategy</span>
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Expert : How to practice successfully</span>
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span
+              >You can have big pictures to create your own trading strategy and
+              step by step to practice until you're profitable trader.</span
+            >
+          </div>
+          <!-- RIGHT COLUMN -->
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Basic level : What is the Forex ? Definition in Forex</span>
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span
+              >Intermediate : What is Technical analysis and Fundamental
+              analysis</span
+            >
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span
+              >Intermediate : Strongest price patterns need to remember</span
+            >
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span
+              >Expert : Master Multiple timeframe with Supply and Demand</span
+            >
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Expert : How to trade with non-confluence strategy</span>
+          </div>
+          <div class="learning-item">
+            <span class="learning-icon"><i class="fa-solid fa-check"></i></span>
+            <span>Expert : Control Emotion in trading</span>
+          </div>
+        </div>
+        <div class="show-less">
+          <span> Show less </span>
+          <i class="fa-solid fa-chevron-up"></i>
+        </div>
+      </section>
+
+      <!-- RELATED TOPICS -->
+      <section class="related-section">
+        <h2 class="related-title">Explore related topics</h2>
+        <div class="topics">
+          <a href="#" class="topic"> Forex Trading </a>
+          <a href="#" class="topic"> Candlestick Trading </a>
+          <a href="#" class="topic"> Investing &amp; Trading </a>
+          <a href="#" class="topic"> Finance &amp; Accounting </a>
+        </div>
+      </section>
+
+      <!-- COURSE INCLUDES -->
+      <section class="includes-section">
+        <h2 class="includes-title">This course includes:</h2>
+        <div class="includes-grid">
+          <div>
+            <div class="include-item">
+              <span class="include-icon"
+                ><i class="fa-regular fa-circle-play"></i
+              ></span>
+              <span> 10 hours on-demand video </span>
+            </div>
+            <div class="include-item">
+              <span class="include-icon"
+                ><i class="fa-regular fa-circle-question"></i
+              ></span>
+              <span> 2 practice tests </span>
+            </div>
+            <div class="include-item">
+              <span class="include-icon"
+                ><i class="fa-regular fa-clipboard"></i
+              ></span>
+              <span> Assignments </span>
+            </div>
+            <div class="include-item">
+              <span class="include-icon"
+                ><i class="fa-regular fa-file-lines"></i
+              ></span>
+              <span> 20 articles </span>
+            </div>
+          </div>
+          <div>
+            <div class="include-item">
+              <span class="include-icon"
+                ><i class="fa-regular fa-file-arrow-down"></i
+              ></span>
+              <span> 33 downloadable resources </span>
+            </div>
+            <div class="include-item">
+              <span class="include-icon"
+                ><i class="fa-solid fa-mobile-screen-button"></i
+              ></span>
+              <span> Access on mobile and TV </span>
+            </div>
+            <div class="include-item">
+              <span class="include-icon"
+                ><i class="fa-regular fa-closed-captioning"></i
+              ></span>
+              <span> Closed captions </span>
+            </div>
+            <div class="include-item">
+              <span class="include-icon"
+                ><i class="fa-solid fa-award"></i
+              ></span>
+              <span> Certificate of completion </span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =====================================================
+         COURSE CONTENT (CURRICULUM) - size matched to other content
+    ====================================================== -->
+    <div class="course-content-wrapper">
+      <div class="content-header">
+        <h1 class="content-title">Course content</h1>
+        <button class="expand-all" id="expandAll">Expand all sections</button>
+      </div>
+      <div class="course-summary">
+        <span>20 sections</span>
+        <span>79 lectures</span>
+        <span>12h 23m total length</span>
+      </div>
+
+      <div class="curriculum" id="curriculum">
+        <!-- SECTION 1 -->
+        <div class="curriculum-section active">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Jayce's INTRODUCTION - Get your TRUST - Learn more Serious - Get
+              the real result</span
+            >
+            <span class="section-meta">9 lectures <span>20min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Class Preview </span
+              ><span class="lesson-preview"
+                ><i class="fa-solid fa-play"></i> Preview</span
+              ><span class="lesson-duration"> 2:30 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> What you will learn </span
+              ><span class="lesson-preview"
+                ><i class="fa-solid fa-play"></i> Preview</span
+              ><span class="lesson-duration"> 4:27 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> What you can offer this course </span
+              ><span class="lesson-preview"
+                ><i class="fa-solid fa-play"></i> Preview</span
+              ><span class="lesson-duration"> 3:40 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Introduction about instructor </span
+              ><span class="lesson-preview"
+                ><i class="fa-solid fa-play"></i> Preview</span
+              ><span class="lesson-duration"> 5:00 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Discord community - No1 trading </span
+              ><span class="lesson-preview"
+                ><i class="fa-solid fa-play"></i> Preview</span
+              ><span class="lesson-duration"> 3:27 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name">
+                Telegram community - No1 trading </span
+              ><span></span><span class="lesson-duration"> 2:54 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-file-lines"></i></span
+              ><span class="lesson-name">
+                How to start your trading career and get freedom financial </span
+              ><span></span><span class="lesson-duration"> 10:12 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-file-lines"></i></span
+              ><span class="lesson-name">
+                100%? Factor in FOMO real account </span
+              ><span></span><span class="lesson-duration"> 8:47 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-file-lines"></i></span
+              ><span class="lesson-name">
+                Finance based with partners - MUSA VIAT </span
+              ><span></span><span class="lesson-duration"> 5:30 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 2 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Examination before you learn - Downloadable Check sheet</span
+            >
+            <span class="section-meta">2 lectures <span>2min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-file-lines"></i></span
+              ><span class="lesson-name"> Trading knowledge assessment </span
+              ><span></span><span class="lesson-duration"> 1:20 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-file-arrow-down"></i></span
+              ><span class="lesson-name"> Downloadable trading checklist </span
+              ><span></span><span class="lesson-duration"> 0:40 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 3 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Basic level: Cornerstone about Forex</span
+            >
+            <span class="section-meta">2 lectures <span>19min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Introduction to Forex </span
+              ><span class="lesson-preview"
+                ><i class="fa-solid fa-play"></i> Preview</span
+              ><span class="lesson-duration"> 8:30 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Understanding the Forex market </span
+              ><span></span><span class="lesson-duration"> 10:30 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 4 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name">Basic level: The fact about Forex</span>
+            <span class="section-meta">1 lecture <span>12min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name">
+                Important facts every Forex trader should know </span
+              ><span></span><span class="lesson-duration"> 12:00 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 5 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Basic level: Trading styles in Finance and Develop trading
+              career</span
+            >
+            <span class="section-meta">1 lecture <span>13min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name">
+                Choosing your trading style and career path </span
+              ><span></span><span class="lesson-duration"> 13:00 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 6 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Intermediate level: Introduction Technical and Fundamental
+              analysis</span
+            >
+            <span class="section-meta">2 lectures <span>49min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name">
+                Introduction to Technical Analysis </span
+              ><span></span><span class="lesson-duration"> 24:00 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name">
+                Introduction to Fundamental Analysis </span
+              ><span></span><span class="lesson-duration"> 25:00 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 7 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Intermediate level: Strongest candle sticks need to
+              remember</span
+            >
+            <span class="section-meta">3 lectures <span>50min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name">
+                Understanding candlestick structure </span
+              ><span></span><span class="lesson-duration"> 15:00 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name">
+                High probability candlestick patterns </span
+              ><span></span><span class="lesson-duration"> 18:00 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Practical candlestick examples </span
+              ><span></span><span class="lesson-duration"> 17:00 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 8 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Intermediate level: Strongest price patterns need to
+              remember</span
+            >
+            <span class="section-meta">3 lectures <span>1hr</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Major price patterns </span
+              ><span></span><span class="lesson-duration"> 20:00 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Pattern confirmation </span
+              ><span></span><span class="lesson-duration"> 20:00 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Live market examples </span
+              ><span></span><span class="lesson-duration"> 20:00 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 9 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Expert level: Supply and Demand - Order Block</span
+            >
+            <span class="section-meta">11 lectures <span>2hr 42min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Supply and Demand fundamentals </span
+              ><span></span><span class="lesson-duration"> 15:20 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name">
+                Identifying institutional order blocks </span
+              ><span></span><span class="lesson-duration"> 18:40 </span>
+            </div>
+          </div>
+        </div>
+        <!-- SECTION 10 -->
+        <div class="curriculum-section">
+          <button class="section-row">
+            <i class="fa-solid fa-chevron-down section-arrow"></i>
+            <span class="section-name"
+              >Expert level: Master Multiple timeframe with Supply and Demand -
+              Top Down</span
+            >
+            <span class="section-meta">9 lectures <span>1hr 59min</span></span>
+          </button>
+          <div class="section-body">
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Multi-timeframe analysis </span
+              ><span></span><span class="lesson-duration"> 18:00 </span>
+            </div>
+            <div class="lesson">
+              <span class="lesson-icon"
+                ><i class="fa-regular fa-circle-play"></i></span
+              ><span class="lesson-name"> Top-down market analysis </span
+              ><span></span><span class="lesson-duration"> 22:00 </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="more-sections">10 more sections</button>
+
+      <!-- REQUIREMENTS -->
+      <section class="info-section">
+        <h2 class="info-title">Requirements</h2>
+        <ul class="requirements-list">
+          <li>You need to be passionate and focus to follow the course.</li>
+          <li>
+            You need to practice this material at least 1 month to learn the
+            result.
+          </li>
+          <li>You need to believe your method and patient to practice it.</li>
+        </ul>
+      </section>
+
+      <!-- DESCRIPTION -->
+      <section class="info-section">
+        <h2 class="info-title">Description</h2>
+        <div class="description">
+          <p>
+            <strong>Key level strategy</strong> is the combination of
+            traditional supply and demand and market structure, market cycle
+            theory.
+          </p>
+          <p>
+            Key level combines power of traditional supply and demand and market
+            structure to disclose present, historical levels also the highest
+            value area in the technical analysis.
+          </p>
+          <p>
+            You also understand about market structure after this course to know
+            when a trend start, end and confirmation is happening. It helps you
+            to have a better safe rule, reduce poor risk ratio to trade with
+            entry and trading system like
+            <strong>ICT, Inner Circle Trader</strong> concepts.
+          </p>
+        </div>
+        <button class="description-more" id="descriptionMore">
+          <span> Show more </span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </section>
+    </div>
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+    <script>
+      // Play button
+      document
+        .querySelector(".play-button")
+        .addEventListener("click", function () {
+          alert("Course preview will open here.");
+        });
+      // Enroll button
+      document
+        .querySelector(".enroll-btn")
+        .addEventListener("click", function () {
+          alert("Redirecting to enrollment...");
+        });
+
+      // Accordion
+      const sections = document.querySelectorAll(".curriculum-section");
+      sections.forEach((section) => {
+        const button = section.querySelector(".section-row");
+        button.addEventListener("click", () => {
+          section.classList.toggle("active");
+        });
+      });
+
+      // Expand all
+      const expandAll = document.getElementById("expandAll");
+      let expanded = false;
+      expandAll.addEventListener("click", () => {
+        expanded = !expanded;
+        sections.forEach((section) => {
+          expanded
+            ? section.classList.add("active")
+            : section.classList.remove("active");
+        });
+        expandAll.textContent = expanded
+          ? "Collapse all sections"
+          : "Expand all sections";
+      });
+
+      // Description show more
+      const descMore = document.getElementById("descriptionMore");
+      descMore.addEventListener("click", () => {
+        descMore.classList.toggle("open");
+        descMore.querySelector("span").textContent =
+          descMore.classList.contains("open") ? "Show less" : "Show more";
+      });
+    </script>
+  </body>
+</html>
