@@ -3,325 +3,994 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Money 24/7 · Premium CTA</title>
-    <!-- Font Awesome 6 (Free) for icon -->
+
+    <title>Masterclass Courses</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+
     <style>
-      /* ==========================
-       SMART MONEY 24/7 · PREMIUM & PROFESSIONAL
-       Dark navy + gold + glassmorphism button
-    ========================== */
+      /* =========================================================
+       GLOBAL
+    ========================================================= */
+
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
 
-      .body-cta {
-        background: #010101;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* min-height: 100vh; */
-        padding: 30px 16px;
-        font-family:
-          "Inter",
-          system-ui,
-          -apple-system,
-          "Segoe UI",
-          Roboto,
-          "Helvetica Neue",
-          sans-serif;
+      html {
+        scroll-behavior: smooth;
       }
 
-      /* ----- CARD / SECTION – Premium dark blue & gold ----- */
-      .cta-premium {
-        max-width: 1200px;
-        width: 100%;
-        border-radius: 40px;
-        padding: 50px 90px;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 40px;
-        min-height: 190px;
-        box-shadow:
-          0 30px 60px rgba(0, 0, 0, 0.7),
-          0 0 0 1px rgba(255, 215, 120, 0.08);
+      body {
+        margin: 0;
+        padding: 0;
 
-        /* Background Image – same premium visual */
-        background-image: url("https://financewithajay.co/wp-content/uploads/2026/07/CTA.png");
+        background: #050505;
+        color: #ffffff;
+
+        font-family: "Inter", sans-serif;
+      }
+
+      /* =========================================================
+       HERO
+    ========================================================= */
+
+      .edu-masterclass-hero {
+        position: relative;
+
+        width: 100%;
+        height: 390px;
+
+        overflow: visible;
+
+        background-image: url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2000&q=90");
+
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
-        background-color: #0a1a2f; /* fallback */
+
+        display: flex;
+        align-items: center;
       }
 
-      /* Overlay – richer, deeper, with gold glow */
-      .cta-premium::before {
+      /* Dark overlay */
+
+      .edu-masterclass-hero::before {
         content: "";
+
         position: absolute;
         inset: 0;
-        background:
-          radial-gradient(
-            circle at 20% 25%,
-            rgba(30, 70, 130, 0.75) 0%,
-            transparent 60%
-          ),
-          radial-gradient(
-            circle at 85% 75%,
-            rgba(227, 184, 92, 0.2) 0%,
-            transparent 50%
-          ),
-          linear-gradient(135deg, #08141f 0%, #0f2844 60%, #1a3a62 100%);
-        border-radius: 40px;
+
+        background: linear-gradient(
+          90deg,
+          rgba(3, 7, 12, 0.86) 0%,
+          rgba(3, 10, 18, 0.67) 45%,
+          rgba(3, 7, 12, 0.42) 100%
+        );
+
         z-index: 1;
-        opacity: 0.94;
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
       }
 
-      .cta-content,
-      .cta-button-wrapper {
+      /* Bottom dark fade */
+
+      .edu-masterclass-hero::after {
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        height: 110px;
+
+        background: linear-gradient(to top, rgba(5, 5, 5, 0.45), transparent);
+
+        z-index: 1;
+      }
+
+      /* Hero content */
+
+      .edu-masterclass-hero-content {
         position: relative;
         z-index: 2;
+
+        width: min(1470px, calc(100% - 80px));
+
+        margin: 0 auto;
       }
 
-      /* ----- TEXT – refined, professional, luminous ----- */
-      .cta-content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
+      .edu-masterclass-hero-title {
+        margin: 0;
 
-      .cta-title {
-        font-size: 40px;
-        font-weight: 400;
         color: #ffffff;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        text-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
-        font-family:
-          "Inter",
-          system-ui,
-          -apple-system,
-          sans-serif;
+
+        font-size: clamp(38px, 4vw, 54px);
+
+        font-weight: 800;
+
+        line-height: 1.1;
+
+        letter-spacing: -1.5px;
+
+        text-shadow: 0 5px 25px rgba(0, 0, 0, 0.45);
       }
 
-      .cta-title .highlight-gold {
-        background: linear-gradient(145deg, #f7b32b, #d99f1a);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 500;
-        text-shadow: 0 0 30px rgb(227 184 92 / 10%);
+      /* Gold underline */
+
+      .edu-masterclass-hero-title::after {
+        content: "";
+
+        display: block;
+
+        width: 52px;
+        height: 3px;
+
+        margin-top: 17px;
+
+        border-radius: 20px;
+
+        background: linear-gradient(90deg, #c49a3a, #f2d477);
       }
 
-      .cta-sub {
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.92);
-        font-weight: 400;
-        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
-        letter-spacing: 0.01em;
-        max-width: 620px;
-        line-height: 1.5;
-        margin-top: 2px;
-        opacity: 0.95;
-      }
+      /* =========================================================
+       BREADCRUMB
+    ========================================================= */
 
-      /* ----- PREMIUM BUTTON (glass + gradient hover) ----- */
-      .premiumbtn {
-        display: inline-flex;
+      .edu-masterclass-breadcrumb {
+        position: absolute;
+
+        z-index: 5;
+
+        right: 11.3%;
+        bottom: 0;
+
+        min-width: 345px;
+        height: 78px;
+
+        padding: 0 38px;
+
+        display: flex;
+
         align-items: center;
         justify-content: center;
-        padding: 16px 38px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 60px;
+
+        gap: 11px;
+
+        background: #090909;
+
+        border-radius: 12px 12px 0 0;
+
+        box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.35);
+      }
+
+      /* Gold top line */
+
+      .edu-masterclass-breadcrumb::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 35px;
+        right: 35px;
+
+        height: 2px;
+
+        background: linear-gradient(90deg, transparent, #d7b45b, transparent);
+      }
+
+      .edu-masterclass-breadcrumb a {
         color: #ffffff;
+
         text-decoration: none;
-        font-size: 13px;
+
+        font-size: 14px;
+
         font-weight: 600;
-        letter-spacing: 1.6px;
-        text-transform: uppercase;
-        transition: all 0.35s ease;
+
+        transition: 0.25s ease;
+      }
+
+      .edu-masterclass-breadcrumb a:hover {
+        color: #d8b45c;
+      }
+
+      .edu-masterclass-breadcrumb-separator {
+        color: #666666;
+
+        font-size: 14px;
+      }
+
+      .edu-masterclass-breadcrumb-current {
+        color: #e2bd55;
+
+        font-size: 14px;
+
+        font-weight: 600;
+      }
+
+      /* =========================================================
+       COURSES SECTION
+    ========================================================= */
+
+      .edu-masterclass-courses {
         position: relative;
+
+        width: 100%;
+
+        padding: 78px 20px 90px;
+
+        background:
+          radial-gradient(
+            circle at 50% 0%,
+            rgba(212, 175, 55, 0.08),
+            transparent 34%
+          ),
+          #050505;
+      }
+
+      .edu-masterclass-container {
+        width: min(925px, 100%);
+
+        margin: 0 auto;
+      }
+
+      /* =========================================================
+       SECTION HEADER
+    ========================================================= */
+
+      .edu-masterclass-header {
+        text-align: center;
+
+        margin-bottom: 42px;
+      }
+
+      .edu-masterclass-eyebrow {
+        display: block;
+
+        margin-bottom: 11px;
+
+        color: #d7b45a;
+
+        font-size: 13px;
+
+        font-weight: 500;
+      }
+
+      .edu-masterclass-heading {
+        margin: 0;
+
+        font-size: clamp(34px, 4vw, 46px);
+
+        line-height: 1.1;
+
+        font-weight: 800;
+
+        letter-spacing: -1.5px;
+
+        background: linear-gradient(90deg, #ffffff, #e6c66c, #ffffff);
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        background-clip: text;
+      }
+
+      /* =========================================================
+       COURSE GRID
+    ========================================================= */
+
+      .edu-masterclass-grid {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 40px 17px;
+      }
+
+      /* =========================================================
+       COURSE CARD
+    ========================================================= */
+
+      .edu-masterclass-card {
+        position: relative;
+
         overflow: hidden;
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        align-self: flex-start;
-        gap: 14px;
-        cursor: pointer;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        font-family:
-          "Inter",
-          system-ui,
-          -apple-system,
-          sans-serif;
+
+        min-width: 0;
+
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.055),
+          rgba(255, 255, 255, 0.015)
+        );
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        border-radius: 4px;
+
+        box-shadow:
+          0 12px 35px rgba(0, 0, 0, 0.38),
+          inset 0 1px rgba(255, 255, 255, 0.035);
+
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .edu-masterclass-card:hover {
+        border-color: rgba(216, 180, 82, 0.55);
+
+        box-shadow:
+          0 20px 45px rgba(0, 0, 0, 0.55),
+          0 0 25px rgba(216, 180, 82, 0.08);
+      }
+
+      /* =========================================================
+       CARD IMAGE
+    ========================================================= */
+
+      .edu-masterclass-card-image {
+        position: relative;
+
+        width: 100%;
+        height: 134px;
+
+        overflow: hidden;
+
+        background: #111111;
+      }
+
+      .edu-masterclass-card-image img {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: cover;
+
+        transition:
+          transform 0.55s ease,
+          filter 0.55s ease;
+      }
+
+      .edu-masterclass-card:hover .edu-masterclass-card-image img {
+        transform: scale(1.05);
+
+        filter: brightness(0.9);
+      }
+
+      /* Image overlay */
+
+      .edu-masterclass-card-image::after {
+        content: "";
+
+        position: absolute;
+
+        inset: 0;
+
+        background: linear-gradient(
+          to bottom,
+          transparent 45%,
+          rgba(0, 0, 0, 0.42)
+        );
+
+        pointer-events: none;
+      }
+
+      /* =========================================================
+       BADGES
+    ========================================================= */
+
+      .edu-masterclass-badge {
+        position: absolute;
+
+        z-index: 3;
+
+        top: 10px;
+        right: 10px;
+
+        padding: 6px 10px;
+
+        border-radius: 2px;
+
+        font-size: 9px;
+
+        line-height: 1;
+
+        font-weight: 700;
+
+        letter-spacing: 0.5px;
+
+        text-transform: uppercase;
+      }
+
+      .edu-masterclass-badge-new {
+        color: #ffffff;
+
+        background: #11a66b;
+      }
+
+      .edu-masterclass-badge-special {
+        color: #090909;
+
+        background: #d8aa35;
+      }
+
+      /* =========================================================
+       CARD CONTENT
+    ========================================================= */
+
+      .edu-masterclass-card-content {
+        padding: 18px 17px 16px;
+      }
+
+      .edu-masterclass-category {
+        margin: 0 0 11px;
+
+        color: #999999;
+
+        font-size: 10.5px;
+
+        font-weight: 500;
+      }
+
+      .edu-masterclass-card-title {
+        min-height: 39px;
+
+        margin: 0;
+
+        color: #ffffff;
+
+        font-size: 12.5px;
+
+        line-height: 1.38;
+
+        font-weight: 700;
+      }
+
+      /* =========================================================
+       DIVIDER
+    ========================================================= */
+
+      .edu-masterclass-divider {
+        width: 100%;
+
+        height: 1px;
+
+        margin: 15px 0 11px;
+
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.14),
+          rgba(255, 255, 255, 0.07),
+          rgba(255, 255, 255, 0.14)
+        );
+      }
+
+      /* =========================================================
+       CARD META
+    ========================================================= */
+
+      .edu-masterclass-meta {
+        min-height: 22px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 10px;
+      }
+
+      .edu-masterclass-duration {
+        display: flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        color: #999999;
+
+        font-size: 10.5px;
+
         white-space: nowrap;
       }
 
-      .premiumbtn i {
-        font-size: 1.25rem;
-        color: rgba(255, 255, 255, 0.8);
-        transition: color 0.3s ease;
+      /* =========================================================
+       CLOCK ICON
+    ========================================================= */
+
+      .edu-masterclass-clock {
+        position: relative;
+
+        width: 11px;
+        height: 11px;
+
+        flex-shrink: 0;
+
+        border: 1px solid #c9a94f;
+
+        border-radius: 50%;
       }
 
-      /* pseudo-element – animated blue gradient sweep */
-      .premiumbtn::before {
+      .edu-masterclass-clock::before {
         content: "";
+
         position: absolute;
-        inset: 0;
-        transform: translateX(-100%);
-        background: linear-gradient(90deg, #1a5bbf, #3f93ff, #5bbcff);
-        transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-        z-index: -1;
-        border-radius: 60px;
+
+        width: 1px;
+        height: 3px;
+
+        left: 4px;
+        top: 2px;
+
+        background: #c9a94f;
       }
 
-      .premiumbtn:hover {
-        border-color: #5bbcff;
-        box-shadow:
-          0 0 45px rgba(20, 135, 255, 0.3),
-          0 8px 30px rgba(0, 0, 0, 0.5);
-        transform: translateY(-3px);
-        color: #ffffff;
+      .edu-masterclass-clock::after {
+        content: "";
+
+        position: absolute;
+
+        width: 3px;
+        height: 1px;
+
+        left: 4px;
+        top: 5px;
+
+        background: #c9a94f;
+
+        transform: rotate(25deg);
+
+        transform-origin: left center;
       }
 
-      .premiumbtn:hover::before {
-        transform: translateX(0);
+      /* =========================================================
+       PRICE
+    ========================================================= */
+
+      .edu-masterclass-price-area {
+        text-align: right;
       }
 
-      .premiumbtn:hover i {
-        color: #ffffff;
-        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+      .edu-masterclass-old-price {
+        display: block;
+
+        margin-bottom: 2px;
+
+        color: #666666;
+
+        font-size: 9px;
+
+        text-decoration: line-through;
       }
 
-      .premiumbtn:active {
-        transform: scale(0.96);
-        transition-duration: 0.1s;
+      .edu-masterclass-price,
+      .edu-masterclass-free {
+        color: #d8b451;
+
+        font-size: 12px;
+
+        font-weight: 700;
       }
 
-      /* ----- RESPONSIVE ----- */
-      @media (max-width: 860px) {
-        .cta-premium {
-          flex-direction: column;
-          text-align: center;
-          padding: 38px 32px;
-          gap: 24px;
-          min-height: 220px;
-          border-radius: 32px;
+      /* =========================================================
+       RESPONSIVE — TABLET
+    ========================================================= */
+
+      @media (max-width: 900px) {
+        .edu-masterclass-container {
+          width: min(650px, 100%);
         }
 
-        .cta-title {
-          font-size: 2rem;
+        .edu-masterclass-grid {
+          grid-template-columns: repeat(2, 1fr);
+
+          gap: 25px 16px;
         }
 
-        .cta-sub {
-          font-size: 1rem;
-          max-width: 100%;
-          margin-left: auto;
-          margin-right: auto;
+        .edu-masterclass-breadcrumb {
+          right: 5%;
+        }
+      }
+
+      /* =========================================================
+       RESPONSIVE — MOBILE
+    ========================================================= */
+
+      @media (max-width: 600px) {
+        .edu-masterclass-hero {
+          height: 300px;
+
+          background-position: center;
         }
 
-        .premiumbtn {
-          align-self: center;
-          padding: 14px 32px;
-          white-space: normal;
-          font-size: 12px;
-          letter-spacing: 1.4px;
+        .edu-masterclass-hero-content {
+          width: calc(100% - 35px);
+        }
+
+        .edu-masterclass-hero-title {
+          font-size: 34px;
+        }
+
+        .edu-masterclass-breadcrumb {
+          right: 15px;
+
+          min-width: unset;
+
           width: auto;
-          min-width: 200px;
-          justify-content: center;
+
+          height: 58px;
+
+          padding: 0 17px;
+
+          gap: 7px;
+
+          border-radius: 8px 8px 0 0;
         }
 
-        .premiumbtn i {
-          font-size: 1.1rem;
+        .edu-masterclass-breadcrumb a,
+        .edu-masterclass-breadcrumb-separator,
+        .edu-masterclass-breadcrumb-current {
+          font-size: 10px;
+        }
+
+        .edu-masterclass-courses {
+          padding: 65px 15px 70px;
+        }
+
+        .edu-masterclass-header {
+          margin-bottom: 30px;
+        }
+
+        .edu-masterclass-heading {
+          font-size: 32px;
+        }
+
+        .edu-masterclass-grid {
+          grid-template-columns: 1fr;
+
+          gap: 22px;
+        }
+
+        .edu-masterclass-card-image {
+          height: 185px;
+        }
+
+        .edu-masterclass-card-content {
+          padding: 18px;
+        }
+
+        .edu-masterclass-card-title {
+          font-size: 13px;
         }
       }
 
-      @media (max-width: 500px) {
-        .cta-premium {
-          padding: 26px 18px;
-          border-radius: 28px;
-          gap: 18px;
-          min-height: 190px;
-        }
-        .cta-title {
-          font-size: 1.5rem;
-        }
-        .cta-sub {
-          font-size: 0.9rem;
-        }
-        .premiumbtn {
-          padding: 13px 22px;
-          font-size: 11px;
-          letter-spacing: 1.2px;
-          min-width: 160px;
-          gap: 10px;
-        }
-        .premiumbtn i {
-          font-size: 1rem;
-        }
-      }
+      /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
 
-      /* fallback if image fails */
-      .cta-premium.fallback {
-        background-image: none !important;
-        background-color: #0b1a33;
+      @media (max-width: 400px) {
+        .edu-masterclass-hero {
+          height: 270px;
+        }
+
+        .edu-masterclass-hero-title {
+          font-size: 29px;
+        }
+
+        .edu-masterclass-breadcrumb {
+          height: 52px;
+
+          padding: 0 12px;
+        }
+
+        .edu-masterclass-courses {
+          padding-top: 58px;
+        }
       }
     </style>
   </head>
+
   <body>
-    <div class="body-cta">
-      <section
-        class="cta-premium"
-        onerror="this.classList.add('fallback')"
-        style="
-          background-image: url(&quot;https://financewithajay.co/wp-content/uploads/2026/07/CTA.png&quot;);
-        "
-      >
-        <!-- Text Content – new premium copy: Stop Guessing. Start Trading With a Plan. -->
-        <div class="cta-content">
-          <h2 class="cta-title">
-            Stop Guessing... <br />
-            <span class="highlight-gold">Start Trading With a Plan.</span>
-          </h2>
-          <p class="cta-sub">
-            Learn how the market works, develop your strategy, and make more
-            informed trading decisions.
-          </p>
+    <!-- =========================================================
+     HERO
+========================================================= -->
+
+    <section class="edu-masterclass-hero">
+      <div class="edu-masterclass-hero-content">
+        <h1 class="edu-masterclass-hero-title">Masterclass Courses</h1>
+      </div>
+
+      <!-- Breadcrumb -->
+
+      <div class="edu-masterclass-breadcrumb">
+        <a href="#"> Home </a>
+
+        <span class="edu-masterclass-breadcrumb-separator"> / </span>
+
+        <strong class="edu-masterclass-breadcrumb-current">
+          Masterclass Courses
+        </strong>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     COURSES
+========================================================= -->
+
+    <section class="edu-masterclass-courses">
+      <div class="edu-masterclass-container">
+        <!-- HEADER -->
+
+        <div class="edu-masterclass-header">
+          <span class="edu-masterclass-eyebrow"> Checkout New List </span>
+
+          <h2 class="edu-masterclass-heading">Explore Courses</h2>
         </div>
 
-        <!-- CTA Button – premiumbtn class, rocket icon, "Access LMS" -->
-        <div class="cta-button-wrapper">
-          <a href="#" style="text-decoration: none; display: inline-block">
-            <button class="premiumbtn">
-              <i class="fas fa-rocket"></i> Access LMS
-            </button>
-          </a>
-        </div>
-      </section>
-    </div>
+        <!-- =====================================================
+         COURSE GRID
+    ====================================================== -->
 
-    <!-- small extra: hide br on desktop -->
-    <style>
-      @media (min-width: 861px) {
-        .hide-on-desktop {
-          display: none;
-        }
-      }
-      @media (max-width: 860px) {
-        .hide-on-desktop {
-          display: inline;
-        }
-      }
-    </style>
+        <div class="edu-masterclass-grid">
+          <!-- COURSE 1 -->
+
+          <article class="edu-masterclass-card">
+            <div class="edu-masterclass-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85"
+                alt="Forex Trading Mastery"
+              />
+
+              <span class="edu-masterclass-badge edu-masterclass-badge-new">
+                New
+              </span>
+            </div>
+
+            <div class="edu-masterclass-card-content">
+              <p class="edu-masterclass-category">Day Trading</p>
+
+              <h3 class="edu-masterclass-card-title">
+                Forex Trading Mastery: A Practical Guide to Consistent Profits
+              </h3>
+
+              <div class="edu-masterclass-divider"></div>
+
+              <div class="edu-masterclass-meta">
+                <div class="edu-masterclass-duration">
+                  <span class="edu-masterclass-clock"></span>
+
+                  2 Months
+                </div>
+
+                <div class="edu-masterclass-price-area">
+                  <span class="edu-masterclass-old-price"> ₹120,000 </span>
+
+                  <span class="edu-masterclass-price"> ₹100,000 </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- COURSE 2 -->
+
+          <article class="edu-masterclass-card">
+            <div class="edu-masterclass-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85"
+                alt="Building Custom Indicators"
+              />
+            </div>
+
+            <div class="edu-masterclass-card-content">
+              <p class="edu-masterclass-category">Technical Analysis</p>
+
+              <h3 class="edu-masterclass-card-title">
+                From Zero to Hero: Building Custom Indicators and Robots on MT4
+              </h3>
+
+              <div class="edu-masterclass-divider"></div>
+
+              <div class="edu-masterclass-meta">
+                <div class="edu-masterclass-duration"></div>
+
+                <div class="edu-masterclass-price-area">
+                  <span class="edu-masterclass-price"> ₹50,000 </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- COURSE 3 -->
+
+          <article class="edu-masterclass-card">
+            <div class="edu-masterclass-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=85"
+                alt="Forex Candlestick Patterns"
+              />
+
+              <span class="edu-masterclass-badge edu-masterclass-badge-special">
+                Special
+              </span>
+            </div>
+
+            <div class="edu-masterclass-card-content">
+              <p class="edu-masterclass-category">Forex Markets</p>
+
+              <h3 class="edu-masterclass-card-title">
+                Forex Candlestick Patterns with High Win Rate
+              </h3>
+
+              <div class="edu-masterclass-divider"></div>
+
+              <div class="edu-masterclass-meta">
+                <div class="edu-masterclass-duration">
+                  <span class="edu-masterclass-clock"></span>
+
+                  13 Minutes
+                </div>
+
+                <div class="edu-masterclass-price-area">
+                  <span class="edu-masterclass-free"> Free </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- COURSE 4 -->
+
+          <article class="edu-masterclass-card">
+            <div class="edu-masterclass-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85"
+                alt="Introduction to Forex Trading"
+              />
+            </div>
+
+            <div class="edu-masterclass-card-content">
+              <p class="edu-masterclass-category">Financial Markets</p>
+
+              <h3 class="edu-masterclass-card-title">
+                Introduction to Forex Trading
+              </h3>
+
+              <div class="edu-masterclass-divider"></div>
+
+              <div class="edu-masterclass-meta">
+                <div class="edu-masterclass-duration">
+                  <span class="edu-masterclass-clock"></span>
+
+                  15 Minutes
+                </div>
+
+                <div class="edu-masterclass-price-area">
+                  <span class="edu-masterclass-free"> Free </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- COURSE 5 -->
+
+          <article class="edu-masterclass-card">
+            <div class="edu-masterclass-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=85"
+                alt="Support and Resistance Trading"
+              />
+            </div>
+
+            <div class="edu-masterclass-card-content">
+              <p class="edu-masterclass-category">Day Trading</p>
+
+              <h3 class="edu-masterclass-card-title">
+                The Ultimate Support and Resistance Trading Course
+              </h3>
+
+              <div class="edu-masterclass-divider"></div>
+
+              <div class="edu-masterclass-meta">
+                <div class="edu-masterclass-duration">
+                  <span class="edu-masterclass-clock"></span>
+
+                  40 Minutes
+                </div>
+
+                <div class="edu-masterclass-price-area">
+                  <span class="edu-masterclass-free"> Free </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- COURSE 6 -->
+
+          <article class="edu-masterclass-card">
+            <div class="edu-masterclass-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+                alt="Order Block Trading Strategy"
+              />
+            </div>
+
+            <div class="edu-masterclass-card-content">
+              <p class="edu-masterclass-category">Day Trading</p>
+
+              <h3 class="edu-masterclass-card-title">
+                High Probability Order Block Trading Strategy
+              </h3>
+
+              <div class="edu-masterclass-divider"></div>
+
+              <div class="edu-masterclass-meta">
+                <div class="edu-masterclass-duration">
+                  <span class="edu-masterclass-clock"></span>
+
+                  30 Minutes
+                </div>
+
+                <div class="edu-masterclass-price-area">
+                  <span class="edu-masterclass-free"> Free </span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+    <script>
+      /*
+    Premium subtle 3D card interaction
+  */
+
+      const courseCards = document.querySelectorAll(".edu-masterclass-card");
+
+      courseCards.forEach((card) => {
+        card.addEventListener("mousemove", function (event) {
+          const rect = card.getBoundingClientRect();
+
+          const x = event.clientX - rect.left;
+
+          const y = event.clientY - rect.top;
+
+          const rotateX = (y / rect.height - 0.5) * -2;
+
+          const rotateY = (x / rect.width - 0.5) * 2;
+
+          card.style.transform = `
+          translateY(-6px)
+          perspective(900px)
+          rotateX(${rotateX}deg)
+          rotateY(${rotateY}deg)
+          `;
+        });
+
+        card.addEventListener("mouseleave", function () {
+          card.style.transform = `
+          translateY(0)
+          perspective(900px)
+          rotateX(0)
+          rotateY(0)
+          `;
+        });
+      });
+    </script>
   </body>
 </html>
+```
