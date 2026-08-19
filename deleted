@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Money 24/7 · About</title>
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome v4.7 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+      .body-abt {
+        background: #000000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 20px;
+        font-family: "Poppins", Arial, sans-serif !important;
+      }
+
+      .about-section {
+        width: 100%;
+        max-width: 1440px;
+        padding: 50px 5% 60px;
+        background: #000000;
+        border-radius: 40px;
+        box-shadow: 0 8px 40px rgba(255, 215, 0, 0.02);
+        transition: box-shadow 0.3s;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .about-section:hover {
+        box-shadow: 0 8px 50px rgba(255, 215, 0, 0.05);
+      }
+
+      /* image */
+      .about-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 28px;
+        position: relative;
+        opacity: 0;
+        transform: translateY(-16px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+      .about-image.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .about-image img {
+        width: 100%;
+        max-width: 285px;
+        position: relative;
+        z-index: 2;
+        transition:
+          transform 0.3s ease,
+          filter 0.3s;
+        border-radius: 30px;
+        background: #0a0a0a;
+      }
+
+      /* content */
+      .about-content {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #f7b32b;
+        margin-bottom: 14px;
+        background: rgba(255, 196, 0, 0.07);
+        display: inline-block;
+        padding: 6px 22px;
+        border-radius: 40px;
+        border-left: 4px solid #f7b32b;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .eyebrow.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .about-content h1 {
+        font-size: 52px;
+        line-height: 1.08;
+        font-weight: 400;
+        margin-bottom: 8px;
+        letter-spacing: -1px;
+        color: #ffffff;
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.9s ease 0.1s,
+          transform 0.9s ease 0.1s;
+      }
+      .about-content h1.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .about-content h1 span {
+        color: #ffc52f;
+        background: linear-gradient(145deg, #f7b32b, #d99f1a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 500;
+      }
+
+      .about-content .desc {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #d0d0d0;
+        max-width: 760px;
+        margin: 18px auto 48px auto;
+        font-weight: 400;
+        letter-spacing: 0.2px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.9s ease 0.2s,
+          transform 0.9s ease 0.2s;
+      }
+      .about-content .desc.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* feature grid – Font Awesome v4.7 icons */
+      .feature-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px 30px;
+        width: 100%;
+        margin: 6px auto 0;
+        text-align: left;
+      }
+
+      .feature-item {
+        border-top: 2px solid rgba(255, 196, 0, 0.2);
+        padding: 20px 0 6px 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease,
+          border-color 0.2s;
+      }
+      .feature-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .feature-item:hover {
+        border-top-color: #f7b32b;
+        transform: translateY(-2px);
+      }
+
+      .feature-item .icon-wrap {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 8px;
+      }
+
+      .feature-item .icon-wrap i {
+        font-size: 30px;
+        color: #f7b32b;
+        width: 40px;
+        text-align: center;
+        transition:
+          transform 0.3s ease,
+          color 0.2s;
+        flex-shrink: 0;
+        display: inline-block;
+      }
+
+      .feature-item:hover .icon-wrap i {
+        transform: scale(1.15) rotate(-5deg);
+        color: #ffd966;
+      }
+
+      .feature-item h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.2px;
+        display: inline-block;
+        margin: 0;
+      }
+
+      .feature-item p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #b0b0b0;
+        margin-top: 4px;
+        font-weight: 400;
+        max-width: 100%;
+      }
+
+      /* responsive */
+      @media (max-width: 1024px) {
+        .about-content h1 {
+          font-size: 44px;
+        }
+        .feature-list {
+          gap: 20px 24px;
+        }
+        .feature-item h3 {
+          font-size: 17px;
+        }
+        .feature-item p {
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .about-section {
+          padding: 40px 4% 50px;
+          border-radius: 32px;
+        }
+        .about-content h1 {
+          font-size: 38px;
+        }
+        .feature-list {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px 30px;
+        }
+        .about-image img {
+          max-width: 170px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .about-section {
+          padding: 30px 4% 40px;
+          border-radius: 24px;
+        }
+        .about-content h1 {
+          font-size: 32px;
+        }
+        .about-content .desc {
+          font-size: 15px;
+          margin-bottom: 34px;
+        }
+        .eyebrow {
+          font-size: 11px;
+          padding: 4px 14px;
+        }
+        .feature-list {
+          grid-template-columns: 1fr 1fr;
+          gap: 16px 20px;
+        }
+        .feature-item {
+          padding: 14px 0 4px 0;
+        }
+        .feature-item h3 {
+          font-size: 16px;
+        }
+        .feature-item p {
+          font-size: 13px;
+        }
+        .feature-item .icon-wrap i {
+          font-size: 24px;
+          width: 32px;
+        }
+        .about-image img {
+          max-width: 150px;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .about-section {
+          padding: 24px 3% 32px;
+          border-radius: 20px;
+        }
+        .about-content h1 {
+          font-size: 28px;
+        }
+        .feature-list {
+          grid-template-columns: 1fr;
+          gap: 12px;
+          max-width: 360px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .feature-item {
+          text-align: left;
+          padding: 12px 0 4px 0;
+        }
+        .feature-item .icon-wrap {
+          justify-content: flex-start;
+        }
+        .about-image img {
+          max-width: 130px;
+        }
+        .about-content .desc {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="body-abt">
+      <section class="about-section">
+        <!-- image -->
+        <div class="about-image">
+          <img src="Photos/robot-2.png" alt="Smart bot" />
+        </div>
+
+        <div class="about-content">
+          <div class="eyebrow">ABOUT SMART MONEY 24/7</div>
+          <h1>
+            Stop Following Random Tips.<br /><span
+              >Start Understanding the Market.</span
+            >
+          </h1>
+          <p class="desc">
+            Forex can feel confusing when you're jumping between strategies,
+            indicators, and opinions. Smart Money 24/7 makes learning simpler
+            with structured lessons, practical examples, and real market
+            insights — so you can build your knowledge, develop your own
+            strategy, and trade with greater confidence.
+          </p>
+
+          <!-- feature grid – Font Awesome v4.7 icons that definitely exist -->
+          <div class="feature-list">
+            <!-- 1 -->
+            <div class="feature-item">
+              <div class="icon-wrap">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h3>Learn From the Experts</h3>
+              </div>
+              <p>
+                Learn proven concepts and practical techniques explained in a
+                simple, easy-to-understand way.
+              </p>
+            </div>
+
+            <!-- 2 -->
+            <div class="feature-item">
+              <div class="icon-wrap">
+                <i class="fa-solid fa-bullseye"></i>
+                <h3>Learn What Actually Matters</h3>
+              </div>
+              <p>
+                Focus on market structure, price action, smart-money concepts,
+                risk management, and trading psychology.
+              </p>
+            </div>
+
+            <!-- 3 -->
+            <div class="feature-item">
+              <div class="icon-wrap">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Real Market Understanding</h3>
+              </div>
+              <p>
+                See how trading concepts apply to real charts and market
+                situations — not just theory.
+              </p>
+            </div>
+
+            <!-- 4 -->
+            <div class="feature-item">
+              <div class="icon-wrap">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h3>Learn. Practice. Improve.</h3>
+              </div>
+              <p>
+                Build your skills step by step and develop the discipline to
+                make better trading decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll(
+          ".about-image, .eyebrow, .about-content h1, .about-content .desc, .feature-item",
+        );
+
+        function isElementInViewport(el) {
+          const rect = el.getBoundingClientRect();
+          const windowHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          const windowWidth =
+            window.innerWidth || document.documentElement.clientWidth;
+          return (
+            rect.bottom > 0 &&
+            rect.top < windowHeight &&
+            rect.right > 0 &&
+            rect.left < windowWidth
+          );
+        }
+
+        function checkVisibility() {
+          elements.forEach((el, index) => {
+            if (isElementInViewport(el) && !el.classList.contains("visible")) {
+              if (el.classList.contains("feature-item")) {
+                const delay = index * 80;
+                setTimeout(() => {
+                  el.classList.add("visible");
+                }, delay);
+              } else {
+                el.classList.add("visible");
+              }
+            }
+          });
+        }
+
+        window.addEventListener("scroll", checkVisibility);
+        window.addEventListener("resize", checkVisibility);
+        setTimeout(checkVisibility, 200);
+        checkVisibility();
+      });
+    </script>
+  </body>
+</html>

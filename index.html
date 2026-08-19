@@ -883,7 +883,7 @@
     <header class="site-header" id="siteHeader">
       <div class="header-inner">
         <!-- LOGO -->
-        <a href="#" class="logo" aria-label="Smart Money">
+        <a href="index.html" class="logo" aria-label="Smart Money">
           <img
             src="Photos/SMART MONEY LOGO 01 (1).png"
             alt="Smart Money – proprietary trading firm"
@@ -897,9 +897,7 @@
         <nav class="desktop-nav">
           <!-- SM24/7 Challenge -->
           <div class="nav-item">
-            <button class="nav-link">
-              SM24/7 Challenge <span class="arrow"></span>
-            </button>
+            <button class="nav-link">Home <span class="arrow"></span></button>
             <div class="mega-menu challenge-menu">
               <div class="menu-column">
                 <div class="menu-heading">Get Started</div>
@@ -1142,7 +1140,7 @@
                     <div class="menu-description">Data that moves markets</div>
                   </div></a
                 >
-                <a href="#" class="more-lessons"
+                <a href="Coursees.html" class="more-lessons"
                   >More Lessons <span class="more-arrow">›</span></a
                 >
               </div>
@@ -1543,24 +1541,26 @@
                 ========================= */
 
                 .hero-title {
-                  margin: 0 0 8px 0;
-                  color: #ffffff;
-                  font-size: 90px;
-                  line-height: 1;
-                  letter-spacing: -3px;
-                  font-weight: 500;
-                  max-width: 1100px;
-                  text-wrap: balance;
-                  font-family: "Poppins", Arial, sans-serif !important;
+                        margin: 0 0 8px 0;
+                    color: #ffffff;
+                    font-size: 90px;
+                    line-height: 1;
+                    letter-spacing: -3px;
+                    line-height: 1.1;
+                    font-weight: 600;
+                    text-shadow: 0 4px 25px rgb(0 0 0 / 0%);
+                    max-width: 1100px;
+                    text-wrap: balance;
+                    font-family: "Poppins", Arial, sans-serif !important;
                 }
 
                 .hero-title .highlight {
                   display: inline-block;
-                  background: linear-gradient(135deg, #f0f9ff 0%, #fdd16b 80%);
+                  background: linear-gradient(135deg, #f0f9ff 0%, #ffc234 80%);
                   -webkit-background-clip: text;
                   background-clip: text;
-                  color: transparent;
-                  font-weight: 500;
+                  color: #ffffff00;
+                  font-weight: 600;
                   letter-spacing: -2px;
                 }
 
@@ -1688,7 +1688,7 @@
                 }
 
                 .hero-btn-secondary:hover {
-                  background: rgba(255, 255, 255, 0.1);
+                  background: rgb(27 191 220);
                   border-color: rgba(255, 255, 255, 0.5);
                   transform: scale(1.02) translateY(-2px);
                   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
@@ -1945,436 +1945,532 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Money 24/7 · About</title>
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome v4.7 CDN -->
+    <title>Smart Money 24/7 · Premium</title>
+    <!-- Font Awesome 6 (free) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <style>
-      .body-abt {
-        background: #000000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      /* ----- reset & base ----- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        padding: 20px;
+      body {
+        background: #050505;
         font-family: "Poppins", Arial, sans-serif !important;
       }
 
-      .about-section {
+      /* ==========================================
+       SMART MONEY 24/7 SECTION  (premium)
+    ========================================== */
+      .smart-money-section {
         width: 100%;
-        max-width: 1440px;
-        padding: 50px 5% 60px;
-        background: #000000;
-        border-radius: 40px;
-        box-shadow: 0 8px 40px rgba(255, 215, 0, 0.02);
-        transition: box-shadow 0.3s;
-        text-align: center;
-        margin: 0 auto;
-      }
-
-      .about-section:hover {
-        box-shadow: 0 8px 50px rgba(255, 215, 0, 0.05);
-      }
-
-      /* image */
-      .about-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 28px;
         position: relative;
-        opacity: 0;
-        transform: translateY(-16px);
-        transition:
-          opacity 0.9s ease,
-          transform 0.9s ease;
-      }
-      .about-image.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .about-image img {
-        width: 100%;
-        max-width: 285px;
-        position: relative;
-        z-index: 2;
-        transition:
-          transform 0.3s ease,
-          filter 0.3s;
-        border-radius: 30px;
-        background: #0a0a0a;
-      }
-
-      /* content */
-      .about-content {
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-
-      .eyebrow {
-        font-size: 13px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #f7b32b;
-        margin-bottom: 14px;
-        background: rgba(255, 196, 0, 0.07);
-        display: inline-block;
-        padding: 6px 22px;
-        border-radius: 40px;
-        border-left: 4px solid #f7b32b;
-        opacity: 0;
-        transform: translateY(20px);
-        transition:
-          opacity 0.8s ease,
-          transform 0.8s ease;
-      }
-      .eyebrow.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .about-content h1 {
-        font-size: 52px;
-        line-height: 1.08;
-        font-weight: 400;
-        margin-bottom: 8px;
-        letter-spacing: -1px;
+        overflow: hidden;
+        background: #050505;
+        padding: 85px 90px;
         color: #ffffff;
-        opacity: 0;
-        transform: translateY(30px);
-        transition:
-          opacity 0.9s ease 0.1s,
-          transform 0.9s ease 0.1s;
       }
-      .about-content h1.visible {
-        opacity: 1;
-        transform: translateY(0);
+
+      /* CONTAINER */
+      .smart-money-container {
+        width: min(1740px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 48% 52%;
+        align-items: center;
+        gap: 30px;
       }
-      .about-content h1 span {
-        color: #ffc52f;
+
+      /* ==========================================
+       LEFT VIDEO
+    ========================================== */
+      .smart-money-video-area {
+        position: relative;
+        min-height: 650px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* GOLDEN ACCENT BAR (instead of pink) */
+      .smart-money-accent {
+        position: absolute;
+        left: 0;
+        top: 7%;
+        bottom: 7%;
+        width: 25px;
+        background: linear-gradient(180deg, #f7b32b, #d99f1a);
+        border-radius: 0 10px 10px 0;
+        box-shadow: 0 0 40px rgba(247, 179, 43, 0.35);
+        z-index: 2;
+      }
+
+      /* VIDEO WRAP */
+      .smart-money-video-wrap {
+        position: relative;
+        width: 82%;
+        height: 590px;
+        overflow: hidden;
+        border-radius: 20px;
+        background: #0a0a0a;
+        border: 1px solid rgba(255, 215, 0, 0.12);
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(247, 179, 43, 0.08);
+      }
+
+      .smart-money-video {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      /* subtle overlay */
+      .smart-money-video-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 20% 30%,
+          rgba(247, 179, 43, 0.02),
+          rgba(0, 0, 0, 0.25)
+        );
+        pointer-events: none;
+      }
+
+      /* ==========================================
+       TRUST CARD  (golden touch)
+    ========================================== */
+      .smart-money-trust-card {
+        position: absolute;
+        right: 2%;
+        bottom: 2%;
+        width: 242px;
+        min-height: 105px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 25px 30px;
+        background: rgba(255, 255, 255, 0.97);
+        border-radius: 14px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+        z-index: 5;
+        border-left: 5px solid #f7b32b;
+      }
+
+      .trust-icon {
+        width: 65px;
+        height: 65px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px;
+        /* golden icon */
         background: linear-gradient(145deg, #f7b32b, #d99f1a);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+      }
+
+      .trust-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+      }
+
+      .trust-text strong {
+        font-size: 19px;
+        font-weight: 800;
+        color: #111111;
+      }
+
+      .trust-text span {
+        font-size: 18px;
+        font-weight: 600;
+        color: #111111;
+      }
+
+      /* ==========================================
+       RIGHT CONTENT  (golden + premium)
+    ========================================== */
+      .smart-money-content {
+        padding-left: 20px;
+        padding-right: 30px;
+      }
+
+      .smart-money-small-title {
+        margin-bottom: 20px;
+        font-size: 21px;
         font-weight: 500;
-      }
-
-      .about-content .desc {
-        font-size: 17px;
-        line-height: 1.8;
-        color: #d0d0d0;
-        max-width: 760px;
-        margin: 18px auto 48px auto;
-        font-weight: 400;
         letter-spacing: 0.2px;
-        opacity: 0;
-        transform: translateY(30px);
-        transition:
-          opacity 0.9s ease 0.2s,
-          transform 0.9s ease 0.2s;
-      }
-      .about-content .desc.visible {
-        opacity: 1;
-        transform: translateY(0);
+        /* golden gradient text */
+        background: linear-gradient(145deg, #f7b32b, #d99f1a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
       }
 
-      /* feature grid – Font Awesome v4.7 icons */
-      .feature-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 24px 30px;
-        width: 100%;
-        margin: 6px auto 0;
-        text-align: left;
+      /* HEADING */
+      .smart-money-content h2 {
+        margin: 0;
+        font-size: clamp(45px, 4vw, 67px);
+        line-height: 1.12;
+        font-weight: 500;
+        letter-spacing: -2px;
+        color: #f5f5f7;
       }
 
-      .feature-item {
-        border-top: 2px solid rgba(255, 196, 0, 0.2);
-        padding: 20px 0 6px 0;
-        opacity: 0;
-        transform: translateY(30px);
-        transition:
-          opacity 0.8s ease,
-          transform 0.8s ease,
-          border-color 0.2s;
-      }
-      .feature-item.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .feature-item:hover {
-        border-top-color: #f7b32b;
-        transform: translateY(-2px);
+      .smart-money-content h2 span {
+        /* golden "24/7" */
+        background: linear-gradient(145deg, #f7b32b, #d99f1a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
-      .feature-item .icon-wrap {
+      .smart-money-description {
+        max-width: 687px;
+        margin: 26px 0 30px;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #e0e0e0;
+        margin-bottom: 2rem;
+        font-weight: 400;
+      }
+
+      /* ==========================================
+       FEATURES  (golden checks)
+    ========================================== */
+      .smart-money-features {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 46px;
+      }
+
+      .smart-money-feature {
         display: flex;
         align-items: center;
-        gap: 14px;
-        margin-bottom: 8px;
-      }
-
-      .feature-item .icon-wrap i {
-        font-size: 30px;
-        color: #f7b32b;
-        width: 40px;
-        text-align: center;
-        transition:
-          transform 0.3s ease,
-          color 0.2s;
-        flex-shrink: 0;
-        display: inline-block;
-      }
-
-      .feature-item:hover .icon-wrap i {
-        transform: scale(1.15) rotate(-5deg);
-        color: #ffd966;
-      }
-
-      .feature-item h3 {
+        gap: 25px;
         font-size: 18px;
-        font-weight: 700;
+        line-height: 1.5;
+        color: #e0e0e0;
+      }
+
+      .feature-check {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1.5px solid #f7b32b;
+        border-radius: 50%;
+        color: #f7b32b;
+        font-size: 10px;
+        background: rgba(247, 179, 43, 0.04);
+        transition: 0.2s;
+      }
+
+      .smart-money-feature:hover .feature-check {
+        background: #f7b32b;
+        color: #0a0a0a;
+        border-color: #f7b32b;
+      }
+
+      /* ==========================================
+       BUTTON  (premium golden / blue hover)
+    ========================================== */
+      .more-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 248px;
+        height: 53px;
+        padding: 0 36px;
+        overflow: hidden;
+        border: none;
+        border-radius: 60px;
+        background: #80808000;
+        color: white !important;
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: 1.4px;
+        z-index: 1;
+        transition: 0.35s ease;
+        border: 1px solid #fafafa87;
+        margin-left: 14px;
+      }
+
+      .more-btn span {
+        position: relative;
+        z-index: 3;
         color: #ffffff;
-        letter-spacing: -0.2px;
-        display: inline-block;
-        margin: 0;
       }
 
-      .feature-item p {
-        font-size: 15px;
-        line-height: 1.6;
-        color: #b0b0b0;
-        margin-top: 4px;
-        font-weight: 400;
-        max-width: 100%;
+      /* blue hover layer (premium) */
+      .more-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateX(-100%);
+        background: linear-gradient(90deg, #0a66c2, #1487ff);
+        transition: 0.4s ease;
+        z-index: -1;
+        border-radius: 60px;
       }
 
-      /* responsive */
-      @media (max-width: 1024px) {
-        .about-content h1 {
-          font-size: 44px;
+      .more-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(20, 135, 255, 0.35);
+        border-color: transparent;
+      }
+
+      .more-btn:hover::before {
+        transform: translateX(0);
+      }
+
+      .more-btn:hover span {
+        color: #ffffff;
+      }
+
+      /* ==========================================
+       RESPONSIVE
+    ========================================== */
+      @media (max-width: 1200px) {
+        .smart-money-container {
+          grid-template-columns: 1fr 1fr;
         }
-        .feature-list {
-          gap: 20px 24px;
+        .smart-money-video-wrap {
+          width: 86%;
+          height: 520px;
         }
-        .feature-item h3 {
+        .smart-money-video-area {
+          min-height: 580px;
+        }
+        .smart-money-trust-card {
+          width: 310px;
+        }
+        .smart-money-content h2 {
+          font-size: 48px;
+        }
+        .smart-money-description {
+          font-size: 17px;
+          margin-top: 35px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .smart-money-section {
+          padding: 70px 0;
+        }
+        .smart-money-container {
+          grid-template-columns: 1fr;
+          gap: 65px;
+        }
+        .smart-money-content {
+          padding: 0;
+        }
+        .smart-money-video-area {
+          min-height: 570px;
+        }
+        .smart-money-video-wrap {
+          width: 85%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .smart-money-section {
+          padding: 55px 0;
+        }
+        .smart-money-container {
+          width: 90%;
+        }
+        .smart-money-video-area {
+          min-height: 430px;
+        }
+        .smart-money-video-wrap {
+          width: 87%;
+          height: 390px;
+          border-radius: 15px;
+        }
+        .smart-money-accent {
+          width: 14px;
+          top: 5%;
+          bottom: 5%;
+        }
+        .smart-money-trust-card {
+          right: 0;
+          bottom: 0;
+          width: 270px;
+          min-height: 90px;
+          padding: 16px 18px;
+          gap: 12px;
+        }
+        .trust-icon {
+          width: 45px;
+          height: 45px;
+          font-size: 24px;
+        }
+        .trust-text strong,
+        .trust-text span {
+          font-size: 14px;
+        }
+        .smart-money-small-title {
           font-size: 17px;
         }
-        .feature-item p {
-          font-size: 14px;
+        .smart-money-content h2 {
+          font-size: 39px;
+          letter-spacing: -1px;
         }
-      }
-
-      @media (max-width: 820px) {
-        .about-section {
-          padding: 40px 4% 50px;
-          border-radius: 32px;
-        }
-        .about-content h1 {
-          font-size: 38px;
-        }
-        .feature-list {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 24px 30px;
-        }
-        .about-image img {
-          max-width: 170px;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .about-section {
-          padding: 30px 4% 40px;
-          border-radius: 24px;
-        }
-        .about-content h1 {
-          font-size: 32px;
-        }
-        .about-content .desc {
-          font-size: 15px;
-          margin-bottom: 34px;
-        }
-        .eyebrow {
-          font-size: 11px;
-          padding: 4px 14px;
-        }
-        .feature-list {
-          grid-template-columns: 1fr 1fr;
-          gap: 16px 20px;
-        }
-        .feature-item {
-          padding: 14px 0 4px 0;
-        }
-        .feature-item h3 {
+        .smart-money-description {
+          margin: 30px 0;
           font-size: 16px;
+          line-height: 1.75;
         }
-        .feature-item p {
-          font-size: 13px;
+        .smart-money-features {
+          gap: 16px;
+          margin-bottom: 35px;
         }
-        .feature-item .icon-wrap i {
-          font-size: 24px;
-          width: 32px;
+        .smart-money-feature {
+          gap: 15px;
+          font-size: 15px;
         }
-        .about-image img {
-          max-width: 150px;
-        }
-      }
-
-      @media (max-width: 460px) {
-        .about-section {
-          padding: 24px 3% 32px;
-          border-radius: 20px;
-        }
-        .about-content h1 {
-          font-size: 28px;
-        }
-        .feature-list {
-          grid-template-columns: 1fr;
-          gap: 12px;
-          max-width: 360px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        .feature-item {
-          text-align: left;
-          padding: 12px 0 4px 0;
-        }
-        .feature-item .icon-wrap {
-          justify-content: flex-start;
-        }
-        .about-image img {
-          max-width: 130px;
-        }
-        .about-content .desc {
-          font-size: 14px;
+        .more-btn {
+          width: 100%;
+          min-width: 0;
+          height: 60px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="body-abt">
-      <section class="about-section">
-        <!-- image -->
-        <div class="about-image">
-          <img src="Photos/robot-2.png" alt="Smart bot" />
-        </div>
+    <!-- ============================================================
+     SMART MONEY 24/7 SECTION  (golden premium)
+     ============================================================ -->
+    <section class="smart-money-section">
+      <div class="smart-money-container">
+        <!-- ========== LEFT VIDEO ========== -->
+        <div class="smart-money-video-area">
+          <!-- <div class="smart-money-accent"></div> -->
 
-        <div class="about-content">
-          <div class="eyebrow">ABOUT SMART MONEY 24/7</div>
-          <h1>
-            Stop Following Random Tips.<br /><span
-              >Start Understanding the Market.</span
-            >
-          </h1>
-          <p class="desc">
-            Forex can feel confusing when you're jumping between strategies,
-            indicators, and opinions. Smart Money 24/7 makes learning simpler
-            with structured lessons, practical examples, and real market
-            insights — so you can build your knowledge, develop your own
-            strategy, and trade with greater confidence.
-          </p>
+          <div class="smart-money-video-wrap">
+            <video class="smart-money-video" autoplay muted loop playsinline>
+              <!-- replace with your actual video -->
+              <source
+                src="https://www.pexels.com/download/video/35606120/"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
 
-          <!-- feature grid – Font Awesome v4.7 icons that definitely exist -->
-          <div class="feature-list">
-            <!-- 1 -->
-            <div class="feature-item">
-              <div class="icon-wrap">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h3>Learn From the Experts</h3>
-              </div>
-              <p>
-                Learn proven concepts and practical techniques explained in a
-                simple, easy-to-understand way.
-              </p>
-            </div>
-
-            <!-- 2 -->
-            <div class="feature-item">
-              <div class="icon-wrap">
-                <i class="fa-solid fa-bullseye"></i>
-                <h3>Learn What Actually Matters</h3>
-              </div>
-              <p>
-                Focus on market structure, price action, smart-money concepts,
-                risk management, and trading psychology.
-              </p>
-            </div>
-
-            <!-- 3 -->
-            <div class="feature-item">
-              <div class="icon-wrap">
-                <i class="fa-solid fa-chart-line"></i>
-                <h3>Real Market Understanding</h3>
-              </div>
-              <p>
-                See how trading concepts apply to real charts and market
-                situations — not just theory.
-              </p>
-            </div>
-
-            <!-- 4 -->
-            <div class="feature-item">
-              <div class="icon-wrap">
-                <i class="fa-solid fa-lightbulb"></i>
-                <h3>Learn. Practice. Improve.</h3>
-              </div>
-              <p>
-                Build your skills step by step and develop the discipline to
-                make better trading decisions.
-              </p>
+          <!-- TRUST CARD (golden icon) -->
+          <div class="smart-money-trust-card">
+            <!-- <div class="trust-icon">
+              <i class="fa-solid fa-chart-line"></i>
+            </div> -->
+            <div class="trust-text">
+              <strong>Trusted by 5000+</strong>
+              <span>global customers</span>
             </div>
           </div>
         </div>
-      </section>
-    </div>
 
+        <!-- ========== RIGHT CONTENT ========== -->
+        <div class="smart-money-content">
+          <div class="smart-money-small-title">Learn To Trade Like A Pro.</div>
+
+          <h2>
+            Welcome to Smart Money
+            <span>24/7</span>
+          </h2>
+
+          <p class="smart-money-description">
+            You will learn Critical Thinking, Technical Analysis, Advanced Risk
+            Management, Sentiment Analysis, Proper Trading &amp; Investment
+            Psychology and Fundamental Analysis with our 100% practical
+            financial markets trading courses.
+          </p>
+
+          <!-- FEATURES with golden checks -->
+          <div class="smart-money-features">
+            <div class="smart-money-feature">
+              <span class="feature-check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span>Get unlimited access to our top trading courses</span>
+            </div>
+
+            <div class="smart-money-feature">
+              <span class="feature-check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span>Explore a variety of financial educational topics</span>
+            </div>
+
+            <div class="smart-money-feature">
+              <span class="feature-check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span
+                >Learn from experienced teachers and profitable traders</span
+              >
+            </div>
+
+            <div class="smart-money-feature">
+              <span class="feature-check"
+                ><i class="fa-solid fa-check"></i
+              ></span>
+              <span>Grow your wealth with reliable trading strategies</span>
+            </div>
+          </div>
+
+          <!-- CTA  (golden → blue on hover) -->
+          <a href="#courses" class="more-btn">
+            <span>VIEW ALL COURSES</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     SCRIPT  (video autoplay + subtle button interaction)
+     ============================================================ -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll(
-          ".about-image, .eyebrow, .about-content h1, .about-content .desc, .feature-item",
-        );
-
-        function isElementInViewport(el) {
-          const rect = el.getBoundingClientRect();
-          const windowHeight =
-            window.innerHeight || document.documentElement.clientHeight;
-          const windowWidth =
-            window.innerWidth || document.documentElement.clientWidth;
-          return (
-            rect.bottom > 0 &&
-            rect.top < windowHeight &&
-            rect.right > 0 &&
-            rect.left < windowWidth
-          );
-        }
-
-        function checkVisibility() {
-          elements.forEach((el, index) => {
-            if (isElementInViewport(el) && !el.classList.contains("visible")) {
-              if (el.classList.contains("feature-item")) {
-                const delay = index * 80;
-                setTimeout(() => {
-                  el.classList.add("visible");
-                }, delay);
-              } else {
-                el.classList.add("visible");
-              }
-            }
+        const video = document.querySelector(".smart-money-video");
+        if (video) {
+          video.muted = true;
+          const playVideo = () => {
+            video.play().catch(() => {
+              // autoplay prevented – fine
+            });
+          };
+          playVideo();
+          document.addEventListener("visibilitychange", () => {
+            if (!document.hidden) playVideo();
           });
         }
 
-        window.addEventListener("scroll", checkVisibility);
-        window.addEventListener("resize", checkVisibility);
-        setTimeout(checkVisibility, 200);
-        checkVisibility();
+        // button micro interaction (already in css, but keep for consistency)
+        document.querySelectorAll(".more-btn").forEach((btn) => {
+          btn.addEventListener("mouseenter", () => {
+            btn.style.transform = "translateY(-3px)";
+          });
+          btn.addEventListener("mouseleave", () => {
+            btn.style.transform = "translateY(0)";
+          });
+        });
       });
     </script>
   </body>
@@ -3261,7 +3357,7 @@
         margin: 0;
         font-size: 58px;
         line-height: 1.1;
-        font-weight: 500;
+        font-weight: 400;
         letter-spacing: -1.5px;
         background: white;
         -webkit-background-clip: text;
@@ -5610,18 +5706,12 @@
         content: "";
         position: absolute;
         inset: 0;
-        background:
-          radial-gradient(
-            circle at 20% 25%,
-            rgba(30, 70, 130, 0.75) 0%,
-            transparent 60%
-          ),
-          radial-gradient(
-            circle at 85% 75%,
-            rgba(227, 184, 92, 0.2) 0%,
-            transparent 50%
-          ),
-          linear-gradient(135deg, #08141f 0%, #0f2844 60%, #1a3a62 100%);
+        background: linear-gradient(
+          90deg,
+          #030405 0%,
+          #08121f 50%,
+          #071a2c 100%
+        );
         border-radius: 40px;
         z-index: 1;
         opacity: 0.94;
@@ -5645,7 +5735,7 @@
 
       .cta-title {
         font-size: 40px;
-        font-weight: 400;
+        font-weight: 600;
         color: #ffffff;
         line-height: 1.2;
         letter-spacing: -0.02em;

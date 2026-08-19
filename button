@@ -1,4 +1,4 @@
-.premium-more-btn {
+.more-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
   align-self: flex-start;
 }
 
-.premium-more-btn::before {
+.more-btn::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -32,12 +32,12 @@
   border-radius: 60px;
 }
 
-.premium-more-btn:hover {
+.more-btn:hover {
   border-color: var(--vip-blue);
   box-shadow: 0 0 35px rgba(20, 135, 255, 0.25);
   transform: translateY(-2px);
 }
 
-.premium-more-btn:hover::before {
+.more-btn:hover::before {
   transform: translateX(0);
 }

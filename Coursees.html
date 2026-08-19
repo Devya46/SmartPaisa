@@ -1,0 +1,1293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Masterclass Courses</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+
+        background: #050505;
+        color: #ffffff;
+
+        font-family: "Inter", sans-serif;
+      }
+
+      /* =========================================================
+       HERO
+    ========================================================= */
+
+      .edu-masterclass-hero {
+        position: relative;
+
+        width: 100%;
+        height: 390px;
+
+        overflow: visible;
+
+        background-image: url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2000&q=90");
+
+        background-size: cover;
+        background-position: center;
+
+        display: flex;
+        align-items: center;
+      }
+
+      /* Dark overlay */
+
+      .edu-masterclass-hero::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(
+          90deg,
+          rgba(3, 7, 12, 0.86) 0%,
+          rgba(3, 10, 18, 0.67) 45%,
+          rgba(3, 7, 12, 0.42) 100%
+        );
+
+        z-index: 1;
+      }
+
+      /* Bottom dark fade */
+
+      .edu-masterclass-hero::after {
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        height: 110px;
+
+        background: linear-gradient(to top, rgba(5, 5, 5, 0.45), transparent);
+
+        z-index: 1;
+      }
+
+      /* Hero content */
+
+      .edu-masterclass-hero-content {
+        position: relative;
+        z-index: 2;
+
+        width: min(1470px, calc(100% - 80px));
+
+        margin: 0 auto;
+      }
+
+      .edu-masterclass-hero-title {
+        margin: 0;
+
+        color: #ffffff;
+
+        font-size: clamp(38px, 4vw, 54px);
+
+        font-weight: 800;
+
+        line-height: 1.1;
+
+        letter-spacing: -1.5px;
+
+        text-shadow: 0 5px 25px rgba(0, 0, 0, 0.45);
+      }
+
+      /* Gold underline */
+
+      .edu-masterclass-hero-title::after {
+        content: "";
+
+        display: block;
+
+        width: 52px;
+        height: 3px;
+
+        margin-top: 17px;
+
+        border-radius: 20px;
+
+        background: linear-gradient(90deg, #c49a3a, #f2d477);
+      }
+
+      /* =========================================================
+       BREADCRUMB
+    ========================================================= */
+
+      .edu-masterclass-breadcrumb {
+        position: absolute;
+
+        z-index: 5;
+
+        right: 11.3%;
+        bottom: 0;
+
+        min-width: 345px;
+        height: 78px;
+
+        padding: 0 38px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 11px;
+
+        background: #090909;
+
+        border-radius: 12px 12px 0 0;
+
+        box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.35);
+      }
+
+      /* Gold top line */
+
+      .edu-masterclass-breadcrumb::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 35px;
+        right: 35px;
+
+        height: 2px;
+
+        background: linear-gradient(90deg, transparent, #d7b45b, transparent);
+      }
+
+      .edu-masterclass-breadcrumb a {
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        transition: 0.25s ease;
+      }
+
+      .edu-masterclass-breadcrumb a:hover {
+        color: #d8b45c;
+      }
+
+      .edu-masterclass-breadcrumb-separator {
+        color: #666666;
+
+        font-size: 14px;
+      }
+
+      .edu-masterclass-breadcrumb-current {
+        color: #e2bd55;
+
+        font-size: 14px;
+
+        font-weight: 600;
+      }
+
+      /* =========================================================
+       RESPONSIVE — TABLET
+    ========================================================= */
+
+      @media (max-width: 900px) {
+        .edu-masterclass-container {
+          width: min(650px, 100%);
+        }
+
+        .edu-masterclass-grid {
+          grid-template-columns: repeat(2, 1fr);
+
+          gap: 25px 16px;
+        }
+
+        .edu-masterclass-breadcrumb {
+          right: 5%;
+        }
+      }
+
+      /* =========================================================
+       RESPONSIVE — MOBILE
+    ========================================================= */
+
+      @media (max-width: 600px) {
+        .edu-masterclass-hero {
+          height: 300px;
+
+          background-position: center;
+        }
+
+        .edu-masterclass-hero-content {
+          width: calc(100% - 35px);
+        }
+
+        .edu-masterclass-hero-title {
+          font-size: 34px;
+        }
+
+        .edu-masterclass-breadcrumb {
+          right: 15px;
+
+          min-width: unset;
+
+          width: auto;
+
+          height: 58px;
+
+          padding: 0 17px;
+
+          gap: 7px;
+
+          border-radius: 8px 8px 0 0;
+        }
+
+        .edu-masterclass-breadcrumb a,
+        .edu-masterclass-breadcrumb-separator,
+        .edu-masterclass-breadcrumb-current {
+          font-size: 10px;
+        }
+
+        .edu-masterclass-courses {
+          padding: 65px 15px 70px;
+        }
+
+        .edu-masterclass-header {
+          margin-bottom: 30px;
+        }
+
+        .edu-masterclass-heading {
+          font-size: 32px;
+        }
+
+        .edu-masterclass-grid {
+          grid-template-columns: 1fr;
+
+          gap: 22px;
+        }
+
+        .edu-masterclass-card-image {
+          height: 185px;
+        }
+
+        .edu-masterclass-card-content {
+          padding: 18px;
+        }
+
+        .edu-masterclass-card-title {
+          font-size: 13px;
+        }
+      }
+
+      /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+      @media (max-width: 400px) {
+        .edu-masterclass-hero {
+          height: 270px;
+        }
+
+        .edu-masterclass-hero-title {
+          font-size: 29px;
+        }
+
+        .edu-masterclass-breadcrumb {
+          height: 52px;
+
+          padding: 0 12px;
+        }
+
+        .edu-masterclass-courses {
+          padding-top: 58px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =========================================================
+     HERO
+========================================================= -->
+
+    <section class="edu-masterclass-hero">
+      <div class="edu-masterclass-hero-content">
+        <h1 class="edu-masterclass-hero-title">Masterclass Courses</h1>
+      </div>
+
+      <!-- Breadcrumb -->
+
+      <div class="edu-masterclass-breadcrumb">
+        <a href="#"> Home </a>
+
+        <span class="edu-masterclass-breadcrumb-separator"> / </span>
+
+        <strong class="edu-masterclass-breadcrumb-current">
+          Masterclass Courses
+        </strong>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!-- ---- courses---- -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masterclass Courses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        background: #f8f9fc;
+        font-family: "Inter", sans-serif;
+        color: #1a1a1a;
+        padding: 0;
+      }
+      .app {
+        max-width: 1360px;
+        margin: 0 auto;
+        padding: 24px 20px 40px;
+      }
+      /* header */
+      .master-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 20px 0 16px;
+        border-bottom: 1px solid #e9edf2;
+        margin-bottom: 28px;
+      }
+      .master-header h1 {
+        font-weight: 800;
+        font-size: 28px;
+        letter-spacing: -0.4px;
+        color: #0b0b0b;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .master-header h1 span {
+        color: #b8962e;
+      }
+      .breadcrumb {
+        font-size: 14px;
+        font-weight: 500;
+        color: #5a5f6b;
+        background: #f1f4f9;
+        padding: 6px 18px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .breadcrumb a {
+        color: #1f2a3a;
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: #b8962e;
+      }
+      .breadcrumb .current {
+        color: #b8962e;
+        font-weight: 600;
+      }
+      .breadcrumb .sep {
+        color: #a0a8b7;
+      }
+
+      .layout {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+      }
+      /* filters */
+      .filters {
+        flex: 0 0 230px;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 22px 18px 18px;
+        border: 1px solid #e4e9f0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        position: sticky;
+        top: 24px;
+        transition: all 0.2s;
+      }
+      .filters h4 {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        color: #6b7280;
+        margin: 22px 0 10px 0;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .filters h4:first-of-type {
+        margin-top: 0;
+      }
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .filter-group label {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        padding: 5px 6px;
+        border-radius: 8px;
+        transition: 0.15s;
+        color: #1e293b;
+        font-weight: 450;
+      }
+      .filter-group label:hover {
+        background: #f1f5f9;
+      }
+      .filter-group input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+        accent-color: #b8962e;
+        flex-shrink: 0;
+      }
+      .filter-group label span {
+        margin-left: auto;
+        font-size: 11px;
+        color: #8b94a3;
+        background: #f1f4f9;
+        padding: 0 8px;
+        border-radius: 20px;
+        font-weight: 500;
+      }
+      .clear-filters {
+        margin-top: 18px;
+        background: #f1f4f9;
+        border: none;
+        padding: 9px 0;
+        width: 100%;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 13px;
+        color: #1f2a3a;
+        cursor: pointer;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+      .clear-filters:hover {
+        background: #e2d4b0;
+        color: #0f0f0f;
+      }
+      /* grid */
+      .course-grid-wrap {
+        flex: 1;
+        min-width: 0;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      /* card */
+      .card {
+        background: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid #e9edf2;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+        transition: all 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(0) perspective(900px) rotateX(0) rotateY(0);
+        will-change: transform;
+      }
+      .card:hover {
+        border-color: #c9b07a;
+        box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.07);
+      }
+      .card-img {
+        height: 140px;
+        background: #eef2f6;
+        position: relative;
+        overflow: hidden;
+      }
+      .card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s;
+        display: block;
+      }
+      .card:hover .card-img img {
+        transform: scale(1.02);
+      }
+      .badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        font-size: 9px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 30px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        background: #11a66b;
+        color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .badge.special {
+        background: #d8aa35;
+        color: #0f0f0f;
+      }
+      .card-body {
+        padding: 16px 16px 14px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .category {
+        font-size: 10px;
+        font-weight: 600;
+        color: #8b94a3;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .card-title {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.3;
+        margin: 0 0 10px 0;
+        color: #0b1a2a;
+        min-height: 40px;
+      }
+      .divider {
+        height: 1px;
+        background: linear-gradient(90deg, #e9edf2, #f5f7fa, #e9edf2);
+        margin: 4px 0 12px;
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .duration {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #5a6577;
+        font-weight: 500;
+      }
+      .duration i {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background: transparent;
+        position: relative;
+      }
+      .clock-icon {
+        width: 14px;
+        height: 14px;
+        border: 1.5px solid #b8962e;
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      .clock-icon::before {
+        content: "";
+        position: absolute;
+        width: 1.5px;
+        height: 4px;
+        background: #b8962e;
+        left: 5.5px;
+        top: 2px;
+        border-radius: 2px;
+      }
+      .clock-icon::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 1.5px;
+        background: #b8962e;
+        left: 5.5px;
+        top: 7px;
+        border-radius: 2px;
+        transform: rotate(25deg);
+        transform-origin: left center;
+      }
+      .price-area {
+        text-align: right;
+      }
+      .old-price {
+        font-size: 10px;
+        color: #9aa3b3;
+        text-decoration: line-through;
+        display: block;
+        font-weight: 500;
+      }
+      .price {
+        font-weight: 700;
+        color: #b8962e;
+        font-size: 15px;
+      }
+      .free {
+        font-weight: 700;
+        color: #b8962e;
+        font-size: 15px;
+      }
+      .preview-btn {
+        background: transparent;
+        border: 1.5px solid #b8962e;
+        color: #b8962e;
+        padding: 8px 0;
+        border-radius: 40px;
+        font-weight: 700;
+        font-size: 12px;
+        width: 100%;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-top: 2px;
+        letter-spacing: 0.3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .preview-btn:hover {
+        background: #b8962e;
+        color: white;
+      }
+      .preview-btn i {
+        font-style: normal;
+        font-size: 14px;
+      }
+      /* load more */
+      .load-more-wrap {
+        text-align: center;
+        margin-top: 40px;
+      }
+      .load-btn {
+        background: white;
+        border: 1px solid #d8dde6;
+        padding: 12px 42px;
+        border-radius: 60px;
+        font-weight: 600;
+        font-size: 15px;
+        color: #1f2a3a;
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .load-btn:hover {
+        background: #f5f0e6;
+        border-color: #b8962e;
+        color: #0f0f0f;
+      }
+      .load-btn:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      .no-more {
+        color: #8892a3;
+        font-size: 14px;
+        margin-top: 14px;
+        font-weight: 500;
+      }
+
+      /* responsive */
+      @media (max-width: 1100px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 820px) {
+        .layout {
+          flex-direction: column;
+        }
+        .filters {
+          flex: 1;
+          width: 100%;
+          position: static;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+          gap: 4px 20px;
+          padding: 18px 20px;
+        }
+        .filters h4 {
+          margin-top: 6px;
+        }
+        .clear-filters {
+          grid-column: 1 / -1;
+          margin-top: 8px;
+        }
+      }
+      @media (max-width: 580px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .master-header {
+          flex-direction: column;
+          align-items: start;
+          gap: 12px;
+        }
+        .breadcrumb {
+          font-size: 12px;
+          padding: 4px 14px;
+        }
+      }
+      @media (max-width: 420px) {
+        .filters {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- header -->
+      <header class="master-header">
+        <h1><span>◆</span> Masterclass <span>Courses</span></h1>
+        <div class="breadcrumb">
+          <a href="#">Home</a>
+          <span class="sep">/</span>
+          <span class="current">Masterclass Courses</span>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="filters" id="filterPanel">
+          <h4>▸ Level</h4>
+          <div class="filter-group" data-filter="level">
+            <label
+              ><input type="checkbox" value="Beginner" /> Beginner
+              <span>3</span></label
+            >
+            <label
+              ><input type="checkbox" value="Intermediate" /> Intermediate
+              <span>4</span></label
+            >
+            <label
+              ><input type="checkbox" value="Advanced" /> Advanced
+              <span>3</span></label
+            >
+          </div>
+          <h4>▸ Price</h4>
+          <div class="filter-group" data-filter="price">
+            <label
+              ><input type="checkbox" value="Free" /> Free Courses
+              <span>5</span></label
+            >
+            <label
+              ><input type="checkbox" value="Paid" /> Paid Courses
+              <span>4</span></label
+            >
+            <label
+              ><input type="checkbox" value="Subscription" /> Subscription
+              <span>1</span></label
+            >
+          </div>
+          <h4>▸ Category</h4>
+          <div class="filter-group" data-filter="category">
+            <label
+              ><input type="checkbox" value="Technical Analysis" /> Technical
+              Analysis <span>2</span></label
+            >
+            <label
+              ><input type="checkbox" value="Financial Markets" /> Financial
+              Markets <span>2</span></label
+            >
+            <label
+              ><input type="checkbox" value="Trading Strategy" /> Trading
+              Strategy <span>1</span></label
+            >
+            <label
+              ><input type="checkbox" value="Forex Markets" /> Forex Markets
+              <span>2</span></label
+            >
+            <label
+              ><input type="checkbox" value="Risk Management" /> Risk Management
+              <span>1</span></label
+            >
+            <label
+              ><input type="checkbox" value="Stock Market Trading Course" />
+              Stock Market <span>1</span></label
+            >
+            <label
+              ><input type="checkbox" value="Trading Psychology" /> Trading
+              Psychology <span>1</span></label
+            >
+            <label
+              ><input type="checkbox" value="Trading Plan" /> Trading Plan
+              <span>1</span></label
+            >
+            <label
+              ><input type="checkbox" value="Sentiment Analysis" /> Sentiment
+              Analysis <span>1</span></label
+            >
+          </div>
+          <button class="clear-filters" id="clearFilters">
+            ✕ Clear filters
+          </button>
+        </aside>
+
+        <div class="course-grid-wrap">
+          <div class="grid" id="courseGrid"></div>
+          <div class="load-more-wrap">
+            <button class="load-btn" id="loadMoreBtn">
+              + Load more courses
+            </button>
+            <div class="no-more" id="noMoreMsg" style="display: none">
+              All courses loaded
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        const allCourses = [
+          {
+            id: 1,
+            title:
+              "Forex Trading Mastery: A Practical Guide to Consistent Profits",
+            category: "Day Trading",
+            level: "Intermediate",
+            priceType: "Paid",
+            price: "$1,000",
+            oldPrice: "$1,200",
+            duration: "2 Months",
+            img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85",
+            badge: "New",
+            badgeType: "new",
+          },
+          {
+            id: 2,
+            title:
+              "From Zero to Hero: Building Custom Indicators and Robots on MT4",
+            category: "Technical Analysis",
+            level: "Advanced",
+            priceType: "Paid",
+            price: "$500",
+            oldPrice: null,
+            duration: null,
+            img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 3,
+            title: "Forex Candlestick Patterns with High Win Rate",
+            category: "Forex Markets",
+            level: "Beginner",
+            priceType: "Free",
+            price: "Free",
+            oldPrice: null,
+            duration: "13 Minutes",
+            img: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=85",
+            badge: "Special",
+            badgeType: "special",
+          },
+          {
+            id: 4,
+            title: "Introduction to Forex Trading",
+            category: "Financial Markets",
+            level: "Beginner",
+            priceType: "Free",
+            price: "Free",
+            oldPrice: null,
+            duration: "15 Minutes",
+            img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 5,
+            title: "The Ultimate Support and Resistance Trading Course",
+            category: "Day Trading",
+            level: "Intermediate",
+            priceType: "Free",
+            price: "Free",
+            oldPrice: null,
+            duration: "40 Minutes",
+            img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 6,
+            title: "High Probability Order Block Trading Strategy",
+            category: "Day Trading",
+            level: "Advanced",
+            priceType: "Free",
+            price: "Free",
+            oldPrice: null,
+            duration: "30 Minutes",
+            img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 7,
+            title: "Advanced Risk Management for Traders",
+            category: "Risk Management",
+            level: "Advanced",
+            priceType: "Paid",
+            price: "$850",
+            oldPrice: "$1,100",
+            duration: "3 Weeks",
+            img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85",
+            badge: "New",
+          },
+          {
+            id: 8,
+            title: "Trading Psychology Mastery",
+            category: "Trading Psychology",
+            level: "Intermediate",
+            priceType: "Subscription",
+            price: "$25/mo",
+            oldPrice: null,
+            duration: "Self-paced",
+            img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 9,
+            title: "Sentiment Analysis for Forex & Stocks",
+            category: "Sentiment Analysis",
+            level: "Intermediate",
+            priceType: "Paid",
+            price: "$450",
+            oldPrice: "$600",
+            duration: "4 Hours",
+            img: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=85",
+            badge: "Special",
+            badgeType: "special",
+          },
+          {
+            id: 10,
+            title: "Stock Market Trading Course: From Zero",
+            category: "Stock Market Trading Course",
+            level: "Beginner",
+            priceType: "Free",
+            price: "Free",
+            oldPrice: null,
+            duration: "25 Minutes",
+            img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 11,
+            title: "Building a Solid Trading Plan",
+            category: "Trading Plan",
+            level: "Intermediate",
+            priceType: "Free",
+            price: "Free",
+            oldPrice: null,
+            duration: "18 Minutes",
+            img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 12,
+            title: "Technical Analysis: Advanced Indicators",
+            category: "Technical Analysis",
+            level: "Advanced",
+            priceType: "Paid",
+            price: "$700",
+            oldPrice: "$950",
+            duration: "6 Weeks",
+            img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 13,
+            title: "Financial Markets: Macro to Micro",
+            category: "Financial Markets",
+            level: "Intermediate",
+            priceType: "Free",
+            price: "Free",
+            oldPrice: null,
+            duration: "20 Minutes",
+            img: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+          {
+            id: 14,
+            title: "Order Flow Trading Strategy",
+            category: "Trading Strategy",
+            level: "Advanced",
+            priceType: "Paid",
+            price: "$1,200",
+            oldPrice: "$1,500",
+            duration: "2 Months",
+            img: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=85",
+            badge: "New",
+          },
+          {
+            id: 15,
+            title: "Forex Scalping for Beginners",
+            category: "Forex Markets",
+            level: "Beginner",
+            priceType: "Free",
+            price: "Free",
+            oldPrice: null,
+            duration: "12 Minutes",
+            img: "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=900&q=85",
+            badge: null,
+          },
+        ];
+
+        let visibleCount = 6;
+        const loadStep = 3;
+        let filteredCourses = [...allCourses];
+        let activeFilters = { level: [], price: [], category: [] };
+
+        const grid = document.getElementById("courseGrid");
+        const loadBtn = document.getElementById("loadMoreBtn");
+        const noMoreMsg = document.getElementById("noMoreMsg");
+
+        function countByFilter(type, value) {
+          return allCourses.filter((c) => {
+            if (type === "level") return c.level === value;
+            if (type === "price") return c.priceType === value;
+            if (type === "category") return c.category === value;
+            return false;
+          }).length;
+        }
+
+        function updateFilterCounts() {
+          document
+            .querySelectorAll('.filter-group[data-filter="level"] label')
+            .forEach((el) => {
+              const val = el.querySelector("input").value;
+              el.querySelector("span").textContent = countByFilter(
+                "level",
+                val,
+              );
+            });
+          document
+            .querySelectorAll('.filter-group[data-filter="price"] label')
+            .forEach((el) => {
+              const val = el.querySelector("input").value;
+              el.querySelector("span").textContent = countByFilter(
+                "price",
+                val,
+              );
+            });
+          document
+            .querySelectorAll('.filter-group[data-filter="category"] label')
+            .forEach((el) => {
+              const val = el.querySelector("input").value;
+              el.querySelector("span").textContent = countByFilter(
+                "category",
+                val,
+              );
+            });
+        }
+        updateFilterCounts();
+
+        function collectFilters() {
+          const filters = { level: [], price: [], category: [] };
+          document
+            .querySelectorAll(
+              '.filter-group[data-filter="level"] input:checked',
+            )
+            .forEach((cb) => filters.level.push(cb.value));
+          document
+            .querySelectorAll(
+              '.filter-group[data-filter="price"] input:checked',
+            )
+            .forEach((cb) => filters.price.push(cb.value));
+          document
+            .querySelectorAll(
+              '.filter-group[data-filter="category"] input:checked',
+            )
+            .forEach((cb) => filters.category.push(cb.value));
+          return filters;
+        }
+
+        function applyFilters() {
+          const f = collectFilters();
+          activeFilters = f;
+          filteredCourses = allCourses.filter((c) => {
+            if (f.level.length && !f.level.includes(c.level)) return false;
+            if (f.price.length && !f.price.includes(c.priceType)) return false;
+            if (f.category.length && !f.category.includes(c.category))
+              return false;
+            return true;
+          });
+          visibleCount = Math.min(6, filteredCourses.length);
+          renderGrid();
+          updateLoadMoreState();
+        }
+
+        function renderGrid() {
+          const visible = filteredCourses.slice(0, visibleCount);
+          if (visible.length === 0) {
+            grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:44px 0; color:#8b94a3; font-weight:500;">No courses match your filters.</div>`;
+            return;
+          }
+          grid.innerHTML = visible
+            .map((c) => {
+              const badgeHtml = c.badge
+                ? `<span class="badge ${c.badgeType === "special" ? "special" : ""}">${c.badge}</span>`
+                : "";
+              const oldPriceHtml = c.oldPrice
+                ? `<span class="old-price">${c.oldPrice}</span>`
+                : "";
+              const priceHtml =
+                c.priceType === "Free"
+                  ? `<span class="free">Free</span>`
+                  : `<span class="price">${c.price}</span>`;
+              const durationHtml = c.duration
+                ? `
+          <div class="duration">
+            <span class="clock-icon"></span> ${c.duration}
+          </div>`
+                : `<div class="duration"></div>`;
+
+              return `
+          <article class="card" data-id="${c.id}">
+            <div class="card-img">
+              <img src="${c.img}" alt="${c.title}" loading="lazy">
+              ${badgeHtml}
+            </div>
+            <div class="card-body">
+              <div class="category">${c.category}</div>
+              <h3 class="card-title">${c.title}</h3>
+              <div class="divider"></div>
+              <div class="meta">
+                ${durationHtml}
+                <div class="price-area">
+                  ${oldPriceHtml}
+                  ${priceHtml}
+                </div>
+              </div>
+              <button class="preview-btn"><i>◆</i> Preview this course</button>
+            </div>
+          </article>
+        `;
+            })
+            .join("");
+        }
+
+        function updateLoadMoreState() {
+          const total = filteredCourses.length;
+          if (visibleCount >= total) {
+            loadBtn.style.display = "none";
+            noMoreMsg.style.display = "block";
+          } else {
+            loadBtn.style.display = "inline-flex";
+            noMoreMsg.style.display = "none";
+          }
+        }
+
+        function loadMore() {
+          const total = filteredCourses.length;
+          const next = visibleCount + loadStep;
+          visibleCount = Math.min(next, total);
+          renderGrid();
+          updateLoadMoreState();
+        }
+
+        function clearFilters() {
+          document
+            .querySelectorAll('.filter-group input[type="checkbox"]')
+            .forEach((cb) => (cb.checked = false));
+          applyFilters();
+        }
+
+        document
+          .querySelectorAll('.filter-group input[type="checkbox"]')
+          .forEach((cb) => {
+            cb.addEventListener("change", applyFilters);
+          });
+        document
+          .getElementById("clearFilters")
+          .addEventListener("click", clearFilters);
+        loadBtn.addEventListener("click", loadMore);
+
+        document.addEventListener(
+          "mousemove",
+          function (e) {
+            const cards = document.querySelectorAll(".card");
+            cards.forEach((card) => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              if (x >= 0 && y >= 0 && x <= rect.width && y <= rect.height) {
+                const rotateX = (y / rect.height - 0.5) * -2.2;
+                const rotateY = (x / rect.width - 0.5) * 2.2;
+                card.style.transform = `translateY(-5px) perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+              } else {
+                card.style.transform = `translateY(0) perspective(900px) rotateX(0) rotateY(0)`;
+              }
+            });
+          },
+          { passive: true },
+        );
+
+        applyFilters();
+
+        document.addEventListener("click", function (e) {
+          if (
+            e.target.classList.contains("preview-btn") ||
+            e.target.closest(".preview-btn")
+          ) {
+            const btn = e.target.closest(".preview-btn");
+            const title =
+              btn?.closest(".card-body")?.querySelector(".card-title")
+                ?.innerText || "Course";
+            alert(`Preview: "${title}"`);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
