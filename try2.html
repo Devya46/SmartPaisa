@@ -1,16 +1,21 @@
+<!-- -------hero-------  -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Money 24/7 · Premium</title>
-    <!-- Font Awesome 6 (free) -->
+    <title>Built for Serious Traders</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+
     <style>
-      /* ----- reset & base ----- */
       * {
         margin: 0;
         padding: 0;
@@ -18,517 +23,655 @@
       }
 
       body {
-        background: #050505;
-        font-family: "Poppins", Arial, sans-serif !important;
+        background: #000;
+        font-family: "Inter", sans-serif;
+        color: #fff;
+        overflow-x: hidden;
       }
 
-      /* ==========================================
-       SMART MONEY 24/7 SECTION  (premium)
-    ========================================== */
-      .smart-money-section {
-        width: 100%;
+      .about {
+        padding: 80px 20px 70px;
+        max-width: 1250px;
+        margin: auto;
+      }
+
+      /* ----- text base (hidden until animated) ----- */
+      .sub,
+      .title,
+      .desc {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+        will-change: transform, opacity;
+      }
+
+      .sub {
+        color: #a8b4cc;
+        font-size: 15px;
+        text-align: center;
+        margin-bottom: 14px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+
+      .title {
+        font-size: clamp(34px, 6vw, 60px);
+        font-weight: 600;
+        text-align: center;
+        line-height: 1.2;
+        margin-bottom: 16px;
+        background: linear-gradient(135deg, #ffffff 30%, #f8d951 80%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .desc {
+        text-align: center;
+        color: #c4cad4;
+        font-size: 18px;
+        margin-bottom: 60px;
+      }
+
+      /* ----- hero image (hidden until animated) ----- */
+      .hero {
         position: relative;
         overflow: hidden;
-        background: #050505;
-        padding: 85px 90px;
-        color: #ffffff;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 80px rgba(255, 255, 255, 0.05);
+        transition:
+          box-shadow 0.4s,
+          transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        opacity: 0;
+        transform: translateY(50px) scale(0.99);
+        will-change: transform, opacity;
       }
 
-      /* CONTAINER */
-      .smart-money-container {
-        width: min(1740px, 92%);
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 48% 52%;
-        align-items: center;
-        gap: 30px;
+      .hero.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
-      /* ==========================================
-       LEFT VIDEO
-    ========================================== */
-      .smart-money-video-area {
-        position: relative;
-        min-height: 650px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .hero:hover {
+        box-shadow: 0 30px 100px rgba(74, 145, 255, 0.15);
       }
 
-      /* GOLDEN ACCENT BAR (instead of pink) */
-      .smart-money-accent {
-        position: absolute;
-        left: 0;
-        top: 7%;
-        bottom: 7%;
-        width: 25px;
-        background: linear-gradient(180deg, #f7b32b, #d99f1a);
-        border-radius: 0 10px 10px 0;
-        box-shadow: 0 0 40px rgba(247, 179, 43, 0.35);
-        z-index: 2;
-      }
-
-      /* VIDEO WRAP */
-      .smart-money-video-wrap {
-        position: relative;
-        width: 82%;
-        height: 590px;
-        overflow: hidden;
-        border-radius: 20px;
-        background: #0a0a0a;
-        border: 1px solid rgba(255, 215, 0, 0.12);
-        box-shadow:
-          0 30px 80px rgba(0, 0, 0, 0.7),
-          0 0 0 1px rgba(247, 179, 43, 0.08);
-      }
-
-      .smart-money-video {
+      .hero img {
         width: 100%;
-        height: 100%;
         display: block;
+        height: 630px;
         object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.1);
       }
 
-      /* subtle overlay */
-      .smart-money-video-wrap::after {
+      /* .hero:hover img {
+        transform: scale(1.02);
+      } */
+
+      .glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(74, 145, 255, 0.18),
+          transparent 45%
+        );
+        pointer-events: none;
+        transition: opacity 0.5s;
+        opacity: 0.4;
+      }
+
+      /* .hero:hover .glow {
+        opacity: 0.8;
+      } */
+
+      /* ----- stats cardsss (hidden until animated) ----- */
+      .stats {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .cardss {
+        height: 170px;
+        background: #0b0b0b;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        position: relative;
+        display: flex;
+        padding: 25px;
+        justify-content: space-between;
+        align-items: flex-end;
+        transition:
+          transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1),
+          border-color 0.3s,
+          box-shadow 0.4s;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transform: translateY(40px);
+        will-change: transform, opacity;
+        overflow: hidden;
+      }
+
+      .cardss::before {
         content: "";
         position: absolute;
         inset: 0;
         background: radial-gradient(
-          circle at 20% 30%,
-          rgba(247, 179, 43, 0.02),
-          rgba(0, 0, 0, 0.25)
+          circle at bottom center,
+          rgb(255 255 255) 0%,
+          rgb(255 255 255) 20%,
+          rgb(255 255 255 / 25%) 40%,
+          #000000 70%
         );
+        filter: blur(58px);
+        transform: translateY(45%);
         pointer-events: none;
       }
 
-      /* ==========================================
-       TRUST CARD  (golden touch)
-    ========================================== */
-      .smart-money-trust-card {
+      .cardss.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .cardss:hover {
+        /* transform: translateY(-8px) scale(1.01); */
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.8),
+          0 0 0 1px rgba(74, 145, 255, 0.1);
+      }
+
+      .cardss:active {
+        transform: scale(0.98);
+        transition-duration: 0.1s;
+      }
+
+      .top {
         position: absolute;
-        right: 2%;
-        bottom: 2%;
-        width: 242px;
-        min-height: 105px;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        padding: 25px 30px;
-        background: rgba(255, 255, 255, 0.97);
-        border-radius: 14px;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-        z-index: 5;
-        border-left: 5px solid #f7b32b;
-      }
-
-      .trust-icon {
-        width: 65px;
-        height: 65px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 34px;
-        /* golden icon */
-        background: linear-gradient(145deg, #f7b32b, #d99f1a);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .trust-text {
+        top: 20px;
+        left: 20px;
         display: flex;
         flex-direction: column;
-        line-height: 1.25;
+        gap: 6px;
+        z-index: 2;
       }
 
-      .trust-text strong {
-        font-size: 19px;
-        font-weight: 800;
-        color: #111111;
-      }
-
-      .trust-text span {
-        font-size: 18px;
+      .label {
+        font-size: 15px;
+        color: #d2d8e4;
         font-weight: 600;
-        color: #111111;
-      }
-
-      /* ==========================================
-       RIGHT CONTENT  (golden + premium)
-    ========================================== */
-      .smart-money-content {
-        padding-left: 20px;
-        padding-right: 30px;
-      }
-
-      .smart-money-small-title {
-        margin-bottom: 20px;
-        font-size: 21px;
-        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
         letter-spacing: 0.2px;
-        /* golden gradient text */
-        background: linear-gradient(145deg, #f7b32b, #d99f1a);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: inline-block;
       }
 
-      /* HEADING */
-      .smart-money-content h2 {
-        margin: 0;
-        font-size: clamp(45px, 4vw, 67px);
-        line-height: 1.12;
-        font-weight: 500;
-        letter-spacing: -2px;
-        color: #f5f5f7;
+      .label i {
+        font-size: 16px;
+        color: #5f7aff;
+        width: 20px;
+        text-align: center;
+        transition: transform 0.2s;
       }
 
-      .smart-money-content h2 span {
-        /* golden "24/7" */
-        background: linear-gradient(145deg, #f7b32b, #d99f1a);
+      .number {
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, #f0f4ff, #b0c8ff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
-      .smart-money-description {
-        max-width: 750px;
-        margin: 26px 0 30px;
-        font-size: 19px;
-        line-height: 1.9;
-        font-weight: 400;
-        color: #b8b8c0;
-      }
-
-      /* ==========================================
-       FEATURES  (golden checks)
-    ========================================== */
-      .smart-money-features {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 46px;
-      }
-
-      .smart-money-feature {
-        display: flex;
-        align-items: center;
-        gap: 25px;
-        font-size: 18px;
-        line-height: 1.5;
-        color: #d0d0d8;
-      }
-
-      .feature-check {
-        width: 22px;
-        height: 22px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1.5px solid #f7b32b;
-        border-radius: 50%;
-        color: #f7b32b;
-        font-size: 10px;
-        background: rgba(247, 179, 43, 0.04);
-        transition: 0.2s;
-      }
-
-      .smart-money-feature:hover .feature-check {
-        background: #f7b32b;
-        color: #0a0a0a;
-        border-color: #f7b32b;
-      }
-
-      /* ==========================================
-       BUTTON  (premium golden / blue hover)
-    ========================================== */
-      .more-btn {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 248px;
-        height: 53px;
-        padding: 0 36px;
-        overflow: hidden;
-        border: none;
-        border-radius: 60px;
-        background: #80808000;
-        color: white !important;
-        text-decoration: none;
-        font-size: 14px;
-        letter-spacing: 1.4px;
-        z-index: 1;
-        transition: 0.35s ease;
-        border: 1px solid #fafafa87;
-        margin-left: 14px;
-      }
-
-      .more-btn span {
-        position: relative;
-        z-index: 3;
-        color: #ffffff;
-      }
-
-      /* blue hover layer (premium) */
-      .more-btn::before {
-        content: "";
+      .cardss img {
         position: absolute;
-        inset: 0;
-        transform: translateX(-100%);
-        background: linear-gradient(90deg, #0a66c2, #1487ff);
-        transition: 0.4s ease;
-        z-index: -1;
-        border-radius: 60px;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        opacity: 0.7;
+        filter: drop-shadow(0 0 12px rgba(74, 145, 255, 0.15));
+        z-index: 1;
       }
 
-      .more-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 40px rgba(20, 135, 255, 0.35);
-        border-color: transparent;
-      }
+      /* .cardss:hover img {
+        transform: scale(1.04) rotate(-1deg);
+      } */
 
-      .more-btn:hover::before {
-        transform: translateX(0);
-      }
-
-      .more-btn:hover span {
-        color: #ffffff;
-      }
-
-      /* ==========================================
-       RESPONSIVE
-    ========================================== */
-      @media (max-width: 1200px) {
-        .smart-money-container {
-          grid-template-columns: 1fr 1fr;
+      /* ----- responsive ----- */
+      @media (max-width: 991px) {
+        .hero img {
+          height: 420px;
         }
-        .smart-money-video-wrap {
-          width: 86%;
-          height: 520px;
-        }
-        .smart-money-video-area {
-          min-height: 580px;
-        }
-        .smart-money-trust-card {
-          width: 310px;
-        }
-        .smart-money-content h2 {
-          font-size: 48px;
-        }
-        .smart-money-description {
-          font-size: 17px;
-          margin-top: 35px;
-        }
-      }
-
-      @media (max-width: 900px) {
-        .smart-money-section {
-          padding: 70px 0;
-        }
-        .smart-money-container {
+        .stats {
           grid-template-columns: 1fr;
-          gap: 65px;
         }
-        .smart-money-content {
-          padding: 0;
+        .cardss {
+          height: 160px;
         }
-        .smart-money-video-area {
-          min-height: 570px;
+        .number {
+          font-size: 42px;
         }
-        .smart-money-video-wrap {
-          width: 85%;
+        .cardss img {
+          height: 90%;
+          right: 4px;
+          bottom: 4px;
+        }
+        .label {
+          font-size: 14px;
         }
       }
 
       @media (max-width: 600px) {
-        .smart-money-section {
-          padding: 55px 0;
+        .about {
+          padding: 95px 16px 20px;
         }
-        .smart-money-container {
-          width: 90%;
+        .title {
+          font-size: 32px;
         }
-        .smart-money-video-area {
-          min-height: 430px;
+        .desc {
+          font-size: 16px;
+          margin-bottom: 40px;
         }
-        .smart-money-video-wrap {
-          width: 87%;
-          height: 390px;
-          border-radius: 15px;
+        .hero img {
+          height: 260px;
         }
-        .smart-money-accent {
-          width: 14px;
-          top: 5%;
-          bottom: 5%;
+        .cardss {
+          height: 140px;
+          padding: 18px;
         }
-        .smart-money-trust-card {
+        .number {
+          font-size: 34px;
+        }
+        .top {
+          top: 14px;
+          left: 16px;
+        }
+        .label {
+          font-size: 13px;
+          gap: 6px;
+        }
+        .label i {
+          font-size: 14px;
+          width: 18px;
+        }
+        .cardss img {
+          height: 80%;
           right: 0;
           bottom: 0;
-          width: 270px;
-          min-height: 90px;
-          padding: 16px 18px;
-          gap: 12px;
-        }
-        .trust-icon {
-          width: 45px;
-          height: 45px;
-          font-size: 24px;
-        }
-        .trust-text strong,
-        .trust-text span {
-          font-size: 14px;
-        }
-        .smart-money-small-title {
-          font-size: 17px;
-        }
-        .smart-money-content h2 {
-          font-size: 39px;
-          letter-spacing: -1px;
-        }
-        .smart-money-description {
-          margin: 30px 0;
-          font-size: 16px;
-          line-height: 1.75;
-        }
-        .smart-money-features {
-          gap: 16px;
-          margin-bottom: 35px;
-        }
-        .smart-money-feature {
-          gap: 15px;
-          font-size: 15px;
-        }
-        .more-btn {
-          width: 100%;
-          min-width: 0;
-          height: 60px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- ============================================================
-     SMART MONEY 24/7 SECTION  (golden premium)
-     ============================================================ -->
-    <section class="smart-money-section">
-      <div class="smart-money-container">
-        <!-- ========== LEFT VIDEO ========== -->
-        <div class="smart-money-video-area">
-          <div class="smart-money-accent"></div>
+    <section class="about">
+      <div class="sub">
+        <i class="fas fa-flag" style="margin-right: 6px; opacity: 0.7"></i>
+        About Edu Stockx
+      </div>
+      <h1 class="title">Built for Serious Traders</h1>
+      <div class="desc">
+        <i
+          class="fas fa-chart-line"
+          style="margin-right: 8px; opacity: 0.6"
+        ></i>
+        Making trading accessible through a simulated environment
+      </div>
 
-          <div class="smart-money-video-wrap">
-            <video class="smart-money-video" autoplay muted loop playsinline>
-              <!-- replace with your actual video -->
-              <source
-                src="https://www.pexels.com/download/video/35606120/"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+      <div class="hero">
+        <div class="glow"></div>
+        <img
+          src="images/company-1.png"
+          alt="Trading dashboard"
+          loading="lazy"
+        />
+      </div>
 
-          <!-- TRUST CARD (golden icon) -->
-          <div class="smart-money-trust-card">
-            <!-- <div class="trust-icon">
-              <i class="fa-solid fa-chart-line"></i>
-            </div> -->
-            <div class="trust-text">
-              <strong>Trusted by 5000+</strong>
-              <span>global customers</span>
-            </div>
+      <div class="stats">
+        <div class="cardss">
+          <div class="top">
+            <div class="label"><i class="fas fa-calendar-alt"></i> Since</div>
+            <div class="number">2021</div>
           </div>
+          <img
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085313/people1.png"
+            alt="team icon"
+            loading="lazy"
+          />
         </div>
 
-        <!-- ========== RIGHT CONTENT ========== -->
-        <div class="smart-money-content">
-          <div class="smart-money-small-title">Learn To Trade Like A Pro.</div>
-
-          <h2>
-            Welcome to Smart Money
-            <span>24/7</span>
-          </h2>
-
-          <p class="smart-money-description">
-            You will learn Critical Thinking, Technical Analysis, Advanced Risk
-            Management, Sentiment Analysis, Proper Trading &amp; Investment
-            Psychology and Fundamental Analysis with our 100% practical
-            financial markets trading courses.
-          </p>
-
-          <!-- FEATURES with golden checks -->
-          <div class="smart-money-features">
-            <div class="smart-money-feature">
-              <span class="feature-check"
-                ><i class="fa-solid fa-check"></i
-              ></span>
-              <span>Get unlimited access to our top trading courses</span>
-            </div>
-
-            <div class="smart-money-feature">
-              <span class="feature-check"
-                ><i class="fa-solid fa-check"></i
-              ></span>
-              <span>Explore a variety of financial educational topics</span>
-            </div>
-
-            <div class="smart-money-feature">
-              <span class="feature-check"
-                ><i class="fa-solid fa-check"></i
-              ></span>
-              <span
-                >Learn from experienced teachers and profitable traders</span
-              >
-            </div>
-
-            <div class="smart-money-feature">
-              <span class="feature-check"
-                ><i class="fa-solid fa-check"></i
-              ></span>
-              <span>Grow your wealth with reliable trading strategies</span>
-            </div>
+        <div class="cardss">
+          <div class="top">
+            <div class="label"><i class="fas fa-users"></i> Team Members</div>
+            <div class="number">100+</div>
           </div>
+          <img
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085314/people2.png"
+            alt="team icon"
+            loading="lazy"
+          />
+        </div>
 
-          <!-- CTA  (golden → blue on hover) -->
-          <a href="#courses" class="more-btn">
-            <span>VIEW ALL COURSES</span>
-          </a>
+        <div class="cardss">
+          <div class="top">
+            <div class="label">
+              <i class="fas fa-globe-americas"></i> Countries Served
+            </div>
+            <div class="number">13+</div>
+          </div>
+          <img
+            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085315/people3.png"
+            alt="world icon"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-     SCRIPT  (video autoplay + subtle button interaction)
-     ============================================================ -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const video = document.querySelector(".smart-money-video");
-        if (video) {
-          video.muted = true;
-          const playVideo = () => {
-            video.play().catch(() => {
-              // autoplay prevented – fine
-            });
-          };
-          playVideo();
-          document.addEventListener("visibilitychange", () => {
-            if (!document.hidden) playVideo();
+      (function () {
+        // ----- select all animated elements -----
+        const sub = document.querySelector(".sub");
+        const title = document.querySelector(".title");
+        const desc = document.querySelector(".desc");
+        const hero = document.querySelector(".hero");
+        const cardsss = document.querySelectorAll(".cardss");
+
+        // ----- intersection observer: trigger animation every time section appears -----
+        const section = document.querySelector(".about");
+
+        // reset function: remove visible class and reset inline styles for clean re-animation
+        function resetElements() {
+          // text elements: reset to hidden state
+          [sub, title, desc].forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+          });
+          // hero
+          hero.classList.remove("visible");
+          hero.style.opacity = "0";
+          hero.style.transform = "translateY(50px) scale(0.99)";
+          // cardsss
+          cardsss.forEach((cardss) => {
+            cardss.classList.remove("visible");
+            cardss.style.opacity = "0";
+            cardss.style.transform = "translateY(40px)";
           });
         }
 
-        // button micro interaction (already in css, but keep for consistency)
-        document.querySelectorAll(".more-btn").forEach((btn) => {
-          btn.addEventListener("mouseenter", () => {
-            btn.style.transform = "translateY(-3px)";
+        // animate all elements with staggered delays
+        function animateAll() {
+          // text: stagger
+          setTimeout(() => {
+            sub.style.opacity = "1";
+            sub.style.transform = "translateY(0)";
+          }, 80);
+          setTimeout(() => {
+            title.style.opacity = "1";
+            title.style.transform = "translateY(0)";
+          }, 180);
+          setTimeout(() => {
+            desc.style.opacity = "1";
+            desc.style.transform = "translateY(0)";
+          }, 280);
+
+          // hero
+          setTimeout(() => {
+            hero.classList.add("visible");
+            hero.style.opacity = "1";
+            hero.style.transform = "translateY(0) scale(1)";
+          }, 380);
+
+          // cardsss with stagger
+          cardsss.forEach((cardss, index) => {
+            setTimeout(
+              () => {
+                cardss.classList.add("visible");
+                cardss.style.opacity = "1";
+                cardss.style.transform = "translateY(0)";
+              },
+              480 + index * 150,
+            );
           });
-          btn.addEventListener("mouseleave", () => {
-            btn.style.transform = "translateY(0)";
+        }
+
+        // observer for section visibility – triggers reset + animate each time
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                resetElements();
+                animateAll();
+              }
+            });
+          },
+          {
+            threshold: 0.15,
+            rootMargin: "0px 0px -20px 0px", // slight offset to avoid flicker
+          },
+        );
+
+        observer.observe(section);
+
+        // also observe cardsss & hero individually just in case (but section observer is primary)
+        // plus hover icon pulse (non‑intrusive)
+        document.querySelectorAll(".cardss").forEach((cardss) => {
+          cardss.addEventListener("mouseenter", function (e) {
+            const icon = this.querySelector(".label i");
+            if (icon) icon.style.transform = "scale(1.2)";
+          });
+          cardss.addEventListener("mouseleave", function (e) {
+            const icon = this.querySelector(".label i");
+            if (icon) icon.style.transform = "scale(1)";
           });
         });
-      });
+
+        // ensure that if any element is stuck hidden (edge case), force visible on first load
+        // but we rely on observer, however we set a tiny fallback:
+        setTimeout(() => {
+          // if section is visible at load, observer will trigger; if not, nothing.
+          // but if observer missed due to threshold, we manually check once.
+          const rect = section.getBoundingClientRect();
+          const winHeight =
+            window.innerHeight || document.documentElement.clientHeight;
+          if (rect.top < winHeight - 100 && rect.bottom > 0) {
+            // section is visible, but maybe observer didn't fire? we re-trigger
+            resetElements();
+            animateAll();
+          }
+        }, 400);
+      })();
     </script>
+  </body>
+</html>
+
+<!-- -----we------ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edu Stocks · About</title>
+    <!-- Inter font (clean, modern) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000;
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .about-section {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 70px 89px 10px;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+
+      .left h2 {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #ffffff 30%, #fad844 80%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        padding: 10px 31px;
+      }
+
+      .right h3 {
+        font-size: 32px;
+        line-height: 1.25;
+        font-weight: 500;
+        color: #f1e18a;
+        margin-bottom: 18px;
+        max-width: 1000px;
+        letter-spacing: -0.01em;
+        font-family: "Edu NSW ACT Cursive", cursive;
+      }
+
+      .right p {
+        font-size: 19px;
+        line-height: 1.8;
+        color: #c5c5c5;
+        margin-bottom: 16px;
+        max-width: 1100px;
+      }
+
+      .right p:last-of-type {
+        margin-bottom: 0;
+      }
+
+      /* ---------- responsive breakpoints ---------- */
+
+      /* large tablet / small desktop */
+      @media (max-width: 1200px) {
+        .about-section {
+          grid-template-columns: 280px 1fr;
+          gap: 60px;
+          padding: 90px 24px 70px;
+        }
+        .left h2 {
+          font-size: 52px;
+        }
+        .right h3 {
+          /* font-size: 40px; */
+        }
+        .right p {
+          font-size: 24px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .about-section {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 80px 24px 60px;
+        }
+        .left h2 {
+          font-size: 48px;
+        }
+        .right h3 {
+          font-size: 34px;
+          max-width: 100%;
+        }
+        .right p {
+          font-size: 20px;
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 650px) {
+        .about-section {
+          padding: 60px 29px 50px;
+          gap: 28px;
+          text-align: center;
+        }
+        .left h2 {
+          font-size: 40px;
+        }
+        .right h3 {
+          font-size: 28px;
+          margin-bottom: 28px;
+          line-height: 1.3;
+        }
+        .right p {
+          font-size: 18px;
+          line-height: 1.7;
+          margin-bottom: 20px;
+        }
+      }
+
+      /* tiny screens */
+      @media (max-width: 400px) {
+        .left h2 {
+          font-size: 34px;
+        }
+        .right h3 {
+          font-size: 24px;
+        }
+        .right p {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- about section -->
+    <section class="about-section">
+      <div class="left">
+        <h2>Who We Are</h2>
+      </div>
+
+      <div class="right">
+        <!-- <h3>
+          Edu Stocks started with a simple and powerful mission: to help
+          aspiring traders and investors build lasting financial knowledge.
+        </h3> -->
+
+        <p>
+          At EduStockx, we believe successful trading is not about chasing every
+          candle. It is about patience, discipline, risk management and
+          understanding why the market moves.
+          <br />Secret Candle AI is not created to make gamblers. It is created
+          to train disciplined traders who respect the market.
+        </p>
+
+        <p>
+          The future of trading is not prediction. The future is preparation
+          with intelligent analysis.
+        </p>
+        <p>Our Philosophy:</p>
+        <h3 style="font-style: italic">
+          "Anyone can copy a strategy, but they cannot copy the mindset behind
+          it."
+        </h3>
+      </div>
+    </section>
   </body>
 </html>
