@@ -1,20 +1,21 @@
-<!-- -------hero-------  -->
+<!-- ---------form------ -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Built for Serious Traders</title>
-
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Luxury Estates | Kirti Inquiry — Art of Living</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-
     <style>
       * {
         margin: 0;
@@ -22,656 +23,680 @@
         box-sizing: border-box;
       }
 
-      body {
-        background: #000;
+      .body-form {
+        background: white;
         font-family: "Inter", sans-serif;
-        color: #fff;
-        overflow-x: hidden;
-      }
-
-      .about {
-        padding: 80px 20px 70px;
-        max-width: 1250px;
-        margin: auto;
-      }
-
-      /* ----- text base (hidden until animated) ----- */
-      .sub,
-      .title,
-      .desc {
-        opacity: 0;
-        transform: translateY(30px);
-        transition:
-          opacity 0.8s ease,
-          transform 0.8s ease;
-        will-change: transform, opacity;
-      }
-
-      .sub {
-        color: #a8b4cc;
-        font-size: 15px;
-        text-align: center;
-        margin-bottom: 14px;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-      }
-
-      .title {
-        font-size: clamp(34px, 6vw, 60px);
-        font-weight: 600;
-        text-align: center;
-        line-height: 1.2;
-        margin-bottom: 16px;
-        background: linear-gradient(135deg, #ffffff 30%, #f8d951 80%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-
-      .desc {
-        text-align: center;
-        color: #c4cad4;
-        font-size: 18px;
-        margin-bottom: 60px;
-      }
-
-      /* ----- hero image (hidden until animated) ----- */
-      .hero {
-        position: relative;
-        overflow: hidden;
-        border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 20px 80px rgba(255, 255, 255, 0.05);
-        transition:
-          box-shadow 0.4s,
-          transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-        opacity: 0;
-        transform: translateY(50px) scale(0.99);
-        will-change: transform, opacity;
-      }
-
-      .hero.visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-
-      .hero:hover {
-        box-shadow: 0 30px 100px rgba(74, 145, 255, 0.15);
-      }
-
-      .hero img {
-        width: 100%;
-        display: block;
-        height: 630px;
-        object-fit: cover;
-        transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-      }
-
-      /* .hero:hover img {
-        transform: scale(1.02);
-      } */
-
-      .glow {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at top right,
-          rgba(74, 145, 255, 0.18),
-          transparent 45%
-        );
-        pointer-events: none;
-        transition: opacity 0.5s;
-        opacity: 0.4;
-      }
-
-      /* .hero:hover .glow {
-        opacity: 0.8;
-      } */
-
-      /* ----- stats cardsss (hidden until animated) ----- */
-      .stats {
-        margin-top: 18px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-      }
-
-      .cardss {
-        height: 170px;
-        background: #0b0b0b;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px;
-        position: relative;
-        display: flex;
-        padding: 25px;
-        justify-content: space-between;
-        align-items: flex-end;
-        transition:
-          transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1),
-          border-color 0.3s,
-          box-shadow 0.4s;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-        opacity: 0;
-        transform: translateY(40px);
-        will-change: transform, opacity;
-        overflow: hidden;
-      }
-
-      .cardss::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at bottom center,
-          rgb(255 255 255) 0%,
-          rgb(255 255 255) 20%,
-          rgb(255 255 255 / 25%) 40%,
-          #000000 70%
-        );
-        filter: blur(58px);
-        transform: translateY(45%);
-        pointer-events: none;
-      }
-
-      .cardss.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .cardss:hover {
-        /* transform: translateY(-8px) scale(1.01); */
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow:
-          0 20px 40px rgba(0, 0, 0, 0.8),
-          0 0 0 1px rgba(74, 145, 255, 0.1);
-      }
-
-      .cardss:active {
-        transform: scale(0.98);
-        transition-duration: 0.1s;
-      }
-
-      .top {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        z-index: 2;
-      }
-
-      .label {
-        font-size: 15px;
-        color: #d2d8e4;
-        font-weight: 600;
         display: flex;
         align-items: center;
-        gap: 8px;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 0;
+      }
+
+      /* main luxury card */
+      .luxury-card {
+        max-width: 1545px;
+        width: 100%;
+        background: #ffffff;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .form-grid {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      /* LEFT: image stack exactly as original structure (two images stacked vertically) */
+      .visual-side {
+        flex: 1.2;
+        /* background: #fbf9f6; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        margin-bottom: 111px;
+      }
+
+      .shape-image {
+        position: relative;
+        width: 100%;
+        max-width: 780px;
+        margin: 0 auto;
+      }
+
+      .shape-image .main-img {
+        display: block;
+        width: 100%;
+        height: 42rem;
+        object-fit: cover;
+      }
+
+      .shape-image .frame-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+
+        filter: sepia(100%) saturate(1000%) hue-rotate(355deg) brightness(1.2)
+          contrast(1.15);
+      }
+
+      @media (max-width: 768px) {
+        .shape-image {
+          max-width: 500px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .shape-image {
+          max-width: 100%;
+        }
+      }
+      /* RIGHT SIDE: form with refined spacing */
+      .form-side {
+        flex: 1;
+        /* background: #ffebc57d; */
+        padding: 2.5rem 2.5rem 2.5rem 1.8rem;
+      }
+
+      .form-container {
+        max-width: 560px;
+        margin-left: 0.5rem;
+      }
+
+      .badge-club {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #f3efe8;
+        padding: 0.35rem 1.2rem;
+        border-radius: 60px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #c5850d; /* accent gold */
+        text-transform: uppercase;
+        margin-bottom: 1.2rem;
+      }
+
+      .badge-club i {
+        font-size: 0.7rem;
+        color: #c5850d;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #1f2c2e;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.6rem;
+        line-height: 1.2;
+      }
+
+      .subhead {
+        color: #5f6c6a;
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 1.45;
+        margin-bottom: 2rem;
+        border-left: 3px solid #c5850d;
+        padding-left: 1rem;
+      }
+
+      /* form elements */
+      .input-group {
+        margin-bottom: 1.3rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: #8b7a66;
+        margin-bottom: 0.45rem;
+      }
+
+      .req-star {
+        color: #c5850d;
+        margin-left: 2px;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.9rem 1.1rem;
+        border: 1px solid #e7e2da;
+        border-radius: 1.25rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        background: #fefcf9;
+        transition: all 0.25s ease;
+        outline: none;
+        color: #2b2b28;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #c5850d;
+        box-shadow: 0 0 0 3px rgba(197, 133, 13, 0.2);
+        background: #ffffff;
+      }
+
+      /* phone row */
+      .phone-row {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+      }
+      .phone-prefix {
+        width: 80px;
+        flex-shrink: 0;
+      }
+      .phone-number {
+        flex: 1;
+      }
+
+      /* TWO COLUMN LAYOUT: select service + service option side by side, and budget + message side by side */
+      .row-duo {
+        display: flex;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.2rem;
+      }
+      .row-duo .input-group {
+        flex: 1;
+        min-width: 160px;
+        margin-bottom: 1.3rem;
+      }
+
+      select {
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%238b7a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+        background-repeat: no-repeat;
+        background-position: right 1.2rem center;
+        background-size: 14px;
+      }
+
+      .submit-btn {
+        background: #c5850d;
+        color: white;
+        border: none;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 3rem;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        margin-top: 0.5rem;
+        font-family: "Inter", sans-serif;
+        box-shadow: 0 6px 14px rgba(197, 133, 13, 0.2);
+      }
+
+      .submit-btn:hover {
+        background: #9e6b0b;
+        transform: translateY(-2px);
+        box-shadow: 0 18px 28px -10px rgba(197, 133, 13, 0.4);
+      }
+
+      .footnote {
+        font-size: 0.7rem;
+        text-align: center;
+        margin-top: 1.2rem;
+        color: #b2a48f;
         letter-spacing: 0.2px;
       }
 
-      .label i {
-        font-size: 16px;
-        color: #5f7aff;
-        width: 20px;
-        text-align: center;
+      /* toast message */
+      .toast-msg {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1f2c2e;
+        color: #fef3e4;
+        padding: 0.8rem 2rem;
+        border-radius: 60px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        z-index: 1100;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(6px);
+        transition: opacity 0.2s ease;
+        pointer-events: none;
+        white-space: nowrap;
+      }
+
+      /* responsiveness */
+      @media (max-width: 1000px) {
+        .form-side {
+          padding: 2rem 1.8rem;
+        }
+        .form-container {
+          margin-left: 0;
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .form-grid {
+          flex-direction: column;
+        }
+        .visual-side {
+          padding: 2rem 1.8rem;
+        }
+        .row-duo {
+          flex-direction: column;
+          gap: 0;
+        }
+        .row-duo .input-group {
+          margin-bottom: 1.3rem;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        .phone-row {
+          flex-wrap: wrap;
+        }
+        .phone-prefix {
+          width: 100%;
+        }
+        .phone-number {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 550px) {
+        .body-form {
+          padding: 1rem;
+        }
+        .luxury-card {
+          border-radius: 1.5rem;
+        }
+        .form-side {
+          padding: 1.6rem;
+        }
+        .toast-msg {
+          white-space: normal;
+          width: 85%;
+          text-align: center;
+          font-size: 0.75rem;
+          padding: 0.7rem 1.2rem;
+        }
+        .visual-side {
+          padding: 1.5rem;
+        }
+      }
+
+      /* additional luxury touches */
+      .submit-btn i {
         transition: transform 0.2s;
       }
-
-      .number {
-        font-size: 50px;
-        font-weight: 800;
-        line-height: 1;
-        letter-spacing: -0.5px;
-        background: linear-gradient(135deg, #f0f4ff, #b0c8ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .submit-btn:hover i {
+        transform: translateX(4px);
       }
-
-      .cardss img {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        height: 100%;
-        object-fit: contain;
-        transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-        opacity: 0.7;
-        filter: drop-shadow(0 0 12px rgba(74, 145, 255, 0.15));
-        z-index: 1;
-      }
-
-      /* .cardss:hover img {
-        transform: scale(1.04) rotate(-1deg);
-      } */
-
-      /* ----- responsive ----- */
-      @media (max-width: 991px) {
-        .hero img {
-          height: 420px;
-        }
-        .stats {
-          grid-template-columns: 1fr;
-        }
-        .cardss {
-          height: 160px;
-        }
-        .number {
-          font-size: 42px;
-        }
-        .cardss img {
-          height: 90%;
-          right: 4px;
-          bottom: 4px;
-        }
-        .label {
-          font-size: 14px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .about {
-          padding: 95px 16px 20px;
-        }
-        .title {
-          font-size: 32px;
-        }
-        .desc {
-          font-size: 16px;
-          margin-bottom: 40px;
-        }
-        .hero img {
-          height: 260px;
-        }
-        .cardss {
-          height: 140px;
-          padding: 18px;
-        }
-        .number {
-          font-size: 34px;
-        }
-        .top {
-          top: 14px;
-          left: 16px;
-        }
-        .label {
-          font-size: 13px;
-          gap: 6px;
-        }
-        .label i {
-          font-size: 14px;
-          width: 18px;
-        }
-        .cardss img {
-          height: 80%;
-          right: 0;
-          bottom: 0;
-        }
+      input::placeholder,
+      textarea::placeholder {
+        color: #cbc2b5;
+        font-weight: 400;
       }
     </style>
   </head>
   <body>
-    <section class="about">
-      <div class="sub">
-        <i class="fas fa-flag" style="margin-right: 6px; opacity: 0.7"></i>
-        About Edu Stockx
-      </div>
-      <h1 class="title">Built for Serious Traders</h1>
-      <div class="desc">
-        <i
-          class="fas fa-chart-line"
-          style="margin-right: 8px; opacity: 0.6"
-        ></i>
-        Making trading accessible through a simulated environment
-      </div>
-
-      <div class="hero">
-        <div class="glow"></div>
-        <img
-          src="images/company-1.png"
-          alt="Trading dashboard"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="stats">
-        <div class="cardss">
-          <div class="top">
-            <div class="label"><i class="fas fa-calendar-alt"></i> Since</div>
-            <div class="number">2021</div>
-          </div>
-          <img
-            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085313/people1.png"
-            alt="team icon"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="cardss">
-          <div class="top">
-            <div class="label"><i class="fas fa-users"></i> Team Members</div>
-            <div class="number">100+</div>
-          </div>
-          <img
-            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085314/people2.png"
-            alt="team icon"
-            loading="lazy"
-          />
-        </div>
-
-        <div class="cardss">
-          <div class="top">
-            <div class="label">
-              <i class="fas fa-globe-americas"></i> Countries Served
+    <section class="body-form">
+      <div class="luxury-card">
+        <div class="form-grid">
+          <!-- LEFT SIDE: shape image (exactly as original) -->
+          <div class="visual-side">
+            <div class="shape-image">
+              <img src="Images/CU-2.png" class="main-img" alt="" />
+              <!-- <img src="Images/border-shape.png" class="frame-img" alt="" /> -->
             </div>
-            <div class="number">13+</div>
           </div>
-          <img
-            src="https://ftmo-frontend-prod.storage.googleapis.com/wp-content/uploads/2025/05/03085315/people3.png"
-            alt="world icon"
-            loading="lazy"
-          />
+
+          <!-- RIGHT: inquiry form with side-by-side fields + BUDGET DROPDOWN, SERVICE OPTION limited words -->
+          <div class="form-side">
+            <div class="form-container">
+              <div class="badge-club">
+                <i class="fas fa-gem"></i> Kirti · Elite Estates
+              </div>
+              <h1>Enquire Now</h1>
+              <div class="subhead">
+                Curated real estate experiences — from private villas to
+                landmark investments.
+              </div>
+
+              <form id="luxuryLeadForm">
+                <!-- FULL NAME -->
+                <div class="input-group">
+                  <label>FULL NAME <span class="req-star">*</span></label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+
+                <!-- PHONE with +91 prefix -->
+                <div class="input-group">
+                  <label>PHONE NUMBER <span class="req-star">*</span></label>
+                  <div class="phone-row">
+                    <div class="phone-prefix">
+                      <input
+                        type="text"
+                        value="+91"
+                        readonly
+                        style="
+                          background: #f2ede7;
+                          color: #4e4b46;
+                          font-weight: 600;
+                          cursor: default;
+                          text-align: center;
+                        "
+                      />
+                    </div>
+                    <div class="phone-number">
+                      <input
+                        type="tel"
+                        id="phoneNumber"
+                        placeholder="98765 43210"
+                        required
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        inputmode="numeric"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      font-size: 0.65rem;
+                      margin-top: 5px;
+                      color: #aa9c88;
+                      text-align: center;
+                    "
+                  >
+                    10-digit mobile number
+                  </div>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="input-group">
+                  <label>EMAIL ADDRESS <span class="req-star">*</span></label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="name@domain.com"
+                    required
+                  />
+                </div>
+
+                <!-- ROW 1: SELECT SERVICE (optional) + SERVICE OPTION / NOTES side by side -->
+                <div class="row-duo">
+                  <div class="input-group">
+                    <label>SELECT SERVICE</label>
+                    <select id="selectService">
+                      <option value="">— Choose offering —</option>
+                      <option value="Residential Plotting">
+                        Residential Plotting
+                      </option>
+                      <option value="Villas & Estates">Villas & Estates</option>
+                      <option value="Luxury Flats">Luxury Flats</option>
+                      <option value="Big Land Deals">Big Land Deals</option>
+                      <option value="Property Consultation">
+                        Property Consultation
+                      </option>
+                      <option value="Career">Career</option>
+                    </select>
+                  </div>
+                  <div class="input-group">
+                    <label>SERVICE OPTION / NOTES</label>
+                    <input
+                      type="text"
+                      id="serviceOption"
+                      placeholder="e.g., Beachfront villa, ROI projection"
+                      maxlength="30"
+                    />
+                    <div
+                      style="
+                        font-size: 0.6rem;
+                        color: #aa9c88;
+                        margin-top: 4px;
+                        text-align: center;
+                      "
+                    >
+                      Max 30 characters
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ROW 2: BUDGET DROPDOWN (replaces manual) + MESSAGE (optional) side by side -->
+                <div class="row-duo">
+                  <div class="input-group">
+                    <label>BUDGET RANGE</label>
+                    <select id="budgetDropdown">
+                      <option value="">— Select budget —</option>
+                      <option value="30-40 lakh">₹30 – 40 Lakh</option>
+                      <option value="60-70 lakh">₹60 – 70 Lakh</option>
+                      <option value="80-1cr">₹80 Lakh – 1 Cr</option>
+                      <option value="More than 1 Cr">More than 1 Cr</option>
+                    </select>
+                  </div>
+                  <div class="input-group">
+                    <label>MESSAGE</label>
+                    <textarea
+                      id="message"
+                      rows="1"
+                      placeholder="We are here.."
+                    ></textarea>
+                  </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                  <i class="fas fa-paper-plane"></i> Send Inquiry
+                </button>
+                <div class="footnote">
+                  <i class="fas fa-shield-alt"></i> Your information is
+                  confidential. Concierge reply within 24h.
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <div id="toastMsg" class="toast-msg" style="opacity: 0; visibility: hidden">
+      ✨
+    </div>
 
     <script>
-      (function () {
-        // ----- select all animated elements -----
-        const sub = document.querySelector(".sub");
-        const title = document.querySelector(".title");
-        const desc = document.querySelector(".desc");
-        const hero = document.querySelector(".hero");
-        const cardsss = document.querySelectorAll(".cardss");
+      // Deploy as Web App (execute as "me", access "Anyone").
+      const GOOGLE_SHEET_API_URL =
+        "https://script.google.com/macros/s/AKfycbwHYaBd50944J1X8_kRNgIsr9p0npQdlfVsBXauKkNx1xJYCsLCD7sCWs5Xg5HDzs7M_Q/exec";
+      // ↑ Replace with actual Apps Script Web App URL for live sheet logging.
 
-        // ----- intersection observer: trigger animation every time section appears -----
-        const section = document.querySelector(".about");
-
-        // reset function: remove visible class and reset inline styles for clean re-animation
-        function resetElements() {
-          // text elements: reset to hidden state
-          [sub, title, desc].forEach((el) => {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(30px)";
-          });
-          // hero
-          hero.classList.remove("visible");
-          hero.style.opacity = "0";
-          hero.style.transform = "translateY(50px) scale(0.99)";
-          // cardsss
-          cardsss.forEach((cardss) => {
-            cardss.classList.remove("visible");
-            cardss.style.opacity = "0";
-            cardss.style.transform = "translateY(40px)";
-          });
-        }
-
-        // animate all elements with staggered delays
-        function animateAll() {
-          // text: stagger
-          setTimeout(() => {
-            sub.style.opacity = "1";
-            sub.style.transform = "translateY(0)";
-          }, 80);
-          setTimeout(() => {
-            title.style.opacity = "1";
-            title.style.transform = "translateY(0)";
-          }, 180);
-          setTimeout(() => {
-            desc.style.opacity = "1";
-            desc.style.transform = "translateY(0)";
-          }, 280);
-
-          // hero
-          setTimeout(() => {
-            hero.classList.add("visible");
-            hero.style.opacity = "1";
-            hero.style.transform = "translateY(0) scale(1)";
-          }, 380);
-
-          // cardsss with stagger
-          cardsss.forEach((cardss, index) => {
-            setTimeout(
-              () => {
-                cardss.classList.add("visible");
-                cardss.style.opacity = "1";
-                cardss.style.transform = "translateY(0)";
-              },
-              480 + index * 150,
-            );
-          });
-        }
-
-        // observer for section visibility – triggers reset + animate each time
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                resetElements();
-                animateAll();
-              }
-            });
-          },
-          {
-            threshold: 0.15,
-            rootMargin: "0px 0px -20px 0px", // slight offset to avoid flicker
-          },
-        );
-
-        observer.observe(section);
-
-        // also observe cardsss & hero individually just in case (but section observer is primary)
-        // plus hover icon pulse (non‑intrusive)
-        document.querySelectorAll(".cardss").forEach((cardss) => {
-          cardss.addEventListener("mouseenter", function (e) {
-            const icon = this.querySelector(".label i");
-            if (icon) icon.style.transform = "scale(1.2)";
-          });
-          cardss.addEventListener("mouseleave", function (e) {
-            const icon = this.querySelector(".label i");
-            if (icon) icon.style.transform = "scale(1)";
-          });
-        });
-
-        // ensure that if any element is stuck hidden (edge case), force visible on first load
-        // but we rely on observer, however we set a tiny fallback:
+      function showToast(message, isError = false) {
+        const toast = document.getElementById("toastMsg");
+        toast.style.backgroundColor = isError ? "#ab7b5f" : "#1f2c2e";
+        toast.style.color = "#fff8f0";
+        toast.textContent = message;
+        toast.style.opacity = "1";
+        toast.style.visibility = "visible";
         setTimeout(() => {
-          // if section is visible at load, observer will trigger; if not, nothing.
-          // but if observer missed due to threshold, we manually check once.
-          const rect = section.getBoundingClientRect();
-          const winHeight =
-            window.innerHeight || document.documentElement.clientHeight;
-          if (rect.top < winHeight - 100 && rect.bottom > 0) {
-            // section is visible, but maybe observer didn't fire? we re-trigger
-            resetElements();
-            animateAll();
+          toast.style.opacity = "0";
+          setTimeout(() => {
+            toast.style.visibility = "hidden";
+          }, 300);
+        }, 4200);
+      }
+
+      function validatePhone(phoneRaw) {
+        const digits = phoneRaw.replace(/\D/g, "");
+        return digits.length === 10;
+      }
+
+      // local backup for leads
+      function storeInLocalBackup(leadData) {
+        try {
+          let leads = JSON.parse(
+            localStorage.getItem("luxury_estate_leads") || "[]",
+          );
+          leads.push(leadData);
+          localStorage.setItem("luxury_estate_leads", JSON.stringify(leads));
+          console.log("📌 Lead secured (local cache):", leadData);
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+
+      const form = document.getElementById("luxuryLeadForm");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const fullName = document.getElementById("fullName").value.trim();
+        const phoneNumberRaw = document
+          .getElementById("phoneNumber")
+          .value.trim();
+        const email = document.getElementById("email").value.trim();
+        const selectService = document.getElementById("selectService").value;
+        const serviceOption = document
+          .getElementById("serviceOption")
+          .value.trim();
+        const budgetDropdown = document.getElementById("budgetDropdown").value;
+        const message = document.getElementById("message").value.trim();
+
+        if (!fullName) {
+          showToast("Please enter your full name.", true);
+          return;
+        }
+        if (!validatePhone(phoneNumberRaw)) {
+          showToast("Valid 10-digit mobile number required.", true);
+          return;
+        }
+        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+          showToast("Please provide a valid email address.", true);
+          return;
+        }
+
+        const fullPhone = `+91 ${phoneNumberRaw}`;
+        const payload = {
+          fullName: fullName,
+          phone: fullPhone,
+          email: email,
+          selectService: selectService || "Not selected",
+          serviceOption: serviceOption || "—",
+          budgetRange: budgetDropdown || "Not specified", // now from dropdown
+          message: message || "No additional notes",
+          timestamp: new Date().toISOString(),
+        };
+
+        const isValidSheetURL =
+          GOOGLE_SHEET_API_URL &&
+          GOOGLE_SHEET_API_URL.includes("script.google.com") &&
+          !GOOGLE_SHEET_API_URL.includes("dummyReplaceWithYourOwn");
+
+        const submitBtn = form.querySelector(".submit-btn");
+        const originalBtnHTML = submitBtn.innerHTML;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-pulse"></i> Submitting...';
+        submitBtn.disabled = true;
+
+        try {
+          if (isValidSheetURL) {
+            await fetch(GOOGLE_SHEET_API_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            storeInLocalBackup(payload);
+            showToast("✓ Inquiry sent! A luxury advisor will connect shortly.");
+            form.reset();
+            // ensure optional fields are cleared
+            document.getElementById("serviceOption").value = "";
+            document.getElementById("message").value = "";
+            document.getElementById("budgetDropdown").value = "";
+            document.getElementById("selectService").value = "";
+          } else {
+            // demo mode with local backup — perfect for preview without credentials
+            console.info(
+              "✨ DEMO MODE: Google Sheets URL not configured. Lead saved locally. Replace GOOGLE_SHEET_API_URL for production.",
+            );
+            storeInLocalBackup(payload);
+            showToast(
+              "✨ Demo: inquiry recorded (offline backup). Our team will contact you soon.",
+              false,
+            );
+            form.reset();
+            document.getElementById("serviceOption").value = "";
+            document.getElementById("message").value = "";
+            document.getElementById("budgetDropdown").value = "";
+            document.getElementById("selectService").value = "";
           }
-        }, 400);
-      })();
+        } catch (error) {
+          console.error("Submission error:", error);
+          storeInLocalBackup(payload);
+          showToast(
+            "Network note: request saved locally. We'll be in touch.",
+            true,
+          );
+        } finally {
+          submitBtn.innerHTML = originalBtnHTML;
+          submitBtn.disabled = false;
+        }
+      });
+
+      // phone input sanitizer: only digits, max 10
+      const phoneInput = document.getElementById("phoneNumber");
+      phoneInput.addEventListener("input", function (e) {
+        this.value = this.value.replace(/\D/g, "").slice(0, 10);
+      });
+
+      // interactive highlight for focus based on accent #c5850d
+      const inputs = document.querySelectorAll("input, select, textarea");
+      inputs.forEach((el) => {
+        el.addEventListener("focus", () => {
+          el.style.borderColor = "#c5850d";
+        });
+        el.addEventListener("blur", () => {
+          if (!el.value.trim() && el.tagName !== "SELECT") {
+            el.style.borderColor = "#e7e2da";
+          } else {
+            el.style.borderColor = "#e2dbd0";
+          }
+        });
+      });
+
+      // limit service option to 40 characters
+      const serviceOptionInput = document.getElementById("serviceOption");
+      serviceOptionInput.addEventListener("input", function () {
+        if (this.value.length > 40) {
+          this.value = this.value.slice(0, 40);
+        }
+      });
+
+      // development hint (console only)
+      if (
+        !GOOGLE_SHEET_API_URL.includes("script.google.com") ||
+        GOOGLE_SHEET_API_URL.includes("dummyReplaceWithYourOwn")
+      ) {
+        console.log(
+          "💎 LUXURY FORM READY: Replace GOOGLE_SHEET_API_URL with your Apps Script Web App URL to enable Google Sheets logging. Current mode uses localStorage backup & works flawlessly.",
+        );
+      }
     </script>
-  </body>
-</html>
-
-<!-- -----we------ -->
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edu Stocks · About</title>
-    <!-- Inter font (clean, modern) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background: #000;
-        color: #fff;
-        font-family: "Inter", sans-serif;
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      .about-section {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 70px 89px 10px;
-        display: grid;
-        grid-template-columns: 320px 1fr;
-        gap: 80px;
-        align-items: start;
-      }
-
-      .left h2 {
-        font-size: 40px;
-        font-weight: 800;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, #ffffff 30%, #fad844 80%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        padding: 10px 31px;
-      }
-
-      .right h3 {
-        font-size: 32px;
-        line-height: 1.25;
-        font-weight: 500;
-        color: #f1e18a;
-        margin-bottom: 18px;
-        max-width: 1000px;
-        letter-spacing: -0.01em;
-        font-family: "Edu NSW ACT Cursive", cursive;
-      }
-
-      .right p {
-        font-size: 19px;
-        line-height: 1.8;
-        color: #c5c5c5;
-        margin-bottom: 16px;
-        max-width: 1100px;
-      }
-
-      .right p:last-of-type {
-        margin-bottom: 0;
-      }
-
-      /* ---------- responsive breakpoints ---------- */
-
-      /* large tablet / small desktop */
-      @media (max-width: 1200px) {
-        .about-section {
-          grid-template-columns: 280px 1fr;
-          gap: 60px;
-          padding: 90px 24px 70px;
-        }
-        .left h2 {
-          font-size: 52px;
-        }
-        .right h3 {
-          /* font-size: 40px; */
-        }
-        .right p {
-          font-size: 24px;
-        }
-      }
-
-      @media (max-width: 992px) {
-        .about-section {
-          grid-template-columns: 1fr;
-          gap: 40px;
-          padding: 80px 24px 60px;
-        }
-        .left h2 {
-          font-size: 48px;
-        }
-        .right h3 {
-          font-size: 34px;
-          max-width: 100%;
-        }
-        .right p {
-          font-size: 20px;
-          max-width: 100%;
-        }
-      }
-
-      @media (max-width: 650px) {
-        .about-section {
-          padding: 60px 29px 50px;
-          gap: 28px;
-          text-align: center;
-        }
-        .left h2 {
-          font-size: 40px;
-        }
-        .right h3 {
-          font-size: 28px;
-          margin-bottom: 28px;
-          line-height: 1.3;
-        }
-        .right p {
-          font-size: 18px;
-          line-height: 1.7;
-          margin-bottom: 20px;
-        }
-      }
-
-      /* tiny screens */
-      @media (max-width: 400px) {
-        .left h2 {
-          font-size: 34px;
-        }
-        .right h3 {
-          font-size: 24px;
-        }
-        .right p {
-          font-size: 16px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- about section -->
-    <section class="about-section">
-      <div class="left">
-        <h2>Who We Are</h2>
-      </div>
-
-      <div class="right">
-        <!-- <h3>
-          Edu Stocks started with a simple and powerful mission: to help
-          aspiring traders and investors build lasting financial knowledge.
-        </h3> -->
-
-        <p>
-          At EduStockx, we believe successful trading is not about chasing every
-          candle. It is about patience, discipline, risk management and
-          understanding why the market moves.
-          <br />Secret Candle AI is not created to make gamblers. It is created
-          to train disciplined traders who respect the market.
-        </p>
-
-        <p>
-          The future of trading is not prediction. The future is preparation
-          with intelligent analysis.
-        </p>
-        <p>Our Philosophy:</p>
-        <h3 style="font-style: italic">
-          "Anyone can copy a strategy, but they cannot copy the mindset behind
-          it."
-        </h3>
-      </div>
-    </section>
   </body>
 </html>

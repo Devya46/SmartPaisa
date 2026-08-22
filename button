@@ -21,7 +21,7 @@
   align-self: flex-start;
 }
 
-.more-btn::before {
+::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -32,12 +32,12 @@
   border-radius: 60px;
 }
 
-.more-btn:hover {
+:hover {
   border-color: var(--vip-blue);
   box-shadow: 0 0 35px rgba(20, 135, 255, 0.25);
   transform: translateY(-2px);
 }
 
-.more-btn:hover::before {
+:hover::before {
   transform: translateX(0);
 }

@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Us a Message · Kirti Estates</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .body-form {
+        background: #f9f7f4;
+        font-family: "Inter", sans-serif;
+        /* min-height: 100vh; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      .message-card {
+        max-width: 1000px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 2rem;
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: all 0.2s ease;
+      }
+
+      .grid-two {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      /* left visual – full-width image */
+      .visual-col {
+        flex: 1.1;
+        background: #f5f2ed;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 340px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .visual-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      /* subtle overlay to keep text readable */
+      .visual-overlay {
+        position: relative;
+        z-index: 2;
+        padding: 2.5rem 2rem;
+        background: rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(2px);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .visual-overlay i {
+        font-size: 2.8rem;
+        color: #f5e7d9;
+        margin-bottom: 0.8rem;
+        opacity: 0.9;
+      }
+
+      .visual-overlay h3 {
+        font-weight: 500;
+        font-size: 1.3rem;
+        letter-spacing: -0.3px;
+        margin-bottom: 0.3rem;
+        color: white;
+      }
+
+      .visual-overlay p {
+        font-size: 0.9rem;
+        max-width: 220px;
+        line-height: 1.5;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .visual-overlay .divider-line {
+        width: 40px;
+        height: 2px;
+        background: #f5e7d9;
+        margin: 0.8rem auto 0.5rem;
+        border-radius: 4px;
+      }
+
+      /* right side – form */
+      .form-col {
+        flex: 1.2;
+        padding: 2.4rem 2.5rem 2.8rem 2.5rem;
+        background: #ffffff;
+      }
+
+      .form-col h2 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #1f2c2e;
+        letter-spacing: -0.4px;
+        margin-bottom: 0.25rem;
+      }
+
+      .form-col .greeting {
+        font-size: 0.9rem;
+        color: #6f7e7a;
+        margin-bottom: 1.8rem;
+        border-left: 3px solid #c5850d;
+        padding-left: 0.9rem;
+      }
+
+      .input-field {
+        margin-bottom: 1.2rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-field label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        color: #7f8d89;
+        margin-bottom: 0.3rem;
+      }
+
+      .input-field input,
+      .input-field select,
+      .input-field textarea {
+        width: 100%;
+        padding: 0.7rem 1rem;
+        border: 1px solid #e3ddd4;
+        border-radius: 1.2rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        background: #fdfdfb;
+        transition:
+          border 0.2s,
+          box-shadow 0.2s;
+        outline: none;
+        color: #1f2c2e;
+      }
+
+      .input-field input:focus,
+      .input-field select:focus,
+      .input-field textarea:focus {
+        border-color: #c5850d;
+        box-shadow: 0 0 0 3px rgba(197, 133, 13, 0.15);
+        background: #ffffff;
+      }
+
+      .input-field textarea {
+        resize: vertical;
+        min-height: 70px;
+      }
+
+      .input-field select {
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%238b7a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 14px;
+      }
+
+      .btn-send {
+        background: #c5850d;
+        border: none;
+        color: white;
+        padding: 0.9rem 1.8rem;
+        font-weight: 600;
+        border-radius: 3rem;
+        width: 100%;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.1s;
+        margin-top: 0.3rem;
+        font-family: "Inter", sans-serif;
+        letter-spacing: 0.3px;
+        box-shadow: 0 8px 16px -6px rgba(197, 133, 13, 0.25);
+      }
+
+      .btn-send:hover {
+        background: #a5720b;
+        transform: translateY(-1px);
+      }
+
+      .btn-send:active {
+        transform: scale(0.97);
+      }
+
+      .footnote-light {
+        margin-top: 1.2rem;
+        font-size: 0.65rem;
+        color: #b0a698;
+        text-align: center;
+        letter-spacing: 0.2px;
+      }
+
+      .footnote-light i {
+        margin-right: 4px;
+        color: #c5850d;
+        opacity: 0.6;
+      }
+
+      /* toast */
+      .toast-msg {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1f2c2e;
+        color: #fef7ed;
+        padding: 0.6rem 1.8rem;
+        border-radius: 60px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+        white-space: nowrap;
+        z-index: 999;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* responsive */
+      @media (max-width: 780px) {
+        .grid-two {
+          flex-direction: column;
+        }
+        .visual-col {
+          min-height: 200px;
+        }
+        .visual-overlay {
+          padding: 2rem 1.5rem;
+        }
+        .form-col {
+          padding: 2rem 1.5rem 2.2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .body-form {
+          padding: 0.8rem;
+        }
+        .form-col h2 {
+          font-size: 1.3rem;
+        }
+        .toast-msg {
+          white-space: normal;
+          width: 80%;
+          text-align: center;
+          font-size: 0.7rem;
+          padding: 0.6rem 1.2rem;
+        }
+      }
+
+      /* small helper */
+      .req-star {
+        color: #c5850d;
+        margin-left: 2px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="body-form">
+      <div class="message-card">
+        <div class="grid-two">
+          <!-- left: full-width image with overlay -->
+          <div class="visual-col">
+            <img
+              src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29udGFjdCUyMHVzfGVufDB8fDB8fHww"
+              alt="Elegant contact us visual"
+            />
+            <div class="visual-overlay">
+              <i class="far fa-envelope"></i>
+              <h3>Send Us a Message</h3>
+              <div class="divider-line"></div>
+              <p>We’ll reply within 24 hours — simple, warm, and human.</p>
+            </div>
+          </div>
+
+          <!-- right: form -->
+          <div class="form-col">
+            <h2>Get in touch</h2>
+            <div class="greeting">We’d love to hear from you.</div>
+
+            <form id="messageForm">
+              <!-- Full Name -->
+              <div class="input-field">
+                <label>Full Name <span class="req-star">*</span></label>
+                <input
+                  type="text"
+                  id="fullName"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+
+              <!-- Email -->
+              <div class="input-field">
+                <label>Email Address <span class="req-star">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+
+              <!-- Phone -->
+              <div class="input-field">
+                <label>Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="Enter your contact number"
+                />
+              </div>
+
+              <!-- Subject dropdown -->
+              <div class="input-field">
+                <label>Subject</label>
+                <select id="subject">
+                  <option value="">Select an inquiry type</option>
+                  <option value="General">General</option>
+
+                  <option value="Course">Course</option>
+                  <option value="Career">Career</option>
+                  <option value="Media">Media</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- Message -->
+              <div class="input-field">
+                <label>Your Message</label>
+                <textarea
+                  id="message"
+                  rows="2"
+                  placeholder="Tell us how we can help you…"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-send">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+              <div class="footnote-light">
+                <i class="fas fa-lock"></i> Your information is safe with us.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Toast -->
+    <div id="toastMsg" class="toast-msg" style="opacity: 0; visibility: hidden">
+      ✨
+    </div>
+
+    <script>
+      // ----------------------------------------------------------------
+      // 1. Replace with your Apps Script URL (for production)
+      //    (or keep as is – will use localStorage backup automatically)
+      // ----------------------------------------------------------------
+      const GOOGLE_SHEET_API_URL = "#";
+      // ↑ replace with your own Apps Script Web App URL
+
+      // ---------- helpers ----------
+      function showToast(msg, isError = false) {
+        const toast = document.getElementById("toastMsg");
+        toast.style.backgroundColor = isError ? "#b27a5a" : "#1f2c2e";
+        toast.style.color = "#fffcf5";
+        toast.textContent = msg;
+        toast.style.opacity = "1";
+        toast.style.visibility = "visible";
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+          toast.style.opacity = "0";
+          setTimeout(() => {
+            toast.style.visibility = "hidden";
+          }, 300);
+        }, 3800);
+      }
+
+      function storeBackup(data) {
+        try {
+          const existing = JSON.parse(
+            localStorage.getItem("msg_leads") || "[]",
+          );
+          existing.push(data);
+          localStorage.setItem("msg_leads", JSON.stringify(existing));
+        } catch (_) {
+          /* ignore */
+        }
+      }
+
+      // ---------- form handler ----------
+      const form = document.getElementById("messageForm");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value.trim();
+
+        // simple validation
+        if (!fullName) {
+          showToast("Please enter your full name.", true);
+          return;
+        }
+        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+          showToast("Please provide a valid email address.", true);
+          return;
+        }
+
+        const payload = {
+          fullName,
+          email,
+          phone: phone || "—",
+          subject: subject || "Not selected",
+          message: message || "No message",
+          timestamp: new Date().toISOString(),
+        };
+
+        const btn = form.querySelector(".btn-send");
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending…';
+        btn.disabled = true;
+
+        const isLive =
+          GOOGLE_SHEET_API_URL &&
+          GOOGLE_SHEET_API_URL.includes("script.google.com") &&
+          !GOOGLE_SHEET_API_URL.includes("dummyReplaceWithYourOwn");
+
+        try {
+          if (isLive) {
+            await fetch(GOOGLE_SHEET_API_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            storeBackup(payload);
+            showToast("✓ Message sent! We’ll get back to you shortly.");
+            form.reset();
+          } else {
+            // demo mode – local backup
+            storeBackup(payload);
+            showToast(
+              "✨ Demo: message saved locally. (Set API URL for production.)",
+            );
+            form.reset();
+          }
+        } catch (_) {
+          storeBackup(payload);
+          showToast(
+            "Note: request saved locally. Our team will reach out.",
+            true,
+          );
+        } finally {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        }
+      });
+
+      // ---------- extra polish ----------
+      // phone – digits only (optional)
+      document.getElementById("phone").addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, "");
+      });
+
+      console.log(
+        "💬 Simple message form ready. Replace GOOGLE_SHEET_API_URL for live sheet logging.",
+      );
+    </script>
+  </body>
+</html>
