@@ -3,516 +3,448 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Send Us a Message · Kirti Estates</title>
+    <title>Smart Money 24/7 · Footer</title>
+    <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome 6 (free) -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
     <style>
-      * {
+      /* ---------- ROOT VARIABLES ---------- */
+      :root {
+        --smart-primary: #0b2b3b;
+        --smart-secondary: #1c4e6a;
+        --smart-accent: #3b8c9e;
+        --smart-gold: #d4af37;
+        --smart-dark-gold: #b8962e;
+        --smart-navy: #04121c;
+        --smart-white: #ffffff;
+        --smart-light-bg: #f4f7fa;
+        --smart-light-gray: #e0e5ec;
+        --smart-dark-text: #0f1a24;
+        --smart-secondary-text: #6b7f8e;
+      }
+
+      /* ---------- RESET / BASE ---------- */
+      .footer-smart * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      .body-form {
-        background: #f9f7f4;
-        font-family: "Inter", sans-serif;
-        /* min-height: 100vh; */
+      .footer-smart {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(
+          145deg,
+          #001e32 0%,
+          #000000 40%,
+          #001e32 100%
+        );
+        padding: 40px 0 18px;
+        color: #fff;
+        width: 100%;
+        /* border-top: 3px solid #1a3f52; */
+      }
+
+      .footer-smart .container {
+        width: 92%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* ---------- GRID: 3 columns (desktop) ---------- */
+      .footer-smart .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1.2fr 1.2fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      /* ---------- LOGO ---------- */
+      .footer-smart .footer-logo {
+        width: 270px;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+      }
+
+      .footer-smart .footer-about p {
+        color: #cbd8e3;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 12px;
+        max-width: 400px;
+      }
+
+      /* ---------- HEADINGS ---------- */
+      .footer-smart h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        position: relative;
+        font-weight: 600;
+        color: var(--smart-white);
+        letter-spacing: 0.3px;
+      }
+
+      .footer-smart h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 3px;
+        background: var(--smart-gold);
+        border-radius: 10px;
+      }
+
+      /* ---------- LISTS ---------- */
+      .footer-smart ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-smart ul li {
+        margin-bottom: 10px;
+        font-size: 14px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 1.5rem;
+        gap: 8px;
+        color: #cbd8e3;
       }
 
-      .message-card {
-        max-width: 1000px;
-        width: 100%;
-        background: #ffffff;
-        border-radius: 2rem;
-        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
-        transition: all 0.2s ease;
+      .footer-smart ul li a {
+        text-decoration: none;
+        color: #cbd8e3;
+        transition: 0.2s;
+        font-size: 14px;
       }
 
-      .grid-two {
+      .footer-smart ul li a:hover {
+        color: var(--smart-gold);
+        padding-left: 4px;
+      }
+
+      .footer-smart ul li i {
+        color: var(--smart-gold);
+        width: 22px;
+        font-size: 15px;
+        text-align: center;
+      }
+
+      /* ---------- SOCIAL (icons only) ---------- */
+      .footer-smart .social {
         display: flex;
+        gap: 12px;
+        margin-top: 20px;
         flex-wrap: wrap;
       }
 
-      /* left visual – full-width image */
-      .visual-col {
-        flex: 1.1;
-        background: #f5f2ed;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        min-height: 340px;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .visual-col img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      /* subtle overlay to keep text readable */
-      .visual-overlay {
-        position: relative;
-        z-index: 2;
-        padding: 2.5rem 2rem;
-        background: rgba(0, 0, 0, 0.25);
-        backdrop-filter: blur(2px);
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      }
-
-      .visual-overlay i {
-        font-size: 2.8rem;
-        color: #f5e7d9;
-        margin-bottom: 0.8rem;
-        opacity: 0.9;
-      }
-
-      .visual-overlay h3 {
-        font-weight: 500;
-        font-size: 1.3rem;
-        letter-spacing: -0.3px;
-        margin-bottom: 0.3rem;
-        color: white;
-      }
-
-      .visual-overlay p {
-        font-size: 0.9rem;
-        max-width: 220px;
-        line-height: 1.5;
-        font-weight: 300;
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      .visual-overlay .divider-line {
-        width: 40px;
-        height: 2px;
-        background: #f5e7d9;
-        margin: 0.8rem auto 0.5rem;
-        border-radius: 4px;
-      }
-
-      /* right side – form */
-      .form-col {
-        flex: 1.2;
-        padding: 2.4rem 2.5rem 2.8rem 2.5rem;
-        background: #ffffff;
-      }
-
-      .form-col h2 {
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: #1f2c2e;
-        letter-spacing: -0.4px;
-        margin-bottom: 0.25rem;
-      }
-
-      .form-col .greeting {
-        font-size: 0.9rem;
-        color: #6f7e7a;
-        margin-bottom: 1.8rem;
-        border-left: 3px solid #c5850d;
-        padding-left: 0.9rem;
-      }
-
-      .input-field {
-        margin-bottom: 1.2rem;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .input-field label {
-        font-size: 0.7rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.4px;
-        color: #7f8d89;
-        margin-bottom: 0.3rem;
-      }
-
-      .input-field input,
-      .input-field select,
-      .input-field textarea {
-        width: 100%;
-        padding: 0.7rem 1rem;
-        border: 1px solid #e3ddd4;
-        border-radius: 1.2rem;
-        font-family: "Inter", sans-serif;
-        font-size: 0.9rem;
-        background: #fdfdfb;
-        transition:
-          border 0.2s,
-          box-shadow 0.2s;
-        outline: none;
-        color: #1f2c2e;
-      }
-
-      .input-field input:focus,
-      .input-field select:focus,
-      .input-field textarea:focus {
-        border-color: #c5850d;
-        box-shadow: 0 0 0 3px rgba(197, 133, 13, 0.15);
-        background: #ffffff;
-      }
-
-      .input-field textarea {
-        resize: vertical;
-        min-height: 70px;
-      }
-
-      .input-field select {
-        appearance: none;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%238b7a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-        background-size: 14px;
-      }
-
-      .btn-send {
-        background: #c5850d;
-        border: none;
-        color: white;
-        padding: 0.9rem 1.8rem;
-        font-weight: 600;
-        border-radius: 3rem;
-        width: 100%;
-        font-size: 0.95rem;
+      .footer-smart .social a {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(212, 175, 55, 0.25);
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.6rem;
-        cursor: pointer;
-        transition:
-          background 0.2s,
-          transform 0.1s;
-        margin-top: 0.3rem;
-        font-family: "Inter", sans-serif;
-        letter-spacing: 0.3px;
-        box-shadow: 0 8px 16px -6px rgba(197, 133, 13, 0.25);
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+        transition: 0.3s;
       }
 
-      .btn-send:hover {
-        background: #a5720b;
-        transform: translateY(-1px);
+      .footer-smart .social a:hover {
+        background: var(--smart-gold);
+        color: #000;
+        transform: translateY(-3px);
+        border-color: var(--smart-gold);
       }
 
-      .btn-send:active {
-        transform: scale(0.97);
+      /* ---------- BOTTOM BAR ---------- */
+      .footer-smart .footer-bottom {
+        margin-top: 35px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(212, 175, 55, 0.25);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
       }
 
-      .footnote-light {
-        margin-top: 1.2rem;
-        font-size: 0.65rem;
-        color: #b0a698;
-        text-align: center;
-        letter-spacing: 0.2px;
+      .footer-smart .footer-bottom p {
+        color: #b7c7d4;
+        font-size: 13px;
+        margin: 0;
       }
 
-      .footnote-light i {
+      .footer-smart .footer-bottom p strong {
+        color: var(--smart-gold);
+        font-weight: 600;
+      }
+
+      .footer-smart .footer-bottom-links {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .footer-smart .footer-bottom-links a {
+        color: #b7c7d4;
+        text-decoration: none;
+        font-size: 13px;
+        transition: 0.2s;
+      }
+
+      .footer-smart .footer-bottom-links a:hover {
+        color: var(--smart-gold);
+      }
+
+      .footer-smart .footer-bottom-links a i {
+        color: var(--smart-gold);
         margin-right: 4px;
-        color: #c5850d;
-        opacity: 0.6;
       }
 
-      /* toast */
-      .toast-msg {
-        position: fixed;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #1f2c2e;
-        color: #fef7ed;
-        padding: 0.6rem 1.8rem;
-        border-radius: 60px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(4px);
-        transition: opacity 0.25s ease;
-        pointer-events: none;
-        white-space: nowrap;
-        z-index: 999;
-        font-family: "Inter", sans-serif;
+      /* ---------- RESPONSIVE: tablet 2 cols, mobile 1 col, always left-aligned ---------- */
+      @media (max-width: 991px) {
+        .footer-smart .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 30px 20px;
+        }
+        .footer-smart .footer-about p {
+          max-width: 100%;
+        }
+        .footer-smart .footer-about,
+        .footer-smart .footer-about p,
+        .footer-smart .footer-about .social,
+        .footer-smart h3,
+        .footer-smart ul li,
+        .footer-smart .footer-bottom {
+          text-align: left;
+          justify-content: flex-start;
+        }
+        .footer-smart .footer-about {
+          align-items: flex-start;
+        }
+        .footer-smart h3::after {
+          left: 0;
+          transform: none;
+        }
+        .footer-smart ul li {
+          justify-content: flex-start;
+        }
+        .footer-smart .social {
+          justify-content: flex-start;
+        }
       }
 
-      /* responsive */
-      @media (max-width: 780px) {
-        .grid-two {
+      @media (max-width: 768px) {
+        .footer-smart .footer-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px 16px;
+        }
+        .footer-smart .footer-grid > div:nth-child(1) {
+          grid-column: 1 / -1;
+        }
+        .footer-smart .footer-grid > div:nth-child(2) {
+          grid-column: 1 / 2;
+        }
+        .footer-smart .footer-grid > div:nth-child(3) {
+          grid-column: 2 / 3;
+        }
+
+        .footer-smart .footer-about p {
+          max-width: 100%;
+        }
+        .footer-smart .footer-about,
+        .footer-smart .footer-about p,
+        .footer-smart .footer-about .social,
+        .footer-smart h3,
+        .footer-smart ul li,
+        .footer-smart .footer-bottom {
+          text-align: left;
+          justify-content: flex-start;
+        }
+        .footer-smart .footer-about {
+          align-items: flex-start;
+        }
+        .footer-smart h3::after {
+          left: 0;
+          transform: none;
+        }
+        .footer-smart ul li {
+          justify-content: flex-start;
+        }
+        .footer-smart .social {
+          justify-content: flex-start;
+        }
+        .footer-smart .footer-bottom {
           flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
         }
-        .visual-col {
-          min-height: 200px;
-        }
-        .visual-overlay {
-          padding: 2rem 1.5rem;
-        }
-        .form-col {
-          padding: 2rem 1.5rem 2.2rem;
+        .footer-smart .footer-bottom-links {
+          justify-content: flex-start;
         }
       }
 
       @media (max-width: 480px) {
-        .body-form {
-          padding: 0.8rem;
+        .footer-smart {
+          padding: 28px 10px 14px;
         }
-        .form-col h2 {
-          font-size: 1.3rem;
+        .footer-smart h3 {
+          font-size: 16px;
+          margin-bottom: 16px;
         }
-        .toast-msg {
-          white-space: normal;
-          width: 80%;
-          text-align: center;
-          font-size: 0.7rem;
-          padding: 0.6rem 1.2rem;
+        .footer-smart ul li {
+          font-size: 13px;
+          margin-bottom: 8px;
         }
-      }
-
-      /* small helper */
-      .req-star {
-        color: #c5850d;
-        margin-left: 2px;
-        font-weight: 700;
+        .footer-smart .footer-logo {
+          width: 110px;
+        }
+        .footer-smart .social a {
+          width: 34px;
+          height: 34px;
+          font-size: 14px;
+        }
+        .footer-smart .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 16px 12px;
+        }
+        .footer-smart .footer-grid > div:nth-child(1) {
+          grid-column: 1 / -1;
+        }
+        .footer-smart .footer-grid > div:nth-child(2) {
+          grid-column: 1 / 2;
+        }
+        .footer-smart .footer-grid > div:nth-child(3) {
+          grid-column: 2 / 3;
+        }
+        .footer-smart .footer-about,
+        .footer-smart .footer-about p,
+        .footer-smart .footer-about .social,
+        .footer-smart h3,
+        .footer-smart ul li,
+        .footer-smart .footer-bottom {
+          text-align: left;
+          justify-content: flex-start;
+        }
+        .footer-smart .footer-about {
+          align-items: flex-start;
+        }
+        .footer-smart h3::after {
+          left: 0;
+          transform: none;
+        }
+        .footer-smart ul li {
+          justify-content: flex-start;
+        }
+        .footer-smart .social {
+          justify-content: flex-start;
+        }
       }
     </style>
   </head>
   <body>
-    <section class="body-form">
-      <div class="message-card">
-        <div class="grid-two">
-          <!-- left: full-width image with overlay -->
-          <div class="visual-col">
+    <!-- FOOTER – Smart Money 24/7, pure dark background, 3 columns desktop, left-aligned -->
+    <footer class="footer-smart">
+      <div class="container">
+        <!-- ===== 3-COLUMN GRID (desktop) ===== -->
+        <div class="footer-grid">
+          <!-- 1st: LOGO + DESCRIPTION + SOCIAL ICONS -->
+          <div class="footer-about">
+            <!-- logo placeholder – replace src with your actual logo -->
             <img
-              src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29udGFjdCUyMHVzfGVufDB8fDB8fHww"
-              alt="Elegant contact us visual"
+              src="Photos/lgo-11-Photoroom.png"
+              alt="Smart Money 24/7 Logo"
+              class="footer-logo"
             />
-            <div class="visual-overlay">
-              <i class="far fa-envelope"></i>
-              <h3>Send Us a Message</h3>
-              <div class="divider-line"></div>
-              <p>We’ll reply within 24 hours — simple, warm, and human.</p>
+            <p>
+              <strong>Smart Money 24/7</strong> – Your trusted partner for
+              Financial Clarity. We provide Real-Time Tools, Expert Insights,
+              and Actionable Strategies to help you navigate markets with
+              Confidence.
+            </p>
+            <!-- SOCIAL ICONS (unchanged, connect with us) -->
+            <div class="social">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
           </div>
 
-          <!-- right: form -->
-          <div class="form-col">
-            <h2>Get in touch</h2>
-            <div class="greeting">We’d love to hear from you.</div>
+          <!-- 2nd: QUICK LINKS – updated with new pages -->
+          <div>
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li>
+                <a href="Position-Size-Calculator.html"
+                  >Position Size Calculator</a
+                >
+              </li>
+              <li><a href="Value-Calculator.html">Value Calculator</a></li>
+              <li><a href="Currency-Strength.html">Currency Strength</a></li>
+              <li><a href="Scaling.html">Scaling Plan</a></li>
+              <li><a href="FAQ.html">FAQ</a></li>
+            </ul>
+          </div>
 
-            <form id="messageForm">
-              <!-- Full Name -->
-              <div class="input-field">
-                <label>Full Name <span class="req-star">*</span></label>
-                <input
-                  type="text"
-                  id="fullName"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
+          <!-- 3rd: CONTACT – updated address, helpline, email -->
+          <div>
+            <h3>Connect with Us</h3>
+            <ul>
+              <li>
+                <a href="Contact.html">
+                  <i class="fa fa-paper-plane"></i> Contact us</a
+                >
+              </li>
+              <li><i class="fas fa-phone"></i> Helpline: 10505</li>
+              <li><i class="fas fa-envelope"></i> SmartMoney24/7.gmail.com</li>
+              <li>
+                <i class="fas fa-location-dot"></i> XYZ Lane, XYZ Road – 223120
+              </li>
+              <li>
+                <i class="fas fa-clock"></i> Mon – Fri : 9:00 AM – 6:00 PM
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- end footer-grid -->
 
-              <!-- Email -->
-              <div class="input-field">
-                <label>Email Address <span class="req-star">*</span></label>
-                <input
-                  type="email"
-                  id="email"
-                  placeholder="Enter your email address"
-                  required
-                />
-              </div>
-
-              <!-- Phone -->
-              <div class="input-field">
-                <label>Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  placeholder="Enter your contact number"
-                />
-              </div>
-
-              <!-- Subject dropdown -->
-              <div class="input-field">
-                <label>Subject</label>
-                <select id="subject">
-                  <option value="">Select an inquiry type</option>
-                  <option value="General">General</option>
-
-                  <option value="Course">Course</option>
-                  <option value="Career">Career</option>
-                  <option value="Media">Media</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <!-- Message -->
-              <div class="input-field">
-                <label>Your Message</label>
-                <textarea
-                  id="message"
-                  rows="2"
-                  placeholder="Tell us how we can help you…"
-                ></textarea>
-              </div>
-
-              <button type="submit" class="btn-send">
-                <i class="fas fa-paper-plane"></i> Send Message
-              </button>
-              <div class="footnote-light">
-                <i class="fas fa-lock"></i> Your information is safe with us.
-              </div>
-            </form>
+        <!-- ===== BOTTOM BAR ===== -->
+        <div class="footer-bottom">
+          <p>© 2026 <strong>SmartMoney24/7</strong>. All Rights Reserved.</p>
+          <div class="footer-bottom-links">
+            <a
+              href="https://skilled-va.com/"
+              target="_blank"
+              style="font-weight: 500"
+            >
+              <i class="fas fa-code"></i> Designed &amp; Developed by
+              <strong>Skilled VA</strong>
+            </a>
           </div>
         </div>
       </div>
-    </section>
-    <!-- Toast -->
-    <div id="toastMsg" class="toast-msg" style="opacity: 0; visibility: hidden">
-      ✨
-    </div>
-
-    <script>
-      // ----------------------------------------------------------------
-      // 1. Replace with your Apps Script URL (for production)
-      //    (or keep as is – will use localStorage backup automatically)
-      // ----------------------------------------------------------------
-      const GOOGLE_SHEET_API_URL = "#";
-      // ↑ replace with your own Apps Script Web App URL
-
-      // ---------- helpers ----------
-      function showToast(msg, isError = false) {
-        const toast = document.getElementById("toastMsg");
-        toast.style.backgroundColor = isError ? "#b27a5a" : "#1f2c2e";
-        toast.style.color = "#fffcf5";
-        toast.textContent = msg;
-        toast.style.opacity = "1";
-        toast.style.visibility = "visible";
-        clearTimeout(toast._timer);
-        toast._timer = setTimeout(() => {
-          toast.style.opacity = "0";
-          setTimeout(() => {
-            toast.style.visibility = "hidden";
-          }, 300);
-        }, 3800);
-      }
-
-      function storeBackup(data) {
-        try {
-          const existing = JSON.parse(
-            localStorage.getItem("msg_leads") || "[]",
-          );
-          existing.push(data);
-          localStorage.setItem("msg_leads", JSON.stringify(existing));
-        } catch (_) {
-          /* ignore */
-        }
-      }
-
-      // ---------- form handler ----------
-      const form = document.getElementById("messageForm");
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const fullName = document.getElementById("fullName").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const subject = document.getElementById("subject").value;
-        const message = document.getElementById("message").value.trim();
-
-        // simple validation
-        if (!fullName) {
-          showToast("Please enter your full name.", true);
-          return;
-        }
-        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-          showToast("Please provide a valid email address.", true);
-          return;
-        }
-
-        const payload = {
-          fullName,
-          email,
-          phone: phone || "—",
-          subject: subject || "Not selected",
-          message: message || "No message",
-          timestamp: new Date().toISOString(),
-        };
-
-        const btn = form.querySelector(".btn-send");
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending…';
-        btn.disabled = true;
-
-        const isLive =
-          GOOGLE_SHEET_API_URL &&
-          GOOGLE_SHEET_API_URL.includes("script.google.com") &&
-          !GOOGLE_SHEET_API_URL.includes("dummyReplaceWithYourOwn");
-
-        try {
-          if (isLive) {
-            await fetch(GOOGLE_SHEET_API_URL, {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-            });
-            storeBackup(payload);
-            showToast("✓ Message sent! We’ll get back to you shortly.");
-            form.reset();
-          } else {
-            // demo mode – local backup
-            storeBackup(payload);
-            showToast(
-              "✨ Demo: message saved locally. (Set API URL for production.)",
-            );
-            form.reset();
-          }
-        } catch (_) {
-          storeBackup(payload);
-          showToast(
-            "Note: request saved locally. Our team will reach out.",
-            true,
-          );
-        } finally {
-          btn.innerHTML = originalText;
-          btn.disabled = false;
-        }
-      });
-
-      // ---------- extra polish ----------
-      // phone – digits only (optional)
-      document.getElementById("phone").addEventListener("input", function () {
-        this.value = this.value.replace(/\D/g, "");
-      });
-
-      console.log(
-        "💬 Simple message form ready. Replace GOOGLE_SHEET_API_URL for live sheet logging.",
-      );
-    </script>
+      <!-- end container -->
+    </footer>
   </body>
 </html>

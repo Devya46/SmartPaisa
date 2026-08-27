@@ -20,29 +20,40 @@
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
         />
-        <title>Smart Money 24/7</title>
+        <title>Smart Money 24/7 · Header</title>
+        <!-- Google Fonts + Font Awesome (same as original) -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
           rel="stylesheet"
         />
-        <!-- Font Awesome 6 (free) -->
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         />
         <style>
+          /* ---------- RESET / BASE ---------- */
           * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
           }
           body {
-            font-family: "Poppins", Arial, sans-serif !important;
+            font-family: "Inter", "Poppins", Arial, sans-serif;
             background: #020509;
             color: #fff;
-            min-height: 100vh;
+            min-height: 300vh; /* just for scroll demo */
+            padding-top: 76px;
+            transition: overflow 0.2s;
+          }
+          body.mobile-menu-open {
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
           }
           a {
             text-decoration: none;
@@ -66,13 +77,14 @@
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 1000;
+            z-index: 999999;
             background: #00000024;
-            border-bottom: 1px solid rgb(255 248 248 / 8%);
+            border-bottom: 1px solid rgba(255, 248, 248, 0.08);
             backdrop-filter: blur(2px);
             transition:
               box-shadow 0.2s,
-              background 0.2s;
+              background 0.2s,
+              backdrop-filter 0.2s;
           }
           .site-header.scrolled {
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
@@ -88,10 +100,10 @@
             justify-content: space-between;
           }
 
-          /* ---------- LOGO (big, image) ---------- */
+          /* ---------- LOGO ---------- */
           .logo {
             flex-shrink: 0;
-            width: 105px;
+            width: 237px;
             height: auto;
             display: flex;
             align-items: center;
@@ -102,7 +114,7 @@
           .logo img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
             filter: drop-shadow(0 2px 6px rgba(0, 179, 255, 0.064));
             transition: filter 0.2s;
@@ -164,7 +176,7 @@
           .mega-menu {
             position: absolute;
             top: calc(100% - 4px);
-            left: 14rem;
+            left: 50%;
             transform: translateX(-50%) translateY(8px);
             opacity: 0;
             visibility: hidden;
@@ -446,10 +458,7 @@
             background: linear-gradient(180deg, #2aa6ff 0%, #0878e8 100%);
           }
 
-          /* ================================
-   MOBILE HAMBURGER FIX
-================================ */
-
+          /* ===== MOBILE TOGGLE ===== */
           .mobile-toggle {
             display: none;
             width: 44px;
@@ -466,9 +475,8 @@
             border-radius: 10px;
             cursor: pointer;
             position: relative;
-            z-index: 2000;
+            z-index: 1000000;
           }
-
           .mobile-toggle span,
           .mobile-toggle span::before,
           .mobile-toggle span::after {
@@ -481,129 +489,30 @@
             position: absolute;
             transition: all 0.25s ease;
           }
-
           .mobile-toggle span {
             position: relative;
           }
-
           .mobile-toggle span::before {
             top: -8px;
             left: 0;
           }
-
           .mobile-toggle span::after {
             top: 8px;
             left: 0;
           }
-
-          /* Hamburger → X */
           .mobile-toggle.active span {
             background: transparent;
           }
-
           .mobile-toggle.active span::before {
             top: 0;
             transform: rotate(45deg);
           }
-
           .mobile-toggle.active span::after {
             top: 0;
             transform: rotate(-45deg);
           }
 
-          /* ================================
-   RESPONSIVE HEADER
-================================ */
-
-          @media (max-width: 960px) {
-            .desktop-nav {
-              display: none !important;
-            }
-
-            .header-right {
-              display: none !important;
-            }
-
-            .mobile-toggle {
-              display: flex !important;
-            }
-
-            .header-inner {
-              width: calc(100% - 24px);
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            }
-
-            .logo {
-              width: 130px;
-              height: 48px;
-              margin-top: 20px;
-            }
-          }
-
-          /* Smaller mobile */
-          @media (max-width: 700px) {
-            .site-header {
-              height: 66px;
-            }
-
-            .mobile-menu {
-              top: 66px;
-            }
-
-            .logo {
-              width: 112px;
-              height: 40px;
-              margin-top: 16px;
-            }
-
-            .mobile-toggle {
-              width: 42px;
-              height: 42px;
-              flex-basis: 42px;
-            }
-          }
-
-          /* Very small screens */
-          @media (max-width: 480px) {
-            .header-inner {
-              width: calc(100% - 16px);
-            }
-
-            .logo {
-              width: 100px;
-              height: 36px;
-              margin-top: 14px;
-            }
-
-            .mobile-toggle {
-              width: 40px;
-              height: 40px;
-              flex-basis: 40px;
-            }
-
-            .mobile-toggle span,
-            .mobile-toggle span::before,
-            .mobile-toggle span::after {
-              width: 20px;
-              height: 2px;
-            }
-
-            .mobile-toggle span::before {
-              top: -7px;
-            }
-
-            .mobile-toggle span::after {
-              top: 7px;
-            }
-          }
-
-          /* =====================================================
-   FINAL MOBILE HEADER FIX
-===================================================== */
-
-          /* Hide mobile menu by default */
+          /* ===== MOBILE MENU (hidden by default) ===== */
           .mobile-menu {
             display: none !important;
             position: fixed !important;
@@ -611,121 +520,37 @@
             left: 0;
             right: 0;
             bottom: 0;
-
             width: 100% !important;
-            height: auto;
-
+            height: fit-content;
             background: #0b1623 !important;
             padding: 16px 20px 30px !important;
-
             overflow-y: auto;
-            z-index: 9999 !important;
-
+            z-index: 999998 !important;
             box-sizing: border-box;
+            -webkit-overflow-scrolling: touch;
           }
-
-          /* Show ONLY when hamburger is clicked */
           .mobile-menu.active {
             display: block !important;
           }
 
-          /* Hamburger */
-          .mobile-toggle {
-            display: none;
-            width: 44px;
-            height: 44px;
-
-            flex: 0 0 44px;
-
-            align-items: center;
-            justify-content: center;
-
-            position: relative;
-            z-index: 10000;
-
-            margin-left: auto;
-            padding: 0;
-
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 10px;
-
-            cursor: pointer;
-          }
-
-          /* Hamburger lines */
-          .mobile-toggle span,
-          .mobile-toggle span::before,
-          .mobile-toggle span::after {
-            content: "";
-            display: block;
-
-            width: 24px;
-            height: 2.5px;
-
-            background: #fff;
-            border-radius: 5px;
-
-            position: absolute;
-
-            transition: 0.25s ease;
-          }
-
-          .mobile-toggle span {
-            position: relative;
-          }
-
-          .mobile-toggle span::before {
-            top: -8px;
-            left: 0;
-          }
-
-          .mobile-toggle span::after {
-            top: 8px;
-            left: 0;
-          }
-
-          /* Hamburger → X */
-          .mobile-toggle.active span {
-            background: transparent;
-          }
-
-          .mobile-toggle.active span::before {
-            top: 0;
-            transform: rotate(45deg);
-          }
-
-          .mobile-toggle.active span::after {
-            top: 0;
-            transform: rotate(-45deg);
-          }
-
-          /* =====================================================
-   TABLET / MOBILE
-===================================================== */
-
+          /* ===== RESPONSIVE ===== */
           @media (max-width: 960px) {
             .desktop-nav {
               display: none !important;
             }
-
             .header-right {
               display: none !important;
             }
-
             .mobile-toggle {
               display: flex !important;
             }
-
             .header-inner {
               width: calc(100% - 24px);
               height: 100%;
-
               display: flex;
               align-items: center;
               justify-content: space-between;
             }
-
             .logo {
               width: 130px;
               height: 48px;
@@ -733,172 +558,93 @@
             }
           }
 
-          /* =====================================================
-   MOBILE
-===================================================== */
-
           @media (max-width: 700px) {
             .site-header {
               height: 66px;
             }
-
             .mobile-menu {
               top: 66px !important;
+              /* height: calc(100% - 66px) !important; */
             }
-
             .logo {
               width: 112px;
               height: 40px;
               margin-top: 16px;
             }
-
             .mobile-toggle {
               width: 42px;
               height: 42px;
               flex-basis: 42px;
             }
-
             .mobile-link {
               width: 100%;
               padding: 16px 4px;
-
               display: flex !important;
               align-items: center;
               justify-content: space-between;
-
               color: #f0f4ff !important;
               font-size: 16px;
               font-weight: 600;
-
               background: transparent !important;
               border: 0;
-
               text-align: left;
             }
-
             .mobile-item {
               border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             }
-
             .mobile-dropdown {
               display: none !important;
               padding: 0 4px 14px;
             }
-
             .mobile-item.open .mobile-dropdown {
               display: block !important;
             }
-
             .mobile-dropdown a {
               display: block !important;
               padding: 8px 0;
-
               color: #bcc1ce !important;
               font-size: 14px;
               font-weight: 500;
             }
           }
 
-          /* =====================================================
-   SMALL MOBILE
-===================================================== */
-
           @media (max-width: 480px) {
             .header-inner {
               width: calc(100% - 16px);
             }
-
             .logo {
-              width: 100px;
-              height: 36px;
-              margin-top: 14px;
+              width: 194px;
+              height: 70px;
+              margin-top: 26px;
             }
-
             .mobile-toggle {
               width: 40px;
               height: 40px;
               flex-basis: 40px;
             }
-
             .mobile-toggle span,
             .mobile-toggle span::before,
             .mobile-toggle span::after {
               width: 20px;
               height: 2px;
             }
-
             .mobile-toggle span::before {
               top: -7px;
             }
-
             .mobile-toggle span::after {
               top: 7px;
-            }
-          }
-          /* ==========================================
-   FINAL MOBILE MENU Z-INDEX FIX
-========================================== */
-
-          .site-header {
-            position: fixed !important;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 999999 !important;
-          }
-
-          .mobile-toggle {
-            position: relative !important;
-            z-index: 1000000 !important;
-          }
-
-          .mobile-menu {
-            position: fixed !important;
-            top: 76px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            width: 100%;
-            height: calc(100vh - 76px);
-
-            display: none !important;
-
-            z-index: 999998 !important;
-
-            background: #0b1623 !important;
-            overflow-y: auto !important;
-          }
-
-          .mobile-menu.active {
-            display: block !important;
-          }
-
-          @media (max-width: 700px) {
-            .site-header {
-              height: 66px !important;
-              z-index: 999999 !important;
-            }
-
-            .mobile-menu {
-              top: 66px !important;
-              height: calc(100vh - 66px) !important;
-              z-index: 999998 !important;
-            }
-
-            .mobile-toggle {
-              z-index: 1000000 !important;
             }
           }
         </style>
       </head>
       <body>
+        <!-- ===== HEADER ===== -->
         <header class="site-header" id="siteHeader">
           <div class="header-inner">
             <!-- LOGO -->
             <a href="index.html" class="logo" aria-label="Smart Money">
               <img
-                src="Photos/SMART MONEY LOGO 01 (1).png"
+                src="Photos/lgo-1-Photoroom.png"
                 alt="Smart Money – proprietary trading firm"
                 width="2560"
                 height="400"
@@ -906,7 +652,7 @@
               />
             </a>
 
-            <!-- desktop nav -->
+            <!-- DESKTOP NAV (exactly as original, all links preserved) -->
             <nav class="desktop-nav">
               <!-- SM24/7 Challenge -->
               <div class="nav-item">
@@ -936,7 +682,6 @@
                         </div>
                       </div></a
                     >
-
                     <a href="index.html" class="menu-link"
                       ><div class="menu-icon"><i class="fas fa-flask"></i></div>
                       <div>
@@ -971,13 +716,6 @@
                         </div>
                       </div></a
                     >
-                    <!-- <a href="#" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-crown"></i></div>
-                  <div>
-                    <div class="menu-title">Premium Programme</div>
-                    <div class="menu-description">For top-performers</div>
-                  </div></a
-                > -->
                   </div>
                   <a href="#" class="feature-card">
                     <div class="feature-image">
@@ -1056,46 +794,13 @@
                       Understand money better and make more informed decisions.
                     </div>
                   </a>
-                  <!-- <div>
-                <div class="menu-heading">Performance Zone</div>
-                <a href="#" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-tools"></i></div>
-                  <div>
-                    <div class="menu-title">Tools Overview</div>
-                    <div class="menu-description">Elevate your trading</div>
-                  </div></a
-                >
-                <a href="#" class="menu-link"
-                  ><div class="menu-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                  </div>
-                  <div>
-                    <div class="menu-title">App Suite</div>
-                    <div class="menu-description">by FX Blue</div>
-                  </div></a
-                >
-                <a href="#" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-trophy"></i></div>
-                  <div>
-                    <div class="menu-title">Leaderboard</div>
-                    <div class="menu-description">Live rankings</div>
-                  </div></a
-                >
-                <a href="#" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-user-tie"></i></div>
-                  <div>
-                    <div class="menu-title">Performance Coaches</div>
-                    <div class="menu-description">Stronger mindset</div>
-                  </div></a
-                >
-              </div> -->
                 </div>
               </div>
 
+              <!-- FAQ (standalone) -->
               <div class="nav-item">
                 <a href="FAQ.html" class="nav-link">FAQ</a>
               </div>
-              <!-- <div class="nav-item"><a href="#" class="nav-link">Blog</a></div> -->
 
               <!-- Academy -->
               <div class="nav-item">
@@ -1210,7 +915,6 @@
                 <div class="mega-menu about-menu">
                   <div>
                     <div class="menu-heading">Company</div>
-
                     <a href="About.html" class="menu-link"
                       ><div class="menu-icon">
                         <i class="fas fa-building"></i>
@@ -1239,7 +943,7 @@
                   </div>
                   <div>
                     <div class="menu-heading">Connect</div>
-                    <a href="#" class="menu-link"
+                    <a href="Contact.html" class="menu-link"
                       ><div class="menu-icon">
                         <i class="fas fa-headset"></i>
                       </div>
@@ -1259,32 +963,18 @@
                         </div>
                       </div></a
                     >
-                    <!-- <a href="#" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-briefcase"></i></div>
-                  <div>
-                    <div class="menu-title">Careers</div>
-                    <div class="menu-description">Join our team</div>
-                  </div></a
-                > -->
                   </div>
                 </div>
               </div>
             </nav>
 
-            <!-- right side -->
+            <!-- RIGHT SIDE (desktop) -->
             <div class="header-right">
-              <!-- <button class="search-btn" aria-label="Search">
-            <i class="fas fa-search"></i>
-          </button> -->
-              <!-- <div class="language">
-            <img class="flag" src="https://flagcdn.com/w40/gb.png" alt="EN" />
-            <span>EN</span>
-          </div> -->
               <a href="#" class="login">Log In</a>
               <a href="#" class="get-started">Get Started</a>
             </div>
 
-            <!-- mobile toggle (hamburger) -->
+            <!-- MOBILE TOGGLE -->
             <button
               class="mobile-toggle"
               id="mobileToggle"
@@ -1294,54 +984,66 @@
             </button>
           </div>
 
-          <!-- mobile menu -->
+          <!-- ===== MOBILE MENU (exact same links as desktop) ===== -->
           <div class="mobile-menu" id="mobileMenu">
+            <!-- Home / Challenge -->
             <div class="mobile-item">
               <button class="mobile-link">
-                SM24/7 Challenge <span>⌄</span>
+                Home <span class="arrow"></span>
               </button>
               <div class="mobile-dropdown">
-                <a href="#">How It Works</a><a href="#">Pricing</a
-                ><a href="#">Free Trial</a><a href="#">Trading Objectives</a
-                ><a href="#">Scaling Plan</a><a href="#">Premium Programme</a>
+                <a href="index.html">Home</a>
+                <a href="index.html#Steps-sm">How It Works</a>
+                <a href="index.html">Overview</a>
+                <a href="Scaling.html">Scaling Plan</a>
+                <a href="About.html#Approcessh">Trading Objectives</a>
               </div>
             </div>
+            <!-- Trading -->
             <div class="mobile-item">
-              <button class="mobile-link">Trading <span>⌄</span></button>
+              <button class="mobile-link">
+                Trading <span class="arrow"></span>
+              </button>
               <div class="mobile-dropdown">
-                <a href="#">Trading Updates</a><a href="#">Economic Calendar</a
-                ><a href="#">Tradable Symbols</a
-                ><a href="#">Trading Platforms</a><a href="#">Tools Overview</a
-                ><a href="#">App Suite</a><a href="#">Leaderboard</a
-                ><a href="#">Performance Coaches</a>
+                <a href="News.html">Economic Calendar</a>
+                <a href="ValueCalculator.html">Pip Value Calculator</a>
+                <a href="PositionSizeCal.html">Position Size Calculator</a>
+                <a href="CurrencyStrength.html">Currency Strength Meter</a>
               </div>
             </div>
+            <!-- FAQ (standalone) -->
             <div class="mobile-item">
-              <a href="#" class="mobile-link">FAQ</a>
+              <a href="FAQ.html" class="mobile-link">FAQ</a>
             </div>
+            <!-- Academy -->
             <div class="mobile-item">
-              <a href="#" class="mobile-link">Blog</a>
-            </div>
-            <div class="mobile-item">
-              <button class="mobile-link">Academy <span>⌄</span></button>
+              <button class="mobile-link">
+                Academy <span class="arrow"></span>
+              </button>
               <div class="mobile-dropdown">
-                <a href="#">Gateway to trading</a
-                ><a href="#">Financial Markets</a
-                ><a href="#">Putting it together</a
-                ><a href="#">How forex works</a
-                ><a href="#">Technical analysis</a
-                ><a href="#">Fundamental analysis</a
-                ><a href="#">More Lessons</a>
+                <a href="#">Gateway to trading</a>
+                <a href="#">Financial Markets</a>
+                <a href="#">Putting it together</a>
+                <a href="#">How forex works</a>
+                <a href="#">Technical analysis</a>
+                <a href="#">Fundamental analysis</a>
+                <a href="Coursees.html">More Lessons</a>
               </div>
             </div>
+            <!-- About -->
             <div class="mobile-item">
-              <button class="mobile-link">About <span>⌄</span></button>
+              <button class="mobile-link">
+                About <span class="arrow"></span>
+              </button>
               <div class="mobile-dropdown">
-                <a href="#">About Us</a><a href="#">SM24/7 Group</a
-                ><a href="#">Shop</a><a href="#">Contact Us</a
-                ><a href="#">For media</a><a href="#">Careers</a>
+                <a href="About.html">About Us</a>
+                <a href="index.html#whyus-sm">Why us</a>
+                <a href="index.html#witf">Who can Join?</a>
+                <a href="Contact.html">Contact Us</a>
+                <a href="About.html">For media</a>
               </div>
             </div>
+            <!-- login / cta -->
             <div
               style="
                 padding-top: 20px;
@@ -1361,119 +1063,92 @@
           </div>
         </header>
 
-        <!-- <script>
-      (function () {
-        const toggle = document.getElementById("mobileToggle");
-        const mobileMenu = document.getElementById("mobileMenu");
+        <script>
+          (function () {
+            // ----- SCROLL SHADOW -----
+            const header = document.getElementById("siteHeader");
+            window.addEventListener("scroll", function () {
+              header.classList.toggle("scrolled", window.scrollY > 20);
+            });
 
-        if (toggle && mobileMenu) {
-          toggle.addEventListener("click", function (e) {
-            e.stopPropagation();
-            const isOpen = mobileMenu.classList.toggle("active");
-            toggle.classList.toggle("active", isOpen);
-            toggle.setAttribute("aria-expanded", isOpen);
-          });
+            // ----- MOBILE TOGGLE -----
+            const toggle = document.getElementById("mobileToggle");
+            const mobileMenu = document.getElementById("mobileMenu");
+            const body = document.body;
 
-          // close mobile menu on link click (optional)
-          mobileMenu.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", function () {
+            function openMobileMenu() {
+              mobileMenu.classList.add("active");
+              toggle.classList.add("active");
+              toggle.setAttribute("aria-expanded", "true");
+              body.classList.add("mobile-menu-open");
+            }
+
+            function closeMobileMenu() {
               mobileMenu.classList.remove("active");
               toggle.classList.remove("active");
               toggle.setAttribute("aria-expanded", "false");
-            });
-          });
-        }
+              body.classList.remove("mobile-menu-open");
+            }
 
-        // mobile dropdowns
-        document.querySelectorAll(".mobile-item").forEach((item) => {
-          const btn = item.querySelector(".mobile-link");
-          if (btn && btn.tagName === "BUTTON") {
-            btn.addEventListener("click", function (e) {
-              e.stopPropagation();
-              document.querySelectorAll(".mobile-item").forEach((el) => {
-                if (el !== item) el.classList.remove("open");
+            if (toggle && mobileMenu) {
+              toggle.addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (mobileMenu.classList.contains("active")) {
+                  closeMobileMenu();
+                } else {
+                  openMobileMenu();
+                }
               });
-              item.classList.toggle("open");
-            });
-          }
-        });
 
-        // esc key closes mobile
-        document.addEventListener("keydown", function (e) {
-          if (
-            e.key === "Escape" &&
-            mobileMenu &&
-            mobileMenu.classList.contains("active")
-          ) {
-            mobileMenu.classList.remove("active");
-            if (toggle) toggle.classList.remove("active");
-          }
-        });
+              // close mobile when clicking a link
+              mobileMenu.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                  closeMobileMenu();
+                });
+              });
 
-        // scroll shadow
-        const header = document.querySelector(".site-header");
-        window.addEventListener("scroll", function () {
-          header.classList.toggle("scrolled", window.scrollY > 20);
-        });
-      })();
-    </script> -->
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-            const toggle = document.getElementById("mobileToggle");
-            const mobileMenu = document.getElementById("mobileMenu");
+              // close on backdrop click (click outside menu)
+              document.addEventListener("click", function (e) {
+                if (mobileMenu.classList.contains("active")) {
+                  const isClickInside =
+                    mobileMenu.contains(e.target) || toggle.contains(e.target);
+                  if (!isClickInside) {
+                    closeMobileMenu();
+                  }
+                }
+              });
+            }
 
-            if (!toggle || !mobileMenu) return;
-
-            /* Hamburger */
-            toggle.addEventListener("click", function (e) {
-              e.preventDefault();
-              e.stopPropagation();
-
-              const isOpen = mobileMenu.classList.toggle("active");
-
-              toggle.classList.toggle("active", isOpen);
-
-              toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-            });
-
-            /* Mobile dropdowns */
+            // ----- MOBILE DROPDOWN (accordion) -----
             document.querySelectorAll(".mobile-item").forEach(function (item) {
-              const button = item.querySelector(".mobile-link");
-
-              if (button && button.tagName === "BUTTON") {
-                button.addEventListener("click", function (e) {
+              const btn = item.querySelector(".mobile-link");
+              if (btn && btn.tagName === "BUTTON") {
+                btn.addEventListener("click", function (e) {
                   e.preventDefault();
                   e.stopPropagation();
-
+                  // close other open items
                   document
                     .querySelectorAll(".mobile-item")
                     .forEach(function (other) {
-                      if (other !== item) {
-                        other.classList.remove("open");
-                      }
+                      if (other !== item) other.classList.remove("open");
                     });
-
                   item.classList.toggle("open");
                 });
               }
             });
 
-            /* Close when normal link is clicked */
-            mobileMenu.querySelectorAll("a").forEach(function (link) {
-              link.addEventListener("click", function () {
-                mobileMenu.classList.remove("active");
-                toggle.classList.remove("active");
-              });
-            });
-
-            /* ESC */
+            // ----- ESC key -----
             document.addEventListener("keydown", function (e) {
-              if (e.key === "Escape") {
-                mobileMenu.classList.remove("active");
-                toggle.classList.remove("active");
+              if (
+                e.key === "Escape" &&
+                mobileMenu &&
+                mobileMenu.classList.contains("active")
+              ) {
+                closeMobileMenu();
               }
             });
-          });
+          })();
         </script>
       </body>
     </html>
@@ -1521,17 +1196,17 @@
       }
 
       .footer-smart {
-        font-family: "Poppins", sans-serif;
+        font-family: "Poppins", Arial, sans-serif !important;
         background: linear-gradient(
           145deg,
-          #010b12 0%,
-          #021e2b 40%,
-          #000000 100%
+          #001e32 0%,
+          #000000 40%,
+          #001e32 100%
         );
         padding: 40px 0 18px;
         color: #fff;
         width: 100%;
-        border-top: 3px solid #1a3f52;
+        border-top: 2px solid #444444;
       }
 
       .footer-smart .container {
@@ -1550,9 +1225,8 @@
 
       /* ---------- LOGO ---------- */
       .footer-smart .footer-logo {
-        width: 90px;
-        margin-bottom: 10px;
-        margin-left: 15px;
+        width: 270px;
+        height: auto;
         display: block;
         filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
       }
@@ -1847,7 +1521,7 @@
           <div class="footer-about">
             <!-- logo placeholder – replace src with your actual logo -->
             <img
-              src="Photos/SMART MONEY LOGO 01 (1).png"
+              src="Photos/lgo-11-Photoroom.png"
               alt="Smart Money 24/7 Logo"
               class="footer-logo"
             />
@@ -1886,7 +1560,7 @@
               </li>
               <li><a href="Value-Calculator.html">Value Calculator</a></li>
               <li><a href="Currency-Strength.html">Currency Strength</a></li>
-              <li><a href="News.html">News</a></li>
+              <li><a href="Scaling.html">Scaling Plan</a></li>
               <li><a href="FAQ.html">FAQ</a></li>
             </ul>
           </div>
@@ -1895,6 +1569,11 @@
           <div>
             <h3>Connect with Us</h3>
             <ul>
+              <li>
+                <a href="Contact.html">
+                  <i class="fa fa-paper-plane"></i> Contact us</a
+                >
+              </li>
               <li><i class="fas fa-phone"></i> Helpline: 10505</li>
               <li><i class="fas fa-envelope"></i> SmartMoney24/7.gmail.com</li>
               <li>

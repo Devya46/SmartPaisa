@@ -1,15 +1,14 @@
-<!-- ---------form------ -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <title>Luxury Estates | Kirti Inquiry — Art of Living</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Money · What You Will Learn</title>
+    <!-- Google Font & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,500..700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -23,680 +22,496 @@
         box-sizing: border-box;
       }
 
-      .body-form {
-        background: white;
+      body {
         font-family: "Inter", sans-serif;
+        background: #f0f5fc;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         min-height: 100vh;
-        padding: 0;
+        padding: 2rem 0; /* full width, no horizontal padding */
       }
 
-      /* main luxury card */
-      .luxury-card {
-        max-width: 1545px;
+      /* FULL WIDTH premium section — 100% viewport width */
+      .learn-section {
         width: 100%;
-        background: #ffffff;
-        overflow: hidden;
-        transition: all 0.4s ease;
+        max-width: 100%; /* force full width */
+        background: linear-gradient(145deg, #ffffff 0%, #f5faff 100%);
+        padding: 3.5rem 4rem;
+        border: none;
+        box-shadow: 0 8px 40px -12px rgba(0, 20, 40, 0.08);
+        transition: all 0.2s ease;
       }
 
-      .form-grid {
+      /* header with golden accent */
+      .section-header {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 3rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 3px solid;
+        border-image: linear-gradient(90deg, #d4af37 0%, #1f4b7a 100%) 1;
+        border-bottom: 3px solid;
       }
 
-      /* LEFT: image stack exactly as original structure (two images stacked vertically) */
-      .visual-side {
-        flex: 1.2;
-        /* background: #fbf9f6; */
+      .header-left {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        padding: 2rem;
-        margin-bottom: 111px;
+        gap: 0.3rem;
       }
 
-      .shape-image {
-        position: relative;
-        width: 100%;
-        max-width: 780px;
-        margin: 0 auto;
-      }
-
-      .shape-image .main-img {
-        display: block;
-        width: 100%;
-        height: 42rem;
-        object-fit: cover;
-      }
-
-      .shape-image .frame-img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 2;
-
-        filter: sepia(100%) saturate(1000%) hue-rotate(355deg) brightness(1.2)
-          contrast(1.15);
-      }
-
-      @media (max-width: 768px) {
-        .shape-image {
-          max-width: 500px;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .shape-image {
-          max-width: 100%;
-        }
-      }
-      /* RIGHT SIDE: form with refined spacing */
-      .form-side {
-        flex: 1;
-        /* background: #ffebc57d; */
-        padding: 2.5rem 2.5rem 2.5rem 1.8rem;
-      }
-
-      .form-container {
-        max-width: 560px;
-        margin-left: 0.5rem;
-      }
-
-      .badge-club {
+      .gold-badge {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        background: #f3efe8;
-        padding: 0.35rem 1.2rem;
+        gap: 0.6rem;
+        background: #0b1e33;
+        color: #f5e7c8;
+        padding: 0.3rem 1.4rem 0.3rem 1.2rem;
         border-radius: 60px;
         font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-        color: #c5850d; /* accent gold */
-        text-transform: uppercase;
-        margin-bottom: 1.2rem;
-      }
-
-      .badge-club i {
-        font-size: 0.7rem;
-        color: #c5850d;
-      }
-
-      h1 {
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: #1f2c2e;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.6rem;
-        line-height: 1.2;
-      }
-
-      .subhead {
-        color: #5f6c6a;
-        font-size: 0.95rem;
-        font-weight: 400;
-        line-height: 1.45;
-        margin-bottom: 2rem;
-        border-left: 3px solid #c5850d;
-        padding-left: 1rem;
-      }
-
-      /* form elements */
-      .input-group {
-        margin-bottom: 1.3rem;
-        display: flex;
-        flex-direction: column;
-      }
-
-      label {
-        font-size: 0.7rem;
-        font-weight: 700;
-        text-transform: uppercase;
+        font-weight: 600;
         letter-spacing: 0.6px;
-        color: #8b7a66;
-        margin-bottom: 0.45rem;
+        text-transform: uppercase;
+        width: fit-content;
+        box-shadow: 0 6px 14px -6px rgba(0, 20, 30, 0.3);
+        border: 1px solid #d4af3760;
       }
 
-      .req-star {
-        color: #c5850d;
-        margin-left: 2px;
+      .gold-badge i {
+        color: #f5c542;
+        font-size: 0.8rem;
       }
 
-      input,
-      select,
-      textarea {
-        width: 100%;
-        padding: 0.9rem 1.1rem;
-        border: 1px solid #e7e2da;
-        border-radius: 1.25rem;
-        font-family: "Inter", sans-serif;
-        font-size: 0.9rem;
-        background: #fefcf9;
+      .main-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        color: #0a1a2b;
+        margin-top: 0.4rem;
+      }
+
+      .main-title span {
+        background: linear-gradient(145deg, #b8860b, #d4af37, #b8860b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        font-weight: 700;
+      }
+
+      .main-title .blue-accent {
+        background: linear-gradient(145deg, #1a3f62, #25658b);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* removed sub-head, pills removed */
+
+      /* grid — 6 items, 3 columns */
+      .learn-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin: 2.5rem 0 2.8rem 0;
+      }
+
+      .learn-card {
+        background: #ffffff;
+        padding: 2rem 1.8rem 2rem 1.8rem;
+        border-radius: 32px;
+        box-shadow: 0 8px 28px -10px rgba(10, 30, 50, 0.06);
         transition: all 0.25s ease;
-        outline: none;
-        color: #2b2b28;
+        border: 1px solid rgba(180, 200, 220, 0.25);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(2px);
+        background: rgba(255, 255, 255, 0.75);
       }
 
-      input:focus,
-      select:focus,
-      textarea:focus {
-        border-color: #c5850d;
-        box-shadow: 0 0 0 3px rgba(197, 133, 13, 0.2);
+      /* golden blue accent line */
+      .learn-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          #d4af37 0%,
+          #1f4b7a 70%,
+          #1f4b7a 100%
+        );
+        opacity: 0.6;
+      }
+
+      .learn-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px -12px rgba(0, 30, 60, 0.15);
+        border-color: #d4af3760;
         background: #ffffff;
       }
 
-      /* phone row */
-      .phone-row {
-        display: flex;
-        gap: 0.8rem;
-        align-items: center;
-      }
-      .phone-prefix {
-        width: 80px;
-        flex-shrink: 0;
-      }
-      .phone-number {
-        flex: 1;
-      }
-
-      /* TWO COLUMN LAYOUT: select service + service option side by side, and budget + message side by side */
-      .row-duo {
-        display: flex;
-        gap: 1.2rem;
-        flex-wrap: wrap;
-        margin-bottom: 0.2rem;
-      }
-      .row-duo .input-group {
-        flex: 1;
-        min-width: 160px;
-        margin-bottom: 1.3rem;
-      }
-
-      select {
-        appearance: none;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%238b7a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
-        background-repeat: no-repeat;
-        background-position: right 1.2rem center;
-        background-size: 14px;
-      }
-
-      .submit-btn {
-        background: #c5850d;
-        color: white;
-        border: none;
-        padding: 1rem 1.5rem;
-        font-size: 1rem;
-        font-weight: 600;
-        border-radius: 3rem;
-        width: 100%;
-        cursor: pointer;
-        transition: all 0.3s;
+      .card-icon {
+        font-size: 2.4rem;
+        color: #1f4b7a;
+        background: linear-gradient(135deg, #e7eef9, #d7e3f0);
+        width: 64px;
+        height: 64px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.7rem;
-        margin-top: 0.5rem;
-        font-family: "Inter", sans-serif;
-        box-shadow: 0 6px 14px rgba(197, 133, 13, 0.2);
+        border-radius: 20px;
+        margin-bottom: 1.4rem;
+        transition: 0.2s;
+        border: 1px solid #d4af3740;
       }
 
-      .submit-btn:hover {
-        background: #9e6b0b;
-        transform: translateY(-2px);
-        box-shadow: 0 18px 28px -10px rgba(197, 133, 13, 0.4);
+      .learn-card:hover .card-icon {
+        background: #d4af3720;
+        border-color: #d4af37;
+        color: #b8860b;
       }
 
-      .footnote {
-        font-size: 0.7rem;
-        text-align: center;
-        margin-top: 1.2rem;
-        color: #b2a48f;
-        letter-spacing: 0.2px;
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+        color: #0b1f32;
+        margin-bottom: 0.6rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
       }
 
-      /* toast message */
-      .toast-msg {
-        position: fixed;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #1f2c2e;
-        color: #fef3e4;
-        padding: 0.8rem 2rem;
+      .card-title i {
+        color: #d4af37;
+        font-size: 0.9rem;
+        opacity: 0.7;
+      }
+
+      .card-desc {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #2c445e;
+        font-weight: 400;
+      }
+
+      .card-desc strong {
+        color: #1a3f62;
+        font-weight: 600;
+      }
+
+      /* full-width bottom CTA / extra */
+      .learn-footer {
+        background: linear-gradient(135deg, #eef4fc 0%, #f9fcff 100%);
+        border-radius: 40px;
+        padding: 1.8rem 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        box-shadow:
+          inset 0 2px 8px rgba(255, 255, 255, 0.7),
+          0 12px 28px -12px rgba(0, 20, 40, 0.1);
+        margin-top: 1.5rem;
+      }
+
+      .footer-message {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+
+      .gold-icon-big {
+        background: #0f2c44;
+        color: #f5c542;
+        padding: 0.7rem 1.6rem;
         border-radius: 60px;
-        font-size: 0.85rem;
+        font-weight: 600;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        border: 1px solid #d4af37;
+        box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.15);
+      }
+
+      .gold-icon-big i {
+        color: #f7d44a;
+      }
+
+      .footer-text {
+        font-size: 1rem;
+        color: #1a3a56;
+        font-weight: 450;
+      }
+
+      .footer-text i {
+        color: #d4af37;
+        margin: 0 4px;
+      }
+
+      .cta-gold {
+        background: #0b1e33;
+        color: #f5e7c8;
+        border: 1px solid #d4af37;
+        padding: 0.7rem 2.2rem;
+        border-radius: 60px;
         font-weight: 500;
-        z-index: 1100;
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-        backdrop-filter: blur(6px);
-        transition: opacity 0.2s ease;
-        pointer-events: none;
-        white-space: nowrap;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: 0.2s;
+        cursor: default;
+        box-shadow: 0 6px 16px -6px rgba(0, 20, 40, 0.25);
       }
 
-      /* responsiveness */
-      @media (max-width: 1000px) {
-        .form-side {
-          padding: 2rem 1.8rem;
+      .cta-gold i {
+        color: #f5c542;
+        transition: 0.2s;
+      }
+
+      .cta-gold:hover {
+        background: #143753;
+        transform: scale(1.02);
+        border-color: #f5c542;
+      }
+
+      .cta-gold:hover i {
+        transform: translateX(4px);
+      }
+
+      /* responsive */
+      @media (max-width: 1024px) {
+        .learn-section {
+          padding: 2.5rem 2rem;
         }
-        .form-container {
-          margin-left: 0;
-          max-width: 100%;
+        .learn-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.8rem;
         }
       }
 
-      @media (max-width: 860px) {
-        .form-grid {
+      @media (max-width: 760px) {
+        .learn-section {
+          padding: 2rem 1.5rem;
+        }
+        .main-title {
+          font-size: 2.2rem;
+        }
+        .learn-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .section-header {
           flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
         }
-        .visual-side {
-          padding: 2rem 1.8rem;
-        }
-        .row-duo {
+        .learn-footer {
           flex-direction: column;
-          gap: 0;
-        }
-        .row-duo .input-group {
-          margin-bottom: 1.3rem;
-        }
-        h1 {
-          font-size: 2rem;
-        }
-        .phone-row {
-          flex-wrap: wrap;
-        }
-        .phone-prefix {
-          width: 100%;
-        }
-        .phone-number {
-          width: 100%;
-        }
-      }
-
-      @media (max-width: 550px) {
-        .body-form {
-          padding: 1rem;
-        }
-        .luxury-card {
-          border-radius: 1.5rem;
-        }
-        .form-side {
-          padding: 1.6rem;
-        }
-        .toast-msg {
-          white-space: normal;
-          width: 85%;
-          text-align: center;
-          font-size: 0.75rem;
-          padding: 0.7rem 1.2rem;
-        }
-        .visual-side {
+          align-items: flex-start;
+          gap: 1.2rem;
           padding: 1.5rem;
         }
       }
 
-      /* additional luxury touches */
-      .submit-btn i {
-        transition: transform 0.2s;
+      @media (max-width: 480px) {
+        .main-title {
+          font-size: 1.8rem;
+        }
+        .card-title {
+          font-size: 1.1rem;
+        }
       }
-      .submit-btn:hover i {
-        transform: translateX(4px);
+
+      /* subtle animation */
+      .learn-card {
+        opacity: 0;
+        animation: fadeUp 0.5s ease forwards;
       }
-      input::placeholder,
-      textarea::placeholder {
-        color: #cbc2b5;
-        font-weight: 400;
+      .learn-card:nth-child(1) {
+        animation-delay: 0.02s;
+      }
+      .learn-card:nth-child(2) {
+        animation-delay: 0.08s;
+      }
+      .learn-card:nth-child(3) {
+        animation-delay: 0.14s;
+      }
+      .learn-card:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+      .learn-card:nth-child(5) {
+        animation-delay: 0.26s;
+      }
+      .learn-card:nth-child(6) {
+        animation-delay: 0.32s;
+      }
+
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .learn-footer {
+        opacity: 0;
+        animation: fadeUp 0.5s ease 0.4s forwards;
+      }
+
+      /* extra: full-width container flush */
+      .full-width-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
     </style>
   </head>
   <body>
-    <section class="body-form">
-      <div class="luxury-card">
-        <div class="form-grid">
-          <!-- LEFT SIDE: shape image (exactly as original) -->
-          <div class="visual-side">
-            <div class="shape-image">
-              <img src="Images/CU-2.png" class="main-img" alt="" />
-              <!-- <img src="Images/border-shape.png" class="frame-img" alt="" /> -->
+    <div class="full-width-wrapper">
+      <div class="learn-section">
+        <!-- header: golden + blue, without extra pills/subhead -->
+        <div class="section-header">
+          <div class="header-left">
+            <div class="gold-badge">
+              <i class="fas fa-medal"></i> Smart Money Systems
+            </div>
+            <h2 class="main-title">What You Will <span>Learn</span></h2>
+            <!-- removed sub-head and pills -->
+          </div>
+          <!-- removed header-right pills -->
+        </div>
+
+        <!-- 6 learn cards (full width) -->
+        <div class="learn-grid">
+          <!-- 1. Forex & Gold fundamentals -->
+          <div class="learn-card">
+            <div class="card-icon"><i class="fas fa-coins"></i></div>
+            <div class="card-title">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i> Forex
+              &amp; Gold
+            </div>
+            <div class="card-desc">
+              <strong>Understand the fundamentals</strong> of Forex and Gold
+              trading — currency pairs, commodities, and what moves the markets.
             </div>
           </div>
 
-          <!-- RIGHT: inquiry form with side-by-side fields + BUDGET DROPDOWN, SERVICE OPTION limited words -->
-          <div class="form-side">
-            <div class="form-container">
-              <div class="badge-club">
-                <i class="fas fa-gem"></i> Kirti · Elite Estates
-              </div>
-              <h1>Enquire Now</h1>
-              <div class="subhead">
-                Curated real estate experiences — from private villas to
-                landmark investments.
-              </div>
+          <!-- 2. Charts & market movements -->
+          <div class="learn-card">
+            <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+            <div class="card-title">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i> Chart
+              Reading
+            </div>
+            <div class="card-desc">
+              <strong>Learn how to read charts</strong> and identify basic
+              market movements — trends, support/resistance, and price action.
+            </div>
+          </div>
 
-              <form id="luxuryLeadForm">
-                <!-- FULL NAME -->
-                <div class="input-group">
-                  <label>FULL NAME <span class="req-star">*</span></label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    placeholder="Your full name"
-                    required
-                  />
-                </div>
+          <!-- 3. MT4/MT5 practical knowledge -->
+          <div class="learn-card">
+            <div class="card-icon"><i class="fas fa-laptop"></i></div>
+            <div class="card-title">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i> MT4 / MT5
+            </div>
+            <div class="card-desc">
+              <strong>Develop practical knowledge</strong> of MT4/MT5 — order
+              types, indicators, and how to navigate the platforms like a pro.
+            </div>
+          </div>
 
-                <!-- PHONE with +91 prefix -->
-                <div class="input-group">
-                  <label>PHONE NUMBER <span class="req-star">*</span></label>
-                  <div class="phone-row">
-                    <div class="phone-prefix">
-                      <input
-                        type="text"
-                        value="+91"
-                        readonly
-                        style="
-                          background: #f2ede7;
-                          color: #4e4b46;
-                          font-weight: 600;
-                          cursor: default;
-                          text-align: center;
-                        "
-                      />
-                    </div>
-                    <div class="phone-number">
-                      <input
-                        type="tel"
-                        id="phoneNumber"
-                        placeholder="98765 43210"
-                        required
-                        pattern="[0-9]{10}"
-                        maxlength="10"
-                        inputmode="numeric"
-                      />
-                    </div>
-                  </div>
-                  <div
-                    style="
-                      font-size: 0.65rem;
-                      margin-top: 5px;
-                      color: #aa9c88;
-                      text-align: center;
-                    "
-                  >
-                    10-digit mobile number
-                  </div>
-                </div>
+          <!-- 4. Risk management & capital protection -->
+          <div class="learn-card">
+            <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="card-title">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i> Risk
+              Management
+            </div>
+            <div class="card-desc">
+              <strong>Apply proper risk management</strong> and capital
+              protection principles — position sizing, stop-loss, and preserving
+              your edge.
+            </div>
+          </div>
 
-                <!-- EMAIL -->
-                <div class="input-group">
-                  <label>EMAIL ADDRESS <span class="req-star">*</span></label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="name@domain.com"
-                    required
-                  />
-                </div>
+          <!-- 5. Trading psychology & emotional control -->
+          <div class="learn-card">
+            <div class="card-icon"><i class="fas fa-brain"></i></div>
+            <div class="card-title">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i> Psychology
+            </div>
+            <div class="card-desc">
+              <strong>Understand trading psychology</strong>, discipline, and
+              emotional control — master fear, greed, and stay objective.
+            </div>
+          </div>
 
-                <!-- ROW 1: SELECT SERVICE (optional) + SERVICE OPTION / NOTES side by side -->
-                <div class="row-duo">
-                  <div class="input-group">
-                    <label>SELECT SERVICE</label>
-                    <select id="selectService">
-                      <option value="">— Choose offering —</option>
-                      <option value="Residential Plotting">
-                        Residential Plotting
-                      </option>
-                      <option value="Villas & Estates">Villas & Estates</option>
-                      <option value="Luxury Flats">Luxury Flats</option>
-                      <option value="Big Land Deals">Big Land Deals</option>
-                      <option value="Property Consultation">
-                        Property Consultation
-                      </option>
-                      <option value="Career">Career</option>
-                    </select>
-                  </div>
-                  <div class="input-group">
-                    <label>SERVICE OPTION / NOTES</label>
-                    <input
-                      type="text"
-                      id="serviceOption"
-                      placeholder="e.g., Beachfront villa, ROI projection"
-                      maxlength="30"
-                    />
-                    <div
-                      style="
-                        font-size: 0.6rem;
-                        color: #aa9c88;
-                        margin-top: 4px;
-                        text-align: center;
-                      "
-                    >
-                      Max 30 characters
-                    </div>
-                  </div>
-                </div>
-
-                <!-- ROW 2: BUDGET DROPDOWN (replaces manual) + MESSAGE (optional) side by side -->
-                <div class="row-duo">
-                  <div class="input-group">
-                    <label>BUDGET RANGE</label>
-                    <select id="budgetDropdown">
-                      <option value="">— Select budget —</option>
-                      <option value="30-40 lakh">₹30 – 40 Lakh</option>
-                      <option value="60-70 lakh">₹60 – 70 Lakh</option>
-                      <option value="80-1cr">₹80 Lakh – 1 Cr</option>
-                      <option value="More than 1 Cr">More than 1 Cr</option>
-                    </select>
-                  </div>
-                  <div class="input-group">
-                    <label>MESSAGE</label>
-                    <textarea
-                      id="message"
-                      rows="1"
-                      placeholder="We are here.."
-                    ></textarea>
-                  </div>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                  <i class="fas fa-paper-plane"></i> Send Inquiry
-                </button>
-                <div class="footnote">
-                  <i class="fas fa-shield-alt"></i> Your information is
-                  confidential. Concierge reply within 24h.
-                </div>
-              </form>
+          <!-- 6. Process-driven mindset (no shortcuts) -->
+          <div class="learn-card">
+            <div class="card-icon"><i class="fas fa-arrows-spin"></i></div>
+            <div class="card-title">
+              <i class="fas fa-circle" style="font-size: 0.5rem"></i> Process
+              First
+            </div>
+            <div class="card-desc">
+              <strong>Learn to approach trading</strong> with a process-driven
+              mindset, not shortcuts — consistency, discipline, and long-term
+              growth.
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <div id="toastMsg" class="toast-msg" style="opacity: 0; visibility: hidden">
-      ✨
+        <!-- footer : golden & blue accent + CTA -->
+        <div class="learn-footer">
+          <div class="footer-message">
+            <div class="gold-icon-big"><i class="fas fa-gem"></i> Premium</div>
+            <div class="footer-text">
+              <i class="fas fa-arrow-right"></i>
+              <strong>Zero real capital risk</strong> — structured lessons,
+              practical activities, guided learning.
+            </div>
+          </div>
+          <div class="cta-gold">
+            <span>Start learning</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <!-- tiny JS: interactive CTA -->
     <script>
-      // Deploy as Web App (execute as "me", access "Anyone").
-      const GOOGLE_SHEET_API_URL =
-        "https://script.google.com/macros/s/AKfycbwHYaBd50944J1X8_kRNgIsr9p0npQdlfVsBXauKkNx1xJYCsLCD7sCWs5Xg5HDzs7M_Q/exec";
-      // ↑ Replace with actual Apps Script Web App URL for live sheet logging.
-
-      function showToast(message, isError = false) {
-        const toast = document.getElementById("toastMsg");
-        toast.style.backgroundColor = isError ? "#ab7b5f" : "#1f2c2e";
-        toast.style.color = "#fff8f0";
-        toast.textContent = message;
-        toast.style.opacity = "1";
-        toast.style.visibility = "visible";
-        setTimeout(() => {
-          toast.style.opacity = "0";
-          setTimeout(() => {
-            toast.style.visibility = "hidden";
-          }, 300);
-        }, 4200);
-      }
-
-      function validatePhone(phoneRaw) {
-        const digits = phoneRaw.replace(/\D/g, "");
-        return digits.length === 10;
-      }
-
-      // local backup for leads
-      function storeInLocalBackup(leadData) {
-        try {
-          let leads = JSON.parse(
-            localStorage.getItem("luxury_estate_leads") || "[]",
-          );
-          leads.push(leadData);
-          localStorage.setItem("luxury_estate_leads", JSON.stringify(leads));
-          console.log("📌 Lead secured (local cache):", leadData);
-        } catch (e) {
-          console.warn(e);
+      (function () {
+        const cta = document.querySelector(".cta-gold");
+        if (cta) {
+          cta.addEventListener("click", function (e) {
+            e.preventDefault();
+            this.style.background = "#1e4060";
+            this.innerHTML = `<span>✓ Ready</span> <i class="fas fa-check-circle"></i>`;
+            setTimeout(() => {
+              this.style.background = "#0b1e33";
+              this.innerHTML = `<span>Start learning</span> <i class="fas fa-arrow-right"></i>`;
+            }, 1500);
+          });
         }
-      }
-
-      const form = document.getElementById("luxuryLeadForm");
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const fullName = document.getElementById("fullName").value.trim();
-        const phoneNumberRaw = document
-          .getElementById("phoneNumber")
-          .value.trim();
-        const email = document.getElementById("email").value.trim();
-        const selectService = document.getElementById("selectService").value;
-        const serviceOption = document
-          .getElementById("serviceOption")
-          .value.trim();
-        const budgetDropdown = document.getElementById("budgetDropdown").value;
-        const message = document.getElementById("message").value.trim();
-
-        if (!fullName) {
-          showToast("Please enter your full name.", true);
-          return;
-        }
-        if (!validatePhone(phoneNumberRaw)) {
-          showToast("Valid 10-digit mobile number required.", true);
-          return;
-        }
-        if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-          showToast("Please provide a valid email address.", true);
-          return;
-        }
-
-        const fullPhone = `+91 ${phoneNumberRaw}`;
-        const payload = {
-          fullName: fullName,
-          phone: fullPhone,
-          email: email,
-          selectService: selectService || "Not selected",
-          serviceOption: serviceOption || "—",
-          budgetRange: budgetDropdown || "Not specified", // now from dropdown
-          message: message || "No additional notes",
-          timestamp: new Date().toISOString(),
-        };
-
-        const isValidSheetURL =
-          GOOGLE_SHEET_API_URL &&
-          GOOGLE_SHEET_API_URL.includes("script.google.com") &&
-          !GOOGLE_SHEET_API_URL.includes("dummyReplaceWithYourOwn");
-
-        const submitBtn = form.querySelector(".submit-btn");
-        const originalBtnHTML = submitBtn.innerHTML;
-        submitBtn.innerHTML =
-          '<i class="fas fa-spinner fa-pulse"></i> Submitting...';
-        submitBtn.disabled = true;
-
-        try {
-          if (isValidSheetURL) {
-            await fetch(GOOGLE_SHEET_API_URL, {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(payload),
-            });
-            storeInLocalBackup(payload);
-            showToast("✓ Inquiry sent! A luxury advisor will connect shortly.");
-            form.reset();
-            // ensure optional fields are cleared
-            document.getElementById("serviceOption").value = "";
-            document.getElementById("message").value = "";
-            document.getElementById("budgetDropdown").value = "";
-            document.getElementById("selectService").value = "";
-          } else {
-            // demo mode with local backup — perfect for preview without credentials
-            console.info(
-              "✨ DEMO MODE: Google Sheets URL not configured. Lead saved locally. Replace GOOGLE_SHEET_API_URL for production.",
-            );
-            storeInLocalBackup(payload);
-            showToast(
-              "✨ Demo: inquiry recorded (offline backup). Our team will contact you soon.",
-              false,
-            );
-            form.reset();
-            document.getElementById("serviceOption").value = "";
-            document.getElementById("message").value = "";
-            document.getElementById("budgetDropdown").value = "";
-            document.getElementById("selectService").value = "";
-          }
-        } catch (error) {
-          console.error("Submission error:", error);
-          storeInLocalBackup(payload);
-          showToast(
-            "Network note: request saved locally. We'll be in touch.",
-            true,
-          );
-        } finally {
-          submitBtn.innerHTML = originalBtnHTML;
-          submitBtn.disabled = false;
-        }
-      });
-
-      // phone input sanitizer: only digits, max 10
-      const phoneInput = document.getElementById("phoneNumber");
-      phoneInput.addEventListener("input", function (e) {
-        this.value = this.value.replace(/\D/g, "").slice(0, 10);
-      });
-
-      // interactive highlight for focus based on accent #c5850d
-      const inputs = document.querySelectorAll("input, select, textarea");
-      inputs.forEach((el) => {
-        el.addEventListener("focus", () => {
-          el.style.borderColor = "#c5850d";
-        });
-        el.addEventListener("blur", () => {
-          if (!el.value.trim() && el.tagName !== "SELECT") {
-            el.style.borderColor = "#e7e2da";
-          } else {
-            el.style.borderColor = "#e2dbd0";
-          }
-        });
-      });
-
-      // limit service option to 40 characters
-      const serviceOptionInput = document.getElementById("serviceOption");
-      serviceOptionInput.addEventListener("input", function () {
-        if (this.value.length > 40) {
-          this.value = this.value.slice(0, 40);
-        }
-      });
-
-      // development hint (console only)
-      if (
-        !GOOGLE_SHEET_API_URL.includes("script.google.com") ||
-        GOOGLE_SHEET_API_URL.includes("dummyReplaceWithYourOwn")
-      ) {
-        console.log(
-          "💎 LUXURY FORM READY: Replace GOOGLE_SHEET_API_URL with your Apps Script Web App URL to enable Google Sheets logging. Current mode uses localStorage backup & works flawlessly.",
-        );
-      }
+        console.log("Smart Money Systems · full-width · golden & blue");
+      })();
     </script>
   </body>
 </html>
