@@ -1,55 +1,23 @@
-
-<?php
-/**
- * Smart Money 24/7 - Header Component
- *
- * To include this header in any PHP page, add:
- * <?php include_once 'header.php'; ?>
- *
- * Make sure to place this file in your project root or adjust the path
- * accordingly. The header expects a /Photos/ directory with
- * lgo-1-Photoroom.png logo.
- */
-
-// Prevent direct access if needed
-if (!defined('SMART_MONEY_INIT')) {
-    // No constant defined, but we can still render
-    // This just allows standalone usage
-}
-?>
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
     />
-
-    <title>Smart Money 24/7 · Header</title>
-
-    <!-- Google Fonts + Font Awesome -->
+    <title>Smart Money 24/7 · Start Here</title>
+    <!-- Google Fonts + Font Awesome (same as original) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
       rel="stylesheet"
     />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-
-
-
     <style>
       /* ---------- RESET / BASE ---------- */
       * {
@@ -61,6 +29,7 @@ if (!defined('SMART_MONEY_INIT')) {
         font-family: "Inter", "Poppins", Arial, sans-serif;
         background: #020509;
         color: #fff;
+        padding-top: 76px;
         transition: overflow 0.2s;
       }
       body.mobile-menu-open {
@@ -94,7 +63,7 @@ if (!defined('SMART_MONEY_INIT')) {
         top: 0;
         left: 0;
         z-index: 999999;
-        background: #00000024;
+        background: #000000ef !important;
         border-bottom: 1px solid rgba(255, 248, 248, 0.08);
         backdrop-filter: blur(2px);
         transition:
@@ -104,7 +73,7 @@ if (!defined('SMART_MONEY_INIT')) {
       }
       .site-header.scrolled {
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
-        background: rgba(2, 5, 9, 0.96);
+        background: rgba(2, 5, 9, 0.96) !important;
         backdrop-filter: blur(8px);
       }
       .header-inner {
@@ -188,10 +157,10 @@ if (!defined('SMART_MONEY_INIT')) {
         margin-top: 3px;
       }
 
-      /* ---------- MEGA MENU ---------- */
+      /* ---------- MEGA MENU (unchanged) ---------- */
       .mega-menu {
         position: absolute;
-        top: 85px;
+        top: calc(100% - 4px);
         left: 50%;
         transform: translateX(-50%) translateY(8px);
         opacity: 0;
@@ -419,17 +388,167 @@ if (!defined('SMART_MONEY_INIT')) {
       .search-btn:hover {
         background: rgba(255, 255, 255, 0.1);
       }
+      /* ---------- LANGUAGE SELECTOR ---------- */
       .language {
         display: flex;
         align-items: center;
         gap: 8px;
-        padding-right: 18px;
-        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        height: 38px;
+        padding: 0 18px 0 2px;
+        margin-right: 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.13);
+        color: #dce5f2;
         font-size: 14px;
         font-weight: 600;
-        color: #d0d4de;
-        height: 32px;
       }
+
+      .language-icon {
+        font-size: 14px;
+        color: #ffffff;
+      }
+
+      .language-select {
+        appearance: none;
+        -webkit-appearance: none;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        outline: 0;
+        background-color: rgba(255, 255, 255, 0.045);
+        color: #ffffff;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 7px 28px 7px 11px;
+        min-width: 102px;
+        height: 38px;
+        border-radius: 9px;
+        transition:
+          border-color 0.2s,
+          background-color 0.2s,
+          box-shadow 0.2s;
+        background-image:
+          linear-gradient(45deg, transparent 50%, currentColor 50%),
+          linear-gradient(135deg, currentColor 50%, transparent 50%);
+        background-position:
+          calc(100% - 9px) 50%,
+          calc(100% - 4px) 50%;
+        background-size:
+          5px 5px,
+          5px 5px;
+        background-repeat: no-repeat;
+      }
+
+      .language-select option {
+        background: #0b1623;
+        color: #ffffff;
+      }
+
+      .language-select:hover {
+        background-color: rgba(255, 255, 255, 0.075);
+        border-color: rgba(255, 255, 255, 0.24);
+      }
+
+      .language-select:focus-visible {
+        border-color: rgba(22, 135, 255, 0.85);
+        box-shadow: 0 0 0 3px rgba(22, 135, 255, 0.18);
+      }
+
+      .mobile-language {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 16px 4px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .mobile-language-label {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: #f0f4ff;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .mobile-language .language-select {
+        color: #ffffff;
+        background-color: #142335;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 9px;
+        min-width: 118px;
+        padding: 9px 28px 9px 11px;
+      }
+
+      /* Google Translate engine stays available to JavaScript,
+         while its default visual UI is kept out of the header. */
+      #google_translate_element {
+        position: absolute !important;
+        left: -10000px !important;
+        top: 0 !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      /* ---------- GOOGLE TRANSLATE: KEEP BANNER OUT OF THE PAGE ---------- */
+      html {
+        top: 0 !important;
+        margin-top: 0 !important;
+      }
+
+      body {
+        top: 0 !important;
+        margin-top: 0 !important;
+        padding-top: 76px !important;
+      }
+
+      /* Google may inject its banner as an iframe OR as a
+         direct .skiptranslate wrapper. Hide only Google's
+         banner UI — never our .site-header. */
+      iframe.goog-te-banner-frame,
+      iframe.goog-te-banner-frame.skiptranslate,
+      .goog-te-banner-frame,
+      .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: fixed !important;
+        left: -10000px !important;
+        top: -10000px !important;
+        width: 0 !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        pointer-events: none !important;
+      }
+
+      body.translated-ltr,
+      body.translated-rtl {
+        top: 0 !important;
+        margin-top: 0 !important;
+        padding-top: 76px !important;
+      }
+
+      /* Keep our fixed header above anything Google injects. */
+      .site-header {
+        top: 0 !important;
+        z-index: 2147483647 !important;
+      }
+
+      #goog-gt-tt,
+      .goog-tooltip,
+      .goog-tooltip:hover {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+
       .flag {
         width: 22px;
         height: 22px;
@@ -438,28 +557,14 @@ if (!defined('SMART_MONEY_INIT')) {
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       }
       .login {
-        min-width: 138px;
-        height: 44px;
-        padding: 0 22px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #8080801c;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        color: white;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.3px;
-        transition:
-          transform 0.15s,
-          box-shadow 0.2s,
-          background 0.2s;
+        font-size: 15px;
+        font-weight: 600;
+        color: #f0f4ff;
+        transition: color 0.2s;
         white-space: nowrap;
       }
       .login:hover {
         color: #1687ff;
-        background: white;
       }
       .get-started {
         min-width: 138px;
@@ -483,8 +588,9 @@ if (!defined('SMART_MONEY_INIT')) {
         white-space: nowrap;
       }
       .get-started:hover {
-        color: #1687ff;
-        background: white;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 28px rgba(0, 115, 255, 0.45);
+        background: linear-gradient(180deg, #2aa6ff 0%, #0878e8 100%);
       }
 
       /* ===== MOBILE TOGGLE ===== */
@@ -541,108 +647,25 @@ if (!defined('SMART_MONEY_INIT')) {
         transform: rotate(-45deg);
       }
 
-      /* ===== MOBILE MENU =====
-           Mobile-only styling: desktop navigation remains unchanged. */
+      /* ===== MOBILE MENU (hidden by default) ===== */
       .mobile-menu {
-        display: block !important;
+        display: none !important;
         position: fixed !important;
         top: 76px;
         left: 0;
         right: 0;
+        bottom: 0;
         width: 100% !important;
-        max-height: calc(100vh - 76px);
-        height: auto;
-        background: #ffffff !important;
-        color: #111111 !important;
-        padding: 26px 28px 34px !important;
+        height: fit-content;
+        background: #0b1623 !important;
+        padding: 16px 20px 30px !important;
         overflow-y: auto;
-        overscroll-behavior: contain;
         z-index: 999998 !important;
         box-sizing: border-box;
         -webkit-overflow-scrolling: touch;
-
-        /* Smooth professional drop-down instead of appearing instantly */
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transform: translateY(-14px);
-        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
-        transition:
-          opacity 0.22s ease,
-          transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-          visibility 0.22s ease;
       }
-
       .mobile-menu.active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
-
-      /* When the hamburger opens, the mobile header becomes solid black. */
-      .site-header.mobile-menu-active {
-        background: #000000 !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-      }
-
-      .site-header.mobile-menu-active .mobile-toggle {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.16);
-      }
-
-      /* White mobile menu + compact navigation links */
-      .mobile-menu .mobile-item {
-        border-bottom: 1px solid #e9e9e9;
-      }
-
-      .mobile-menu .mobile-link {
-        color: #111111 !important;
-        font-size: 14px !important;
-        font-weight: 600;
-        min-height: 50px;
-        padding: 15px 2px;
-        background: transparent !important;
-      }
-
-      .mobile-menu .mobile-link .arrow {
-        color: #111111;
-      }
-
-      .mobile-menu .mobile-dropdown a {
-        color: #555b66 !important;
-        font-size: 14px !important;
-        padding: 9px 2px;
-      }
-
-      .mobile-menu .login {
-        width: 100%;
-        min-height: 46px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 20px;
-        border: 1px solid #d9dde3;
-        border-radius: 10px;
-        background: #6f76852e !important;
-        color: #111111 !important;
-        font-size: 14px !important;
-        font-weight: 600;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      }
-      .mobile-menu .login:hover {
-        background: #f5f7fa !important;
-        border-color: #c8cdd5;
-      }
-      .mobile-menu .get-started {
-        width: 100% !important;
-        min-height: 46px;
-        height: 46px !important;
-        margin-top: 0 !important;
-        border-radius: 10px;
-        font-size: 14px !important;
+        display: block !important;
       }
 
       /* ===== RESPONSIVE ===== */
@@ -676,7 +699,7 @@ if (!defined('SMART_MONEY_INIT')) {
         }
         .mobile-menu {
           top: 66px !important;
-          max-height: calc(100vh - 66px);
+          /* height: calc(100% - 66px) !important; */
         }
         .logo {
           width: 112px;
@@ -695,36 +718,11 @@ if (!defined('SMART_MONEY_INIT')) {
           align-items: center;
           justify-content: space-between;
           color: #f0f4ff !important;
-          font-size: 20px;
+          font-size: 16px;
           font-weight: 600;
           background: transparent !important;
           border: 0;
           text-align: left;
-        }
-        .login {
-          font-size: 20px;
-        }
-        .get-started {
-          min-width: 138px;
-          height: 59px;
-          padding: 0 22px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(180deg, #1a9cff 0%, #0870e0 100%);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 12px;
-          color: #fff;
-          font-size: 21px;
-          font-weight: 700;
-          letter-spacing: 0.3px;
-          box-shadow: 0 6px 18px rgba(0, 115, 255, 0.3);
-          transition:
-            transform 0.15s,
-            box-shadow 0.2s,
-            background 0.2s;
-          white-space: nowrap;
-          margin-top: 35px;
         }
         .mobile-item {
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -779,7 +777,7 @@ if (!defined('SMART_MONEY_INIT')) {
     <header class="site-header" id="siteHeader">
       <div class="header-inner">
         <!-- LOGO -->
-        <a href="index.php" class="logo" aria-label="Smart Money">
+        <a href="index.html" class="logo" aria-label="Smart Money">
           <img
             src="Photos/lgo-1-Photoroom.png"
             alt="Smart Money – proprietary trading firm"
@@ -789,7 +787,7 @@ if (!defined('SMART_MONEY_INIT')) {
           />
         </a>
 
-        <!-- DESKTOP NAV -->
+        <!-- DESKTOP NAV (exactly as original, all links preserved) -->
         <nav class="desktop-nav">
           <!-- SM24/7 Challenge -->
           <div class="nav-item">
@@ -797,15 +795,15 @@ if (!defined('SMART_MONEY_INIT')) {
             <div class="mega-menu challenge-menu">
               <div class="menu-column">
                 <div class="menu-heading">Get Started</div>
-                <a href="index.php" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-tag"></i></div>
+                <a href="index.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-tag"></i></div>
                   <div>
                     <div class="menu-title">Home</div>
                     <div class="menu-description">Your Journey Starts Here</div>
-                  </div>
-                </a>
-                <a href="index.php#Steps-sm" class="menu-link">
-                  <div class="menu-icon">
+                  </div></a
+                >
+                <a href="index.html#Steps-sm" class="menu-link"
+                  ><div class="menu-icon">
                     <i class="fas fa-play-circle"></i>
                   </div>
                   <div>
@@ -813,38 +811,40 @@ if (!defined('SMART_MONEY_INIT')) {
                     <div class="menu-description">
                       See How Smart Money Works
                     </div>
-                  </div>
-                </a>
-                <a href="index.php" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-flask"></i></div>
+                  </div></a
+                >
+                <a href="index.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-flask"></i></div>
                   <div>
                     <div class="menu-title">Overview</div>
                     <div class="menu-description">
                       Build Better Financial Habits
                     </div>
-                  </div>
-                </a>
+                  </div></a
+                >
               </div>
               <div class="menu-column">
                 <div class="menu-heading">Achieve More</div>
-                <a href="Scaling.php" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-chart-line"></i></div>
+                <a href="Scaling.html" class="menu-link"
+                  ><div class="menu-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
                   <div>
                     <div class="menu-title">Scaling Plan</div>
                     <div class="menu-description">
                       Progress towards greater rewards
                     </div>
-                  </div>
-                </a>
-                <a href="About.php#Approcessh" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-bullseye"></i></div>
+                  </div></a
+                >
+                <a href="About.html#Approcessh" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-bullseye"></i></div>
                   <div>
                     <div class="menu-title">Trading Objectives</div>
                     <div class="menu-description">
                       Key rules to pass each phase
                     </div>
-                  </div>
-                </a>
+                  </div></a
+                >
               </div>
               <a href="#" class="feature-card">
                 <div class="feature-image">
@@ -870,36 +870,36 @@ if (!defined('SMART_MONEY_INIT')) {
             <div class="mega-menu trading-menu">
               <div>
                 <div class="menu-heading">Trading Essentials</div>
-                <a href="News.php" class="menu-link">
-                  <div class="menu-icon">
+                <a href="News.html" class="menu-link"
+                  ><div class="menu-icon">
                     <i class="fas fa-calendar-alt"></i>
                   </div>
                   <div>
                     <div class="menu-title">Economic Calendar</div>
                     <div class="menu-description">Key market events</div>
-                  </div>
-                </a>
-                <a href="ValueCalculator.php" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-list-ul"></i></div>
+                  </div></a
+                >
+                <a href="ValueCalculator.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-list-ul"></i></div>
                   <div>
                     <div class="menu-title">Pip Value Calculator</div>
                     <div class="menu-description">List of symbols</div>
-                  </div>
-                </a>
-                <a href="PositionSizeCal.php" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-desktop"></i></div>
+                  </div></a
+                >
+                <a href="PositionSizeCal.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-desktop"></i></div>
                   <div>
                     <div class="menu-title">Position Size Calculator</div>
                     <div class="menu-description">Choose your platform</div>
-                  </div>
-                </a>
-                <a href="CurrencyStrength.php" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-newspaper"></i></div>
+                  </div></a
+                >
+                <a href="CurrencyStrength.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-newspaper"></i></div>
                   <div>
                     <div class="menu-title">Currency Strength Meter</div>
                     <div class="menu-description">Value Currency Holds</div>
-                  </div>
-                </a>
+                  </div></a
+                >
               </div>
               <a href="#" class="feature-card">
                 <div class="feature-image">
@@ -920,7 +920,7 @@ if (!defined('SMART_MONEY_INIT')) {
 
           <!-- FAQ (standalone) -->
           <div class="nav-item">
-            <a href="FAQ.php" class="nav-link">FAQ</a>
+            <a href="FAQ.html" class="nav-link">FAQ</a>
           </div>
 
           <!-- Academy -->
@@ -931,8 +931,8 @@ if (!defined('SMART_MONEY_INIT')) {
             <div class="mega-menu academy-menu">
               <div class="menu-column">
                 <div class="menu-heading">SM24/7 Academy</div>
-                <a href="#" class="academy-link">
-                  <div class="academy-thumb">
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
                     <img
                       src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
                       alt="thumb"
@@ -941,10 +941,10 @@ if (!defined('SMART_MONEY_INIT')) {
                   <div class="academy-content">
                     <div class="menu-title">Gateway to trading</div>
                     <div class="menu-description">Learn with SM24/7</div>
-                  </div>
-                </a>
-                <a href="#" class="academy-link">
-                  <div class="academy-thumb">
+                  </div></a
+                >
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
                     <img
                       src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
                       alt="thumb"
@@ -953,10 +953,10 @@ if (!defined('SMART_MONEY_INIT')) {
                   <div class="academy-content">
                     <div class="menu-title">Financial Markets</div>
                     <div class="menu-description">Global markets</div>
-                  </div>
-                </a>
-                <a href="#" class="academy-link">
-                  <div class="academy-thumb">
+                  </div></a
+                >
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
                     <img
                       src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
                       alt="thumb"
@@ -965,13 +965,13 @@ if (!defined('SMART_MONEY_INIT')) {
                   <div class="academy-content">
                     <div class="menu-title">Putting it together</div>
                     <div class="menu-description">Build a strategy</div>
-                  </div>
-                </a>
+                  </div></a
+                >
               </div>
               <div class="menu-column">
                 <div class="menu-heading">&nbsp;</div>
-                <a href="#" class="academy-link">
-                  <div class="academy-thumb">
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
                     <img
                       src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
                       alt="thumb"
@@ -980,10 +980,10 @@ if (!defined('SMART_MONEY_INIT')) {
                   <div class="academy-content">
                     <div class="menu-title">How forex works</div>
                     <div class="menu-description">What is FOREX?</div>
-                  </div>
-                </a>
-                <a href="#" class="academy-link">
-                  <div class="academy-thumb">
+                  </div></a
+                >
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
                     <img
                       src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
                       alt="thumb"
@@ -992,10 +992,10 @@ if (!defined('SMART_MONEY_INIT')) {
                   <div class="academy-content">
                     <div class="menu-title">Technical analysis</div>
                     <div class="menu-description">Candlesticks</div>
-                  </div>
-                </a>
-                <a href="#" class="academy-link">
-                  <div class="academy-thumb">
+                  </div></a
+                >
+                <a href="#" class="academy-link"
+                  ><div class="academy-thumb">
                     <img
                       src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
                       alt="thumb"
@@ -1004,9 +1004,9 @@ if (!defined('SMART_MONEY_INIT')) {
                   <div class="academy-content">
                     <div class="menu-title">Fundamental analysis</div>
                     <div class="menu-description">Data that moves markets</div>
-                  </div>
-                </a>
-                <a href="Coursees.php" class="more-lessons"
+                  </div></a
+                >
+                <a href="Coursees.html" class="more-lessons"
                   >More Lessons <span class="more-arrow">›</span></a
                 >
               </div>
@@ -1032,48 +1032,48 @@ if (!defined('SMART_MONEY_INIT')) {
             <div class="mega-menu about-menu">
               <div>
                 <div class="menu-heading">Company</div>
-                <a href="About.php" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-building"></i></div>
+                <a href="About.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-building"></i></div>
                   <div>
                     <div class="menu-title">About Us</div>
                     <div class="menu-description">Learn about Us</div>
-                  </div>
-                </a>
-                <a href="index.php#whyus-sm" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-users"></i></div>
+                  </div></a
+                >
+                <a href="index.html#whyus-sm" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-users"></i></div>
                   <div>
                     <div class="menu-title">Why us</div>
                     <div class="menu-description">Know What we Offer</div>
-                  </div>
-                </a>
-                <a href="index.php#witf" class="menu-link">
-                  <div class="menu-icon">
+                  </div></a
+                >
+                <a href="index.html#witf" class="menu-link"
+                  ><div class="menu-icon">
                     <i class="fas fa-shopping-bag"></i>
                   </div>
                   <div>
                     <div class="menu-title">Who can Join?</div>
                     <div class="menu-description">We are Here</div>
-                  </div>
-                </a>
+                  </div></a
+                >
               </div>
               <div>
                 <div class="menu-heading">Connect</div>
-                <a href="Contact.php" class="menu-link">
-                  <div class="menu-icon"><i class="fas fa-headset"></i></div>
+                <a href="Contact.html" class="menu-link"
+                  ><div class="menu-icon"><i class="fas fa-headset"></i></div>
                   <div>
                     <div class="menu-title">Contact Us</div>
                     <div class="menu-description">24/7 Support</div>
-                  </div>
-                </a>
-                <a href="About.php" class="menu-link">
-                  <div class="menu-icon">
+                  </div></a
+                >
+                <a href="About.html" class="menu-link"
+                  ><div class="menu-icon">
                     <i class="fas fa-photo-video"></i>
                   </div>
                   <div>
                     <div class="menu-title">For media</div>
                     <div class="menu-description">Brand assets & resources</div>
-                  </div>
-                </a>
+                  </div></a
+                >
               </div>
             </div>
           </div>
@@ -1081,14 +1081,19 @@ if (!defined('SMART_MONEY_INIT')) {
 
         <!-- RIGHT SIDE (desktop) -->
         <div class="header-right">
-          <a href="https://smartmoney.systems/user/login.php" class="login"
-            >Log In</a
-          >
-          <a
-            href="https://smartmoney.systems/user/login.php"
-            class="get-started"
-            >Get Started</a
-          >
+          <div class="language" aria-label="Language selector">
+            <i class="fas fa-globe language-icon" aria-hidden="true"></i>
+            <select
+              class="language-select"
+              data-language-select
+              aria-label="Select language"
+            >
+              <option value="en">English</option>
+              <option value="tl">Filipino</option>
+            </select>
+          </div>
+          <a href="#" class="login">Log In</a>
+          <a href="#" class="get-started">Get Started</a>
         </div>
 
         <!-- MOBILE TOGGLE -->
@@ -1101,17 +1106,17 @@ if (!defined('SMART_MONEY_INIT')) {
         </button>
       </div>
 
-      <!-- ===== MOBILE MENU ===== -->
+      <!-- ===== MOBILE MENU (exact same links as desktop) ===== -->
       <div class="mobile-menu" id="mobileMenu">
         <!-- Home / Challenge -->
         <div class="mobile-item">
           <button class="mobile-link">Home <span class="arrow"></span></button>
           <div class="mobile-dropdown">
-            <a href="index.php">Home</a>
-            <a href="index.php#Steps-sm">How It Works</a>
-            <a href="index.php">Overview</a>
-            <a href="Scaling.php">Scaling Plan</a>
-            <a href="About.php#Approcessh">Trading Objectives</a>
+            <a href="index.html">Home</a>
+            <a href="index.html#Steps-sm">How It Works</a>
+            <a href="index.html">Overview</a>
+            <a href="Scaling.html">Scaling Plan</a>
+            <a href="About.html#Approcessh">Trading Objectives</a>
           </div>
         </div>
         <!-- Trading -->
@@ -1120,15 +1125,15 @@ if (!defined('SMART_MONEY_INIT')) {
             Trading <span class="arrow"></span>
           </button>
           <div class="mobile-dropdown">
-            <a href="News.php">Economic Calendar</a>
-            <a href="ValueCalculator.php">Pip Value Calculator</a>
-            <a href="PositionSizeCal.php">Position Size Calculator</a>
-            <a href="CurrencyStrength.php">Currency Strength Meter</a>
+            <a href="News.html">Economic Calendar</a>
+            <a href="ValueCalculator.html">Pip Value Calculator</a>
+            <a href="PositionSizeCal.html">Position Size Calculator</a>
+            <a href="CurrencyStrength.html">Currency Strength Meter</a>
           </div>
         </div>
         <!-- FAQ (standalone) -->
         <div class="mobile-item">
-          <a href="FAQ.php" class="mobile-link">FAQ</a>
+          <a href="FAQ.html" class="mobile-link">FAQ</a>
         </div>
         <!-- Academy -->
         <div class="mobile-item">
@@ -1142,20 +1147,36 @@ if (!defined('SMART_MONEY_INIT')) {
             <a href="#">How forex works</a>
             <a href="#">Technical analysis</a>
             <a href="#">Fundamental analysis</a>
-            <a href="Coursees.php">More Lessons</a>
+            <a href="Coursees.html">More Lessons</a>
           </div>
         </div>
         <!-- About -->
         <div class="mobile-item">
           <button class="mobile-link">About <span class="arrow"></span></button>
           <div class="mobile-dropdown">
-            <a href="About.php">About Us</a>
-            <a href="index.php#whyus-sm">Why us</a>
-            <a href="index.php#witf">Who can Join?</a>
-            <a href="Contact.php">Contact Us</a>
-            <a href="About.php">For media</a>
+            <a href="About.html">About Us</a>
+            <a href="index.html#whyus-sm">Why us</a>
+            <a href="index.html#witf">Who can Join?</a>
+            <a href="Contact.html">Contact Us</a>
+            <a href="About.html">For media</a>
           </div>
         </div>
+        <!-- LANGUAGE SELECTOR (mobile) -->
+        <div class="mobile-language">
+          <div class="mobile-language-label">
+            <i class="fas fa-globe" aria-hidden="true"></i>
+            <span>Language</span>
+          </div>
+          <select
+            class="language-select"
+            data-language-select
+            aria-label="Select language"
+          >
+            <option value="en">English</option>
+            <option value="tl">Filipino</option>
+          </select>
+        </div>
+
         <!-- login / cta -->
         <div
           style="
@@ -1165,12 +1186,11 @@ if (!defined('SMART_MONEY_INIT')) {
             gap: 14px;
           "
         >
-          <a href="https://smartmoney.systems/user/login.php" class="login"
-            >Log In</a
-          >
+          <a href="#" class="login" style="color: #fff">Log In</a>
           <a
-            href="https://smartmoney.systems/user/login.php"
+            href="#"
             class="get-started"
+            style="width: 100%; text-align: center"
             >Get Started</a
           >
         </div>
@@ -1193,7 +1213,6 @@ if (!defined('SMART_MONEY_INIT')) {
         function openMobileMenu() {
           mobileMenu.classList.add("active");
           toggle.classList.add("active");
-          header.classList.add("mobile-menu-active");
           toggle.setAttribute("aria-expanded", "true");
           body.classList.add("mobile-menu-open");
         }
@@ -1201,19 +1220,11 @@ if (!defined('SMART_MONEY_INIT')) {
         function closeMobileMenu() {
           mobileMenu.classList.remove("active");
           toggle.classList.remove("active");
-          header.classList.remove("mobile-menu-active");
           toggle.setAttribute("aria-expanded", "false");
           body.classList.remove("mobile-menu-open");
         }
 
         if (toggle && mobileMenu) {
-          // Keep the mobile-only state isolated from desktop navigation.
-          window.addEventListener("resize", function () {
-            if (window.innerWidth > 960) {
-              closeMobileMenu();
-            }
-          });
-
           toggle.addEventListener("click", function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -1272,6 +1283,170 @@ if (!defined('SMART_MONEY_INIT')) {
           }
         });
       })();
+
+      // ============================================================
+      // GOOGLE TRANSLATE — ENGLISH + FILIPINO
+      // The selector below controls Google's whole-page translator.
+      // ============================================================
+
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "en,tl",
+            autoDisplay: false,
+            multilanguagePage: true,
+          },
+          "google_translate_element",
+        );
+
+        // Google creates .goog-te-combo asynchronously.
+        waitForGoogleTranslate();
+      }
+
+      function removeGoogleTranslateBar() {
+        // Remove Google's top translation banner itself.
+        document
+          .querySelectorAll(
+            "iframe.goog-te-banner-frame, iframe.goog-te-banner-frame.skiptranslate, .goog-te-banner-frame, .goog-te-banner-frame.skiptranslate",
+          )
+          .forEach(function (frame) {
+            frame.remove();
+          });
+
+        // Google may add a top offset to <html> or <body>.
+        document.documentElement.style.setProperty("top", "0", "important");
+        document.documentElement.style.setProperty(
+          "margin-top",
+          "0",
+          "important",
+        );
+        document.body.style.setProperty("top", "0", "important");
+        document.body.style.setProperty("margin-top", "0", "important");
+
+        // IMPORTANT:
+        // Do NOT remove Google's translated-ltr/translated-rtl classes.
+        // Google uses these classes to keep the selected translation active.
+        // Removing them makes the page revert to English.
+      }
+
+      function waitForGoogleTranslate() {
+        removeGoogleTranslateBar();
+
+        if (document.querySelector(".goog-te-combo")) {
+          syncLanguageSelectors();
+          return;
+        }
+
+        window.setTimeout(waitForGoogleTranslate, 200);
+      }
+
+      // Google can inject the banner after translation starts.
+      // Watch for newly inserted nodes and remove only that banner.
+      (function keepGoogleBarRemoved() {
+        const observer = new MutationObserver(function (mutations) {
+          let added = false;
+
+          mutations.forEach(function (mutation) {
+            if (mutation.addedNodes && mutation.addedNodes.length) {
+              added = true;
+            }
+          });
+
+          if (added) {
+            removeGoogleTranslateBar();
+          }
+        });
+
+        observer.observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+        });
+
+        // Catch it immediately if Google has already inserted it.
+        removeGoogleTranslateBar();
+      })();
+
+      function setGoogleLanguage(language) {
+        const targetLanguage = language === "tl" ? "tl" : "en";
+
+        // Save Google's translation preference.
+        // Keep the cookie — especially for Filipino — so the
+        // translation remains active after Google finishes loading.
+        document.cookie =
+          "googtrans=/en/" + targetLanguage + "; path=/; SameSite=Lax";
+
+        const googleSelect = document.querySelector(".goog-te-combo");
+
+        if (googleSelect) {
+          // Google Translate uses an empty value for the original
+          // language and "tl" for Filipino.
+          googleSelect.value = targetLanguage === "tl" ? "tl" : "";
+          googleSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        } else {
+          // The Google selector can take a moment to appear.
+          // Try again after it has loaded instead of reloading the page.
+          window.setTimeout(function () {
+            const retrySelect = document.querySelector(".goog-te-combo");
+
+            if (retrySelect) {
+              retrySelect.value = targetLanguage === "tl" ? "tl" : "";
+              retrySelect.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+          }, 500);
+        }
+
+        // Google may inject its banner after the change event.
+        removeGoogleTranslateBar();
+        window.setTimeout(removeGoogleTranslateBar, 100);
+        window.setTimeout(removeGoogleTranslateBar, 300);
+        window.setTimeout(removeGoogleTranslateBar, 700);
+
+        // Keep both custom selectors synchronized.
+        syncLanguageSelectors(targetLanguage);
+      }
+
+      function syncLanguageSelectors(forcedLanguage) {
+        const language =
+          forcedLanguage ||
+          (document.cookie.indexOf("googtrans=/en/tl") !== -1 ? "tl" : "en");
+
+        document
+          .querySelectorAll("[data-language-select]")
+          .forEach(function (select) {
+            select.value = language;
+          });
+      }
+
+      (function setupLanguageSelectors() {
+        document
+          .querySelectorAll("[data-language-select]")
+          .forEach(function (select) {
+            select.addEventListener("change", function () {
+              setGoogleLanguage(this.value);
+            });
+          });
+
+        syncLanguageSelectors();
+      })();
+
+      // If the page is already translated after navigation/reload,
+      // keep both header selectors on the correct language.
+      window.addEventListener("load", function () {
+        removeGoogleTranslateBar();
+        waitForGoogleTranslate();
+        syncLanguageSelectors();
+
+        // Final cleanup after Google's iframe injection has settled.
+        window.setTimeout(removeGoogleTranslateBar, 100);
+        window.setTimeout(removeGoogleTranslateBar, 500);
+        window.setTimeout(removeGoogleTranslateBar, 1200);
+      });
     </script>
+
+    <!-- Google Translate engine: its UI is hidden/off-screen.
+         The custom header selectors control it. -->
+    <div id="google_translate_element" aria-hidden="true"></div>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>
