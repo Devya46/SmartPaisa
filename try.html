@@ -1,167 +1,283 @@
+<?php
+/*
+ * Authentication-aware header.
+ * Logged out: Register + Log In
+ * Logged in: Dashboard + Logout
+ */
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$isLoggedIn = !empty($_SESSION['user_id']);
+$isAdmin = $isLoggedIn
+    && !empty($_SESSION['role'])
+    && $_SESSION['role'] === 'admin';
+
+if ($isLoggedIn) {
+    $dashboardUrl = $isAdmin
+        ? '/admin/dashboard.php'
+        : '/courses-lessons.php';
+
+    $dashboardLabel = $isAdmin
+        ? 'Admin Dashboard'
+        : 'Dashboard';
+
+    $logoutUrl = '/logout.php';
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"
-    />
-    <title>Smart Money 24/7 · Start Here</title>
-    <!-- Google Fonts + Font Awesome (same as original) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Smart Money 24/7</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="shortcut icon"
+      href="Photos/SMART MONEY LOGO 01 (1).png"
+      type="image/x-icon"
+    />
+
+    <!-- =========================================================
+     GOOGLE FONT
+========================================================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- =========================================================
+     FONT AWESOME
+========================================================= -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+
     <style>
-      /* ---------- RESET / BASE ---------- */
-      * {
-        margin: 0;
-        padding: 0;
+      /* HEADER COMPONENT ONLY - NO GLOBAL CSS */
+      .site-header,
+      .site-header *,
+      .mobile-menu,
+      .mobile-menu * {
         box-sizing: border-box;
       }
       body {
-        font-family: "Inter", "Poppins", Arial, sans-serif;
-        background: #020509;
-        color: #fff;
-        padding-top: 76px;
-        transition: overflow 0.2s;
-      }
-      body.mobile-menu-open {
-        overflow: hidden;
-        height: 100%;
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      button {
-        font-family: inherit;
-        cursor: pointer;
-        border: 0;
-        background: none;
-      }
-      img {
-        display: block;
-        max-width: 100%;
+        background: black;
+        font-family: "Poppins", Arial, sans-serif !important;
       }
 
-      /* ---------- HEADER (fixed) ---------- */
+      /* =========================================================
+   HEADER
+========================================================= */
+
       .site-header {
-        width: 100%;
-        height: 76px;
         position: fixed;
+
         top: 0;
         left: 0;
-        z-index: 999999;
-        background: #000000ef !important;
-        border-bottom: 1px solid rgba(255, 248, 248, 0.08);
-        backdrop-filter: blur(2px);
-        transition:
-          box-shadow 0.2s,
-          background 0.2s,
-          backdrop-filter 0.2s;
-      }
-      .site-header.scrolled {
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
-        background: rgba(2, 5, 9, 0.96) !important;
-        backdrop-filter: blur(8px);
-      }
-      .header-inner {
-        width: min(1300px, calc(100% - 32px));
-        height: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
 
-      /* ---------- LOGO ---------- */
-      .logo {
-        flex-shrink: 0;
-        width: 237px;
-        height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        overflow: visible;
-        margin-top: 28px;
-      }
-      .logo img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        filter: drop-shadow(0 2px 6px rgba(0, 179, 255, 0.064));
-        transition: filter 0.2s;
+        height: 73px;
+
+        z-index: 99999;
+
+        background: rgba(4, 6, 9, 0.12);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+
+        transition:
+          background 0.3s ease,
+          box-shadow 0.3s ease,
+          backdrop-filter 0.3s ease;
       }
 
-      /* ---------- DESKTOP NAV ---------- */
-      .desktop-nav {
+      /* BLACK AFTER SCROLL */
+
+      .site-header.scrolled {
+        background: #050505;
+
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.35);
+      }
+
+      /* =========================================================
+   HEADER CONTAINER
+========================================================= */
+
+      .header-container {
+        width: 100%;
+        max-width: 1400px;
+
+        height: 78px;
+
+        margin: 0 auto;
+
+        padding: 0 20px;
+
         display: flex;
         align-items: center;
-        gap: 2px;
-        height: 100%;
-        margin-left: 18px;
       }
+
+      /* =========================================================
+   LOGO
+========================================================= */
+
+      .logo {
+        width: 170px;
+        min-width: 170px;
+
+        height: 78px;
+
+        display: flex;
+        align-items: center;
+
+        text-decoration: none;
+      }
+
+      .logo-svg {
+        width: 130px;
+        height: auto;
+
+        display: block;
+      }
+      .logo-img {
+        width: 165px;
+        height: 93px;
+        display: block;
+      }
+
+      /* =========================================================
+   MAIN NAV
+========================================================= */
+
+      .main-nav {
+        height: 78px;
+
+        display: flex;
+        align-items: center;
+        margin-left: 40px;
+        gap: 2px;
+      }
+
+      /* =========================================================
+   NAV ITEM
+========================================================= */
+
       .nav-item {
         position: relative;
-        height: 100%;
+
+        height: 78px;
+
         display: flex;
         align-items: center;
       }
+
+      /* =========================================================
+   NAV LINK
+========================================================= */
+
       .nav-link {
         height: 48px;
+
         padding: 0 14px;
-        border-radius: 12px;
+
+        border: 0;
+
+        border-radius: 10px;
+
+        background: transparent;
+
+        color: #ffffff;
+
         display: flex;
         align-items: center;
-        gap: 6px;
-        color: #ffffff;
+
+        gap: 7px;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+
+        font-style: normal;
+
+        font-weight: 600;
+
         font-size: 14px;
-        font-weight: 500;
-        letter-spacing: 0.01em;
+
+        line-height: 20px;
+
         white-space: nowrap;
+
+        cursor: pointer;
+
+        transition:
+          background 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .nav-link:hover {
         background: transparent;
-        transition:
-          background 0.2s,
-          color 0.2s;
+        color: #ffffff;
       }
-      .nav-link:hover,
-      .nav-item.active .nav-link {
-        background: rgba(40, 60, 80, 0.6);
-        color: #fff;
+
+      /* ACTIVE MENU */
+
+      .nav-item.mega-active > .nav-link {
+        background: transparent;
+        color: #ffffff;
       }
-      .arrow {
-        width: 8px;
-        height: 8px;
-        border-right: 2px solid currentColor;
-        border-bottom: 2px solid currentColor;
+
+      /* =========================================================
+   NAV ARROW
+========================================================= */
+
+      .nav-arrow {
+        width: 7px;
+        height: 7px;
+
+        margin-top: -4px;
+
+        border-right: 1.5px solid currentColor;
+
+        border-bottom: 1.5px solid currentColor;
+
         transform: rotate(45deg);
-        margin-top: -3px;
+
         transition:
-          transform 0.25s ease,
-          margin 0.2s;
+          transform 0.2s ease,
+          margin 0.2s ease;
       }
-      .nav-item:hover .arrow {
+
+      /* ACTIVE ARROW */
+
+      .nav-item.mega-active .nav-arrow {
         transform: rotate(225deg);
+
         margin-top: 3px;
       }
 
-      /* ---------- MEGA MENU (unchanged) ---------- */
+      /* =========================================================
+   MEGA MENU
+========================================================= */
+
       .mega-menu {
         position: absolute;
-        top: calc(100% - 4px);
-        left: 50%;
+        top: 85px;
+        left: 200px;
         transform: translateX(-50%) translateY(8px);
         opacity: 0;
         visibility: hidden;
@@ -173,688 +289,2667 @@
         transition:
           opacity 0.2s ease,
           transform 0.25s ease,
-          visibility 0.2s;
+          visibility 0.2s ease;
         overflow: hidden;
+        z-index: 999999;
       }
-      .nav-item:hover .mega-menu {
+
+      /* =========================================================
+   ONLY ACTIVE MENU OPENS
+========================================================= */
+
+      .nav-item.mega-active > .mega-menu {
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .nav-item:hover > .mega-menu {
         opacity: 1;
         visibility: visible;
-        transform: translateX(-50%) translateY(0);
         pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
       }
+
+      /* =========================================================
+   MENU ARROW
+========================================================= */
+
       .mega-menu::before {
         content: "";
+
         position: absolute;
+
         top: -8px;
         left: 50%;
+
         width: 16px;
         height: 16px;
-        background: #fff;
+
+        background: #ffffff;
+
         transform: translateX(-50%) rotate(45deg);
+
         border-radius: 4px 0 0 0;
-        box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.03);
       }
+
+      /* =========================================================
+   MENU COLUMN
+========================================================= */
+
       .menu-column {
         padding: 30px 34px;
       }
+
       .menu-heading {
-        font-size: 13px;
-        font-weight: 700;
-        color: #6f7685;
-        letter-spacing: 0.5px;
         margin-bottom: 18px;
+
+        color: #6f7685;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        letter-spacing: 0.5px;
+
         text-transform: uppercase;
       }
+
+      /* =========================================================
+   MENU LINK
+========================================================= */
+
       .menu-link {
         display: flex;
+
         align-items: center;
-        gap: 14px;
+
+        gap: 8px;
+
         margin-bottom: 18px;
+
         color: #171a21;
-        transition: color 0.15s;
+
+        text-decoration: none;
+
+        transition: color 0.15s ease;
       }
+
       .menu-link:last-child {
         margin-bottom: 0;
       }
+
       .menu-link:hover .menu-title {
         color: #0b6ed6;
       }
+
+      /* =========================================================
+   MENU ICON
+========================================================= */
+
       .menu-icon {
-        width: 46px;
-        height: 46px;
+        width: 42px;
+        height: 42px;
+
         flex-shrink: 0;
+
         border: 1px solid #e9ecf0;
-        border-radius: 10px;
+
+        border-radius: 12px;
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
-        background: #fff;
-        font-size: 18px;
-        color: #0a7eff;
+
+        background: #ffffff;
+
+        color: #087df5;
+
+        font-size: 20px;
+
         transition:
-          background 0.2s,
-          border 0.2s,
-          color 0.2s;
+          background 0.2s ease,
+          border 0.2s ease,
+          color 0.2s ease;
       }
+
       .menu-link:hover .menu-icon {
         background: #f0f7ff;
+
         border-color: #b0d3ff;
+
         color: #0a5fcf;
       }
+
+      /* =========================================================
+   MENU TITLE
+========================================================= */
+
       .menu-title {
-        font-size: 15px;
-        font-weight: 600;
-        line-height: 1.3;
         margin-bottom: 2px;
+
+        color: #171a21;
+
+        font-size: 15px;
+
+        font-weight: 600;
+
+        line-height: 1.3;
       }
+
+      /* =========================================================
+   MENU DESCRIPTION
+========================================================= */
+
       .menu-description {
         color: #7d8392;
+
         font-size: 13px;
+
         font-weight: 500;
+
         line-height: 1.4;
       }
+
+      /* =========================================================
+   FEATURE CARD
+========================================================= */
+
       .feature-card {
-        background: #f5f7fa;
+        min-width: 220px;
+
         padding: 28px 26px;
+
         display: flex;
+
         flex-direction: column;
+
         justify-content: flex-start;
-        transition: background 0.2s;
-        min-width: 280px;
+
+        background: #f5f7fa;
+
+        color: #14171c;
+
+        text-decoration: none;
+
+        transition: background 0.2s ease;
       }
+
       .feature-card:hover {
         background: #f0f4fe;
       }
+
+      /* =========================================================
+   FEATURE IMAGE
+========================================================= */
+
       .feature-image {
         width: 100%;
-        height: 180px;
-        border-radius: 14px;
-        overflow: hidden;
+        height: 120px;
+
         margin-bottom: 14px;
+
+        overflow: hidden;
+
+        border-radius: 14px;
+
         background: #1a314a;
       }
+
       .feature-image img {
         width: 100%;
         height: 100%;
+
         object-fit: cover;
+
+        display: block;
       }
+
+      /* =========================================================
+   FEATURE TITLE
+========================================================= */
+
       .feature-title {
-        font-size: 17px;
-        font-weight: 700;
-        color: #0b1a2a;
         margin-bottom: 4px;
+
+        color: #0b1a2a;
+
+        font-size: 17px;
+
+        font-weight: 700;
       }
+
+      /* =========================================================
+   FEATURE TEXT
+========================================================= */
+
       .feature-text {
         color: #626a7a;
+
         font-size: 14px;
+
         line-height: 1.5;
+
         font-weight: 500;
       }
-      .challenge-menu {
-        width: 965px;
+
+      /* =========================================================
+   HOME MENU
+========================================================= */
+
+      .home-menu {
+        width: 830px;
+
         max-width: calc(100vw - 40px);
-        min-height: 360px;
+
+        min-height: auto;
+
         display: grid;
-        grid-template-columns: 1fr 1fr 340px;
+
+        grid-template-columns:
+          1fr
+          1fr
+          340px;
       }
+
+      /* =========================================================
+   TRADING MENU
+========================================================= */
+
       .trading-menu {
-        width: 780px;
+        width: 690px;
+
         max-width: calc(100vw - 40px);
+
         padding: 30px 34px;
+
         display: grid;
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+          1fr
+          340px;
+
         gap: 30px;
       }
+
       .trading-menu .menu-column {
         padding: 0;
       }
+
+      /* =========================================================
+   ACADEMY MENU
+========================================================= */
+
       .academy-menu {
-        width: 975px;
+        width: 685px;
         max-width: calc(100vw - 40px);
-        min-height: 340px;
+        min-height: auto;
         display: grid;
-        grid-template-columns: 1fr 1fr 340px;
+        grid-template-columns: 1fr 340px;
       }
+
       .academy-menu .menu-column {
         padding: 28px 30px;
       }
+
+      /* =========================================================
+   ACADEMY LINK
+========================================================= */
+
       .academy-link {
         display: flex;
+
         align-items: center;
+
         gap: 14px;
+
         margin-bottom: 16px;
+
         color: #171a21;
+
+        text-decoration: none;
       }
+
       .academy-thumb {
-        width: 72px;
-        height: 42px;
+        width: 90px;
+        height: 52px;
+
         flex-shrink: 0;
-        border-radius: 8px;
+
         overflow: hidden;
+
+        border-radius: 10px;
+
         background: #1d2633;
       }
+
       .academy-thumb img {
         width: 100%;
         height: 100%;
+
         object-fit: cover;
+
+        display: block;
       }
+
       .academy-content .menu-title {
         font-size: 14px;
       }
+
       .academy-content .menu-description {
         font-size: 12px;
       }
+
+      /* =========================================================
+   MORE LESSONS
+========================================================= */
+
       .more-lessons {
         display: inline-block;
+        margin-top: 3px;
+        margin-left: 8rem;
         font-weight: 600;
-        color: #0b6ed6;
-        margin-top: 18px;
-        font-size: 18px;
+        text-decoration: none;
       }
-      .more-lessons .more-arrow {
+
+      .more-arrow {
         margin-left: 4px;
+        color: #006fe8;
       }
+
+      /* =========================================================
+   ABOUT MENU
+========================================================= */
+
       .about-menu {
-        width: 740px;
+        width: 600px;
+
         max-width: calc(100vw - 40px);
+
         padding: 30px 36px;
+
         display: grid;
-        grid-template-columns: 1fr 1fr;
+
+        grid-template-columns:
+          1fr
+          1fr;
+
         gap: 40px;
       }
+
       .about-menu .menu-column {
         padding: 0;
       }
 
-      /* ---------- HEADER RIGHT ---------- */
-      .header-right {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        flex-shrink: 0;
-      }
-      .search-btn {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        background: rgba(255, 255, 255, 0.04);
-        transition: background 0.2s;
-        font-size: 16px;
-      }
-      .search-btn:hover {
-        background: rgba(255, 255, 255, 0.1);
-      }
-      /* ---------- LANGUAGE SELECTOR ---------- */
-      .language {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        height: 38px;
-        padding: 0 18px 0 2px;
-        margin-right: 0;
-        border-right: 1px solid rgba(255, 255, 255, 0.13);
-        color: #dce5f2;
-        font-size: 14px;
-        font-weight: 600;
-      }
+      /* =========================================================
+   FAQ
+========================================================= */
 
-      .language-icon {
-        font-size: 14px;
+      .faq-link {
+        height: 48px;
+
+        padding: 0 14px;
+
+        display: flex;
+
+        align-items: center;
+
         color: #ffffff;
-      }
 
-      .language-select {
-        appearance: none;
-        -webkit-appearance: none;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        outline: 0;
-        background-color: rgba(255, 255, 255, 0.045);
-        color: #ffffff;
-        font: inherit;
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+
         font-size: 14px;
+
+        line-height: 20px;
+
         font-weight: 600;
-        cursor: pointer;
-        padding: 7px 28px 7px 11px;
-        min-width: 102px;
-        height: 38px;
-        border-radius: 9px;
-        transition:
-          border-color 0.2s,
-          background-color 0.2s,
-          box-shadow 0.2s;
-        background-image:
-          linear-gradient(45deg, transparent 50%, currentColor 50%),
-          linear-gradient(135deg, currentColor 50%, transparent 50%);
-        background-position:
-          calc(100% - 9px) 50%,
-          calc(100% - 4px) 50%;
-        background-size:
-          5px 5px,
-          5px 5px;
-        background-repeat: no-repeat;
-      }
 
-      .language-select option {
-        background: #0b1623;
-        color: #ffffff;
-      }
-
-      .language-select:hover {
-        background-color: rgba(255, 255, 255, 0.075);
-        border-color: rgba(255, 255, 255, 0.24);
-      }
-
-      .language-select:focus-visible {
-        border-color: rgba(22, 135, 255, 0.85);
-        box-shadow: 0 0 0 3px rgba(22, 135, 255, 0.18);
-      }
-
-      .mobile-language {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        padding: 16px 4px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .mobile-language-label {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        color: #f0f4ff;
-        font-size: 16px;
-        font-weight: 600;
-      }
-
-      .mobile-language .language-select {
-        color: #ffffff;
-        background-color: #142335;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 9px;
-        min-width: 118px;
-        padding: 9px 28px 9px 11px;
-      }
-
-      /* Google Translate engine stays available to JavaScript,
-         while its default visual UI is kept out of the header. */
-      #google_translate_element {
-        position: absolute !important;
-        left: -10000px !important;
-        top: 0 !important;
-        width: 1px !important;
-        height: 1px !important;
-        overflow: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-      }
-
-      /* ---------- GOOGLE TRANSLATE: KEEP BANNER OUT OF THE PAGE ---------- */
-      html {
-        top: 0 !important;
-        margin-top: 0 !important;
-      }
-
-      body {
-        top: 0 !important;
-        margin-top: 0 !important;
-        padding-top: 76px !important;
-      }
-
-      /* Google may inject its banner as an iframe OR as a
-         direct .skiptranslate wrapper. Hide only Google's
-         banner UI — never our .site-header. */
-      iframe.goog-te-banner-frame,
-      iframe.goog-te-banner-frame.skiptranslate,
-      .goog-te-banner-frame,
-      .goog-te-banner-frame.skiptranslate {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        position: fixed !important;
-        left: -10000px !important;
-        top: -10000px !important;
-        width: 0 !important;
-        height: 0 !important;
-        min-height: 0 !important;
-        max-height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border: 0 !important;
-        pointer-events: none !important;
-      }
-
-      body.translated-ltr,
-      body.translated-rtl {
-        top: 0 !important;
-        margin-top: 0 !important;
-        padding-top: 76px !important;
-      }
-
-      /* Keep our fixed header above anything Google injects. */
-      .site-header {
-        top: 0 !important;
-        z-index: 2147483647 !important;
-      }
-
-      #goog-gt-tt,
-      .goog-tooltip,
-      .goog-tooltip:hover {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-      }
-
-      .flag {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
-      .login {
-        font-size: 15px;
-        font-weight: 600;
-        color: #f0f4ff;
-        transition: color 0.2s;
-        white-space: nowrap;
-      }
-      .login:hover {
-        color: #1687ff;
-      }
-      .get-started {
-        min-width: 138px;
-        height: 44px;
-        padding: 0 22px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(180deg, #1a9cff 0%, #0870e0 100%);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        color: #fff;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.3px;
-        box-shadow: 0 6px 18px rgba(0, 115, 255, 0.3);
-        transition:
-          transform 0.15s,
-          box-shadow 0.2s,
-          background 0.2s;
-        white-space: nowrap;
-      }
-      .get-started:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 10px 28px rgba(0, 115, 255, 0.45);
-        background: linear-gradient(180deg, #2aa6ff 0%, #0878e8 100%);
-      }
-
-      /* ===== MOBILE TOGGLE ===== */
-      .mobile-toggle {
-        display: none;
-        width: 44px;
-        height: 44px;
-        flex: 0 0 44px;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 5px;
-        margin-left: auto;
-        padding: 0;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 10px;
+
+        white-space: nowrap;
+
+        transition: background 0.2s ease;
+      }
+
+      .faq-link:hover {
+        background: rgba(40, 60, 80, 0.6);
+      }
+
+      /* =========================================================
+   HEADER RIGHT
+========================================================= */
+
+      .header-right {
+        height: 78px;
+
+        margin-left: auto;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 21px;
+      }
+
+      /* =========================================================
+   SEARCH
+========================================================= */
+
+      .search-button {
+        width: 22px;
+        height: 40px;
+
+        padding: 0;
+
+        border: 0;
+
+        background: transparent;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
         cursor: pointer;
-        position: relative;
-        z-index: 1000000;
       }
-      .mobile-toggle span,
-      .mobile-toggle span::before,
-      .mobile-toggle span::after {
-        content: "";
-        display: block;
-        width: 24px;
-        height: 2.5px;
-        background: #fff;
-        border-radius: 4px;
+
+      .search-svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* =========================================================
+   LANGUAGE
+========================================================= */
+
+      .language-box {
+        position: relative;
+
+        height: 78px;
+
+        display: flex;
+
+        align-items: center;
+      }
+
+      .language-button {
+        height: 40px;
+
+        padding: 0;
+
+        border: 0;
+
+        background: transparent;
+
+        color: #ffffff;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        cursor: pointer;
+
+        font-family: "Poppins", sans-serif;
+
+        font-style: normal;
+
+        font-weight: 600;
+
+        font-size: 14px;
+
+        line-height: 20px;
+      }
+
+      .language-flag {
+        width: 21px;
+        height: 21px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 18px;
+
+        line-height: 1;
+      }
+
+      .language-code {
+        min-width: 20px;
+      }
+
+      /* =========================================================
+   LANGUAGE ARROW
+========================================================= */
+
+      .language-arrow {
+        width: 6px;
+        height: 6px;
+
+        margin-top: -3px;
+
+        border-right: 1px solid #ffffff;
+
+        border-bottom: 1px solid #ffffff;
+
+        transform: rotate(45deg);
+
+        transition: transform 0.2s ease;
+      }
+
+      .language-box.open .language-arrow {
+        transform: rotate(225deg);
+      }
+
+      /* =========================================================
+   LANGUAGE MENU
+========================================================= */
+
+      .language-menu {
         position: absolute;
-        transition: all 0.25s ease;
+
+        top: 58px;
+
+        right: 0;
+
+        width: 185px;
+
+        padding: 6px;
+
+        background: #ffffff;
+
+        border-radius: 10px;
+
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transform: translateY(8px);
+
+        transition:
+          opacity 0.2s ease,
+          visibility 0.2s ease,
+          transform 0.2s ease;
       }
-      .mobile-toggle span {
-        position: relative;
+
+      .language-box.open .language-menu {
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform: translateY(0);
       }
-      .mobile-toggle span::before {
-        top: -8px;
-        left: 0;
+
+      /* =========================================================
+   LANGUAGE OPTION
+========================================================= */
+
+      .language-option {
+        width: 100%;
+        height: 38px;
+
+        padding: 0 8px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 14px;
+
+        border: 0;
+
+        background: transparent;
+
+        border-radius: 7px;
+
+        color: #151515;
+
+        cursor: pointer;
+
+        text-align: left;
+
+        font-family: "Poppins", sans-serif;
+
+        font-style: normal;
+
+        font-weight: 600;
+
+        font-size: 13px;
+
+        line-height: 18px;
+
+        transition: color 0.15s ease;
       }
-      .mobile-toggle span::after {
-        top: 8px;
-        left: 0;
-      }
-      .mobile-toggle.active span {
+
+      .language-option:hover {
         background: transparent;
       }
-      .mobile-toggle.active span::before {
-        top: 0;
-        transform: rotate(45deg);
-      }
-      .mobile-toggle.active span::after {
-        top: 0;
-        transform: rotate(-45deg);
+
+      .language-option .flag {
+        width: 26px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 17px;
       }
 
-      /* ===== MOBILE MENU (hidden by default) ===== */
+      /* =========================================================
+   DIVIDER
+========================================================= */
+
+      .header-divider {
+        width: 1px;
+
+        height: 25px;
+
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      /* =========================================================
+   LOGIN
+========================================================= */
+
+      .login-link {
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+
+        font-style: normal;
+
+        font-weight: 600;
+
+        font-size: 14px;
+
+        line-height: 20px;
+
+        white-space: nowrap;
+
+        transition: opacity 0.2s ease;
+      }
+
+      .login-link:hover {
+        opacity: 0.7;
+      }
+
+      /* =========================================================
+   GET STARTED
+========================================================= */
+
+      .get-started {
+        height: 40px;
+
+        padding: 0 18px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 9px;
+
+        background: #087df5;
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+
+        font-style: normal;
+
+        font-weight: 600;
+
+        font-size: 14px;
+
+        line-height: 20px;
+
+        white-space: nowrap;
+
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .get-started:hover {
+        background: #1688ff;
+
+        transform: translateY(-1px);
+      }
+
+      /* =========================================================
+   MOBILE BUTTON
+========================================================= */
+
+      .mobile-menu-button {
+        display: none;
+
+        width: 40px;
+        height: 40px;
+
+        border: 0;
+
+        background: transparent;
+
+        cursor: pointer;
+      }
+
+      .mobile-menu-button span {
+        display: block;
+
+        width: 23px;
+        height: 2px;
+
+        margin: 5px auto;
+
+        background: #ffffff;
+
+        border-radius: 2px;
+      }
+
+      /* =========================================================
+   MOBILE MENU
+========================================================= */
+
       .mobile-menu {
-        display: none !important;
-        position: fixed !important;
-        top: 76px;
+        display: none;
+
+        position: fixed;
+
+        top: 78px;
         left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100% !important;
-        height: fit-content;
-        background: #0b1623 !important;
-        padding: 16px 20px 30px !important;
+
+        width: 100%;
+
+        max-height: calc(100vh - 78px);
+
         overflow-y: auto;
-        z-index: 999998 !important;
-        box-sizing: border-box;
-        -webkit-overflow-scrolling: touch;
-      }
-      .mobile-menu.active {
-        display: block !important;
+
+        padding: 12px 20px 25px;
+
+        background: #ffffff;
+
+        color: #111111;
+
+        border-top: 1px solid #eeeeee;
+
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+        z-index: 99998;
       }
 
-      /* ===== RESPONSIVE ===== */
-      @media (max-width: 960px) {
-        .desktop-nav {
-          display: none !important;
+      .mobile-menu.active {
+        display: block;
+      }
+
+      /* =========================================================
+   MOBILE ITEM
+========================================================= */
+
+      .mobile-item {
+        border-bottom: 1px solid #e9e9e9;
+      }
+
+      /* =========================================================
+   MOBILE LINK
+========================================================= */
+
+      .mobile-link {
+        width: 100%;
+
+        min-height: 50px;
+
+        padding: 15px 2px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        color: #111111;
+
+        background: transparent;
+
+        border: 0;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+
+        font-size: 14px;
+
+        line-height: 20px;
+
+        font-weight: 600;
+
+        text-align: left;
+
+        cursor: pointer;
+      }
+
+      .mobile-link .mobile-arrow {
+        width: 7px;
+        height: 7px;
+
+        border-right: 1.5px solid #111111;
+
+        border-bottom: 1.5px solid #111111;
+
+        transform: rotate(45deg);
+
+        transition: transform 0.2s ease;
+      }
+
+      .mobile-item.open .mobile-link .mobile-arrow {
+        transform: rotate(225deg);
+      }
+
+      /* =========================================================
+   MOBILE DROPDOWN
+========================================================= */
+
+      .mobile-dropdown {
+        display: none;
+
+        padding: 0 4px 14px;
+      }
+
+      .mobile-item.open .mobile-dropdown {
+        display: block;
+      }
+
+      .mobile-dropdown a {
+        display: block;
+
+        padding: 9px 2px;
+
+        color: #555b66;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+
+        font-size: 14px;
+
+        font-weight: 500;
+      }
+
+      .mobile-dropdown a:hover {
+        color: #087df5;
+      }
+
+      /* =========================================================
+   MOBILE ACTIONS
+========================================================= */
+
+      .mobile-actions {
+        padding-top: 20px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 14px;
+      }
+
+      .mobile-login {
+        width: 100%;
+
+        height: 46px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border: 1px solid #d9dde3;
+
+        border-radius: 10px;
+
+        background: #f5f7fa;
+
+        color: #111111;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+
+        font-size: 14px;
+
+        font-weight: 600;
+      }
+
+      .mobile-get-started {
+        width: 100%;
+
+        height: 46px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-radius: 10px;
+
+        background: linear-gradient(180deg, #1a9cff 0%, #0870e0 100%);
+
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+
+        font-size: 14px;
+
+        font-weight: 600;
+      }
+
+      /* =========================================================
+   RESPONSIVE
+========================================================= */
+
+      @media (max-width: 1100px) {
+        .logo {
+          width: 150px;
+          min-width: 150px;
         }
+
+        .nav-link,
+        .faq-link {
+          padding-left: 9px;
+          padding-right: 9px;
+        }
+
+        .header-right {
+          gap: 15px;
+        }
+
+        .get-started {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+
+        .home-menu {
+          width: 900px;
+        }
+
+        .academy-menu {
+          width: 900px;
+        }
+      }
+
+      /* =========================================================
+   MOBILE
+========================================================= */
+
+      @media (max-width: 900px) {
+        .main-nav {
+          display: none;
+        }
+
+        .header-right {
+          display: none;
+        }
+
+        .mobile-menu-button {
+          display: block;
+
+          margin-left: auto;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+      @media (max-width: 500px) {
+        .site-header,
+        .header-container {
+          height: 70px;
+        }
+
+        .header-container {
+          padding: 0 16px;
+        }
+
+        .logo {
+          width: 140px;
+          min-width: 140px;
+
+          height: 70px;
+        }
+
+        .logo-svg {
+          width: 120px;
+        }
+
+        .mobile-menu {
+          top: 70px;
+
+          max-height: calc(100vh - 70px);
+        }
+
+        .hero {
+          padding-top: 120px;
+        }
+      }
+
+      /* =========================================================
+   PHONE MENU — SCREENSHOT STYLE
+   DESKTOP IS NOT TOUCHED
+========================================================= */
+      @media (max-width: 900px) {
+        .site-header {
+          height: 78px !important;
+          background: #050505 !important;
+          border-bottom: 1px solid #242424 !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .header-container {
+          height: 78px !important;
+          padding: 0 18px !important;
+        }
+
+        .main-nav,
         .header-right {
           display: none !important;
         }
-        .mobile-toggle {
-          display: flex !important;
+
+        .logo {
+          height: 78px !important;
         }
-        .header-inner {
-          width: calc(100% - 24px);
-          height: 100%;
+
+        .mobile-menu-button {
+          display: flex !important;
+          width: 42px !important;
+          height: 42px !important;
+          margin-left: auto !important;
+          background: transparent !important;
+        }
+
+        .mobile-menu-button span {
+          width: 25px !important;
+          height: 2px !important;
+          margin: 4px auto !important;
+          background: #fff !important;
+          transition:
+            transform 0.2s ease,
+            opacity 0.2s ease !important;
+        }
+
+        .site-header.mobile-open .mobile-menu-button span:nth-child(1) {
+          transform: translateY(6px) rotate(45deg) !important;
+        }
+
+        .site-header.mobile-open .mobile-menu-button span:nth-child(2) {
+          opacity: 0 !important;
+        }
+
+        .site-header.mobile-open .mobile-menu-button span:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg) !important;
+        }
+
+        .mobile-menu {
+          top: 78px !important;
+          height: calc(100vh - 78px) !important;
+          max-height: none !important;
+          padding: 0 !important;
+          overflow-y: auto !important;
+          background: #fff !important;
+          box-shadow: none !important;
+          border-top: 0 !important;
+        }
+
+        .mobile-item {
+          border-bottom: 1px solid #e7e7e7 !important;
+        }
+
+        .mobile-link {
+          min-height: 67px !important;
+          padding: 0 18px !important;
+          color: #5f6066 !important;
+          background: #fff !important;
+          font-size: 16px !important;
+          font-weight: 600 !important;
+        }
+
+        .mobile-link:hover,
+        .mobile-item.open > .mobile-link {
+          color: #5f6066 !important;
+          background: #fff !important;
+        }
+
+        .mobile-link .mobile-arrow {
+          width: 9px !important;
+          height: 9px !important;
+          border-right: 2px solid #666970 !important;
+          border-bottom: 2px solid #666970 !important;
+        }
+
+        .mobile-dropdown {
+          padding: 0 18px 13px !important;
+          background: #fff !important;
+        }
+
+        .mobile-dropdown a {
+          min-height: 56px !important;
+          padding: 0 0 !important;
+          display: flex !important;
+          align-items: center !important;
+          gap: 14px !important;
+          color: #17181c !important;
+          background: transparent !important;
+          font-size: 15px !important;
+          font-weight: 600 !important;
+        }
+
+        .mobile-dropdown a:hover {
+          color: #17181c !important;
+        }
+
+        /* Blue icon circles/squares — only phone view */
+        .mobile-dropdown a::before {
+          width: 22px;
+          min-width: 22px;
+          height: 22px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: #087df5;
+          font-size: 17px;
+          font-weight: 700;
+          content: "•";
+        }
+
+        .mobile-item:nth-child(1) .mobile-dropdown a:nth-child(1)::before {
+          content: "⌂";
+        }
+        .mobile-item:nth-child(1) .mobile-dropdown a:nth-child(2)::before {
+          content: "▶";
+          font-size: 13px;
+        }
+        .mobile-item:nth-child(1) .mobile-dropdown a:nth-child(3)::before {
+          content: "◉";
+        }
+        .mobile-item:nth-child(1) .mobile-dropdown a:nth-child(4)::before {
+          content: "↗";
+        }
+        .mobile-item:nth-child(1) .mobile-dropdown a:nth-child(5)::before {
+          content: "✓";
+        }
+
+        .mobile-item:nth-child(2) .mobile-dropdown a:nth-child(1)::before {
+          content: "▣";
+        }
+        .mobile-item:nth-child(2) .mobile-dropdown a:nth-child(2)::before {
+          content: "☷";
+        }
+        .mobile-item:nth-child(2) .mobile-dropdown a:nth-child(3)::before {
+          content: "▣";
+        }
+        .mobile-item:nth-child(2) .mobile-dropdown a:nth-child(4)::before {
+          content: "▤";
+        }
+
+        .mobile-item:nth-child(4) .mobile-dropdown a:nth-child(1)::before {
+          content: "♟";
+        }
+        .mobile-item:nth-child(4) .mobile-dropdown a:nth-child(2)::before {
+          content: "◈";
+        }
+        .mobile-item:nth-child(4) .mobile-dropdown a:nth-child(3)::before {
+          content: "▦";
+        }
+        .mobile-item:nth-child(4) .mobile-dropdown a:nth-child(4)::before {
+          content: "◎";
+        }
+        .mobile-item:nth-child(4) .mobile-dropdown a:nth-child(5)::before {
+          content: "↗";
+        }
+        .mobile-item:nth-child(4) .mobile-dropdown a:nth-child(6)::before {
+          content: "✦";
+        }
+        .mobile-item:nth-child(4) .mobile-dropdown a:nth-child(7)::before {
+          content: "→";
+        }
+
+        .mobile-item:nth-child(5) .mobile-dropdown a:nth-child(1)::before {
+          content: "◆";
+        }
+        .mobile-item:nth-child(5) .mobile-dropdown a:nth-child(2)::before {
+          content: "◉";
+        }
+        .mobile-item:nth-child(5) .mobile-dropdown a:nth-child(3)::before {
+          content: "▣";
+        }
+        .mobile-item:nth-child(5) .mobile-dropdown a:nth-child(4)::before {
+          content: "◌";
+        }
+        .mobile-item:nth-child(5) .mobile-dropdown a:nth-child(5)::before {
+          content: "▤";
+        }
+
+        .mobile-tools {
+          padding: 0 18px 14px !important;
+          background: #fff;
+          border-bottom: 1px solid #eee;
+        }
+
+        .mobile-search {
+          width: 100%;
+          height: 56px;
+          padding: 0;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          gap: 10px;
+          border: 0;
+          background: transparent;
+          color: #66676d;
+          font:
+            500 16px/1.2 "Poppins",
+            sans-serif;
+          text-align: left;
         }
-        .logo {
-          width: 130px;
-          height: 48px;
-          margin-top: 20px;
+
+        .mobile-search-icon {
+          width: 15px;
+          height: 15px;
+          border: 2px solid #66676d;
+          border-radius: 50%;
+          position: relative;
+          display: block;
+        }
+
+        .mobile-search-icon::after {
+          content: "";
+          position: absolute;
+          width: 7px;
+          height: 2px;
+          background: #66676d;
+          right: -6px;
+          bottom: -3px;
+          transform: rotate(45deg);
+          border-radius: 2px;
+        }
+
+        .mobile-language-wrap {
+          position: relative;
+        }
+
+        .mobile-language-trigger {
+          width: auto;
+          height: 56px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          border: 0;
+          background: transparent;
+          color: #17181c;
+          font:
+            600 16px/1.2 "Poppins",
+            sans-serif;
+        }
+
+        .mobile-language-flag {
+          font-size: 20px;
+        }
+
+        .mobile-language-chevron {
+          width: 7px;
+          height: 7px;
+          border-right: 2px solid #666970;
+          border-bottom: 2px solid #666970;
+          transform: rotate(45deg);
+          margin-left: 2px;
+          margin-top: -4px;
+        }
+
+        .mobile-language-list {
+          display: none;
+          position: absolute;
+          left: 0;
+          bottom: 52px;
+          width: 190px;
+          padding: 6px;
+          background: #fff;
+          border-radius: 10px;
+          box-shadow: 0 14px 35px rgba(0, 0, 0, 0.2);
+          z-index: 20;
+        }
+
+        .mobile-language-wrap.open .mobile-language-list {
+          display: block;
+        }
+
+        .mobile-language-list button {
+          width: 100%;
+          min-height: 37px;
+          padding: 0 8px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border: 0;
+          border-radius: 7px;
+          background: transparent;
+          color: #17181c;
+          font:
+            500 13px/1 "Poppins",
+            sans-serif;
+          text-align: left;
+        }
+
+        .mobile-language-list button:hover {
+          background: #f5f7fa;
+        }
+
+        .mobile-actions {
+          position: sticky !important;
+          bottom: 0 !important;
+          padding: 14px 18px 16px !important;
+          gap: 12px !important;
+          background: #fff !important;
+          border-top: 1px solid #eee !important;
+          z-index: 30 !important;
+        }
+
+        .mobile-get-started {
+          order: 1 !important;
+          height: 56px !important;
+          border-radius: 10px !important;
+          background: #087df5 !important;
+          color: #fff !important;
+          font-size: 16px !important;
+          font-weight: 600 !important;
+        }
+
+        .mobile-login {
+          order: 2 !important;
+          height: 52px !important;
+          border: 1px solid #d4d5d8 !important;
+          border-radius: 10px !important;
+          background: #fff !important;
+          color: #17181c !important;
+          font-size: 15px !important;
         }
       }
 
-      @media (max-width: 700px) {
-        .site-header {
-          height: 66px;
+      @media (max-width: 500px) {
+        .site-header,
+        .header-container {
+          height: 70px !important;
         }
         .mobile-menu {
-          top: 66px !important;
-          /* height: calc(100% - 66px) !important; */
+          top: 70px !important;
+          height: calc(100vh - 70px) !important;
         }
-        .logo {
-          width: 112px;
-          height: 40px;
-          margin-top: 16px;
-        }
-        .mobile-toggle {
-          width: 42px;
-          height: 42px;
-          flex-basis: 42px;
+        .header-container {
+          padding: 0 16px !important;
         }
         .mobile-link {
+          min-height: 62px !important;
+        }
+      }
+
+      /* =========================================================
+   PHONE MENU — SCREENSHOT STYLE
+   DESKTOP IS NOT CHANGED
+========================================================= */
+
+      .mobile-promo {
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        /* ---------- MOBILE PROMO ---------- */
+
+        .mobile-promo {
+          position: fixed;
+          top: 0;
+          left: 0;
+
           width: 100%;
-          padding: 16px 4px;
+          height: 48px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 9px;
+
+          background: linear-gradient(110deg, #120d08, #241407, #100d0a);
+
+          color: #ffffff;
+
+          z-index: 100002;
+        }
+
+        .mobile-promo-percent {
+          width: 20px;
+          height: 20px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          color: #ff9700;
+
+          font-size: 15px;
+          font-weight: 800;
+        }
+
+        .mobile-promo-text {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          line-height: 1.05;
+        }
+
+        .mobile-promo-text strong {
+          color: #ff9700;
+          font-size: 13px;
+          font-weight: 700;
+        }
+
+        .mobile-promo-text span {
+          margin-top: 2px;
+
+          color: #ffffff;
+
+          font-size: 12px;
+          font-weight: 700;
+        }
+
+        .mobile-promo-arrow {
+          color: #9b9b9b;
+          font-size: 24px;
+          line-height: 1;
+        }
+
+        /* ---------- BLACK MOBILE HEADER ---------- */
+
+        .site-header {
+          top: 48px;
+
+          height: 70px;
+
+          background: #050505 !important;
+
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+
+        .header-container {
+          height: 70px;
+
+          padding: 0 16px;
+        }
+
+        .logo {
+          height: 70px;
+
+          width: 145px;
+          min-width: 145px;
+        }
+
+        .logo-svg {
+          width: 125px;
+        }
+
+        .main-nav,
+        .header-right {
+          display: none !important;
+        }
+
+        .mobile-menu-button {
           display: flex !important;
+
+          width: 42px;
+          height: 42px;
+
+          margin-left: auto;
+
+          padding: 0;
+
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          border: 0;
+          background: transparent;
+
+          cursor: pointer;
+        }
+
+        .mobile-menu-button span {
+          display: block;
+
+          width: 25px;
+          height: 2px;
+
+          margin: 4px 0;
+
+          background: #ffffff;
+
+          border-radius: 2px;
+
+          transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
+        }
+
+        .site-header.mobile-open .mobile-menu-button span:nth-child(1) {
+          transform: translateY(6px) rotate(45deg);
+        }
+
+        .site-header.mobile-open .mobile-menu-button span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .site-header.mobile-open .mobile-menu-button span:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg);
+        }
+
+        /* ---------- MOBILE MENU PANEL ---------- */
+
+        .mobile-menu {
+          display: none;
+
+          position: fixed;
+
+          top: 118px;
+          left: 0;
+
+          width: 100%;
+          height: calc(100vh - 118px);
+
+          max-height: none;
+
+          overflow-x: hidden;
+          overflow-y: auto;
+
+          padding: 0;
+
+          background: #ffffff;
+          color: #111111;
+
+          border: 0;
+
+          box-shadow: none;
+
+          z-index: 100001;
+
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-menu.active {
+          display: block;
+        }
+
+        /* ---------- SECTION ROW ---------- */
+
+        .mobile-item {
+          border-bottom: 1px solid #e8e8e8;
+
+          background: #ffffff;
+        }
+
+        .mobile-link {
+          width: 100%;
+
+          min-height: 66px;
+
+          padding: 0 22px;
+
+          display: flex;
           align-items: center;
           justify-content: space-between;
-          color: #f0f4ff !important;
-          font-size: 16px;
-          font-weight: 600;
-          background: transparent !important;
+
+          color: #62636a;
+
+          background: #ffffff;
+
           border: 0;
+
+          font-family: "Poppins", sans-serif;
+
+          font-size: 16px;
+
+          line-height: 22px;
+
+          font-weight: 600;
+
           text-align: left;
+
+          text-decoration: none;
+
+          cursor: pointer;
         }
-        .mobile-item {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+        .mobile-link:hover,
+        .mobile-link:focus {
+          color: #62636a;
+          background: #ffffff;
+          outline: none;
         }
+
+        .mobile-direct-link {
+          justify-content: flex-start;
+        }
+
+        /* ---------- ARROW ---------- */
+
+        .mobile-link .mobile-arrow {
+          width: 9px;
+          height: 9px;
+
+          flex-shrink: 0;
+
+          border-right: 2px solid #666970;
+
+          border-bottom: 2px solid #666970;
+
+          transform: rotate(45deg);
+
+          transition: transform 0.2s ease;
+        }
+
+        .mobile-item.open .mobile-link .mobile-arrow {
+          transform: rotate(225deg);
+        }
+
+        /* ---------- DROPDOWN ---------- */
+
         .mobile-dropdown {
-          display: none !important;
-          padding: 0 4px 14px;
+          display: none;
+
+          padding: 0 18px 14px;
+
+          background: #fafafa;
         }
+
         .mobile-item.open .mobile-dropdown {
-          display: block !important;
+          display: block;
         }
+
+        /* ---------- GROUP TITLE ---------- */
+
+        .mobile-group-heading {
+          padding: 15px 7px 6px;
+
+          color: #747781;
+
+          font-size: 12px;
+
+          line-height: 18px;
+
+          font-weight: 700;
+
+          letter-spacing: 0.2px;
+
+          text-transform: uppercase;
+        }
+
+        .mobile-group-heading-second {
+          padding-top: 12px;
+        }
+
+        /* ---------- SUB LINKS ---------- */
+
         .mobile-dropdown a {
-          display: block !important;
-          padding: 8px 0;
-          color: #bcc1ce !important;
-          font-size: 14px;
+          width: 100%;
+
+          min-height: 56px;
+
+          padding: 0 7px;
+
+          display: flex;
+          align-items: center;
+
+          gap: 13px;
+
+          color: #17181c;
+
+          background: transparent;
+
+          text-decoration: none;
+
+          font-family: "Poppins", sans-serif;
+
+          font-size: 15px;
+
+          line-height: 20px;
+
+          font-weight: 600;
+        }
+
+        .mobile-dropdown a:hover {
+          color: #17181c;
+          background: transparent;
+        }
+
+        /* ---------- BLUE ICON ---------- */
+
+        .mobile-menu-icon {
+          width: 32px;
+          min-width: 32px;
+          height: 32px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          color: #087df5;
+
+          font-size: 17px;
+        }
+
+        /* ---------- SEARCH ---------- */
+
+        .mobile-search-row {
+          min-height: 68px;
+
+          display: flex;
+          align-items: center;
+
+          padding: 0 22px;
+
+          background: #ffffff;
+
+          border-bottom: 1px solid #eeeeee;
+        }
+
+        .mobile-search-button {
+          display: flex;
+          align-items: center;
+
+          gap: 8px;
+
+          padding: 0;
+
+          border: 0;
+
+          background: transparent;
+
+          color: #65666b;
+
+          font-family: "Poppins", sans-serif;
+
+          font-size: 15px;
+          font-weight: 500;
+
+          cursor: pointer;
+        }
+
+        .mobile-search-button svg {
+          width: 19px;
+          height: 19px;
+
+          fill: none;
+
+          stroke: currentColor;
+
+          stroke-width: 1.8;
+
+          stroke-linecap: round;
+        }
+
+        /* ---------- LANGUAGE ---------- */
+
+        .mobile-language-box {
+          position: relative;
+
+          background: #ffffff;
+
+          border-bottom: 1px solid #eeeeee;
+        }
+
+        .mobile-language-button {
+          width: 100%;
+          min-height: 66px;
+
+          padding: 0 22px;
+
+          display: flex;
+          align-items: center;
+
+          gap: 9px;
+
+          border: 0;
+
+          background: #ffffff;
+
+          color: #17181c;
+
+          font-family: "Poppins", sans-serif;
+
+          font-size: 15px;
+
+          font-weight: 600;
+
+          text-align: left;
+
+          cursor: pointer;
+        }
+
+        .mobile-language-flag {
+          font-size: 20px;
+          line-height: 1;
+        }
+
+        .mobile-language-arrow {
+          width: 7px;
+          height: 7px;
+
+          margin-left: 1px;
+
+          border-right: 1.7px solid #666970;
+
+          border-bottom: 1.7px solid #666970;
+
+          transform: rotate(45deg);
+
+          transition: transform 0.2s ease;
+        }
+
+        .mobile-language-box.open .mobile-language-arrow {
+          transform: rotate(225deg);
+        }
+
+        .mobile-language-menu {
+          display: none;
+
+          position: absolute;
+
+          left: 18px;
+          right: 18px;
+          bottom: calc(100% - 2px);
+
+          max-height: 300px;
+
+          overflow-y: auto;
+
+          padding: 5px;
+
+          background: #ffffff;
+
+          border: 1px solid #e8e8e8;
+
+          border-radius: 10px;
+
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+
+          z-index: 10;
+        }
+
+        .mobile-language-box.open .mobile-language-menu {
+          display: block;
+        }
+
+        .mobile-language-option {
+          width: 100%;
+          height: 38px;
+
+          padding: 0 10px;
+
+          display: flex;
+          align-items: center;
+
+          gap: 9px;
+
+          border: 0;
+          border-radius: 6px;
+
+          background: transparent;
+
+          color: #17181c;
+
+          font-family: "Poppins", sans-serif;
+
+          font-size: 13px;
+
+          font-weight: 500;
+
+          text-align: left;
+
+          cursor: pointer;
+        }
+
+        .mobile-language-option:hover {
+          background: #f5f6f7;
+        }
+
+        /* ---------- BOTTOM BUTTONS ---------- */
+
+        .mobile-actions {
+          position: sticky;
+
+          bottom: 0;
+
+          margin-top: 0;
+
+          padding: 14px 18px 18px;
+
+          display: flex;
+
+          flex-direction: column;
+
+          gap: 12px;
+
+          background: #ffffff;
+
+          border-top: 1px solid #eeeeee;
+
+          z-index: 20;
+        }
+
+        .mobile-get-started {
+          width: 100%;
+
+          height: 56px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 10px;
+
+          background: linear-gradient(180deg, #1a9cff 0%, #0870e0 100%);
+
+          color: #ffffff;
+
+          text-decoration: none;
+
+          font-family: "Poppins", sans-serif;
+
+          font-size: 16px;
+
+          font-weight: 600;
+
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .mobile-login {
+          width: 100%;
+
+          height: 52px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border: 1px solid #d4d6da;
+
+          border-radius: 10px;
+
+          background: #ffffff;
+
+          color: #17181c;
+
+          text-decoration: none;
+
+          font-family: "Poppins", sans-serif;
+
+          font-size: 15px;
+
           font-weight: 500;
         }
       }
 
-      @media (max-width: 480px) {
-        .header-inner {
-          width: calc(100% - 16px);
+      /* =========================================================
+   SMALL PHONES
+========================================================= */
+
+      @media (max-width: 500px) {
+        .mobile-promo {
+          height: 48px;
         }
-        .logo {
-          width: 194px;
+
+        .mobile-promo-text strong {
+          font-size: 12px;
+        }
+
+        .mobile-promo-text span {
+          font-size: 11px;
+        }
+
+        .site-header {
+          top: 48px;
           height: 70px;
-          margin-top: 26px;
         }
-        .mobile-toggle {
-          width: 40px;
-          height: 40px;
-          flex-basis: 40px;
+
+        .header-container {
+          height: 70px;
+          padding: 0 14px;
         }
-        .mobile-toggle span,
-        .mobile-toggle span::before,
-        .mobile-toggle span::after {
-          width: 20px;
-          height: 2px;
+
+        .logo {
+          width: 140px;
+          min-width: 140px;
+          height: 70px;
         }
-        .mobile-toggle span::before {
-          top: -7px;
+
+        .logo-svg {
+          width: 120px;
         }
-        .mobile-toggle span::after {
-          top: 7px;
+
+        .mobile-menu {
+          top: 118px;
+          height: calc(100vh - 118px);
+        }
+
+        .mobile-link {
+          min-height: 64px;
+          padding: 0 18px;
+          font-size: 15px;
+        }
+
+        .mobile-dropdown {
+          padding-left: 17px;
+          padding-right: 17px;
+        }
+
+        .mobile-dropdown a {
+          min-height: 54px;
+          font-size: 14px;
+          gap: 11px;
+        }
+
+        .mobile-menu-icon {
+          width: 30px;
+          min-width: 30px;
+          height: 30px;
+          font-size: 16px;
+        }
+
+        .mobile-search-row {
+          min-height: 64px;
+          padding: 0 18px;
+        }
+
+        .mobile-language-button {
+          min-height: 64px;
+          padding: 0 18px;
+        }
+
+        .mobile-actions {
+          padding: 14px 18px 16px;
+        }
+
+        .mobile-get-started {
+          height: 54px;
+        }
+
+        .mobile-login {
+          height: 50px;
+        }
+      }
+
+      /* =========================================================
+   FINAL MOBILE HAMBURGER FIX
+   IMPORTANT: BUTTON IS INSIDE .header-right IN ORIGINAL HTML
+========================================================= */
+
+      @media (max-width: 900px) {
+        .site-header {
+          position: fixed !important;
+          top: 48px !important;
+          left: 0 !important;
+          right: 0 !important;
+
+          width: 100% !important;
+          height: 70px !important;
+
+          background: #050505 !important;
+
+          z-index: 100003 !important;
+        }
+
+        .header-container {
+          width: 100% !important;
+          height: 70px !important;
+
+          display: flex !important;
+          align-items: center !important;
+
+          padding: 0 16px !important;
+        }
+
+        .logo {
+          display: flex !important;
+          align-items: center !important;
+
+          width: auto !important;
+          min-width: 0 !important;
+          height: 70px !important;
+        }
+
+        .logo-svg {
+          width: 125px !important;
+          height: auto !important;
+        }
+
+        /* Desktop nav remains hidden */
+        .main-nav {
+          display: none !important;
+        }
+
+        /*
+       THE IMPORTANT FIX:
+       Original hamburger button is INSIDE .header-right.
+       We must NOT hide .header-right itself.
+    */
+        .header-right {
+          display: flex !important;
+
+          align-items: center !important;
+          justify-content: flex-end !important;
+
+          width: auto !important;
+          min-width: 42px !important;
+
+          margin-left: auto !important;
+          padding: 0 !important;
+
+          background: transparent !important;
+          border: 0 !important;
+        }
+
+        /* Hide all desktop controls inside header-right */
+        .header-right > *:not(.mobile-menu-button) {
+          display: none !important;
+        }
+
+        /* Force hamburger to be visible */
+        .header-right .mobile-menu-button {
+          display: flex !important;
+
+          position: relative !important;
+
+          width: 44px !important;
+          height: 44px !important;
+
+          min-width: 44px !important;
+
+          margin: 0 !important;
+          padding: 0 !important;
+
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+
+          border: 0 !important;
+          outline: 0 !important;
+
+          background: transparent !important;
+
+          cursor: pointer !important;
+
+          opacity: 1 !important;
+          visibility: visible !important;
+
+          z-index: 100005 !important;
+        }
+
+        .header-right .mobile-menu-button span {
+          display: block !important;
+
+          width: 25px !important;
+          height: 2px !important;
+
+          margin: 2px 0 !important;
+
+          background: #ffffff !important;
+
+          border-radius: 2px !important;
+
+          opacity: 1 !important;
+          visibility: visible !important;
+
+          transition:
+            transform 0.2s ease,
+            opacity 0.2s ease !important;
+        }
+
+        /* Hamburger → X */
+        .site-header.mobile-open
+          .header-right
+          .mobile-menu-button
+          span:nth-child(1) {
+          transform: translateY(6px) rotate(45deg) !important;
+        }
+
+        .site-header.mobile-open
+          .header-right
+          .mobile-menu-button
+          span:nth-child(2) {
+          opacity: 0 !important;
+        }
+
+        .site-header.mobile-open
+          .header-right
+          .mobile-menu-button
+          span:nth-child(3) {
+          transform: translateY(-6px) rotate(-45deg) !important;
+        }
+
+        /* Phone menu begins under black header */
+        .mobile-menu {
+          position: fixed !important;
+
+          top: 118px !important;
+          left: 0 !important;
+
+          width: 100% !important;
+          height: calc(100vh - 118px) !important;
+
+          max-height: none !important;
+
+          margin: 0 !important;
+          padding: 0 !important;
+
+          overflow-x: hidden !important;
+          overflow-y: auto !important;
+
+          display: none;
+
+          background: #ffffff !important;
+
+          z-index: 100001 !important;
+
+          border: 0 !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+        }
+
+        .mobile-menu.active {
+          display: block !important;
+        }
+      }
+
+      /* Small phones */
+      @media (max-width: 500px) {
+        .site-header {
+          top: 48px !important;
+          height: 70px !important;
+        }
+
+        .header-container {
+          height: 70px !important;
+          padding: 0 14px !important;
+        }
+
+        .logo-svg {
+          width: 120px !important;
+        }
+
+        .header-right {
+          min-width: 44px !important;
+        }
+
+        .header-right .mobile-menu-button {
+          width: 44px !important;
+          height: 44px !important;
+        }
+
+        .mobile-menu {
+          top: 118px !important;
+          height: calc(100vh - 118px) !important;
+        }
+      }
+
+      /* =========================================================
+   AUTH BUTTONS
+   Logged out: Register + Log In
+   Logged in: Dashboard + Logout
+========================================================= */
+
+      .register-link,
+      .dashboard-link {
+        height: 35px;
+        padding: 0 21px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        border-radius: 10px;
+
+        background: #087df5;
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+
+        white-space: nowrap;
+
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .register-link:hover,
+      .dashboard-link:hover {
+        background: #006fe8;
+        color: #ffffff;
+        transform: translateY(-1px);
+      }
+
+      .logout-link {
+        height: 44px;
+        padding: 0 14px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 9px;
+
+        background: transparent;
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-family: "Poppins", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+
+        white-space: nowrap;
+      }
+
+      .logout-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.55);
+        color: #ffffff;
+      }
+
+      @media (max-width: 900px) {
+        .mobile-actions {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 10px !important;
+        }
+
+        .mobile-register,
+        .mobile-dashboard {
+          width: 100% !important;
+          height: 56px !important;
+
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 8px !important;
+
+          border-radius: 10px !important;
+
+          background: linear-gradient(
+            180deg,
+            #1a9cff 0%,
+            #0870e0 100%
+          ) !important;
+
+          color: #ffffff !important;
+
+          text-decoration: none !important;
+
+          font-family: "Poppins", sans-serif !important;
+          font-size: 16px !important;
+          font-weight: 600 !important;
+
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) !important;
+
+          order: 1 !important;
+        }
+
+        .mobile-login,
+        .mobile-logout {
+          width: 100% !important;
+          height: 52px !important;
+
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 8px !important;
+
+          border: 1px solid #d4d6da !important;
+          border-radius: 10px !important;
+
+          background: #ffffff !important;
+          color: #17181c !important;
+
+          text-decoration: none !important;
+
+          font-family: "Poppins", sans-serif !important;
+          font-size: 15px !important;
+          font-weight: 500 !important;
+
+          order: 2 !important;
+        }
+
+        .mobile-login:hover,
+        .mobile-logout:hover {
+          background: #ffffff !important;
+          color: #17181c !important;
         }
       }
     </style>
   </head>
+
   <body>
-    <!-- ===== HEADER ===== -->
+    <!-- =========================================================
+     HEADER
+========================================================= -->
+
     <header class="site-header" id="siteHeader">
-      <div class="header-inner">
-        <!-- LOGO -->
+      <div class="header-container">
+        <!-- =====================================================
+     LOGO
+====================================================== -->
+
         <a href="index.html" class="logo" aria-label="Smart Money">
-          <img
-            src="Photos/lgo-1-Photoroom.png"
-            alt="Smart Money – proprietary trading firm"
-            width="2560"
-            height="400"
-            loading="lazy"
-          />
+          <!-- <svg
+            class="logo-svg"
+            viewBox="0 0 150 38"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M19 2L36 19L19 36L2 19L19 2Z" fill="#ffffff" />
+
+            <path d="M19 8L25 14V24L19 30L13 24V14L19 8Z" fill="#050505" />
+
+            <text
+              x="44"
+              y="27"
+              fill="#ffffff"
+              font-family="Poppins"
+              font-size="26"
+              font-weight="600"
+            >
+              FTMO
+            </text>
+
+            <text
+              x="119"
+              y="10"
+              fill="#ffffff"
+              font-family="Arial"
+              font-size="7"
+            >
+              ®
+            </text>
+          </svg> -->
+          <img class="logo-img" src="Photos/lgo-1-Photoroom.png" alt="" />
         </a>
 
-        <!-- DESKTOP NAV (exactly as original, all links preserved) -->
-        <nav class="desktop-nav">
-          <!-- SM24/7 Challenge -->
+        <!-- =====================================================
+     DESKTOP NAV
+====================================================== -->
+
+        <nav class="main-nav">
+          <!-- =====================================================
+     HOME
+====================================================== -->
+
           <div class="nav-item">
-            <button class="nav-link">Home <span class="arrow"></span></button>
-            <div class="mega-menu challenge-menu">
+            <button class="nav-link mega-trigger" type="button">
+              <span data-i18n="home"> Home </span>
+
+              <span class="nav-arrow"></span>
+            </button>
+
+            <div class="mega-menu home-menu">
+              <!-- COLUMN 1 -->
+
               <div class="menu-column">
-                <div class="menu-heading">Get Started</div>
-                <a href="index.html" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-tag"></i></div>
+                <div class="menu-heading" data-i18n="getStartedMenu">
+                  Get Started
+                </div>
+
+                <a href="index.php" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-tag"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">Home</div>
-                    <div class="menu-description">Your Journey Starts Here</div>
-                  </div></a
-                >
-                <a href="index.html#Steps-sm" class="menu-link"
-                  ><div class="menu-icon">
+                    <div class="menu-title" data-i18n="home">Home</div>
+
+                    <div class="menu-description" data-i18n="homeDesc">
+                      Your Journey Starts Here
+                    </div>
+                  </div>
+                </a>
+
+                <a href="index.php#Steps-sm" class="menu-link">
+                  <div class="menu-icon">
                     <i class="fas fa-play-circle"></i>
                   </div>
+
                   <div>
-                    <div class="menu-title">How It Works</div>
-                    <div class="menu-description">
+                    <div class="menu-title" data-i18n="howItWorks">
+                      How It Works
+                    </div>
+
+                    <div class="menu-description" data-i18n="howItWorksDesc">
                       See How Smart Money Works
                     </div>
-                  </div></a
-                >
-                <a href="index.html" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-flask"></i></div>
+                  </div>
+                </a>
+
+                <a href="index.php" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-flask"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">Overview</div>
-                    <div class="menu-description">
+                    <div class="menu-title" data-i18n="overview">Overview</div>
+
+                    <div class="menu-description" data-i18n="overviewDesc">
                       Build Better Financial Habits
                     </div>
-                  </div></a
-                >
+                  </div>
+                </a>
               </div>
+
+              <!-- COLUMN 2 -->
+
               <div class="menu-column">
-                <div class="menu-heading">Achieve More</div>
-                <a href="Scaling.html" class="menu-link"
-                  ><div class="menu-icon">
+                <div class="menu-heading" data-i18n="achieveMore">
+                  Achieve More
+                </div>
+
+                <a href="Scaling.php" class="menu-link">
+                  <div class="menu-icon">
                     <i class="fas fa-chart-line"></i>
                   </div>
+
                   <div>
-                    <div class="menu-title">Scaling Plan</div>
-                    <div class="menu-description">
+                    <div class="menu-title" data-i18n="scalingPlan">
+                      Scaling Plan
+                    </div>
+
+                    <div class="menu-description" data-i18n="scalingPlanDesc">
                       Progress towards greater rewards
                     </div>
-                  </div></a
-                >
-                <a href="About.html#Approcessh" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-bullseye"></i></div>
+                  </div>
+                </a>
+
+                <a href="About.php#Approcessh" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-bullseye"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">Trading Objectives</div>
-                    <div class="menu-description">
+                    <div class="menu-title" data-i18n="tradingObjectives">
+                      Trading Objectives
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="tradingObjectivesDesc"
+                    >
                       Key rules to pass each phase
                     </div>
-                  </div></a
-                >
+                  </div>
+                </a>
               </div>
+
+              <!-- FEATURE -->
+
               <a href="#" class="feature-card">
                 <div class="feature-image">
                   <img
-                    src="https://images.unsplash.com/photo-1654741735474-827841af7707?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fGluc3BpcmF0aW9ufGVufDB8fDB8fHww"
-                    alt="1-Step Challenge"
+                    src="https://images.unsplash.com/photo-1654741735474-827841af7707?w=600&auto=format&fit=crop&q=60"
+                    alt="Smart Money"
                   />
                 </div>
-                <div class="feature-title">Your Path to Smarter Money ›</div>
-                <div class="feature-text">
+
+                <div class="feature-title" data-i18n="yourPath">
+                  Your Path to Smarter Money ›
+                </div>
+
+                <div class="feature-text" data-i18n="yourPathText">
                   Learn the fundamentals - Build confidence - Make informed
                   decisions.
                 </div>
@@ -862,163 +2957,306 @@
             </div>
           </div>
 
-          <!-- Trading -->
+          <!-- =====================================================
+     TRADING
+====================================================== -->
+
           <div class="nav-item">
-            <button class="nav-link">
-              Trading <span class="arrow"></span>
+            <button class="nav-link mega-trigger" type="button">
+              <span data-i18n="trading"> Trading </span>
+
+              <span class="nav-arrow"></span>
             </button>
+
             <div class="mega-menu trading-menu">
-              <div>
-                <div class="menu-heading">Trading Essentials</div>
-                <a href="News.html" class="menu-link"
-                  ><div class="menu-icon">
+              <div class="menu-column">
+                <div class="menu-heading" data-i18n="tradingEssentials">
+                  Trading Essentials
+                </div>
+
+                <a href="News.php" class="menu-link">
+                  <div class="menu-icon">
                     <i class="fas fa-calendar-alt"></i>
                   </div>
+
                   <div>
-                    <div class="menu-title">Economic Calendar</div>
-                    <div class="menu-description">Key market events</div>
-                  </div></a
-                >
-                <a href="ValueCalculator.html" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-list-ul"></i></div>
+                    <div class="menu-title" data-i18n="economicCalendar">
+                      Economic Calendar
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="economicCalendarDesc"
+                    >
+                      Key market events
+                    </div>
+                  </div>
+                </a>
+
+                <a href="ValueCalculator.php" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-list-ul"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">Pip Value Calculator</div>
-                    <div class="menu-description">List of symbols</div>
-                  </div></a
-                >
-                <a href="PositionSizeCal.html" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-desktop"></i></div>
+                    <div class="menu-title" data-i18n="pipCalculator">
+                      Pip Value Calculator
+                    </div>
+
+                    <div class="menu-description" data-i18n="pipCalculatorDesc">
+                      List of symbols
+                    </div>
+                  </div>
+                </a>
+
+                <a href="PositionSizeCal.php" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-desktop"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">Position Size Calculator</div>
-                    <div class="menu-description">Choose your platform</div>
-                  </div></a
-                >
-                <a href="CurrencyStrength.html" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-newspaper"></i></div>
+                    <div class="menu-title" data-i18n="positionCalculator">
+                      Position Size Calculator
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="positionCalculatorDesc"
+                    >
+                      Choose your platform
+                    </div>
+                  </div>
+                </a>
+
+                <a href="CurrencyStrength.php" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-newspaper"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">Currency Strength Meter</div>
-                    <div class="menu-description">Value Currency Holds</div>
-                  </div></a
-                >
+                    <div class="menu-title" data-i18n="currencyStrength">
+                      Currency Strength Meter
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="currencyStrengthDesc"
+                    >
+                      Value Currency Holds
+                    </div>
+                  </div>
+                </a>
               </div>
+
               <a href="#" class="feature-card">
                 <div class="feature-image">
                   <img
-                    src="https://images.unsplash.com/photo-1504607798333-52a30db54a5d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGZpbmFuY2V8ZW58MHx8MHx8fDA%3D"
-                    alt="1-Step Challenge"
+                    src="https://images.unsplash.com/photo-1504607798333-52a30db54a5d?w=600&auto=format&fit=crop&q=60"
+                    alt="Trading"
                   />
                 </div>
-                <div class="feature-title">
+
+                <div class="feature-title" data-i18n="smarterHabits">
                   Build Smarter Financial Habits ›
                 </div>
-                <div class="feature-text">
+
+                <div class="feature-text" data-i18n="smarterHabitsText">
                   Understand money better and make more informed decisions.
                 </div>
               </a>
             </div>
           </div>
 
-          <!-- FAQ (standalone) -->
+          <!-- =====================================================
+     FAQ
+====================================================== -->
+
           <div class="nav-item">
-            <a href="FAQ.html" class="nav-link">FAQ</a>
+            <a href="FAQ.php" class="faq-link" data-i18n="faq"> FAQ </a>
           </div>
 
-          <!-- Academy -->
+          <!-- =====================================================
+     ACADEMY
+====================================================== -->
+
           <div class="nav-item">
-            <button class="nav-link">
-              Academy <span class="arrow"></span>
+            <button class="nav-link mega-trigger" type="button">
+              <span data-i18n="academy"> Academy </span>
+
+              <span class="nav-arrow"></span>
             </button>
+
             <div class="mega-menu academy-menu">
+              <!-- COLUMN 1 -->
+
+              <!-- <div class="menu-column">
+                <div class="menu-heading" data-i18n="academyTitle">
+                  SM24/7 Academy
+                </div>
+
+                <a href="#" class="academy-link">
+                  <div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="Trading"
+                    />
+                  </div>
+
+                  <div class="academy-content">
+                    <div class="menu-title" data-i18n="gatewayTrading">
+                      Gateway to trading
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="gatewayTradingDesc"
+                    >
+                      Learn with SM24/7
+                    </div>
+                  </div>
+                </a>
+
+                <a href="#" class="academy-link">
+                  <div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="Markets"
+                    />
+                  </div>
+
+                  <div class="academy-content">
+                    <div class="menu-title" data-i18n="financialMarkets">
+                      Financial Markets
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="financialMarketsDesc"
+                    >
+                      Global markets
+                    </div>
+                  </div>
+                </a>
+
+                <a href="#" class="academy-link">
+                  <div class="academy-thumb">
+                    <img
+                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
+                      alt="Strategy"
+                    />
+                  </div>
+
+                  <div class="academy-content">
+                    <div class="menu-title" data-i18n="puttingTogether">
+                      Putting it together
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="puttingTogetherDesc"
+                    >
+                      Build a strategy
+                    </div>
+                  </div>
+                </a>
+              </div> -->
+
+              <!-- COLUMN 2 -->
+
               <div class="menu-column">
-                <div class="menu-heading">SM24/7 Academy</div>
-                <a href="#" class="academy-link"
-                  ><div class="academy-thumb">
+                <div class="menu-heading" data-i18n="academyTitle">
+                  SM24/7 Academy
+                </div>
+                <!-- <div class="menu-heading">&nbsp;</div> -->
+
+                <a href="#" class="academy-link">
+                  <div class="academy-thumb">
                     <img
-                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
-                      alt="thumb"
+                      src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85"
+                      alt="Forex"
                     />
                   </div>
+
                   <div class="academy-content">
-                    <div class="menu-title">Gateway to trading</div>
-                    <div class="menu-description">Learn with SM24/7</div>
-                  </div></a
-                >
-                <a href="#" class="academy-link"
-                  ><div class="academy-thumb">
+                    <div class="menu-title" data-i18n="howForexWorks">
+                      FREE Gold Signals trade in ZOOE Trading APP
+                    </div>
+
+                    <div class="menu-description" data-i18n="howForexWorksDesc">
+                      Start Now
+                    </div>
+                  </div>
+                </a>
+
+                <a href="#" class="academy-link">
+                  <div class="academy-thumb">
                     <img
-                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
-                      alt="thumb"
+                      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+                      alt="Technical Analysis"
                     />
                   </div>
+
                   <div class="academy-content">
-                    <div class="menu-title">Financial Markets</div>
-                    <div class="menu-description">Global markets</div>
-                  </div></a
-                >
-                <a href="#" class="academy-link"
-                  ><div class="academy-thumb">
+                    <div class="menu-title" data-i18n="technicalAnalysis">
+                      FREE Stable Arbitrage System in ZOOE Trading APP
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="technicalAnalysisDesc"
+                    >
+                      Start Now
+                    </div>
+                  </div>
+                </a>
+
+                <a href="#" class="academy-link">
+                  <div class="academy-thumb">
                     <img
-                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
-                      alt="thumb"
+                      src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85"
+                      alt="Fundamental Analysis"
                     />
                   </div>
+
                   <div class="academy-content">
-                    <div class="menu-title">Putting it together</div>
-                    <div class="menu-description">Build a strategy</div>
-                  </div></a
+                    <div class="menu-title" data-i18n="fundamentalAnalysis">
+                      SMART MONEY FOREX TRADING COURSE
+                    </div>
+
+                    <div
+                      class="menu-description"
+                      data-i18n="fundamentalAnalysisDesc"
+                    >
+                      Start Now
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href="Coursees.php"
+                  class="more-lessons"
+                  data-i18n="moreLessons"
                 >
+                  More Lessons
+                  <span class="more-arrow">›</span>
+                </a>
               </div>
-              <div class="menu-column">
-                <div class="menu-heading">&nbsp;</div>
-                <a href="#" class="academy-link"
-                  ><div class="academy-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
-                      alt="thumb"
-                    />
-                  </div>
-                  <div class="academy-content">
-                    <div class="menu-title">How forex works</div>
-                    <div class="menu-description">What is FOREX?</div>
-                  </div></a
-                >
-                <a href="#" class="academy-link"
-                  ><div class="academy-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
-                      alt="thumb"
-                    />
-                  </div>
-                  <div class="academy-content">
-                    <div class="menu-title">Technical analysis</div>
-                    <div class="menu-description">Candlesticks</div>
-                  </div></a
-                >
-                <a href="#" class="academy-link"
-                  ><div class="academy-thumb">
-                    <img
-                      src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=120&h=70&fit=crop&crop=center&auto=format"
-                      alt="thumb"
-                    />
-                  </div>
-                  <div class="academy-content">
-                    <div class="menu-title">Fundamental analysis</div>
-                    <div class="menu-description">Data that moves markets</div>
-                  </div></a
-                >
-                <a href="Coursees.html" class="more-lessons"
-                  >More Lessons <span class="more-arrow">›</span></a
-                >
-              </div>
+
+              <!-- FEATURE -->
+
               <a href="#" class="feature-card">
                 <div class="feature-image">
                   <img
-                    src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y291cnNlc3xlbnwwfHwwfHx8MA%3D%3D"
-                    alt="psychology"
+                    src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600&auto=format&fit=crop&q=60"
+                    alt="Courses"
                   />
                 </div>
-                <div class="feature-title">Master the Fundamentals ›</div>
-                <div class="feature-text">
+
+                <div class="feature-title" data-i18n="masterFundamentals">
+                  Master the Fundamentals ›
+                </div>
+
+                <div class="feature-text" data-i18n="masterFundamentalsText">
                   Build a strong foundation in financial markets and smarter
                   decision-making.
                 </div>
@@ -1026,427 +3264,2263 @@
             </div>
           </div>
 
-          <!-- About -->
+          <!-- =====================================================
+     ABOUT
+====================================================== -->
+
           <div class="nav-item">
-            <button class="nav-link">About <span class="arrow"></span></button>
+            <button class="nav-link mega-trigger" type="button">
+              <span data-i18n="about"> About </span>
+
+              <span class="nav-arrow"></span>
+            </button>
+
             <div class="mega-menu about-menu">
-              <div>
-                <div class="menu-heading">Company</div>
-                <a href="About.html" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-building"></i></div>
+              <div class="menu-column">
+                <div class="menu-heading" data-i18n="company">Company</div>
+
+                <a href="About.php" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-building"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">About Us</div>
-                    <div class="menu-description">Learn about Us</div>
-                  </div></a
-                >
-                <a href="index.html#whyus-sm" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-users"></i></div>
+                    <div class="menu-title" data-i18n="aboutUs">About Us</div>
+
+                    <div class="menu-description" data-i18n="aboutUsDesc">
+                      Learn about Us
+                    </div>
+                  </div>
+                </a>
+
+                <a href="index.php#whyus-sm" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">Why us</div>
-                    <div class="menu-description">Know What we Offer</div>
-                  </div></a
-                >
-                <a href="index.html#witf" class="menu-link"
-                  ><div class="menu-icon">
+                    <div class="menu-title" data-i18n="whyUs">Why us</div>
+
+                    <div class="menu-description" data-i18n="whyUsDesc">
+                      Know What we Offer
+                    </div>
+                  </div>
+                </a>
+
+                <a href="index.php#witf" class="menu-link">
+                  <div class="menu-icon">
                     <i class="fas fa-shopping-bag"></i>
                   </div>
+
                   <div>
-                    <div class="menu-title">Who can Join?</div>
-                    <div class="menu-description">We are Here</div>
-                  </div></a
-                >
+                    <div class="menu-title" data-i18n="whoCanJoin">
+                      Who can Join?
+                    </div>
+
+                    <div class="menu-description" data-i18n="whoCanJoinDesc">
+                      We are Here
+                    </div>
+                  </div>
+                </a>
               </div>
-              <div>
-                <div class="menu-heading">Connect</div>
-                <a href="Contact.html" class="menu-link"
-                  ><div class="menu-icon"><i class="fas fa-headset"></i></div>
+
+              <div class="menu-column">
+                <div class="menu-heading" data-i18n="connect">Connect</div>
+
+                <a href="Contact.php" class="menu-link">
+                  <div class="menu-icon">
+                    <i class="fas fa-headset"></i>
+                  </div>
+
                   <div>
-                    <div class="menu-title">Contact Us</div>
-                    <div class="menu-description">24/7 Support</div>
-                  </div></a
-                >
-                <a href="About.html" class="menu-link"
-                  ><div class="menu-icon">
+                    <div class="menu-title" data-i18n="contactUs">
+                      Contact Us
+                    </div>
+
+                    <div class="menu-description" data-i18n="contactUsDesc">
+                      24/7 Support
+                    </div>
+                  </div>
+                </a>
+
+                <a href="About.php" class="menu-link">
+                  <div class="menu-icon">
                     <i class="fas fa-photo-video"></i>
                   </div>
+
                   <div>
-                    <div class="menu-title">For media</div>
-                    <div class="menu-description">Brand assets & resources</div>
-                  </div></a
-                >
+                    <div class="menu-title" data-i18n="forMedia">For media</div>
+
+                    <div class="menu-description" data-i18n="forMediaDesc">
+                      Brand assets & resources
+                    </div>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
         </nav>
 
-        <!-- RIGHT SIDE (desktop) -->
-        <div class="header-right">
-          <div class="language" aria-label="Language selector">
-            <i class="fas fa-globe language-icon" aria-hidden="true"></i>
-            <select
-              class="language-select"
-              data-language-select
-              aria-label="Select language"
-            >
-              <option value="en">English</option>
-              <option value="tl">Filipino</option>
-            </select>
-          </div>
-          <a href="#" class="login">Log In</a>
-          <a href="#" class="get-started">Get Started</a>
-        </div>
+        <!-- =========================================================
+     RIGHT SIDE
+========================================================= -->
 
-        <!-- MOBILE TOGGLE -->
-        <button
-          class="mobile-toggle"
-          id="mobileToggle"
-          aria-label="Toggle menu"
-        >
-          <span></span>
-        </button>
+        <div class="header-right">
+          <!-- SEARCH -->
+
+          <button class="search-button" type="button">
+            <svg class="search-svg" viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="10.8"
+                cy="10.8"
+                r="6.7"
+                stroke="#ffffff"
+                stroke-width="1.8"
+              />
+
+              <path
+                d="M16 16L21 21"
+                stroke="#ffffff"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+
+          <!-- LANGUAGE -->
+
+          <div class="language-box" id="languageBox">
+            <button class="language-button" id="languageButton" type="button">
+              <span class="language-flag" id="currentFlag"> 🇬🇧 </span>
+
+              <span class="language-code" id="currentLanguage"> EN </span>
+
+              <span class="language-arrow"></span>
+            </button>
+
+            <div class="language-menu">
+              <button class="language-option" data-lang="en" type="button">
+                <span class="flag"> 🇬🇧 </span>
+
+                <span> English </span>
+              </button>
+
+              <button class="language-option" data-lang="cs" type="button">
+                <span class="flag"> 🇨🇿 </span>
+
+                <span> Čeština </span>
+              </button>
+
+              <button class="language-option" data-lang="es" type="button">
+                <span class="flag"> 🇪🇸 </span>
+
+                <span> Español </span>
+              </button>
+
+              <button class="language-option" data-lang="it" type="button">
+                <span class="flag"> 🇮🇹 </span>
+
+                <span> Italiano </span>
+              </button>
+
+              <button class="language-option" data-lang="de" type="button">
+                <span class="flag"> 🇩🇪 </span>
+
+                <span> Deutsch </span>
+              </button>
+
+              <button class="language-option" data-lang="pt" type="button">
+                <span class="flag"> 🇵🇹 </span>
+
+                <span> Português </span>
+              </button>
+
+              <button class="language-option" data-lang="tl" type="button">
+                <span class="flag"> 🇵🇭 </span>
+
+                <span> Filipino </span>
+              </button>
+
+              <button class="language-option" data-lang="vi" type="button">
+                <span class="flag"> 🇻🇳 </span>
+
+                <span> Tiếng Việt </span>
+              </button>
+
+              <button class="language-option" data-lang="fr" type="button">
+                <span class="flag"> 🇫🇷 </span>
+
+                <span> Français </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="header-divider"></div>
+
+          <?php if ($isLoggedIn): ?>
+
+          <a
+            href="<?php echo htmlspecialchars($dashboardUrl, ENT_QUOTES, 'UTF-8'); ?>"
+            class="dashboard-link"
+          >
+            <i class="fas fa-gauge-high"></i>
+            <?php echo htmlspecialchars($dashboardLabel, ENT_QUOTES, 'UTF-8');
+            ?>
+          </a>
+
+          <a
+            href="<?php echo htmlspecialchars($logoutUrl, ENT_QUOTES, 'UTF-8'); ?>"
+            class="logout-link"
+          >
+            <i class="fas fa-right-from-bracket"></i>
+            Logout
+          </a>
+
+          <?php else: ?>
+
+          <a href="/login.php" class="login-link"> Log In </a>
+
+          <a href="/register.php" class="register-link"> Register </a>
+
+          <?php endif; ?>
+
+          <button
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            type="button"
+            aria-label="Menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
 
-      <!-- ===== MOBILE MENU (exact same links as desktop) ===== -->
+      <!-- =========================================================
+     MOBILE PROMO — PHONE ONLY
+========================================================= -->
+
+      <div class="mobile-promo">
+        <span class="mobile-promo-percent">%</span>
+        <span class="mobile-promo-text">
+          <strong>20% Off</strong>
+          <span>Special deal on $100K 1-Step Challenge</span>
+        </span>
+        <span class="mobile-promo-arrow">›</span>
+      </div>
+
+      <!-- =========================================================
+     MOBILE MENU — PHONE ONLY
+========================================================= -->
+
       <div class="mobile-menu" id="mobileMenu">
-        <!-- Home / Challenge -->
+        <!-- HOME -->
         <div class="mobile-item">
-          <button class="mobile-link">Home <span class="arrow"></span></button>
-          <div class="mobile-dropdown">
-            <a href="index.html">Home</a>
-            <a href="index.html#Steps-sm">How It Works</a>
-            <a href="index.html">Overview</a>
-            <a href="Scaling.html">Scaling Plan</a>
-            <a href="About.html#Approcessh">Trading Objectives</a>
-          </div>
-        </div>
-        <!-- Trading -->
-        <div class="mobile-item">
-          <button class="mobile-link">
-            Trading <span class="arrow"></span>
+          <button class="mobile-link" type="button">
+            <span data-i18n="home">Home</span>
+            <span class="mobile-arrow"></span>
           </button>
+
           <div class="mobile-dropdown">
-            <a href="News.html">Economic Calendar</a>
-            <a href="ValueCalculator.html">Pip Value Calculator</a>
-            <a href="PositionSizeCal.html">Position Size Calculator</a>
-            <a href="CurrencyStrength.html">Currency Strength Meter</a>
+            <div class="mobile-group-heading" data-i18n="getStartedMenu">
+              GET STARTED
+            </div>
+
+            <a href="index.php" data-i18n="home">
+              <span class="mobile-menu-icon"><i class="fas fa-house"></i></span>
+              <span>Home</span>
+            </a>
+
+            <a href="index.php#Steps-sm" data-i18n="howItWorks">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-play-circle"></i
+              ></span>
+              <span>How It Works</span>
+            </a>
+
+            <a href="index.php" data-i18n="overview">
+              <span class="mobile-menu-icon"><i class="fas fa-flask"></i></span>
+              <span>Overview</span>
+            </a>
+
+            <div
+              class="mobile-group-heading mobile-group-heading-second"
+              data-i18n="achieveMore"
+            >
+              ACHIEVE MORE
+            </div>
+
+            <a href="Scaling.php" data-i18n="scalingPlan">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-chart-line"></i
+              ></span>
+              <span>Scaling Plan</span>
+            </a>
+
+            <a href="About.php#Approcessh" data-i18n="tradingObjectives">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-bullseye"></i
+              ></span>
+              <span>Trading Objectives</span>
+            </a>
           </div>
-        </div>
-        <!-- FAQ (standalone) -->
-        <div class="mobile-item">
-          <a href="FAQ.html" class="mobile-link">FAQ</a>
-        </div>
-        <!-- Academy -->
-        <div class="mobile-item">
-          <button class="mobile-link">
-            Academy <span class="arrow"></span>
-          </button>
-          <div class="mobile-dropdown">
-            <a href="#">Gateway to trading</a>
-            <a href="#">Financial Markets</a>
-            <a href="#">Putting it together</a>
-            <a href="#">How forex works</a>
-            <a href="#">Technical analysis</a>
-            <a href="#">Fundamental analysis</a>
-            <a href="Coursees.html">More Lessons</a>
-          </div>
-        </div>
-        <!-- About -->
-        <div class="mobile-item">
-          <button class="mobile-link">About <span class="arrow"></span></button>
-          <div class="mobile-dropdown">
-            <a href="About.html">About Us</a>
-            <a href="index.html#whyus-sm">Why us</a>
-            <a href="index.html#witf">Who can Join?</a>
-            <a href="Contact.html">Contact Us</a>
-            <a href="About.html">For media</a>
-          </div>
-        </div>
-        <!-- LANGUAGE SELECTOR (mobile) -->
-        <div class="mobile-language">
-          <div class="mobile-language-label">
-            <i class="fas fa-globe" aria-hidden="true"></i>
-            <span>Language</span>
-          </div>
-          <select
-            class="language-select"
-            data-language-select
-            aria-label="Select language"
-          >
-            <option value="en">English</option>
-            <option value="tl">Filipino</option>
-          </select>
         </div>
 
-        <!-- login / cta -->
-        <div
-          style="
-            padding-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-          "
-        >
-          <a href="#" class="login" style="color: #fff">Log In</a>
+        <!-- TRADING -->
+        <div class="mobile-item">
+          <button class="mobile-link" type="button">
+            <span data-i18n="trading">Trading</span>
+            <span class="mobile-arrow"></span>
+          </button>
+
+          <div class="mobile-dropdown">
+            <div class="mobile-group-heading" data-i18n="tradingEssentials">
+              TRADING ESSENTIALS
+            </div>
+
+            <a href="News.php" data-i18n="economicCalendar">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-calendar-alt"></i
+              ></span>
+              <span>Economic Calendar</span>
+            </a>
+
+            <a href="ValueCalculator.php" data-i18n="pipCalculator">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-list-ul"></i
+              ></span>
+              <span>Pip Value Calculator</span>
+            </a>
+
+            <a href="PositionSizeCal.php" data-i18n="positionCalculator">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-desktop"></i
+              ></span>
+              <span>Position Size Calculator</span>
+            </a>
+
+            <a href="CurrencyStrength.php" data-i18n="currencyStrength">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-newspaper"></i
+              ></span>
+              <span>Currency Strength Meter</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="mobile-item">
           <a
-            href="#"
-            class="get-started"
-            style="width: 100%; text-align: center"
-            >Get Started</a
+            href="FAQ.php"
+            class="mobile-link mobile-direct-link"
+            data-i18n="faq"
           >
+            FAQ
+          </a>
+        </div>
+
+        <!-- ACADEMY -->
+        <div class="mobile-item">
+          <button class="mobile-link" type="button">
+            <span data-i18n="academy">Academy</span>
+            <span class="mobile-arrow"></span>
+          </button>
+
+          <div class="mobile-dropdown">
+            <div class="mobile-group-heading" data-i18n="academyTitle">
+              SM24/7 Academy
+            </div>
+
+            <a href="#" data-i18n="howForexWorks">
+              <span class="mobile-menu-icon"><i class="fas fa-globe"></i></span>
+              <span>FREE Gold Signals trade in ZOOE Trading APP</span>
+            </a>
+
+            <a href="#" data-i18n="technicalAnalysis">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-chart-column"></i
+              ></span>
+              <span>FREE Stable Arbitrage System in ZOOE Trading APP</span>
+            </a>
+
+            <a href="#" data-i18n="fundamentalAnalysis">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-book-open"></i
+              ></span>
+              <span>SMART MONEY FOREX TRADING COURSE</span>
+            </a>
+
+            <a href="Coursees" data-i18n="moreLessons">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-arrow-right"></i
+              ></span>
+              <span>More Lessons</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ABOUT -->
+        <div class="mobile-item">
+          <button class="mobile-link" type="button">
+            <span data-i18n="about">About</span>
+            <span class="mobile-arrow"></span>
+          </button>
+
+          <div class="mobile-dropdown">
+            <div class="mobile-group-heading">COMPANY</div>
+
+            <a href="About.php" data-i18n="aboutUs">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-building"></i
+              ></span>
+              <span>About Us</span>
+            </a>
+
+            <a href="index.php#whyus-sm" data-i18n="whyUs">
+              <span class="mobile-menu-icon"><i class="fas fa-users"></i></span>
+              <span>Why us</span>
+            </a>
+
+            <a href="index.php#witf" data-i18n="whoCanJoin">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-user-check"></i
+              ></span>
+              <span>Who can Join?</span>
+            </a>
+
+            <div class="mobile-group-heading mobile-group-heading-second">
+              CONNECT
+            </div>
+
+            <a href="Contact.php" data-i18n="contactUs">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-headset"></i
+              ></span>
+              <span>Contact Us</span>
+            </a>
+
+            <a href="About.php" data-i18n="forMedia">
+              <span class="mobile-menu-icon"
+                ><i class="fas fa-photo-video"></i
+              ></span>
+              <span>For media</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="mobile-search-row">
+          <button class="mobile-search-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.7"></circle>
+              <path d="M16 16L21 21"></path>
+            </svg>
+            <span>Search</span>
+          </button>
+        </div>
+
+        <!-- LANGUAGE -->
+        <div class="mobile-language-box" id="mobileLanguageBox">
+          <button
+            class="mobile-language-button"
+            id="mobileLanguageButton"
+            type="button"
+          >
+            <span class="mobile-language-flag" id="mobileCurrentFlag">🇬🇧</span>
+            <span id="mobileCurrentLanguage">English</span>
+            <span class="mobile-language-arrow"></span>
+          </button>
+
+          <div class="mobile-language-menu">
+            <button class="mobile-language-option" data-lang="en" type="button">
+              <span>🇬🇧</span><span>English</span>
+            </button>
+
+            <button class="mobile-language-option" data-lang="cs" type="button">
+              <span>🇨🇿</span><span>Čeština</span>
+            </button>
+
+            <button class="mobile-language-option" data-lang="es" type="button">
+              <span>🇪🇸</span><span>Español</span>
+            </button>
+
+            <button class="mobile-language-option" data-lang="it" type="button">
+              <span>🇮🇹</span><span>Italiano</span>
+            </button>
+
+            <button class="mobile-language-option" data-lang="de" type="button">
+              <span>🇩🇪</span><span>Deutsch</span>
+            </button>
+
+            <button class="mobile-language-option" data-lang="pt" type="button">
+              <span>🇵🇹</span><span>Português</span>
+            </button>
+
+            <button class="mobile-language-option" data-lang="tl" type="button">
+              <span>🇵🇭</span><span>Filipino</span>
+            </button>
+
+            <button class="mobile-language-option" data-lang="vi" type="button">
+              <span>🇻🇳</span><span>Tiếng Việt</span>
+            </button>
+
+            <button class="mobile-language-option" data-lang="fr" type="button">
+              <span>🇫🇷</span><span>Français</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="mobile-actions">
+          <?php if ($isLoggedIn): ?>
+
+          <a
+            href="<?php echo htmlspecialchars($dashboardUrl, ENT_QUOTES, 'UTF-8'); ?>"
+            class="mobile-dashboard"
+          >
+            <i class="fas fa-gauge-high"></i>
+            <?php echo htmlspecialchars($dashboardLabel, ENT_QUOTES, 'UTF-8');
+            ?>
+          </a>
+
+          <a
+            href="<?php echo htmlspecialchars($logoutUrl, ENT_QUOTES, 'UTF-8'); ?>"
+            class="mobile-logout"
+          >
+            <i class="fas fa-right-from-bracket"></i>
+            Logout
+          </a>
+
+          <?php else: ?>
+
+          <a href="/register.php" class="mobile-register">
+            <i class="fas fa-user-plus"></i>
+            Register
+          </a>
+
+          <a href="/login.php" class="mobile-login">
+            <i class="fas fa-right-to-bracket"></i>
+            Log In
+          </a>
+
+          <?php endif; ?>
         </div>
       </div>
     </header>
 
     <script>
-      (function () {
-        // ----- SCROLL SHADOW -----
-        const header = document.getElementById("siteHeader");
-        window.addEventListener("scroll", function () {
-          header.classList.toggle("scrolled", window.scrollY > 20);
-        });
+      /* =========================================================
+   LANGUAGE LIST
+========================================================= */
 
-        // ----- MOBILE TOGGLE -----
-        const toggle = document.getElementById("mobileToggle");
-        const mobileMenu = document.getElementById("mobileMenu");
-        const body = document.body;
+      const languages = {
+        en: {
+          name: "English",
+          code: "EN",
+          flag: "🇬🇧",
+        },
 
-        function openMobileMenu() {
-          mobileMenu.classList.add("active");
-          toggle.classList.add("active");
-          toggle.setAttribute("aria-expanded", "true");
-          body.classList.add("mobile-menu-open");
+        cs: {
+          name: "Čeština",
+          code: "CS",
+          flag: "🇨🇿",
+        },
+
+        es: {
+          name: "Español",
+          code: "ES",
+          flag: "🇪🇸",
+        },
+
+        it: {
+          name: "Italiano",
+          code: "IT",
+          flag: "🇮🇹",
+        },
+
+        de: {
+          name: "Deutsch",
+          code: "DE",
+          flag: "🇩🇪",
+        },
+
+        pt: {
+          name: "Português",
+          code: "PT",
+          flag: "🇵🇹",
+        },
+
+        tl: {
+          name: "Filipino",
+          code: "TL",
+          flag: "🇵🇭",
+        },
+
+        vi: {
+          name: "Tiếng Việt",
+          code: "VI",
+          flag: "🇻🇳",
+        },
+
+        fr: {
+          name: "Français",
+          code: "FR",
+          flag: "🇫🇷",
+        },
+      };
+
+      /* =========================================================
+   TRANSLATIONS
+========================================================= */
+
+      const translations = {
+        /* =========================================================
+   ENGLISH
+========================================================= */
+
+        en: {
+          home: "Home",
+          trading: "Trading",
+          about: "About",
+          academy: "Academy",
+          faq: "FAQ",
+
+          getStartedMenu: "Get Started",
+          achieveMore: "Achieve More",
+
+          homeDesc: "Your Journey Starts Here",
+
+          howItWorks: "How It Works",
+
+          howItWorksDesc: "See How Smart Money Works",
+
+          overview: "Overview",
+
+          overviewDesc: "Build Better Financial Habits",
+
+          scalingPlan: "Scaling Plan",
+
+          scalingPlanDesc: "Progress towards greater rewards",
+
+          tradingObjectives: "Trading Objectives",
+
+          tradingObjectivesDesc: "Key rules to pass each phase",
+
+          yourPath: "Your Path to Smarter Money ›",
+
+          yourPathText:
+            "Learn the fundamentals - Build confidence - Make informed decisions.",
+
+          tradingEssentials: "Trading Essentials",
+
+          economicCalendar: "Economic Calendar",
+
+          economicCalendarDesc: "Key market events",
+
+          pipCalculator: "Pip Value Calculator",
+
+          pipCalculatorDesc: "List of symbols",
+
+          positionCalculator: "Position Size Calculator",
+
+          positionCalculatorDesc: "Choose your platform",
+
+          currencyStrength: "Currency Strength Meter",
+
+          currencyStrengthDesc: "Value Currency Holds",
+
+          smarterHabits: "Build Smarter Financial Habits ›",
+
+          smarterHabitsText:
+            "Understand money better and make more informed decisions.",
+
+          academyTitle: "SM24/7 Academy",
+
+          // gatewayTrading: "Gateway to trading",
+
+          // gatewayTradingDesc: "Learn with SM24/7",
+
+          // financialMarkets: "Financial Markets",
+
+          // financialMarketsDesc: "Global markets",
+
+          // puttingTogether: "Putting it together",
+
+          // puttingTogetherDesc: "Build a strategy",
+
+          // howForexWorks: "How forex works",
+
+          // howForexWorksDesc: "Start Now",
+
+          // technicalAnalysis: "Technical analysis",
+
+          // technicalAnalysisDesc: "Candlesticks",
+
+          // fundamentalAnalysis: "Fundamental analysis",
+
+          // fundamentalAnalysisDesc: "Data that moves markets",
+
+          moreLessons: "More Lessons",
+
+          masterFundamentals: "Master the Fundamentals ›",
+
+          masterFundamentalsText:
+            "Build a strong foundation in financial markets and smarter decision-making.",
+
+          company: "Company",
+
+          aboutUs: "About Us",
+
+          aboutUsDesc: "Learn about Us",
+
+          whyUs: "Why us",
+
+          whyUsDesc: "Know What we Offer",
+
+          whoCanJoin: "Who can Join?",
+
+          whoCanJoinDesc: "We are Here",
+
+          connect: "Connect",
+
+          contactUs: "Contact Us",
+
+          contactUsDesc: "24/7 Support",
+
+          forMedia: "For media",
+
+          forMediaDesc: "Brand assets & resources",
+
+          login: "Log In",
+
+          getStarted: "Get Started",
+
+          heroTitle: "Master the Markets",
+
+          heroDescription:
+            "Learn professional trading strategies, develop your skills and build a stronger understanding of financial markets.",
+
+          learnMore: "Learn More",
+
+          coursesTitle: "Our Courses",
+
+          coursesDescription:
+            "Explore our trading courses and learn the fundamentals, strategies and techniques you need to improve your trading knowledge.",
+
+          beginner: "Beginner",
+
+          beginnerText:
+            "Start your trading journey with the essential market fundamentals.",
+
+          advanced: "Advanced",
+
+          advancedText:
+            "Develop advanced strategies and improve your market analysis.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Learn how copy trading works and understand the risks and opportunities.",
+        },
+
+        /* =========================================================
+   CZECH
+========================================================= */
+
+        cs: {
+          home: "Domů",
+          trading: "Obchodování",
+          about: "O nás",
+          academy: "Akademie",
+          faq: "FAQ",
+
+          getStartedMenu: "Začít",
+          achieveMore: "Dosáhnout více",
+
+          homeDesc: "Vaše cesta začíná zde",
+
+          howItWorks: "Jak to funguje",
+
+          howItWorksDesc: "Zjistěte, jak Smart Money funguje",
+
+          overview: "Přehled",
+
+          overviewDesc: "Budujte lepší finanční návyky",
+
+          scalingPlan: "Plán růstu",
+
+          scalingPlanDesc: "Postupujte k větším odměnám",
+
+          tradingObjectives: "Obchodní cíle",
+
+          tradingObjectivesDesc: "Klíčová pravidla pro každou fázi",
+
+          yourPath: "Vaše cesta k chytřejším penězům ›",
+
+          yourPathText:
+            "Naučte se základy - Získejte sebevědomí - Dělejte informovaná rozhodnutí.",
+
+          tradingEssentials: "Základy obchodování",
+
+          economicCalendar: "Ekonomický kalendář",
+
+          economicCalendarDesc: "Klíčové události trhu",
+
+          pipCalculator: "Kalkulačka hodnoty pipu",
+
+          pipCalculatorDesc: "Seznam symbolů",
+
+          positionCalculator: "Kalkulačka velikosti pozice",
+
+          positionCalculatorDesc: "Vyberte platformu",
+
+          currencyStrength: "Měřič síly měn",
+
+          currencyStrengthDesc: "Hodnota měny",
+
+          smarterHabits: "Budujte chytřejší finanční návyky ›",
+
+          smarterHabitsText:
+            "Lépe rozumějte penězům a dělejte informovanější rozhodnutí.",
+
+          academyTitle: "SM24/7 Akademie",
+
+          gatewayTrading: "Brána k obchodování",
+
+          gatewayTradingDesc: "Učte se se SM24/7",
+
+          financialMarkets: "Finanční trhy",
+
+          financialMarketsDesc: "Globální trhy",
+
+          puttingTogether: "Dáme to dohromady",
+
+          puttingTogetherDesc: "Vytvořte strategii",
+
+          howForexWorks: "Jak funguje forex",
+
+          howForexWorksDesc: "Co je FOREX?",
+
+          technicalAnalysis: "Technická analýza",
+
+          technicalAnalysisDesc: "Svíčkové grafy",
+
+          fundamentalAnalysis: "Fundamentální analýza",
+
+          fundamentalAnalysisDesc: "Data, která hýbou trhy",
+
+          moreLessons: "Další lekce",
+
+          masterFundamentals: "Ovládněte základy ›",
+
+          masterFundamentalsText:
+            "Vybudujte pevný základ ve finančních trzích a chytřejším rozhodování.",
+
+          company: "Společnost",
+
+          aboutUs: "O nás",
+
+          aboutUsDesc: "Zjistěte více o nás",
+
+          whyUs: "Proč my",
+
+          whyUsDesc: "Zjistěte, co nabízíme",
+
+          whoCanJoin: "Kdo se může přidat?",
+
+          whoCanJoinDesc: "Jsme zde pro vás",
+
+          connect: "Kontakt",
+
+          contactUs: "Kontaktujte nás",
+
+          contactUsDesc: "Podpora 24/7",
+
+          forMedia: "Pro média",
+
+          forMediaDesc: "Materiály a zdroje značky",
+
+          login: "Přihlásit se",
+
+          getStarted: "Začít",
+
+          heroTitle: "Ovládněte trhy",
+
+          heroDescription:
+            "Naučte se profesionální obchodní strategie, rozvíjejte své dovednosti a získejte lepší porozumění finančním trhům.",
+
+          learnMore: "Zjistit více",
+
+          coursesTitle: "Naše kurzy",
+
+          coursesDescription:
+            "Prozkoumejte naše obchodní kurzy a naučte se základy, strategie a techniky potřebné ke zlepšení vašich obchodních znalostí.",
+
+          beginner: "Začátečník",
+
+          beginnerText:
+            "Začněte svou obchodní cestu se základními znalostmi trhu.",
+
+          advanced: "Pokročilý",
+
+          advancedText:
+            "Rozvíjejte pokročilé strategie a zlepšujte svou analýzu trhu.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Zjistěte, jak funguje copy trading, a pochopte jeho rizika a příležitosti.",
+        },
+
+        /* =========================================================
+   SPANISH
+========================================================= */
+
+        es: {
+          home: "Inicio",
+          trading: "Trading",
+          about: "Sobre nosotros",
+          academy: "Academia",
+          faq: "FAQ",
+
+          getStartedMenu: "Comenzar",
+          achieveMore: "Lograr más",
+
+          homeDesc: "Tu camino comienza aquí",
+
+          howItWorks: "Cómo funciona",
+
+          howItWorksDesc: "Descubre cómo funciona Smart Money",
+
+          overview: "Descripción general",
+
+          overviewDesc: "Desarrolla mejores hábitos financieros",
+
+          scalingPlan: "Plan de crecimiento",
+
+          scalingPlanDesc: "Avanza hacia mayores recompensas",
+
+          tradingObjectives: "Objetivos de trading",
+
+          tradingObjectivesDesc: "Reglas clave para cada fase",
+
+          yourPath: "Tu camino hacia unas finanzas más inteligentes ›",
+
+          yourPathText:
+            "Aprende los fundamentos - Gana confianza - Toma decisiones informadas.",
+
+          tradingEssentials: "Fundamentos del trading",
+
+          economicCalendar: "Calendario económico",
+
+          economicCalendarDesc: "Eventos clave del mercado",
+
+          pipCalculator: "Calculadora de valor del pip",
+
+          pipCalculatorDesc: "Lista de símbolos",
+
+          positionCalculator: "Calculadora de tamaño de posición",
+
+          positionCalculatorDesc: "Elige tu plataforma",
+
+          currencyStrength: "Medidor de fuerza de divisas",
+
+          currencyStrengthDesc: "Valor de la divisa",
+
+          smarterHabits: "Construye hábitos financieros inteligentes ›",
+
+          smarterHabitsText:
+            "Comprende mejor el dinero y toma decisiones más informadas.",
+
+          academyTitle: "Academia SM24/7",
+
+          gatewayTrading: "Puerta al trading",
+
+          gatewayTradingDesc: "Aprende con SM24/7",
+
+          financialMarkets: "Mercados financieros",
+
+          financialMarketsDesc: "Mercados globales",
+
+          puttingTogether: "Uniéndolo todo",
+
+          puttingTogetherDesc: "Construye una estrategia",
+
+          howForexWorks: "Cómo funciona el forex",
+
+          howForexWorksDesc: "¿Qué es FOREX?",
+
+          technicalAnalysis: "Análisis técnico",
+
+          technicalAnalysisDesc: "Velas japonesas",
+
+          fundamentalAnalysis: "Análisis fundamental",
+
+          fundamentalAnalysisDesc: "Datos que mueven los mercados",
+
+          moreLessons: "Más lecciones",
+
+          masterFundamentals: "Domina los fundamentos ›",
+
+          masterFundamentalsText:
+            "Construye una base sólida en los mercados financieros y la toma de decisiones.",
+
+          company: "Empresa",
+
+          aboutUs: "Sobre nosotros",
+
+          aboutUsDesc: "Conoce más sobre nosotros",
+
+          whyUs: "Por qué nosotros",
+
+          whyUsDesc: "Conoce lo que ofrecemos",
+
+          whoCanJoin: "¿Quién puede unirse?",
+
+          whoCanJoinDesc: "Estamos aquí",
+
+          connect: "Conectar",
+
+          contactUs: "Contáctanos",
+
+          contactUsDesc: "Soporte 24/7",
+
+          forMedia: "Para medios",
+
+          forMediaDesc: "Recursos y materiales de marca",
+
+          login: "Iniciar sesión",
+
+          getStarted: "Comenzar",
+
+          heroTitle: "Domina los mercados",
+
+          heroDescription:
+            "Aprende estrategias profesionales de trading, desarrolla tus habilidades y comprende mejor los mercados financieros.",
+
+          learnMore: "Saber más",
+
+          coursesTitle: "Nuestros cursos",
+
+          coursesDescription:
+            "Explora nuestros cursos de trading y aprende los fundamentos, estrategias y técnicas necesarias para mejorar tus conocimientos.",
+
+          beginner: "Principiante",
+
+          beginnerText:
+            "Comienza tu camino en el trading con los fundamentos esenciales del mercado.",
+
+          advanced: "Avanzado",
+
+          advancedText:
+            "Desarrolla estrategias avanzadas y mejora tu análisis de mercado.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Aprende cómo funciona el copy trading y comprende sus riesgos y oportunidades.",
+        },
+
+        /* =========================================================
+   ITALIAN
+========================================================= */
+
+        it: {
+          home: "Home",
+          trading: "Trading",
+          about: "Chi siamo",
+          academy: "Academia",
+          faq: "FAQ",
+
+          getStartedMenu: "Inizia",
+          achieveMore: "Ottieni di più",
+
+          homeDesc: "Il tuo percorso inizia qui",
+
+          howItWorks: "Come funziona",
+
+          howItWorksDesc: "Scopri come funziona Smart Money",
+
+          overview: "Panoramica",
+
+          overviewDesc: "Costruisci migliori abitudini finanziarie",
+
+          scalingPlan: "Piano di crescita",
+
+          scalingPlanDesc: "Avanza verso ricompense maggiori",
+
+          tradingObjectives: "Obiettivi di trading",
+
+          tradingObjectivesDesc: "Regole chiave per ogni fase",
+
+          yourPath: "Il tuo percorso verso denaro più intelligente ›",
+
+          yourPathText:
+            "Impara le basi - Acquisisci fiducia - Prendi decisioni informate.",
+
+          tradingEssentials: "Fondamenti del trading",
+
+          economicCalendar: "Calendario economico",
+
+          economicCalendarDesc: "Eventi chiave del mercato",
+
+          pipCalculator: "Calcolatore del valore del pip",
+
+          pipCalculatorDesc: "Elenco dei simboli",
+
+          positionCalculator: "Calcolatore della dimensione della posizione",
+
+          positionCalculatorDesc: "Scegli la tua piattaforma",
+
+          currencyStrength: "Indicatore di forza valutaria",
+
+          currencyStrengthDesc: "Valore della valuta",
+
+          smarterHabits: "Costruisci abitudini finanziarie più intelligenti ›",
+
+          smarterHabitsText:
+            "Comprendi meglio il denaro e prendi decisioni più informate.",
+
+          academyTitle: "Academy SM24/7",
+
+          gatewayTrading: "Porta al trading",
+
+          gatewayTradingDesc: "Impara con SM24/7",
+
+          financialMarkets: "Mercati finanziari",
+
+          financialMarketsDesc: "Mercati globali",
+
+          puttingTogether: "Metti tutto insieme",
+
+          puttingTogetherDesc: "Costruisci una strategia",
+
+          howForexWorks: "Come funziona il forex",
+
+          howForexWorksDesc: "Cos'è il FOREX?",
+
+          technicalAnalysis: "Analisi tecnica",
+
+          technicalAnalysisDesc: "Candele",
+
+          fundamentalAnalysis: "Analisi fondamentale",
+
+          fundamentalAnalysisDesc: "Dati che muovono i mercati",
+
+          moreLessons: "Altre lezioni",
+
+          masterFundamentals: "Padroneggia i fondamenti ›",
+
+          masterFundamentalsText:
+            "Costruisci solide basi nei mercati finanziari e nel processo decisionale.",
+
+          company: "Azienda",
+
+          aboutUs: "Chi siamo",
+
+          aboutUsDesc: "Scopri di più su di noi",
+
+          whyUs: "Perché noi",
+
+          whyUsDesc: "Scopri cosa offriamo",
+
+          whoCanJoin: "Chi può partecipare?",
+
+          whoCanJoinDesc: "Siamo qui",
+
+          connect: "Contatti",
+
+          contactUs: "Contattaci",
+
+          contactUsDesc: "Supporto 24/7",
+
+          forMedia: "Per i media",
+
+          forMediaDesc: "Risorse e materiali del brand",
+
+          login: "Accedi",
+
+          getStarted: "Inizia",
+
+          heroTitle: "Padroneggia i mercati",
+
+          heroDescription:
+            "Impara strategie professionali di trading, sviluppa le tue competenze e comprendi meglio i mercati finanziari.",
+
+          learnMore: "Scopri di più",
+
+          coursesTitle: "I nostri corsi",
+
+          coursesDescription:
+            "Esplora i nostri corsi di trading e impara i fondamenti, le strategie e le tecniche necessarie.",
+
+          beginner: "Principiante",
+
+          beginnerText:
+            "Inizia il tuo percorso di trading con i fondamenti essenziali del mercato.",
+
+          advanced: "Avanzato",
+
+          advancedText:
+            "Sviluppa strategie avanzate e migliora la tua analisi di mercato.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Scopri come funziona il copy trading e comprendi rischi e opportunità.",
+        },
+
+        /* =========================================================
+   GERMAN
+========================================================= */
+
+        de: {
+          home: "Startseite",
+          trading: "Trading",
+          about: "Über uns",
+          academy: "Akademie",
+          faq: "FAQ",
+
+          getStartedMenu: "Erste Schritte",
+          achieveMore: "Mehr erreichen",
+
+          homeDesc: "Ihre Reise beginnt hier",
+
+          howItWorks: "So funktioniert es",
+
+          howItWorksDesc: "So funktioniert Smart Money",
+
+          overview: "Übersicht",
+
+          overviewDesc: "Bessere finanzielle Gewohnheiten entwickeln",
+
+          scalingPlan: "Skalierungsplan",
+
+          scalingPlanDesc: "Auf dem Weg zu größeren Belohnungen",
+
+          tradingObjectives: "Trading-Ziele",
+
+          tradingObjectivesDesc: "Wichtige Regeln für jede Phase",
+
+          yourPath: "Ihr Weg zu smarterem Geld ›",
+
+          yourPathText:
+            "Lernen Sie die Grundlagen - Gewinnen Sie Vertrauen - Treffen Sie fundierte Entscheidungen.",
+
+          tradingEssentials: "Trading-Grundlagen",
+
+          economicCalendar: "Wirtschaftskalender",
+
+          economicCalendarDesc: "Wichtige Markttermine",
+
+          pipCalculator: "Pip-Wert-Rechner",
+
+          pipCalculatorDesc: "Liste der Symbole",
+
+          positionCalculator: "Positionsgrößen-Rechner",
+
+          positionCalculatorDesc: "Wählen Sie Ihre Plattform",
+
+          currencyStrength: "Währungsstärke-Messer",
+
+          currencyStrengthDesc: "Währungswert",
+
+          smarterHabits: "Entwickeln Sie smartere Finanzgewohnheiten ›",
+
+          smarterHabitsText:
+            "Verstehen Sie Geld besser und treffen Sie fundiertere Entscheidungen.",
+
+          academyTitle: "SM24/7 Akademie",
+
+          gatewayTrading: "Einstieg ins Trading",
+
+          gatewayTradingDesc: "Lernen mit SM24/7",
+
+          financialMarkets: "Finanzmärkte",
+
+          financialMarketsDesc: "Globale Märkte",
+
+          puttingTogether: "Alles zusammenführen",
+
+          puttingTogetherDesc: "Eine Strategie entwickeln",
+
+          howForexWorks: "Wie Forex funktioniert",
+
+          howForexWorksDesc: "Was ist FOREX?",
+
+          technicalAnalysis: "Technische Analyse",
+
+          technicalAnalysisDesc: "Candlesticks",
+
+          fundamentalAnalysis: "Fundamentalanalyse",
+
+          fundamentalAnalysisDesc: "Daten, die Märkte bewegen",
+
+          moreLessons: "Weitere Lektionen",
+
+          masterFundamentals: "Meistern Sie die Grundlagen ›",
+
+          masterFundamentalsText:
+            "Schaffen Sie eine starke Grundlage für Finanzmärkte und bessere Entscheidungen.",
+
+          company: "Unternehmen",
+
+          aboutUs: "Über uns",
+
+          aboutUsDesc: "Erfahren Sie mehr über uns",
+
+          whyUs: "Warum wir",
+
+          whyUsDesc: "Erfahren Sie, was wir anbieten",
+
+          whoCanJoin: "Wer kann teilnehmen?",
+
+          whoCanJoinDesc: "Wir sind hier",
+
+          connect: "Kontakt",
+
+          contactUs: "Kontaktieren Sie uns",
+
+          contactUsDesc: "24/7 Support",
+
+          forMedia: "Für Medien",
+
+          forMediaDesc: "Markenmaterialien und Ressourcen",
+
+          login: "Anmelden",
+
+          getStarted: "Starten",
+
+          heroTitle: "Meistern Sie die Märkte",
+
+          heroDescription:
+            "Lernen Sie professionelle Trading-Strategien, entwickeln Sie Ihre Fähigkeiten und verstehen Sie die Finanzmärkte besser.",
+
+          learnMore: "Mehr erfahren",
+
+          coursesTitle: "Unsere Kurse",
+
+          coursesDescription:
+            "Entdecken Sie unsere Trading-Kurse und lernen Sie die Grundlagen, Strategien und Techniken.",
+
+          beginner: "Anfänger",
+
+          beginnerText:
+            "Beginnen Sie Ihre Trading-Reise mit den wichtigsten Marktgrundlagen.",
+
+          advanced: "Fortgeschritten",
+
+          advancedText:
+            "Entwickeln Sie fortgeschrittene Strategien und verbessern Sie Ihre Marktanalyse.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Erfahren Sie, wie Copy Trading funktioniert und verstehen Sie Risiken und Chancen.",
+        },
+
+        /* =========================================================
+   PORTUGUESE
+========================================================= */
+
+        pt: {
+          home: "Início",
+          trading: "Trading",
+          about: "Sobre nós",
+          academy: "Academia",
+          faq: "FAQ",
+
+          getStartedMenu: "Começar",
+          achieveMore: "Alcançar mais",
+
+          homeDesc: "Sua jornada começa aqui",
+
+          howItWorks: "Como funciona",
+
+          howItWorksDesc: "Veja como funciona o Smart Money",
+
+          overview: "Visão geral",
+
+          overviewDesc: "Crie melhores hábitos financeiros",
+
+          scalingPlan: "Plano de crescimento",
+
+          scalingPlanDesc: "Avance para maiores recompensas",
+
+          tradingObjectives: "Objetivos de trading",
+
+          tradingObjectivesDesc: "Regras importantes para cada fase",
+
+          yourPath: "Seu caminho para um dinheiro mais inteligente ›",
+
+          yourPathText:
+            "Aprenda os fundamentos - Ganhe confiança - Tome decisões informadas.",
+
+          tradingEssentials: "Fundamentos do trading",
+
+          economicCalendar: "Calendário econômico",
+
+          economicCalendarDesc: "Principais eventos do mercado",
+
+          pipCalculator: "Calculadora de valor do pip",
+
+          pipCalculatorDesc: "Lista de símbolos",
+
+          positionCalculator: "Calculadora de tamanho da posição",
+
+          positionCalculatorDesc: "Escolha sua plataforma",
+
+          currencyStrength: "Medidor de força da moeda",
+
+          currencyStrengthDesc: "Valor da moeda",
+
+          smarterHabits: "Crie hábitos financeiros mais inteligentes ›",
+
+          smarterHabitsText:
+            "Entenda melhor o dinheiro e tome decisões mais informadas.",
+
+          academyTitle: "Academia SM24/7",
+
+          gatewayTrading: "Portal para trading",
+
+          gatewayTradingDesc: "Aprenda com SM24/7",
+
+          financialMarkets: "Mercados financeiros",
+
+          financialMarketsDesc: "Mercados globais",
+
+          puttingTogether: "Juntando tudo",
+
+          puttingTogetherDesc: "Crie uma estratégia",
+
+          howForexWorks: "Como funciona o forex",
+
+          howForexWorksDesc: "O que é FOREX?",
+
+          technicalAnalysis: "Análise técnica",
+
+          technicalAnalysisDesc: "Candles",
+
+          fundamentalAnalysis: "Análise fundamental",
+
+          fundamentalAnalysisDesc: "Dados que movimentam os mercados",
+
+          moreLessons: "Mais lições",
+
+          masterFundamentals: "Domine os fundamentos ›",
+
+          masterFundamentalsText:
+            "Construa uma base sólida nos mercados financeiros e na tomada de decisões.",
+
+          company: "Empresa",
+
+          aboutUs: "Sobre nós",
+
+          aboutUsDesc: "Saiba mais sobre nós",
+
+          whyUs: "Por que nós",
+
+          whyUsDesc: "Saiba o que oferecemos",
+
+          whoCanJoin: "Quem pode participar?",
+
+          whoCanJoinDesc: "Estamos aqui",
+
+          connect: "Conectar",
+
+          contactUs: "Fale conosco",
+
+          contactUsDesc: "Suporte 24/7",
+
+          forMedia: "Para mídia",
+
+          forMediaDesc: "Recursos e materiais da marca",
+
+          login: "Entrar",
+
+          getStarted: "Começar",
+
+          heroTitle: "Domine os mercados",
+
+          heroDescription:
+            "Aprenda estratégias profissionais de trading, desenvolva suas habilidades e compreenda melhor os mercados financeiros.",
+
+          learnMore: "Saiba mais",
+
+          coursesTitle: "Nossos cursos",
+
+          coursesDescription:
+            "Explore nossos cursos de trading e aprenda os fundamentos, estratégias e técnicas necessárias.",
+
+          beginner: "Iniciante",
+
+          beginnerText:
+            "Comece sua jornada de trading com os fundamentos essenciais do mercado.",
+
+          advanced: "Avançado",
+
+          advancedText:
+            "Desenvolva estratégias avançadas e melhore sua análise de mercado.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Aprenda como funciona o copy trading e compreenda seus riscos e oportunidades.",
+        },
+
+        /* =========================================================
+   FILIPINO
+========================================================= */
+
+        tl: {
+          home: "Home",
+          trading: "Trading",
+          about: "Tungkol sa Amin",
+          academy: "Academy",
+          faq: "FAQ",
+
+          getStartedMenu: "Magsimula",
+
+          achieveMore: "Makamit ang Higit Pa",
+
+          homeDesc: "Dito nagsisimula ang iyong journey",
+
+          howItWorks: "Paano Ito Gumagana",
+
+          howItWorksDesc: "Alamin kung paano gumagana ang Smart Money",
+
+          overview: "Pangkalahatang-ideya",
+
+          overviewDesc: "Bumuo ng mas magandang financial habits",
+
+          scalingPlan: "Scaling Plan",
+
+          scalingPlanDesc: "Umusad patungo sa mas malaking rewards",
+
+          tradingObjectives: "Trading Objectives",
+
+          tradingObjectivesDesc: "Mahahalagang rules sa bawat phase",
+
+          yourPath: "Ang Iyong Daan Patungo sa Mas Matalinong Pera ›",
+
+          yourPathText:
+            "Alamin ang fundamentals - Bumuo ng confidence - Gumawa ng informed decisions.",
+
+          tradingEssentials: "Trading Essentials",
+
+          economicCalendar: "Economic Calendar",
+
+          economicCalendarDesc: "Mahahalagang market events",
+
+          pipCalculator: "Pip Value Calculator",
+
+          pipCalculatorDesc: "Listahan ng symbols",
+
+          positionCalculator: "Position Size Calculator",
+
+          positionCalculatorDesc: "Piliin ang iyong platform",
+
+          currencyStrength: "Currency Strength Meter",
+
+          currencyStrengthDesc: "Halaga ng currency",
+
+          smarterHabits: "Bumuo ng Mas Matalinong Financial Habits ›",
+
+          smarterHabitsText:
+            "Mas maunawaan ang pera at gumawa ng mas informed decisions.",
+
+          academyTitle: "SM24/7 Academy",
+
+          gatewayTrading: "Gateway sa trading",
+
+          gatewayTradingDesc: "Matuto kasama ang SM24/7",
+
+          financialMarkets: "Financial Markets",
+
+          financialMarketsDesc: "Global markets",
+
+          puttingTogether: "Pagsasama-sama",
+
+          puttingTogetherDesc: "Bumuo ng strategy",
+
+          howForexWorks: "Paano gumagana ang forex",
+
+          howForexWorksDesc: "Ano ang FOREX?",
+
+          technicalAnalysis: "Technical analysis",
+
+          technicalAnalysisDesc: "Candlesticks",
+
+          fundamentalAnalysis: "Fundamental analysis",
+
+          fundamentalAnalysisDesc: "Data na gumagalaw sa markets",
+
+          moreLessons: "Higit pang Lessons",
+
+          masterFundamentals: "Masterin ang Fundamentals ›",
+
+          masterFundamentalsText:
+            "Bumuo ng matibay na foundation sa financial markets at smarter decision-making.",
+
+          company: "Kumpanya",
+
+          aboutUs: "Tungkol sa Amin",
+
+          aboutUsDesc: "Alamin ang tungkol sa amin",
+
+          whyUs: "Bakit Kami",
+
+          whyUsDesc: "Alamin kung ano ang aming inaalok",
+
+          whoCanJoin: "Sino ang Maaaring Sumali?",
+
+          whoCanJoinDesc: "Nandito Kami",
+
+          connect: "Makipag-ugnayan",
+
+          contactUs: "Makipag-ugnayan sa Amin",
+
+          contactUsDesc: "24/7 Support",
+
+          forMedia: "Para sa Media",
+
+          forMediaDesc: "Brand assets at resources",
+
+          login: "Mag Log In",
+
+          getStarted: "Magsimula",
+
+          heroTitle: "Masterin ang mga Merkado",
+
+          heroDescription:
+            "Matuto ng mga propesyonal na estratehiya sa trading, paunlarin ang iyong mga kasanayan at mas maunawaan ang mga financial market.",
+
+          learnMore: "Matuto Pa",
+
+          coursesTitle: "Aming mga Kurso",
+
+          coursesDescription:
+            "Tuklasin ang aming mga trading course at matutunan ang mga pangunahing kaalaman, estratehiya at teknik.",
+
+          beginner: "Baguhan",
+
+          beginnerText:
+            "Simulan ang iyong trading journey gamit ang mahahalagang kaalaman tungkol sa market.",
+
+          advanced: "Advanced",
+
+          advancedText:
+            "Paunlarin ang mga advanced strategy at pagbutihin ang iyong market analysis.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Alamin kung paano gumagana ang copy trading at unawain ang mga panganib at oportunidad.",
+        },
+
+        /* =========================================================
+   VIETNAMESE
+========================================================= */
+
+        vi: {
+          home: "Trang chủ",
+          trading: "Giao dịch",
+          about: "Về chúng tôi",
+          academy: "Học viện",
+          faq: "FAQ",
+
+          getStartedMenu: "Bắt đầu",
+
+          achieveMore: "Đạt được nhiều hơn",
+
+          homeDesc: "Hành trình của bạn bắt đầu tại đây",
+
+          howItWorks: "Cách hoạt động",
+
+          howItWorksDesc: "Xem Smart Money hoạt động như thế nào",
+
+          overview: "Tổng quan",
+
+          overviewDesc: "Xây dựng thói quen tài chính tốt hơn",
+
+          scalingPlan: "Kế hoạch mở rộng",
+
+          scalingPlanDesc: "Tiến tới những phần thưởng lớn hơn",
+
+          tradingObjectives: "Mục tiêu giao dịch",
+
+          tradingObjectivesDesc: "Các quy tắc quan trọng cho từng giai đoạn",
+
+          yourPath: "Con đường đến tài chính thông minh hơn ›",
+
+          yourPathText:
+            "Học nền tảng - Xây dựng sự tự tin - Đưa ra quyết định sáng suốt.",
+
+          tradingEssentials: "Kiến thức giao dịch",
+
+          economicCalendar: "Lịch kinh tế",
+
+          economicCalendarDesc: "Các sự kiện thị trường quan trọng",
+
+          pipCalculator: "Máy tính giá trị Pip",
+
+          pipCalculatorDesc: "Danh sách các mã",
+
+          positionCalculator: "Máy tính kích thước vị thế",
+
+          positionCalculatorDesc: "Chọn nền tảng của bạn",
+
+          currencyStrength: "Chỉ báo sức mạnh tiền tệ",
+
+          currencyStrengthDesc: "Giá trị của tiền tệ",
+
+          smarterHabits: "Xây dựng thói quen tài chính thông minh hơn ›",
+
+          smarterHabitsText:
+            "Hiểu tiền bạc tốt hơn và đưa ra quyết định sáng suốt hơn.",
+
+          academyTitle: "Học viện SM24/7",
+
+          gatewayTrading: "Cánh cửa đến giao dịch",
+
+          gatewayTradingDesc: "Học cùng SM24/7",
+
+          financialMarkets: "Thị trường tài chính",
+
+          financialMarketsDesc: "Thị trường toàn cầu",
+
+          puttingTogether: "Kết hợp mọi thứ",
+
+          puttingTogetherDesc: "Xây dựng chiến lược",
+
+          howForexWorks: "Forex hoạt động như thế nào",
+
+          howForexWorksDesc: "FOREX là gì?",
+
+          technicalAnalysis: "Phân tích kỹ thuật",
+
+          technicalAnalysisDesc: "Nến",
+
+          fundamentalAnalysis: "Phân tích cơ bản",
+
+          fundamentalAnalysisDesc: "Dữ liệu tác động đến thị trường",
+
+          moreLessons: "Thêm bài học",
+
+          masterFundamentals: "Làm chủ nền tảng ›",
+
+          masterFundamentalsText:
+            "Xây dựng nền tảng vững chắc về thị trường tài chính và ra quyết định thông minh.",
+
+          company: "Công ty",
+
+          aboutUs: "Về chúng tôi",
+
+          aboutUsDesc: "Tìm hiểu về chúng tôi",
+
+          whyUs: "Tại sao chọn chúng tôi",
+
+          whyUsDesc: "Tìm hiểu những gì chúng tôi cung cấp",
+
+          whoCanJoin: "Ai có thể tham gia?",
+
+          whoCanJoinDesc: "Chúng tôi luôn ở đây",
+
+          connect: "Kết nối",
+
+          contactUs: "Liên hệ chúng tôi",
+
+          contactUsDesc: "Hỗ trợ 24/7",
+
+          forMedia: "Dành cho truyền thông",
+
+          forMediaDesc: "Tài nguyên và tài sản thương hiệu",
+
+          login: "Đăng nhập",
+
+          getStarted: "Bắt đầu",
+
+          heroTitle: "Làm chủ thị trường",
+
+          heroDescription:
+            "Học các chiến lược giao dịch chuyên nghiệp, phát triển kỹ năng và hiểu rõ hơn về thị trường tài chính.",
+
+          learnMore: "Tìm hiểu thêm",
+
+          coursesTitle: "Các khóa học của chúng tôi",
+
+          coursesDescription:
+            "Khám phá các khóa học giao dịch và học các kiến thức, chiến lược và kỹ thuật cần thiết.",
+
+          beginner: "Người mới",
+
+          beginnerText:
+            "Bắt đầu hành trình giao dịch với những kiến thức thị trường cơ bản.",
+
+          advanced: "Nâng cao",
+
+          advancedText:
+            "Phát triển các chiến lược nâng cao và cải thiện phân tích thị trường.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Tìm hiểu cách copy trading hoạt động và hiểu rõ các rủi ro và cơ hội.",
+        },
+
+        /* =========================================================
+   FRENCH
+========================================================= */
+
+        fr: {
+          home: "Accueil",
+          trading: "Trading",
+          about: "À propos",
+          academy: "Académie",
+          faq: "FAQ",
+
+          getStartedMenu: "Commencer",
+
+          achieveMore: "Aller plus loin",
+
+          homeDesc: "Votre parcours commence ici",
+
+          howItWorks: "Comment ça marche",
+
+          howItWorksDesc: "Découvrez comment Smart Money fonctionne",
+
+          overview: "Vue d'ensemble",
+
+          overviewDesc: "Développez de meilleures habitudes financières",
+
+          scalingPlan: "Plan de croissance",
+
+          scalingPlanDesc: "Progressez vers de plus grandes récompenses",
+
+          tradingObjectives: "Objectifs de trading",
+
+          tradingObjectivesDesc: "Règles clés pour chaque phase",
+
+          yourPath: "Votre chemin vers une finance plus intelligente ›",
+
+          yourPathText:
+            "Apprenez les fondamentaux - Gagnez en confiance - Prenez des décisions éclairées.",
+
+          tradingEssentials: "Les essentiels du trading",
+
+          economicCalendar: "Calendrier économique",
+
+          economicCalendarDesc: "Événements clés du marché",
+
+          pipCalculator: "Calculateur de valeur du pip",
+
+          pipCalculatorDesc: "Liste des symboles",
+
+          positionCalculator: "Calculateur de taille de position",
+
+          positionCalculatorDesc: "Choisissez votre plateforme",
+
+          currencyStrength: "Indicateur de force des devises",
+
+          currencyStrengthDesc: "Valeur de la devise",
+
+          smarterHabits: "Développez de meilleures habitudes financières ›",
+
+          smarterHabitsText:
+            "Comprenez mieux l'argent et prenez des décisions plus éclairées.",
+
+          academyTitle: "Académie SM24/7",
+
+          gatewayTrading: "Passerelle vers le trading",
+
+          gatewayTradingDesc: "Apprenez avec SM24/7",
+
+          financialMarkets: "Marchés financiers",
+
+          financialMarketsDesc: "Marchés mondiaux",
+
+          puttingTogether: "Tout mettre ensemble",
+
+          puttingTogetherDesc: "Construisez une stratégie",
+
+          howForexWorks: "Comment fonctionne le forex",
+
+          howForexWorksDesc: "Qu'est-ce que le FOREX ?",
+
+          technicalAnalysis: "Analyse technique",
+
+          technicalAnalysisDesc: "Chandeliers",
+
+          fundamentalAnalysis: "Analyse fondamentale",
+
+          fundamentalAnalysisDesc: "Données qui font bouger les marchés",
+
+          moreLessons: "Plus de leçons",
+
+          masterFundamentals: "Maîtrisez les fondamentaux ›",
+
+          masterFundamentalsText:
+            "Construisez une base solide sur les marchés financiers et la prise de décision.",
+
+          company: "Entreprise",
+
+          aboutUs: "À propos de nous",
+
+          aboutUsDesc: "En savoir plus sur nous",
+
+          whyUs: "Pourquoi nous",
+
+          whyUsDesc: "Découvrez ce que nous proposons",
+
+          whoCanJoin: "Qui peut rejoindre ?",
+
+          whoCanJoinDesc: "Nous sommes là",
+
+          connect: "Contact",
+
+          contactUs: "Contactez-nous",
+
+          contactUsDesc: "Assistance 24/7",
+
+          forMedia: "Pour les médias",
+
+          forMediaDesc: "Ressources et éléments de marque",
+
+          login: "Connexion",
+
+          getStarted: "Commencer",
+
+          heroTitle: "Maîtrisez les marchés",
+
+          heroDescription:
+            "Apprenez des stratégies de trading professionnelles, développez vos compétences et comprenez mieux les marchés financiers.",
+
+          learnMore: "En savoir plus",
+
+          coursesTitle: "Nos cours",
+
+          coursesDescription:
+            "Découvrez nos cours de trading et apprenez les fondamentaux, stratégies et techniques nécessaires.",
+
+          beginner: "Débutant",
+
+          beginnerText:
+            "Commencez votre parcours de trading avec les fondamentaux essentiels du marché.",
+
+          advanced: "Avancé",
+
+          advancedText:
+            "Développez des stratégies avancées et améliorez votre analyse du marché.",
+
+          copyTrading: "Copy Trading",
+
+          copyTradingText:
+            "Découvrez comment fonctionne le copy trading et comprenez ses risques et opportunités.",
+        },
+      };
+
+      /* =========================================================
+   CHANGE LANGUAGE
+========================================================= */
+
+      function changeLanguage(lang) {
+        if (!translations[lang]) {
+          lang = "en";
         }
 
-        function closeMobileMenu() {
+        const translation = translations[lang];
+
+        const language = languages[lang];
+
+        document.querySelectorAll("[data-i18n]").forEach(function (element) {
+          const key = element.getAttribute("data-i18n");
+
+          if (translation[key] !== undefined) {
+            element.textContent = translation[key];
+          }
+        });
+
+        document.getElementById("currentFlag").textContent = language.flag;
+
+        document.getElementById("currentLanguage").textContent = language.code;
+
+        const mobileFlag = document.getElementById("mobileCurrentFlag");
+
+        if (mobileFlag) {
+          mobileFlag.textContent = language.flag;
+        }
+
+        const mobileLanguage = document.getElementById("mobileCurrentLanguage");
+
+        if (mobileLanguage) {
+          mobileLanguage.textContent = language.name;
+        }
+
+        document.documentElement.lang = lang;
+
+        localStorage.setItem("websiteLanguage", lang);
+      }
+
+      /* =========================================================
+   LANGUAGE BUTTON
+========================================================= */
+
+      const languageBox = document.getElementById("languageBox");
+
+      const languageButton = document.getElementById("languageButton");
+
+      languageButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        languageBox.classList.toggle("open");
+      });
+
+      /* =========================================================
+   LANGUAGE OPTIONS
+========================================================= */
+
+      document.querySelectorAll(".language-option").forEach(function (option) {
+        option.addEventListener("click", function (event) {
+          event.stopPropagation();
+
+          const lang = this.dataset.lang;
+
+          changeLanguage(lang);
+
+          languageBox.classList.remove("open");
+        });
+      });
+
+      /* =========================================================
+   CLOSE LANGUAGE
+========================================================= */
+
+      document.addEventListener("click", function (event) {
+        if (!languageBox.contains(event.target)) {
+          languageBox.classList.remove("open");
+        }
+      });
+
+      /* =========================================================
+   MEGA MENU - HOVER TO OPEN
+========================================================= */
+
+      const megaItems = document.querySelectorAll(".main-nav > .nav-item");
+
+      megaItems.forEach(function (item) {
+        const menu = item.querySelector(":scope > .mega-menu");
+        if (!menu) return;
+
+        item.addEventListener("mouseenter", function () {
+          megaItems.forEach(function (other) {
+            if (other !== item) other.classList.remove("mega-active");
+          });
+          item.classList.add("mega-active");
+        });
+
+        item.addEventListener("mouseleave", function () {
+          item.classList.remove("mega-active");
+        });
+      });
+
+      /* =========================================================
+   CLOSE MEGA MENU OUTSIDE
+========================================================= */
+
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".main-nav")) {
+          megaItems.forEach(function (item) {
+            item.classList.remove("mega-active");
+          });
+        }
+      });
+
+      /* =========================================================
+   CLOSE MEGA MENU WHEN LINK CLICKED
+========================================================= */
+
+      document.querySelectorAll(".mega-menu a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          megaItems.forEach(function (item) {
+            item.classList.remove("mega-active");
+          });
+        });
+      });
+
+      /* =========================================================
+   ESCAPE CLOSE
+========================================================= */
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          megaItems.forEach(function (item) {
+            item.classList.remove("mega-active");
+          });
+
+          languageBox.classList.remove("open");
+
           mobileMenu.classList.remove("active");
-          toggle.classList.remove("active");
-          toggle.setAttribute("aria-expanded", "false");
-          body.classList.remove("mobile-menu-open");
         }
+      });
 
-        if (toggle && mobileMenu) {
-          toggle.addEventListener("click", function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (mobileMenu.classList.contains("active")) {
-              closeMobileMenu();
-            } else {
-              openMobileMenu();
-            }
-          });
+      /* =========================================================
+   MOBILE MENU — FINAL
+========================================================= */
 
-          // close mobile when clicking a link
-          mobileMenu.querySelectorAll("a").forEach(function (link) {
-            link.addEventListener("click", function () {
-              closeMobileMenu();
-            });
-          });
+      (function () {
+        const mobileButton = document.getElementById("mobileMenuButton");
 
-          // close on backdrop click (click outside menu)
-          document.addEventListener("click", function (e) {
-            if (mobileMenu.classList.contains("active")) {
-              const isClickInside =
-                mobileMenu.contains(e.target) || toggle.contains(e.target);
-              if (!isClickInside) {
-                closeMobileMenu();
-              }
-            }
-          });
-        }
+        const mobileMenu = document.getElementById("mobileMenu");
 
-        // ----- MOBILE DROPDOWN (accordion) -----
-        document.querySelectorAll(".mobile-item").forEach(function (item) {
-          const btn = item.querySelector(".mobile-link");
-          if (btn && btn.tagName === "BUTTON") {
-            btn.addEventListener("click", function (e) {
-              e.preventDefault();
-              e.stopPropagation();
-              // close other open items
-              document
-                .querySelectorAll(".mobile-item")
-                .forEach(function (other) {
-                  if (other !== item) other.classList.remove("open");
-                });
-              item.classList.toggle("open");
-            });
-          }
-        });
+        const siteHeader = document.getElementById("siteHeader");
 
-        // ----- ESC key -----
-        document.addEventListener("keydown", function (e) {
-          if (
-            e.key === "Escape" &&
-            mobileMenu &&
-            mobileMenu.classList.contains("active")
-          ) {
-            closeMobileMenu();
-          }
-        });
-      })();
-
-      // ============================================================
-      // GOOGLE TRANSLATE — ENGLISH + FILIPINO
-      // The selector below controls Google's whole-page translator.
-      // ============================================================
-
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: "en",
-            includedLanguages: "en,tl",
-            autoDisplay: false,
-            multilanguagePage: true,
-          },
-          "google_translate_element",
-        );
-
-        // Google creates .goog-te-combo asynchronously.
-        waitForGoogleTranslate();
-      }
-
-      function removeGoogleTranslateBar() {
-        // Remove Google's top translation banner itself.
-        document
-          .querySelectorAll(
-            "iframe.goog-te-banner-frame, iframe.goog-te-banner-frame.skiptranslate, .goog-te-banner-frame, .goog-te-banner-frame.skiptranslate",
-          )
-          .forEach(function (frame) {
-            frame.remove();
-          });
-
-        // Google may add a top offset to <html> or <body>.
-        document.documentElement.style.setProperty("top", "0", "important");
-        document.documentElement.style.setProperty(
-          "margin-top",
-          "0",
-          "important",
-        );
-        document.body.style.setProperty("top", "0", "important");
-        document.body.style.setProperty("margin-top", "0", "important");
-
-        // IMPORTANT:
-        // Do NOT remove Google's translated-ltr/translated-rtl classes.
-        // Google uses these classes to keep the selected translation active.
-        // Removing them makes the page revert to English.
-      }
-
-      function waitForGoogleTranslate() {
-        removeGoogleTranslateBar();
-
-        if (document.querySelector(".goog-te-combo")) {
-          syncLanguageSelectors();
+        if (!mobileButton || !mobileMenu) {
           return;
         }
 
-        window.setTimeout(waitForGoogleTranslate, 200);
-      }
+        /* OPEN / CLOSE MOBILE MENU */
 
-      // Google can inject the banner after translation starts.
-      // Watch for newly inserted nodes and remove only that banner.
-      (function keepGoogleBarRemoved() {
-        const observer = new MutationObserver(function (mutations) {
-          let added = false;
+        mobileButton.addEventListener("click", function (event) {
+          event.preventDefault();
+          event.stopPropagation();
 
-          mutations.forEach(function (mutation) {
-            if (mutation.addedNodes && mutation.addedNodes.length) {
-              added = true;
-            }
-          });
+          const isOpen = mobileMenu.classList.toggle("active");
 
-          if (added) {
-            removeGoogleTranslateBar();
+          if (siteHeader) {
+            siteHeader.classList.toggle("mobile-open", isOpen);
           }
         });
 
-        observer.observe(document.documentElement, {
-          childList: true,
-          subtree: true,
+        /* ACCORDION */
+
+        const mobileItems = mobileMenu.querySelectorAll(
+          ":scope > .mobile-item",
+        );
+
+        mobileItems.forEach(function (item) {
+          const trigger = item.querySelector(":scope > .mobile-link");
+
+          const dropdown = item.querySelector(":scope > .mobile-dropdown");
+
+          if (!trigger || !dropdown) {
+            return;
+          }
+
+          trigger.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const alreadyOpen = item.classList.contains("open");
+
+            mobileItems.forEach(function (other) {
+              other.classList.remove("open");
+            });
+
+            if (!alreadyOpen) {
+              item.classList.add("open");
+            }
+          });
         });
 
-        // Catch it immediately if Google has already inserted it.
-        removeGoogleTranslateBar();
-      })();
+        /* CLOSE AFTER CLICKING A REAL LINK */
 
-      function setGoogleLanguage(language) {
-        const targetLanguage = language === "tl" ? "tl" : "en";
+        mobileMenu
+          .querySelectorAll(".mobile-dropdown a")
+          .forEach(function (link) {
+            link.addEventListener("click", function () {
+              const href = this.getAttribute("href");
 
-        // Save Google's translation preference.
-        // Keep the cookie — especially for Filipino — so the
-        // translation remains active after Google finishes loading.
-        document.cookie =
-          "googtrans=/en/" + targetLanguage + "; path=/; SameSite=Lax";
+              if (href && href !== "#") {
+                mobileMenu.classList.remove("active");
 
-        const googleSelect = document.querySelector(".goog-te-combo");
-
-        if (googleSelect) {
-          // Google Translate uses an empty value for the original
-          // language and "tl" for Filipino.
-          googleSelect.value = targetLanguage === "tl" ? "tl" : "";
-          googleSelect.dispatchEvent(new Event("change", { bubbles: true }));
-        } else {
-          // The Google selector can take a moment to appear.
-          // Try again after it has loaded instead of reloading the page.
-          window.setTimeout(function () {
-            const retrySelect = document.querySelector(".goog-te-combo");
-
-            if (retrySelect) {
-              retrySelect.value = targetLanguage === "tl" ? "tl" : "";
-              retrySelect.dispatchEvent(new Event("change", { bubbles: true }));
-            }
-          }, 500);
-        }
-
-        // Google may inject its banner after the change event.
-        removeGoogleTranslateBar();
-        window.setTimeout(removeGoogleTranslateBar, 100);
-        window.setTimeout(removeGoogleTranslateBar, 300);
-        window.setTimeout(removeGoogleTranslateBar, 700);
-
-        // Keep both custom selectors synchronized.
-        syncLanguageSelectors(targetLanguage);
-      }
-
-      function syncLanguageSelectors(forcedLanguage) {
-        const language =
-          forcedLanguage ||
-          (document.cookie.indexOf("googtrans=/en/tl") !== -1 ? "tl" : "en");
-
-        document
-          .querySelectorAll("[data-language-select]")
-          .forEach(function (select) {
-            select.value = language;
-          });
-      }
-
-      (function setupLanguageSelectors() {
-        document
-          .querySelectorAll("[data-language-select]")
-          .forEach(function (select) {
-            select.addEventListener("change", function () {
-              setGoogleLanguage(this.value);
+                if (siteHeader) {
+                  siteHeader.classList.remove("mobile-open");
+                }
+              }
             });
           });
 
-        syncLanguageSelectors();
+        /* LANGUAGE */
+
+        const languageBox = document.getElementById("mobileLanguageBox");
+
+        const languageButton = document.getElementById("mobileLanguageButton");
+
+        if (languageBox && languageButton) {
+          languageButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            languageBox.classList.toggle("open");
+          });
+
+          languageBox
+            .querySelectorAll(".mobile-language-option")
+            .forEach(function (option) {
+              option.addEventListener("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                const lang = this.dataset.lang;
+
+                if (typeof changeLanguage === "function") {
+                  changeLanguage(lang);
+                }
+
+                languageBox.classList.remove("open");
+              });
+            });
+        }
+
+        /* ESCAPE */
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            mobileMenu.classList.remove("active");
+
+            if (siteHeader) {
+              siteHeader.classList.remove("mobile-open");
+            }
+
+            if (languageBox) {
+              languageBox.classList.remove("open");
+            }
+          }
+        });
       })();
 
-      // If the page is already translated after navigation/reload,
-      // keep both header selectors on the correct language.
-      window.addEventListener("load", function () {
-        removeGoogleTranslateBar();
-        waitForGoogleTranslate();
-        syncLanguageSelectors();
+      /* =========================================================
+   HEADER SCROLL
+========================================================= */
 
-        // Final cleanup after Google's iframe injection has settled.
-        window.setTimeout(removeGoogleTranslateBar, 100);
-        window.setTimeout(removeGoogleTranslateBar, 500);
-        window.setTimeout(removeGoogleTranslateBar, 1200);
+      const siteHeader = document.getElementById("siteHeader");
+
+      function updateHeader() {
+        if (window.scrollY > 20) {
+          siteHeader.classList.add("scrolled");
+        } else {
+          siteHeader.classList.remove("scrolled");
+        }
+      }
+
+      window.addEventListener("scroll", updateHeader, {
+        passive: true,
       });
-    </script>
 
-    <!-- Google Translate engine: its UI is hidden/off-screen.
-         The custom header selectors control it. -->
-    <div id="google_translate_element" aria-hidden="true"></div>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      updateHeader();
+
+      /* =========================================================
+   SAVED LANGUAGE
+========================================================= */
+
+      const savedLanguage = localStorage.getItem("websiteLanguage");
+
+      if (savedLanguage && translations[savedLanguage]) {
+        changeLanguage(savedLanguage);
+      } else {
+        changeLanguage("en");
+      }
+    </script>
   </body>
 </html>
