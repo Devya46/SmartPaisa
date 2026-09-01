@@ -1,3 +1,23 @@
+<?php include_once 'header.php'; ?>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Money 24/7</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="Photos/SMART MONEY LOGO 01 (1).png"
+    />
+  </head>
+  <body>
+    
+  </body>
+</html>
+
+<!-- -----footer--- -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -38,7 +58,7 @@
       }
 
       .footer-smart {
-        font-family: "Poppins", sans-serif;
+        font-family: "Poppins", Arial, sans-serif !important;
         background: linear-gradient(
           145deg,
           #001e32 0%,
@@ -48,7 +68,7 @@
         padding: 40px 0 18px;
         color: #fff;
         width: 100%;
-        /* border-top: 3px solid #1a3f52; */
+        border-top: 2px solid #444444;
       }
 
       .footer-smart .container {

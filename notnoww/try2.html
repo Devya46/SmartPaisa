@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Market Insights · Live Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ----- reset & base ----- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #f8f7f5;
+        color: #1a1e24;
+        font-family: "Inter", sans-serif;
+        line-height: 1.5;
+      }
+
+      /* ----- hero (financial data bg) ----- */
+      .market-hero {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: visible;
+
+        background-image: url("https://images.unsplash.com/photo-1660547923766-1214fc9e0a83?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEyfHx3ZXxlbnwwfHwwfHx8MA%3D%3D");
+
+        background-size: cover;
+        background-position: center;
+
+        display: flex;
+        align-items: center;
+      }
+      .market-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(3, 7, 12, 0.86) 0%,
+          rgba(3, 10, 18, 0.67) 45%,
+          rgba(3, 7, 12, 0.42) 100%
+        );
+        z-index: 1;
+      }
+
+      .market-hero-content {
+        position: relative;
+        z-index: 2;
+        width: min(1470px, calc(100% - 80px));
+        margin: 0 auto;
+      }
+      .market-hero-title {
+        margin: 0 38px;
+        color: #ffffff;
+        font-size: 37px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+      }
+      /* .market-hero-title::after {
+        content: "";
+        display: block;
+        width: 62px;
+        height: 3px;
+        margin-top: 18px;
+        border-radius: 20px;
+        background: linear-gradient(90deg, #d4af37, #f5d97e);
+      } */
+
+      .market-hero-title span {
+        font-size: 20px;
+        font-weight: 400;
+        color: #cfd9e6;
+        display: block;
+        margin-top: 4px;
+      }
+
+      /* ----- breadcrumb (gold trim) ----- */
+      .market-breadcrumb {
+        position: absolute;
+        z-index: 5;
+        right: 11.3%;
+        bottom: 0;
+        min-width: 345px;
+        height: 78px;
+        padding: 0 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 11px;
+        background: #0c0f14;
+        border-radius: 12px 12px 0 0;
+        box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.35);
+      }
+      .market-breadcrumb::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 35px;
+        right: 35px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #d4b36a, transparent);
+      }
+      .market-breadcrumb a {
+        color: #eaeef2;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: 0.2s;
+      }
+      .market-breadcrumb a:hover {
+        color: #e2c067;
+      }
+      .market-breadcrumb .sep {
+        color: #6a727c;
+        font-size: 14px;
+      }
+      .market-breadcrumb .current {
+        color: #e2c067;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      /* ----- stats ribbon (icons via svg) ----- */
+      .stats-ribbon {
+        background: #0d121b;
+        color: #f0f3f7;
+        padding: 10px 60px;
+        border-bottom: 1px solid #2a313c;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 19px 33px;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+      }
+      .stats-ribbon .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .stats-ribbon .stat-item svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: #b7c0d0;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+      .stats-ribbon .stat-item .stat-label {
+        color: #98a2b3;
+        font-weight: 400;
+      }
+      .stats-ribbon .stat-item .stat-value {
+        color: #fff;
+        font-weight: 600;
+      }
+      .stats-ribbon .stat-highlight {
+        color: #f5d77b;
+      }
+      .stats-ribbon .stat-up {
+        color: #57c7a2;
+      }
+      .stats-ribbon .stat-divider {
+        width: 1px;
+        height: 28px;
+        background: #2f3846;
+      }
+
+      /* responsive */
+      @media (max-width: 1024px) {
+        .market-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .market-breadcrumb {
+          right: 5%;
+        }
+      }
+      @media (max-width: 800px) {
+        .market-hero {
+          height: 320px;
+        }
+        .market-hero-title {
+          font-size: 32px;
+          margin: 0 20px;
+        }
+        .stats-ribbon {
+          gap: 12px 20px;
+          font-size: 13px;
+          padding: 12px 16px;
+        }
+        .stats-ribbon .stat-divider {
+          display: none;
+        }
+        .market-heading {
+          font-size: 28px;
+        }
+        .market-grid {
+          gap: 20px;
+        }
+      }
+      @media (max-width: 640px) {
+        .market-hero {
+          height: 280px;
+        }
+        .market-hero-content {
+          width: calc(100% - 30px);
+        }
+        .market-hero-title {
+          font-size: 28px;
+        }
+        .market-breadcrumb {
+          right: 12px;
+          min-width: unset;
+          width: auto;
+          height: 56px;
+          padding: 0 16px;
+          gap: 6px;
+          border-radius: 8px 8px 0 0;
+        }
+        .market-breadcrumb a,
+        .market-breadcrumb .sep,
+        .market-breadcrumb .current {
+          font-size: 11px;
+        }
+        .market-courses {
+          padding: 50px 16px 60px;
+        }
+        .market-grid {
+          grid-template-columns: 1fr;
+        }
+        .market-card-image {
+          height: 140px;
+        }
+        .market-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .market-sub {
+          font-size: 12px;
+          padding: 4px 14px;
+        }
+      }
+      @media (max-width: 420px) {
+        .market-hero {
+          height: 250px;
+        }
+        .market-hero-title {
+          font-size: 24px;
+        }
+        .stats-ribbon {
+          font-size: 11px;
+          gap: 6px 12px;
+          flex-wrap: wrap;
+        }
+        .stats-ribbon .stat-item {
+          gap: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== HERO ========== -->
+    <section class="market-hero">
+      <div class="market-hero-content">
+        <h1 class="market-hero-title">
+          Pip Value Calculator
+          <span>Know the exact value of every Pip before you Trade.</span>
+        </h1>
+      </div>
+      <div class="market-breadcrumb">
+        <a href="#">Home</a>
+        <span class="sep">/</span>
+        <a href="#">Markets</a>
+        <span class="sep">/</span>
+        <strong class="current">Pip Value Calculator</strong>
+      </div>
+    </section>
+  </body>
+</html>
